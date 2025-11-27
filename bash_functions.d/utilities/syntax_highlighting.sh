@@ -169,8 +169,13 @@ if command -v bat >/dev/null 2>&1; then
     alias cat='bat --paging=never'
     alias less='bat --paging=always'
     
-    # Configure bat
-    export BAT_THEME="Dracula"
+    # Configure bat with fallback theme
+    # Check if Dracula theme exists, otherwise use a default
+    if bat --list-themes 2>/dev/null | grep -q "Dracula"; then
+        export BAT_THEME="Dracula"
+    else
+        export BAT_THEME="ansi"
+    fi
     export BAT_STYLE="numbers,changes,header"
     
     # Preview function using bat
@@ -184,7 +189,12 @@ elif command -v batcat >/dev/null 2>&1; then
     alias less='batcat --paging=always'
     alias bat='batcat'
     
-    export BAT_THEME="Dracula"
+    # Configure bat with fallback theme
+    if batcat --list-themes 2>/dev/null | grep -q "Dracula"; then
+        export BAT_THEME="Dracula"
+    else
+        export BAT_THEME="ansi"
+    fi
     export BAT_STYLE="numbers,changes,header"
 fi
 

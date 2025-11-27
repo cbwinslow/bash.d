@@ -115,7 +115,9 @@ _func_add_completions() {
     # If completing the second argument (category)
     if [[ $COMP_CWORD -eq 2 ]]; then
         local categories
-        categories=$(find "$functions_dir" -maxdepth 1 -type d -printf '%f\n' 2>/dev/null | tail -n +2)
+        categories=$(find "$functions_dir" -maxdepth 1 -type d 2>/dev/null | while read -r dir; do
+            [[ "$dir" != "$functions_dir" ]] && basename "$dir"
+        done)
         COMPREPLY=($(compgen -W "$categories" -- "$cur"))
     fi
 }

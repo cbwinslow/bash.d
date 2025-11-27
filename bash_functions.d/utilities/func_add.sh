@@ -29,7 +29,9 @@ func_add() {
         echo ""
         echo "Categories available:"
         if [[ -d "$functions_dir" ]]; then
-            find "$functions_dir" -maxdepth 1 -type d -printf "  - %f\n" 2>/dev/null | tail -n +2
+            find "$functions_dir" -maxdepth 1 -type d 2>/dev/null | while read -r dir; do
+                [[ "$dir" != "$functions_dir" ]] && echo "  - $(basename "$dir")"
+            done
         fi
         return 1
     fi
@@ -168,7 +170,9 @@ func_list() {
         if [[ -d "$cat_dir" ]]; then
             echo ""
             echo "[$category]"
-            find "$cat_dir" -name "*.sh" -type f -printf "  - %f\n" 2>/dev/null | sed 's/\.sh$//'
+            find "$cat_dir" -name "*.sh" -type f 2>/dev/null | while read -r file; do
+                echo "  - $(basename "$file" .sh)"
+            done
         else
             echo "Category not found: $category"
             return 1
@@ -181,7 +185,9 @@ func_list() {
                 cat_name=$(basename "$cat_dir")
                 echo ""
                 echo "[$cat_name]"
-                find "$cat_dir" -name "*.sh" -type f -printf "  - %f\n" 2>/dev/null | sed 's/\.sh$//'
+                find "$cat_dir" -name "*.sh" -type f 2>/dev/null | while read -r file; do
+                    echo "  - $(basename "$file" .sh)"
+                done
             fi
         done
     fi
