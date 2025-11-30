@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Core helpers for bash.d
 
 bashd_install_oh_my_bash() {
@@ -29,7 +30,8 @@ bashd_reload() {
 }
 
 bashd_snapshot_state() {
-  local snapshot="$BASHD_STATE_DIR/logs/state-$(date -u +"%Y%m%dT%H%M%SZ").txt"
+  local snapshot
+  snapshot="$BASHD_STATE_DIR/logs/state-$(date -u +"%Y%m%dT%H%M%SZ").txt"
   {
     echo "BASHD_HOME=$BASHD_HOME"
     echo "BASH_VERSION=$BASH_VERSION"
