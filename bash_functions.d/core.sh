@@ -10,8 +10,13 @@ bashd_install_oh_my_bash() {
     echo "git is required to install Oh My Bash" >&2
     return 1
   fi
-  git clone https://github.com/ohmybash/oh-my-bash.git "$target"
-  echo "Oh My Bash installed at $target"
+  if git clone https://github.com/ohmybash/oh-my-bash.git "$target"; then
+    echo "Oh My Bash installed at $target"
+    return 0
+  else
+    echo "Failed to install Oh My Bash at $target" >&2
+    return 1
+  fi
 }
 
 bashd_edit_local() {
