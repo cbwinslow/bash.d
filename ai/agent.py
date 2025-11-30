@@ -129,9 +129,9 @@ def publish_function(name: str, body: str, repo_slug: str) -> str:
       fh.write(f"# {classification['documentation']}\n")
     fh.write(body)
     fh.write("\n")
-  subprocess.run(["git", "-C", str(repo_path), "add", relative_file], check=False)
+  subprocess.run(["git", "-C", str(repo_path), "add", relative_file], check=True)
   commit_message = f"Add function {name} via AI agent"
-  subprocess.run(["git", "-C", str(repo_path), "commit", "-m", commit_message], check=False)
+  subprocess.run(["git", "-C", str(repo_path), "commit", "-m", commit_message], check=True)
   append_memory("long_term", f"Published {name} to {repo_slug}:{relative_file}")
   return f"Staged {name} into {repo_path} at {relative_file}. Review and push when ready."
 
