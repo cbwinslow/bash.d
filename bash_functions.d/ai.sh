@@ -76,7 +76,7 @@ bashd_ai_fix() {
     echo "Usage: bashd_ai_fix '<error message>'" >&2
     return 1
   fi
-  bashd_ai_debug "Command: $last_cmd\n\nError: $error_output\n\nSuggest a fix."
+  bashd_ai_debug "$(printf 'Command: %s\n\nError: %s\n\nSuggest a fix.' "$last_cmd" "$error_output")"
 }
 
 # Generate a bash function from a description
@@ -117,12 +117,13 @@ EOF
 # Show recent AI interaction logs
 bashd_ai_history() {
   local count="${1:-5}"
+  local log
   if [[ -d "$BASHD_STATE_DIR/logs" ]]; then
-    find "$BASHD_STATE_DIR/logs" -name 'ai-*.md' -type f | sort -r | head -n "$count" | while read -r log; do
+    while read -r log; do
       echo "=== $(basename "$log") ==="
       head -n 20 "$log"
       echo ""
-    done
+    done < <(find "$BASHD_STATE_DIR/logs" -name 'ai-*.md' -type f | sort -r | head -n "$count")
   else
     echo "No AI interaction logs found" >&2
   fi
