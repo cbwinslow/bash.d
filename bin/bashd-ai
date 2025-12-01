@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+python3 "${BASHD_REPO_ROOT:-$HOME/.bash.d}/ai/agent.py" "$@"
