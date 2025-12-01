@@ -56,7 +56,10 @@ def append_memory(kind: str, entry: str) -> None:
 def openrouter_request(prompt: str, system_prompt: str = "", model: str = DEFAULT_MODEL) -> str:
   api_key = os.environ.get("OPENROUTER_API_KEY")
   if not api_key:
-    raise RuntimeError("OPENROUTER_API_KEY is required for AI interactions")
+    raise RuntimeError(
+        "OPENROUTER_API_KEY is required for AI interactions. "
+        "Set the OPENROUTER_API_KEY environment variable (get your key at https://openrouter.ai/keys)."
+    )
   payload = {
     "model": model,
     "messages": [
@@ -84,7 +87,7 @@ def chat(prompt: str, mode: str) -> str:
   system_prompt = "High-signal, shell-savvy assistant with concise but actionable output."
   if mode == "debug":
     system_prompt = "Assist with debugging shell sessions; prefer minimal, testable steps."
-  if mode == "tldr":
+  elif mode == "tldr":
     system_prompt = "Summarize command usage with short examples."
   reply = openrouter_request(prompt, system_prompt=system_prompt)
   append_memory("short_term", f"{mode}:{prompt} -> {reply}")
@@ -111,9 +114,17 @@ def ensure_repo(repo_slug: str) -> Path:
   ensure_state()
   target = REPO_CACHE / repo_slug.replace("/", "__")
   if target.exists():
-    subprocess.run(["git", "-C", str(target), "pull", "--rebase"], check=False)
+    try:
+      subprocess.run(["git", "-C", str(target), "pull", "--rebase"], check=True)
+    except subprocess.CalledProcessError as e:
+      print(f"Error: git pull failed for {repo_slug} at {target}: {e}", file=sys.stderr)
+      raise
     return target
-  subprocess.run(["git", "clone", f"https://github.com/{repo_slug}.git", str(target)], check=False)
+  try:
+    subprocess.run(["git", "clone", f"https://github.com/{repo_slug}.git", str(target)], check=True)
+  except subprocess.CalledProcessError as e:
+    print(f"Error: git clone failed for {repo_slug} at {target}: {e}", file=sys.stderr)
+    raise
   return target
 
 
@@ -129,9 +140,23 @@ def publish_function(name: str, body: str, repo_slug: str) -> str:
       fh.write(f"# {classification['documentation']}\n")
     fh.write(body)
     fh.write("\n")
-  subprocess.run(["git", "-C", str(repo_path), "add", relative_file], check=False)
+  add_result = subprocess.run(
+    ["git", "-C", str(repo_path), "add", relative_file],
+    capture_output=True, text=True
+  )
+  if add_result.returncode != 0:
+    error_msg = f"Failed to add file to git: {add_result.stderr.strip()}"
+    append_memory("short_term", f"error:{error_msg}")
+    return error_msg
   commit_message = f"Add function {name} via AI agent"
-  subprocess.run(["git", "-C", str(repo_path), "commit", "-m", commit_message], check=False)
+  commit_result = subprocess.run(
+    ["git", "-C", str(repo_path), "commit", "-m", commit_message],
+    capture_output=True, text=True
+  )
+  if commit_result.returncode != 0:
+    error_msg = f"Failed to commit changes: {commit_result.stderr.strip()}"
+    append_memory("short_term", f"error:{error_msg}")
+    return error_msg
   append_memory("long_term", f"Published {name} to {repo_slug}:{relative_file}")
   return f"Staged {name} into {repo_path} at {relative_file}. Review and push when ready."
 
@@ -141,7 +166,7 @@ def main(argv: List[str]) -> int:
   sub = parser.add_subparsers(dest="command", required=True)
 
   chat_parser = sub.add_parser("chat", help="General chat")
-  chat_parser.add_argument("prompt")
+  chat_parser.add_argument("prompt", nargs='+')
   chat_parser.add_argument("--mode", choices=["chat", "debug", "tldr", "code"], default="chat")
 
   publish_parser = sub.add_parser("publish-function", help="Send a function to a repo")
@@ -152,11 +177,12 @@ def main(argv: List[str]) -> int:
   args = parser.parse_args(argv)
   try:
     if args.command == "chat":
-      print(chat(args.prompt, args.mode))
+      print(chat(" ".join(args.prompt), args.mode))
     elif args.command == "publish-function":
       print(publish_function(args.name, args.body, args.repo))
   except Exception as exc:  # noqa: BLE001
     append_memory("short_term", f"error:{exc}")
+    sys.stderr.write(f"Error: {exc}\n")
     raise
   return 0
 
