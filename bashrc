@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Advanced modular bash profile
 # Sets up directory-driven configuration, optional Oh My Bash, and AI assistant hooks.
 
@@ -24,6 +25,7 @@ bashd_source_tree() {
   for dir in bash_env.d bash_aliases.d bash_prompt.d bash_functions.d bash_completions.d; do
     if [[ -d "$BASHD_HOME/$dir" ]]; then
       for file in "$BASHD_HOME/$dir"/*.sh; do
+        # shellcheck disable=SC1090
         [[ -f "$file" ]] && source "$file"
       done
     fi
@@ -33,6 +35,7 @@ bashd_source_tree() {
 bashd_load_secrets() {
   local secrets
   for secrets in "$BASHD_HOME"/bash_secrets.d/*.sh "$BASHD_HOME"/bash_secrets.d/*.env; do
+    # shellcheck disable=SC1090
     [[ -f "$secrets" ]] && source "$secrets"
   done
 }
@@ -44,39 +47,14 @@ bashd_history_setup() {
   shopt -s histappend
 }
 
-bashd_enable_self_heal() {
-  if ! command -v bashd-self-heal >/dev/null 2>&1; then
-    # Throttle interval in seconds (default 60)
-    export BASHD_SELF_HEAL_INTERVAL="${BASHD_SELF_HEAL_INTERVAL:-60}"
-    export BASHD_SELF_HEAL_LAST=0
-    function bashd-self-heal() {
-      local now
-      now=$(date +%s)
-      # Only run if interval has passed since last execution
-      if (( now - BASHD_SELF_HEAL_LAST < BASHD_SELF_HEAL_INTERVAL )); then
-        return 0
-      fi
-      export BASHD_SELF_HEAL_LAST=$now
-      bashd_ensure_layout
-      if [[ -f "$BASHD_HOME/bash_functions.d/ai.sh" ]]; then
-        bashd_ai_healthcheck 2>/dev/null || true
-      fi
-      [[ -f "$BASHD_HOME/bash_functions.d/core.sh" ]] && :
-    }
-  fi
-  if [[ "$PROMPT_COMMAND" != *"bashd-self-heal"* ]]; then
-    if [[ -n "$PROMPT_COMMAND" ]]; then
-      PROMPT_COMMAND="bashd-self-heal; $PROMPT_COMMAND"
-    else
-      PROMPT_COMMAND="bashd-self-heal"
-    fi
-  fi
+
 }
 
 bashd_maybe_use_oh_my_bash() {
   export OMB_DIR="${OMB_DIR:-$HOME/.oh-my-bash}"
   if [[ -d "$OMB_DIR" ]]; then
     export OSH_THEME="${OSH_THEME:-font}"
+    # shellcheck disable=SC1091
     source "$OMB_DIR/oh-my-bash.sh"
   elif [[ -f "$BASHD_HOME/bash_functions.d/core.sh" ]]; then
     # Provide a helper to install without doing network work during shell startup
@@ -90,7 +68,14 @@ bashd_init() {
   bashd_history_setup
   bashd_maybe_use_oh_my_bash
   bashd_source_tree
-  bashd_enable_self_heal
+  
+  # Run AI healthcheck once at startup (non-blocking)
+  if [[ -f "$BASHD_HOME/bash_functions.d/ai.sh" ]]; then
+    bashd_ai_healthcheck 2>/dev/null || true
+  fi
+  
+  # Add lightweight prompt hook for history only
+  PROMPT_COMMAND="bashd_prompt_hook; ${PROMPT_COMMAND:-}"
 }
 
 bashd_init
