@@ -7,7 +7,7 @@ mkdir -p "$TARGET"
 
 rsync -av --exclude '.git' --exclude '.gitignore' --exclude 'README.md' "$REPO_ROOT/" "$TARGET/"
 
-if ! grep -q "bashd_home" "$HOME/.bashrc" 2>/dev/null; then
+if ! grep -q "# bash.d bootstrap" "$HOME/.bashrc" 2>/dev/null; then
   cat <<'RC' >> "$HOME/.bashrc"
 # bash.d bootstrap
 if [[ -f "$HOME/.bash.d/bashrc" ]]; then
