@@ -180,7 +180,7 @@ def main(argv: List[str]) -> int:
       print(chat(" ".join(args.prompt), args.mode))
     elif args.command == "publish-function":
       print(publish_function(args.name, args.body, args.repo))
-  except Exception as exc:  # noqa: BLE001
+  except (RuntimeError, requests.exceptions.RequestException, subprocess.CalledProcessError) as exc:
     append_memory("short_term", f"error:{exc}")
     sys.stderr.write(f"Error: {exc}\n")
     raise
