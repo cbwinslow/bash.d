@@ -14,22 +14,22 @@ bashd_ai_healthcheck() {
 
 bashd_ai_chat() {
   bashd_ai_healthcheck || return 1
-  python3 "$BASHD_REPO_ROOT/ai/agent.py" chat --mode chat "$*"
+  python3 "$BASHD_REPO_ROOT/ai/agent.py" chat --mode chat "$@"
 }
 
 bashd_ai_debug() {
   bashd_ai_healthcheck || return 1
-  python3 "$BASHD_REPO_ROOT/ai/agent.py" chat --mode debug "$*"
+  python3 "$BASHD_REPO_ROOT/ai/agent.py" chat --mode debug "$@"
 }
 
 bashd_ai_tldr() {
   bashd_ai_healthcheck || return 1
-  python3 "$BASHD_REPO_ROOT/ai/agent.py" chat --mode tldr "$*"
+  python3 "$BASHD_REPO_ROOT/ai/agent.py" chat --mode tldr "$@"
 }
 
 bashd_ai_code() {
   bashd_ai_healthcheck || return 1
-  python3 "$BASHD_REPO_ROOT/ai/agent.py" chat --mode code "$*"
+  python3 "$BASHD_REPO_ROOT/ai/agent.py" chat --mode code "$@"
 }
 
 bashd_ai_publish_function() {

@@ -47,21 +47,7 @@ bashd_history_setup() {
   shopt -s histappend
 }
 
-# Manual self-heal command - not run on every prompt for performance
-bashd_self_heal() {
-  bashd_ensure_layout
-  if [[ -f "$BASHD_HOME/bash_functions.d/ai.sh" ]]; then
-    bashd_ai_healthcheck
-  fi
-  # shellcheck disable=SC1090
-  [[ -f "$BASHD_HOME/bash_functions.d/core.sh" ]] && source "$BASHD_HOME/bash_functions.d/core.sh"
-  echo "bashd: self-heal complete"
-}
 
-# Lightweight prompt hook - only updates history, no expensive checks
-bashd_prompt_hook() {
-  # Append history on each command for safety
-  history -a
 }
 
 bashd_maybe_use_oh_my_bash() {
