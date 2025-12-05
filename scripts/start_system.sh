@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-"""
-Quick Start Script for Multi-Agentic System
-
-This script provides an easy way to start the entire system.
-"""
+#
+# Quick Start Script for Multi-Agentic System
+#
+# This script provides an easy way to start the entire system.
+#
 
 set -e
 

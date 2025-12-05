@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-"""
-Docker Installation Script
-
-Installs Docker and Docker Compose using official .deb packages
-for Debian/Ubuntu systems.
-"""
+#
+# Docker Installation Script
+#
+# Installs Docker and Docker Compose using official .deb packages
+# for Debian/Ubuntu systems.
+#
 
 set -e
 

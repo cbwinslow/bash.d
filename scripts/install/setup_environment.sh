@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-"""
-Environment Setup Script
-
-Sets up the complete environment for the multi-agentic system including:
-- Python virtual environment
-- Dependencies
-- Configuration files
-- Database initialization
-"""
+#
+# Environment Setup Script
+#
+# Sets up the complete environment for the multi-agentic system including:
+# - Python virtual environment
+# - Dependencies
+# - Configuration files
+# - Database initialization
+#
 
 set -e
 
