@@ -1,0 +1,20 @@
+#!/bin/bash
+# Minimal working bashrc - guaranteed to work
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# Basic PATH setup
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
+
+# Simple prompt
+export PS1='\u@\h:\w\$ '
+
+# Basic aliases
+alias ll='ls -alF'
+alias la='ls -A'
+
+echo "Minimal bashrc loaded successfully"
