@@ -420,8 +420,8 @@ class AgentSwarm:
         proposals = []
         for agent in agents:
             proposal = {
-                "agent_id": agent.id,
-                "solution": f"Solution from {agent.id}",
+                "agent_id": agent.agent_id,
+                "solution": f"Solution from {agent.agent_id}",
                 "confidence": 0.8
             }
             proposals.append(proposal)
@@ -504,7 +504,7 @@ class AgentSwarm:
         # Simulate parallel execution
         results = []
         for agent in agents:
-            result = f"Result from {agent.id}"
+            result = f"Result from {agent.agent_id}"
             results.append(result)
         
         return {

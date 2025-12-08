@@ -37,6 +37,10 @@ from .voting import (
 logger = logging.getLogger(__name__)
 
 
+# Simulated task execution delay (in seconds) - set to 0 for no delay
+SIMULATED_TASK_DELAY = 0.01
+
+
 class CrewRole(str, Enum):
     """Roles within a crew"""
     LEADER = "leader"  # Leads the crew, makes final decisions
@@ -575,7 +579,8 @@ class AgentCrew:
         try:
             # Simulate task execution
             # In real implementation, would call agent.execute_task()
-            await asyncio.sleep(0.1)  # Simulate work
+            if SIMULATED_TASK_DELAY > 0:
+                await asyncio.sleep(SIMULATED_TASK_DELAY)  # Simulate work
             
             result = {
                 "success": True,

@@ -189,7 +189,7 @@ class BaseAgent(BaseModel):
     # Configuration
     config: AgentConfig = Field(default_factory=AgentConfig)
     
-    # Capabilities (can be strings or AgentCapability objects)
+    # Capabilities (list of capability names/descriptions)
     capabilities: List[str] = Field(default_factory=list)
     supported_protocols: List[CommunicationProtocol] = Field(
         default_factory=lambda: [

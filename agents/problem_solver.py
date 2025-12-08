@@ -36,6 +36,10 @@ from .voting import (
 logger = logging.getLogger(__name__)
 
 
+# Default decomposition phases for problems without specific agent types
+DEFAULT_PROBLEM_PHASES = ["analysis", "implementation", "testing"]
+
+
 class ProblemComplexity(str, Enum):
     """Problem complexity levels"""
     SIMPLE = "simple"  # Single agent can solve
@@ -686,9 +690,8 @@ class ComplexProblemSolver:
                 )
                 sub_problems.append(sub_prob)
         else:
-            # Create generic sub-problems
-            phases = ["analysis", "implementation", "testing"]
-            for i, phase in enumerate(phases):
+            # Create generic sub-problems using default phases
+            for i, phase in enumerate(DEFAULT_PROBLEM_PHASES):
                 sub_prob = SubProblem(
                     parent_id=problem.problem_id,
                     title=f"{problem.title} - {phase}",
