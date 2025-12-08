@@ -41,7 +41,9 @@ class ToolRegistry:
             'api_http_tools',
             'bitwarden_tools',
             'git_tools',
-            'data_tools'
+            'data_tools',
+            'docker_tools',
+            'system_tools'
         ]
         
         for module_name in tool_modules:
