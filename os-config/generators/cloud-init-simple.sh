@@ -1,0 +1,51 @@
+#!/bin/bash
+# Simplified Cloud-Init Configuration Generator
+# Converts collected system data into cloud-init user-data format
+# Usage: ./cloud-init-simple.sh <bundle-directory>
+
+BUNDLE_DIR="${1:-.}"
+
+cat << 'EOF'
+#cloud-config
+# Generated OS Configuration
+# This file can be used with cloud-init to recreate system configuration
+
+# Update and upgrade packages on first boot
+package_update: true
+package_upgrade: true
+
+# System packages
+packages:
+  - git
+  - vim
+  - curl
+  - wget
+  - build-essential
+  - python3-pip
+
+# Additional setup commands
+runcmd:
+  # Create common directories
+  - mkdir -p /home/ubuntu/projects
+  - mkdir -p /home/ubuntu/.config
+  - chown ubuntu:ubuntu /home/ubuntu/projects /home/ubuntu/.config
+
+# Write configuration files
+write_files:
+  - path: /etc/profile.d/custom-env.sh
+    permissions: '0644'
+    content: |
+      # Custom environment variables
+      export EDITOR=vim
+      export VISUAL=vim
+
+# Set timezone
+timezone: UTC
+
+# Configure SSH
+ssh_pwauth: false
+
+# Final message
+final_message: "System configuration completed. Time: $UPTIME"
+
+EOF
