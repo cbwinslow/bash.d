@@ -271,19 +271,16 @@ class BacktrackingSolver(Algorithm):
             return {"solvable": False, "path": []}
         
         rows, cols = len(maze), len(maze[0])
-        path = []
-        visited = set()
         
-        def is_valid(r, c):
-            return (0 <= r < rows and 0 <= c < cols and 
-                    maze[r][c] == 0 and (r, c) not in visited)
-        
-        def backtrack(r, c):
+        def solve_maze_recursive(r, c, path, visited):
+            """Recursive helper with explicit state parameters"""
             if r == rows - 1 and c == cols - 1:
                 path.append((r, c))
                 return True
             
-            if not is_valid(r, c):
+            if not (0 <= r < rows and 0 <= c < cols):
+                return False
+            if maze[r][c] == 1 or (r, c) in visited:
                 return False
             
             visited.add((r, c))
@@ -291,13 +288,15 @@ class BacktrackingSolver(Algorithm):
             
             # Try all directions: right, down, left, up
             for dr, dc in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
-                if backtrack(r + dr, c + dc):
+                if solve_maze_recursive(r + dr, c + dc, path, visited):
                     return True
             
             path.pop()
             return False
         
-        solvable = backtrack(0, 0)
+        path = []
+        visited = set()
+        solvable = solve_maze_recursive(0, 0, path, visited)
         
         return {
             "solvable": solvable,

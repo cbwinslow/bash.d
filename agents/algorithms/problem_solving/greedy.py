@@ -5,6 +5,7 @@ Makes locally optimal choices at each step to find a global solution.
 """
 
 from typing import Dict, Any, List, Tuple
+import heapq
 from ..base import Algorithm, AlgorithmType, AlgorithmStrategy
 
 
@@ -156,8 +157,6 @@ class GreedyAlgorithmSolver(Algorithm):
         """Generate Huffman codes for compression"""
         if not frequencies:
             return {"codes": {}, "tree": None}
-        
-        import heapq
         
         # Create heap of (frequency, unique_id, character, left, right)
         heap = [[freq, i, char, None, None] 

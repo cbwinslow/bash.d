@@ -3,12 +3,16 @@
 Example demonstrations of code generation and problem-solving algorithms
 
 This script demonstrates all the algorithms available in the multi-agentic system.
+
+Note: This is an example/demo script. For production use, install the package
+properly using pip or add it to PYTHONPATH instead of modifying sys.path.
 """
 
 import sys
 from pathlib import Path
 
-# Add parent directory to path
+# Add parent directory to path (for demo purposes only)
+# In production, install the package properly or use PYTHONPATH
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from agents.algorithms.code_generation import (

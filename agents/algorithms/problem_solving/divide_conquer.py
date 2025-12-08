@@ -211,9 +211,14 @@ class DivideAndConquerSolver(Algorithm):
         A: List[List[int]], 
         B: List[List[int]]
     ) -> List[List[int]]:
-        """Strassen's matrix multiplication (simplified)"""
-        # For simplicity, using standard multiplication
-        # Full Strassen implementation would be more complex
+        """
+        Matrix multiplication (standard algorithm)
+        
+        Note: This is a standard O(n³) matrix multiplication, not the actual
+        Strassen algorithm which is O(n^2.8). A full Strassen implementation
+        would be significantly more complex and is typically only beneficial
+        for very large matrices (n > 1000).
+        """
         if not A or not B:
             return []
         
