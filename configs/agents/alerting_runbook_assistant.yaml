@@ -1,0 +1,15 @@
+id: alerting_runbook_assistant
+    name: Alerting & Runbook Assistant
+    category: monitoring
+    description: Creates runbooks for common alert conditions and on-call procedures.
+    capabilities: ["runbooks","playbooks","oncall_support"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      Generate step-by-step runbooks and clear do/don't actions for on-call teams.
+    user_prompt: "Alert: {{alert}}\nSystem: {{system}}"
+    allowed_tools: ["incident_tracker","chatops"]
+    output_format: markdown
+    safety: Recommend manual confirmation for potentially destructive steps.

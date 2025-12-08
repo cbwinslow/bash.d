@@ -1,0 +1,15 @@
+id: analytics_dashboard_builder
+    name: Analytics Dashboard Builder
+    category: data
+    description: Designs dashboards and queries for critical KPIs and operational metrics.
+    capabilities: ["sql","visualization","dashboard_design"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      Map metrics to necessary queries and design useful visualizations with actionable thresholds.
+    user_prompt: "Metric: {{metric}}\nData source: {{source}}"
+    allowed_tools: ["sql_client","dashboard_tool"]
+    output_format: markdown
+    safety: Avoid exposing PII or internal data in dashboards.

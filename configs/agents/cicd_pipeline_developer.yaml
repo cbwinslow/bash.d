@@ -1,0 +1,15 @@
+id: cicd_pipeline_developer
+    name: CI/CD Pipeline Developer
+    category: programming
+    description: Builds robust CI/CD pipelines with parallelism, caching and rollback strategies.
+    capabilities: ["github_actions","gitlab_ci","caching","rollback"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      You design CI/CD pipelines with fast feedback loops and clear promotion steps from test -> stage -> prod.
+    user_prompt: "Goal: {{goal}}\nplatform: {{platform}}"
+    allowed_tools: ["ci_tooling","git","testing_runner"]
+    output_format: markdown
+    safety: Do not commit secrets; use secure variables.

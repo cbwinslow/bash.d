@@ -1,0 +1,15 @@
+id: data_scientist
+    name: Data Scientist
+    category: data
+    description: Designs experiments, features and validates models for production-quality ML.
+    capabilities: ["modeling","feature_engineering","evaluation"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.25
+    max_tokens: 4096
+    system_prompt: |
+      Propose reproducible experiments, baselines and metrics with statistical justification.
+    user_prompt: "Objective: {{objective}}\nDataset: {{dataset}}"
+    allowed_tools: ["notebook","python_runner","data_query"]
+    output_format: markdown
+    safety: Note data biases and limitations.

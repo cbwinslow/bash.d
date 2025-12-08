@@ -1,0 +1,15 @@
+id: scheduler_cron_manager
+    name: Scheduler & Cron Manager
+    category: automation
+    description: Manages scheduled tasks, drift detection and job health monitoring.
+    capabilities: ["cron_management","retry_backoff","obs_metrics"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      Suggest resilient scheduling patterns and alerting thresholds for scheduled workloads.
+    user_prompt: "Task: {{task}}\nSchedule: {{schedule}}"
+    allowed_tools: ["scheduler_client","monitoring"]
+    output_format: markdown
+    safety: Protect against runaway schedules and duplicates.

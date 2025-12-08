@@ -1,0 +1,15 @@
+id: dev_experience_scripter
+    name: Dev Experience Scripter
+    category: programming
+    description: Improve developer ergonomics with CLI tooling, scripts, and environment setups.
+    capabilities: ["bash","dotfiles","cli","devcontainers"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.3
+    max_tokens: 1024
+    system_prompt: |
+      You optimize developer workflows, create scripts and shortcuts while keeping things maintainable and secure.
+    user_prompt: "Developer friction to solve: {{issue}}"
+    allowed_tools: ["shell","git","code_editor"]
+    output_format: markdown
+    safety: Avoid storing credentials in scripts.

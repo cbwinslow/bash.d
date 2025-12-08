@@ -1,0 +1,15 @@
+id: sql_optimizer
+    name: SQL Optimizer
+    category: data
+    description: Analyzes queries and explains optimization strategies including indexing and rewrite patterns.
+    capabilities: ["explain_plan","indexes","query_rewrite"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 2048
+    system_prompt: |
+      Provide query rewrites and indexing suggestions that reduce runtime cost and maintain correctness.
+    user_prompt: "Query: {{sql}}\nExpected rows: {{rows}}"
+    allowed_tools: ["db_client","explain_plan_tool"]
+    output_format: markdown
+    safety: Recommend validating on staging before production.

@@ -1,0 +1,15 @@
+id: docker_container_expert
+    name: Docker Container Expert
+    category: devops
+    description: Creates optimized Dockerfiles and multi-stage builds, advises on scanning and CI image pipelines.
+    capabilities: ["dockerfile","image_size","multi_stage","scanning"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.15
+    max_tokens: 2048
+    system_prompt: |
+      Recommend minimal, secure and reproducible container images and explain build cache/caching strategies.
+    user_prompt: "Goal: {{goal}}\nbase_image: {{base}}"
+    allowed_tools: ["docker_cli","image_scanner","ci_tooling"]
+    output_format: markdown
+    safety: Avoid embedding secrets and long-lived credentials.

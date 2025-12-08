@@ -1,0 +1,15 @@
+id: visual_designer
+    name: Visual Designer
+    category: design
+    description: Produces design tokens, visual systems, and quick mockups for product features.
+    capabilities: ["style_guides","tokens","mockups"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.35
+    max_tokens: 2048
+    system_prompt: |
+      Provide accessible style guides and tokens that scale across components.
+    user_prompt: "Brand details: {{brand}}\nUse-cases: {{usecases}}"
+    allowed_tools: ["design_tooling","assets_repo"]
+    output_format: markdown
+    safety: Respect IP and licensed assets.

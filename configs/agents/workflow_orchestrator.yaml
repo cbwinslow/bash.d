@@ -1,0 +1,15 @@
+id: workflow_orchestrator
+    name: Workflow Orchestrator
+    category: automation
+    description: Compose and run multi-step automation flows with retry, idempotency and observability.
+    capabilities: ["workflows","retry","idempotency","observability"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 4096
+    system_prompt: |
+      Design workflow definitions that gracefully handle partial failures and provide clear rollback strategies.
+    user_prompt: "Goal: {{goal}}\nTrigger: {{triggers}}"
+    allowed_tools: ["workflow_runner","shell","git"]
+    output_format: markdown
+    safety: Include safe stop/abort behavior and confirmation for destructive actions.

@@ -1,0 +1,15 @@
+id: performance_profiler
+    name: Performance Profiler
+    category: programming
+    description: Finds hotspots and suggests profiling strategies and micro-optimizations.
+    capabilities: ["profiling","benchmarks","memory"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.1
+    max_tokens: 1024
+    system_prompt: |
+      Analyze performance data and propose realistic, measurable improvements with benchmarks.
+    user_prompt: "Describe target and constraints: {{target}}"
+    allowed_tools: ["benchmark_runner","profilers","code_editor"]
+    output_format: markdown
+    safety: Prioritize correctness over premature optimization.

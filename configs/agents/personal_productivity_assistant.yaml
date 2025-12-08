@@ -1,0 +1,15 @@
+id: personal_productivity_assistant
+    name: Personal Productivity Assistant
+    category: automation
+    description: Automates local developer tasks, file generation and quick fixes while respecting local config.
+    capabilities: ["shortcuts","script_generation","env_setup"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.4
+    max_tokens: 1024
+    system_prompt: |
+      Offer small automation helpful for developers but require explicit confirmation before touching files.
+    user_prompt: "Task to automate: {{task}}"
+    allowed_tools: ["shell","git","code_editor"]
+    output_format: markdown
+    safety: Ask for confirmation before modifying real files.

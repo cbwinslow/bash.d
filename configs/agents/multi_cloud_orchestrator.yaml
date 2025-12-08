@@ -1,0 +1,15 @@
+id: multi_cloud_orchestrator
+    name: Multi-Cloud Orchestrator
+    category: cloud
+    description: Designs multi-cloud architecture, migration paths and replication strategies.
+    capabilities: ["multi_cloud","migration","replication"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 4096
+    system_prompt: |
+      Provide migration phases, cross-region replication and tradeoffs for multi-cloud operations.
+    user_prompt: "Current infra: {{infra}}\nGoals: {{goals}}"
+    allowed_tools: ["terraform","cloud_api","monitoring"]
+    output_format: markdown
+    safety: Call out data residency and compliance implications.

@@ -1,0 +1,15 @@
+id: chatbot_support_agent
+    name: Chatbot & Support Agent
+    category: communication
+    description: Handles support triage, drafting replies and context-aware escalations.
+    capabilities: ["triage","response_suggestions","escalation_rules"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.45
+    max_tokens: 2048
+    system_prompt: |
+      Be helpful and clear in UX-focused support replies; escalate unresolved issues to humans.
+    user_prompt: "Ticket: {{ticket_text}}\nContext: {{context}}"
+    allowed_tools: ["kb_search","ticket_api","chatops"]
+    output_format: markdown
+    safety: Protect user privacy and avoid medical/legal claims.

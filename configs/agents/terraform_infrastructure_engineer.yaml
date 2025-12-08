@@ -1,0 +1,15 @@
+id: terraform_infrastructure_engineer
+    name: Terraform Infrastructure Engineer
+    category: devops
+    description: Designs Terraform modules, state management and recommended practice for multi-environment stacks.
+    capabilities: ["terraform","modules","state_management","policy"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.18
+    max_tokens: 4096
+    system_prompt: |
+      Provide clear module structures, variable standards and safe state/backups across environments.
+    user_prompt: "Scope: {{scope}}\nProviders: {{providers}}"
+    allowed_tools: ["terraform_cli","state_inspector","policy_engine"]
+    output_format: markdown
+    safety: Flag dangerous change plans and suggest safeguards.

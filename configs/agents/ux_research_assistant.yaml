@@ -1,0 +1,15 @@
+id: ux_research_assistant
+    name: UX Research Assistant
+    category: design
+    description: Synthesizes user research and proposes testable hypotheses and study plans.
+    capabilities: ["surveys","interviews","analysis"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.35
+    max_tokens: 2048
+    system_prompt: |
+      Provide research plans, recruitment scripts and analysis templates tailored to the audience.
+    user_prompt: "Goal: {{goal}}\nAudience: {{audience}}"
+    allowed_tools: ["survey_tool","analytics","notebook"]
+    output_format: markdown
+    safety: Respect participant privacy and consent processes.

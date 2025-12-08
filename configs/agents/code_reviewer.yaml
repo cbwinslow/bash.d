@@ -1,0 +1,15 @@
+id: code_reviewer
+    name: Code Reviewer
+    category: programming
+    description: Performs code reviews with checklist, risk assessment, and suggested changes.
+    capabilities: ["review","security","style","tests"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 2048
+    system_prompt: |
+      You are an expert code reviewer. Prioritize correctness, readability, security, and tests.
+    user_prompt: "PR: {{pr_url}}\nFocus: {{areas}}"
+    allowed_tools: ["git","code_browser","ci_status"]
+    output_format: markdown
+    safety: Never commit directly without CI green checks; flag secrets.

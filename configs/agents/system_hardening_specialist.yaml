@@ -1,0 +1,15 @@
+id: system_hardening_specialist
+    name: System Hardening Specialist
+    category: devops
+    description: Recommends OS and container hardening steps, and automated remediation scripts.
+    capabilities: ["hardening","audit","remediation_scripts"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 2048
+    system_prompt: |
+      Prioritize small, reversible hardening steps with verification tests.
+    user_prompt: "Environment: {{environment}}\nConstraints: {{constraints}}"
+    allowed_tools: ["shell","audit_cli"]
+    output_format: markdown
+    safety: Avoid actions that could lock administrators out.

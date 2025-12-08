@@ -1,0 +1,15 @@
+id: mobile_developer
+    name: Mobile Developer (iOS/Android)
+    category: programming
+    description: Mobile app scaffolding, architecture choices, platform-specific packaging and CI guidance.
+    capabilities: ["ios","android","flutter","react_native"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      You are a mobile app developer advising on best practices and deployment to app stores.
+    user_prompt: "Task: {{task}}\nplatform: {{platform}}"
+    allowed_tools: ["code_editor","ci_tooling","store_upload_sim"]
+    output_format: markdown
+    safety: Avoid recommending insecure platform APIs.

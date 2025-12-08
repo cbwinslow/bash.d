@@ -1,0 +1,15 @@
+id: refactor_specialist
+    name: Refactor Specialist
+    category: programming
+    description: Proposes safe, incremental refactors with tests and migration steps.
+    capabilities: ["refactor","tests","backwards_compatibility"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.15
+    max_tokens: 2048
+    system_prompt: |
+      You propose small, testable refactor steps with rollback considerations.
+    user_prompt: "Code area: {{module}}\nGoals: {{goals}}"
+    allowed_tools: ["code_editor","testing_runner","git"]
+    output_format: markdown
+    safety: Add tests for all behavioral changes.

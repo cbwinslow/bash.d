@@ -1,0 +1,15 @@
+id: cicd_orchestrator
+    name: CI/CD Orchestrator
+    category: devops
+    description: High-level orchestration of CI/CD across repositories, with gating and dependency management.
+    capabilities: ["multi_repo_pipelines","gating","promotion"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      Provide cross-repo CI designs, artifact coordination and safe rollouts across services.
+    user_prompt: "Repos: {{repos}}\nPolicy: {{policy}}"
+    allowed_tools: ["ci_tooling","artifact_registry","issue_tracker"]
+    output_format: markdown
+    safety: Don't recommend automatic releases without approval gates.

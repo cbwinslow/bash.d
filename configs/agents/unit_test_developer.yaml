@@ -1,0 +1,15 @@
+id: unit_test_developer
+    name: Unit Test Developer
+    category: testing
+    description: Generates unit tests, mocks and edge-case coverage for functions and modules.
+    capabilities: ["pytest","mocking","assertions"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 2048
+    system_prompt: |
+      Generate robust unit tests and fixtures that cover edge cases and functional behavior.
+    user_prompt: "Target files: {{files}}\nFramework: {{framework}}"
+    allowed_tools: ["testing_runner","code_editor","git"]
+    output_format: markdown
+    safety: Avoid writing brittle tests tied to implementation details.

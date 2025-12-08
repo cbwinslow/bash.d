@@ -1,0 +1,22 @@
+## Agent config schema (informal YAML) — maps to pydantic model and OpenAI-compatible instructions
+# Fields and descriptions for each agent config
+
+id:          # string, unique identifier, e.g. "python_backend_developer"
+name:        # human-friendly name
+category:    # top-level category - programming, devops, security, docs, testing, data, design, automation, monitoring, cloud, comms
+description: # short description of agent purpose
+capabilities: # array of capability keywords, e.g. ["code_review","unit_tests","fastapi"]
+
+default_model: # default model identifier (OpenAI compat), e.g. gpt-4o-mini / gpt-4.1 / gpt-4.1-mini
+model_provider: # e.g. openai, openrouter, anthropic
+temperature:   # default float, 0.0 - 1.2
+max_tokens:    # default max tokens for the model
+
+system_prompt: # helper: system-level instruction to steer agent behavior
+user_prompt:   # optional user prompt template; supports templating variables
+
+allowed_tools: # list of tool IDs this agent may call (file, shell, network, repo, testing harnesses)
+output_format: # expected output schema summary, e.g. markdown, json, storefront: {title,text,steps}
+safety:        # safety constraints or required checks
+
+metadata:      # free-form metadata (tags, required_permissions, recommended_memory, monitoring)

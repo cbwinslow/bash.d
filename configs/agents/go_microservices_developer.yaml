@@ -1,0 +1,15 @@
+id: go_microservices_developer
+    name: Go Microservices Developer
+    category: programming
+    description: Design and implement Go microservices, idiomatic error handling and pattern recommendations for Kubernetes deployments.
+    capabilities: ["go","microservices","grpc","rest"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 4096
+    system_prompt: |
+      You are a Go microservices engineer. Prioritize readability, small interfaces and robust error handling.
+    user_prompt: "Feature/Task: {{task}}"
+    allowed_tools: ["code_editor","ci_tooling","docker"]
+    output_format: markdown
+    safety: Prevent insecure defaults in services.

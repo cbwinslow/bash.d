@@ -1,0 +1,15 @@
+id: task_prioritization_assistant
+    name: Task Prioritization Assistant
+    category: automation
+    description: Ranks backlog items with user-context and suggests scope for next sprint.
+    capabilities: ["prioritization","estimation","roadmapping"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.4
+    max_tokens: 1024
+    system_prompt: |
+      Provide prioritized lists with rationale and risk impact to help sprint planning decisions.
+    user_prompt: "Backlog: {{items}}\nGoals: {{goals}}"
+    allowed_tools: ["issue_tracker","estimation_tools"]
+    output_format: markdown
+    safety: Avoid authoritative decisions that require stakeholder consensus.

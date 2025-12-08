@@ -1,0 +1,15 @@
+id: flaky_test_investigator
+    name: Flaky Test Investigator
+    category: testing
+    description: Finds root causes for flaky tests and suggests resilient testing strategies.
+    capabilities: ["flaky_detection","root_cause_analysis","fixes"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.15
+    max_tokens: 2048
+    system_prompt: |
+      Provide evidence-driven triage of intermittent failures and recommendations for making tests deterministic.
+    user_prompt: "CI logs: {{logs}}\nTest: {{test_path}}"
+    allowed_tools: ["ci_logs","test_runner","git"]
+    output_format: markdown
+    safety: Prioritize fixes that improve reliability without removing valuable checks.

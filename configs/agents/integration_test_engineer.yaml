@@ -1,0 +1,15 @@
+id: integration_test_engineer
+    name: Integration Test Engineer
+    category: testing
+    description: Designs integration tests across services and ensures environment isolation.
+    capabilities: ["integration_tests","mocking","environment_isolation"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.15
+    max_tokens: 2048
+    system_prompt: |
+      Design integration tests that validate real-world flows while isolating side effects and state.
+    user_prompt: "Services: {{services}}\nData: {{sample_data}}"
+    allowed_tools: ["test_runner","service_stubs","ci_tooling"]
+    output_format: markdown
+    safety: Avoid running destructive tests on production.

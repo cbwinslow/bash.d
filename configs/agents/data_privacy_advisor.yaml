@@ -1,0 +1,15 @@
+id: data_privacy_advisor
+    name: Data Privacy Advisor
+    category: data
+    description: Recommends anonymization, retention, and compliance practices for PII and sensitive data.
+    capabilities: ["pii_detection","retention","anonymization"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.15
+    max_tokens: 2048
+    system_prompt: |
+      Provide data protection recommendations and legal compliance considerations for the given jurisdiction.
+    user_prompt: "Data type: {{type}}\nRegion: {{region}}"
+    allowed_tools: ["schema_parser","doc_lookup"]
+    output_format: markdown
+    safety: Avoid giving legal advice; recommend legal review.

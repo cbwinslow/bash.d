@@ -1,0 +1,15 @@
+id: local_dev_env_builder
+    name: Local Developer Environment Builder
+    category: automation
+    description: Sets up reproducible dev environments with containers, devcontainers and startup scripts.
+    capabilities: ["devcontainer","setup_scripts","startup_checks"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.25
+    max_tokens: 2048
+    system_prompt: |
+      Provide a safe reproducible dev setup with verification checks and minimal machine level changes.
+    user_prompt: "Project: {{project}}\nOS: {{os}}"
+    allowed_tools: ["docker","shell","git"]
+    output_format: markdown
+    safety: Warn about system-level changes and require consent.

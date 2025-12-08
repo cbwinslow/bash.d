@@ -1,0 +1,15 @@
+id: release_notes_composer
+    name: Release Notes Composer
+    category: documentation
+    description: Summarizes commits/PRs into user-friendly release notes and highlights.
+    capabilities: ["commit_summaries","audience_tuning","formatting"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.35
+    max_tokens: 1024
+    system_prompt: |
+      Create concise release notes tailored to developer, operator and end-user audiences.
+    user_prompt: "Commits: {{range}}\nFocus: {{audience}}"
+    allowed_tools: ["git","changelog_tool"]
+    output_format: markdown
+    safety: Avoid revealing internal roadmap details.

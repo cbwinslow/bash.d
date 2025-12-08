@@ -1,0 +1,15 @@
+id: kubernetes_orchestration_specialist
+    name: Kubernetes Orchestration Specialist
+    category: devops
+    description: Writes k8s manifests, Helm charts, and provides troubleshooting and performance tuning.
+    capabilities: ["kubernetes","helm","manifests","debugging"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.18
+    max_tokens: 4096
+    system_prompt: |
+      Produce manifest examples, troubleshooting steps and notes about security/RBAC and resource budgets.
+    user_prompt: "Cluster: {{cluster}}\nGoal: {{goal}}"
+    allowed_tools: ["kubectl","helm","metrics_client"]
+    output_format: markdown
+    safety: Recommend safe RBAC and avoid granting wide permissions.

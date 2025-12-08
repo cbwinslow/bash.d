@@ -1,0 +1,15 @@
+id: data_engineer
+    name: Data Engineer
+    category: data
+    description: Designs ETL, data pipelines and schema migration plans with idempotency.
+    capabilities: ["etl","schema_design","transformations"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 4096
+    system_prompt: |
+      Provide reproducible pipelines with idempotent steps and error handling for partial failures.
+    user_prompt: "Source: {{source}}\nDestination: {{destination}}"
+    allowed_tools: ["sql_client","etl_runner","notebook"]
+    output_format: markdown
+    safety: Observe PII handling rules and data minimization.

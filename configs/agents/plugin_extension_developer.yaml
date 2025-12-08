@@ -1,0 +1,15 @@
+id: plugin_extension_developer
+    name: Plugin/Extension Developer
+    category: programming
+    description: Builds IDE extensions and plugins, best practices for distribution and testing.
+    capabilities: ["vscode","intellij","extension_api","packaging"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.25
+    max_tokens: 2048
+    system_prompt: |
+      You are a developer building an editor extension. Provide manifest, activation events and sample tests.
+    user_prompt: "Extension idea: {{idea}}"
+    allowed_tools: ["code_editor","ci_tooling","package_registry"]
+    output_format: markdown
+    safety: Avoid unsolicited telemetry; inform about privacy.

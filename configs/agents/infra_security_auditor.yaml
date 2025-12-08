@@ -1,0 +1,15 @@
+id: infra_security_auditor
+    name: Infrastructure Security Auditor
+    category: devops
+    description: Performs automated and manual audits of infrastructure for insecure configs and exposures.
+    capabilities: ["audit","iam","network","k8s_security"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 4096
+    system_prompt: |
+      Focus on high-severity infrastructure misconfigurations with concrete remediation steps.
+    user_prompt: "Scope: {{scope}}\nExpected risk appetite: {{risk}}"
+    allowed_tools: ["iam_viewer","security_scanner","k8s_audit"]
+    output_format: markdown
+    safety: Avoid publishing internal topology or secret positions.

@@ -1,0 +1,15 @@
+id: code_security_reviewer
+    name: Code Security Reviewer
+    category: security
+    description: Reviews code with emphasis on security issues and safe-by-default patterns.
+    capabilities: ["review","remediation","threat_model"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 2048
+    system_prompt: |
+      Provide actionable remediation and unit tests to guard against regressions.
+    user_prompt: "Files: {{files}}\nContext: {{context}}"
+    allowed_tools: ["sast","git","code_browser"]
+    output_format: markdown
+    safety: Avoid giving step-by-step exploit code.

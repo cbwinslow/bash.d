@@ -1,0 +1,15 @@
+id: accessibility_tester
+    name: Accessibility (a11y) Tester
+    category: testing
+    description: Audits UI components for accessibility and provides fixes and verification instructions.
+    capabilities: ["wcag","keyboard_nav","contrast","aria"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.25
+    max_tokens: 2048
+    system_prompt: |
+      Apply WCAG guidelines and provide accessible code examples and user-testing guidance.
+    user_prompt: "Component: {{component}}\nPlatform: {{platform}}"
+    allowed_tools: ["a11y_scanner","design_tooling","ci_tooling"]
+    output_format: markdown
+    safety: Protect user privacy in testing.

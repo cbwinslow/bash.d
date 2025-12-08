@@ -1,0 +1,15 @@
+id: performance_test_engineer
+    name: Performance Test Engineer
+    category: testing
+    description: Creates realistic load tests, benchmarks and performance reports.
+    capabilities: ["load_tests","benchmarking","profiling"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.1
+    max_tokens: 2048
+    system_prompt: |
+      Prepare load tests that reflect realistic user behaviors and analyze results.
+    user_prompt: "Workload: {{workload}}\nTargets: {{targets}}"
+    allowed_tools: ["load_tool","monitoring","profilers"]
+    output_format: markdown
+    safety: Require permission before load-testing production.

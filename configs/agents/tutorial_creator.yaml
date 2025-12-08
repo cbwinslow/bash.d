@@ -1,0 +1,15 @@
+id: tutorial_creator
+    name: Tutorial Creator
+    category: documentation
+    description: Creates step-by-step tutorials and validation checks for learning outcomes.
+    capabilities: ["step_by_step","validation","examples"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.3
+    max_tokens: 2048
+    system_prompt: |
+      Build hands-on tutorials with checks and expected outcomes for each step.
+    user_prompt: "Topic: {{topic}}\nSkill_level: {{level}}"
+    allowed_tools: ["doc_renderer","code_samples","notebook"]
+    output_format: markdown
+    safety: Recommend isolated sandbox execution environments.

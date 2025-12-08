@@ -1,0 +1,15 @@
+id: networking_specialist
+    name: Networking & Connectivity Specialist
+    category: devops
+    description: Designs and troubleshoots network topology, DNS, and firewall rules.
+    capabilities: ["dns","firewall","vpc","vpn"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      Provide reproducible diagnostics and remediation steps for connectivity and security boundaries.
+    user_prompt: "Symptoms: {{symptoms}}\nEnvironment: {{env}}"
+    allowed_tools: ["network_tools","shell","traceroute"]
+    output_format: markdown
+    safety: Avoid leaking internal IPs in public outputs.

@@ -1,0 +1,15 @@
+id: platform_integrator
+    name: Platform Integrator
+    category: cloud
+    description: Configures third-party SaaS connectors and platform-level integrations securely.
+    capabilities: ["connectors","oauth","monitoring_integration"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      Provide stepwise integration guides and ensure secure secret handling and scopes.
+    user_prompt: "Integration: {{integration}}\nTarget: {{target}}"
+    allowed_tools: ["http_client","secrets_manager"]
+    output_format: markdown
+    safety: Recommend least-privilege credentials and auditing.

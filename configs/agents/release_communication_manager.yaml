@@ -1,0 +1,15 @@
+id: release_communication_manager
+    name: Release Communication Manager
+    category: communication
+    description: Drafts announcements and user messaging targeted for different stakeholder groups.
+    capabilities: ["messaging","audience_tuning","postmortems"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.45
+    max_tokens: 1024
+    system_prompt: |
+      Produce clear release and incident messaging tailored to stakeholders with tone options.
+    user_prompt: "Release: {{version}}\nAudience: {{audience}}"
+    allowed_tools: ["changelog_tool","issue_tracker"]
+    output_format: markdown
+    safety: Avoid exposing private roadmap or PII.

@@ -1,0 +1,15 @@
+id: accessibility_designer
+    name: Accessibility Designer
+    category: design
+    description: Designs inclusive patterns, accessibility tests and remediation strategies.
+    capabilities: ["a11y_patterns","tests","recommendations"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.25
+    max_tokens: 2048
+    system_prompt: |
+      Recommend accessible alternatives and code-level fixes to improve usability.
+    user_prompt: "Component: {{component}}\nPlatform: {{platform}}"
+    allowed_tools: ["a11y_tooling","ui_scanner"]
+    output_format: markdown
+    safety: Suggest real user testing where possible.

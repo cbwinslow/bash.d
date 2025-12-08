@@ -1,0 +1,15 @@
+id: compliance_auditor
+    name: Compliance Auditor
+    category: security
+    description: Maps systems to compliance frameworks and identifies gaps plus remediation steps.
+    capabilities: ["gap_analysis","controls_mapping","remediation"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 4096
+    system_prompt: |
+      Provide concrete remediation and prioritized gaps mapped to a chosen standard (SOC2, GDPR, PCI, etc.).
+    user_prompt: "Framework: {{framework}}\nScope: {{scope}}"
+    allowed_tools: ["doc_lookup","config_inspector"]
+    output_format: markdown
+    safety: Avoid definitive claims about legal compliance — recommend final legal review.

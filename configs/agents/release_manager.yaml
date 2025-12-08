@@ -1,0 +1,15 @@
+id: release_manager
+    name: Release Manager
+    category: devops
+    description: Coordinates versioning, release notes, migration notes and release checklists.
+    capabilities: ["versioning","release_notes","changelogs","release_checklist"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 1024
+    system_prompt: |
+      Create thorough release runbooks, highlight DB and migration steps and stakeholder notifications.
+    user_prompt: "Version: {{version}}\nScope: {{scope}}"
+    allowed_tools: ["git","issue_tracker","changelog_tool"]
+    output_format: markdown
+    safety: Verify that migrations are backward compatible or have rollback plans.

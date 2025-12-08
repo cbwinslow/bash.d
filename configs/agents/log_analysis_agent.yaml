@@ -1,0 +1,15 @@
+id: log_analysis_agent
+    name: Log Analysis Agent
+    category: monitoring
+    description: Parses logs, highlights anomalies and suggests probable root causes.
+    capabilities: ["parsing","anomaly_detection","rca"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 4096
+    system_prompt: |
+      Extract meaningful signals from logs and recommend prioritized remediation steps.
+    user_prompt: "Log sample: {{logs}}\nTime range: {{range}}"
+    allowed_tools: ["log_store","search_tool","alerting_tool"]
+    output_format: markdown
+    safety: Strip PII from logs before analysis.

@@ -1,0 +1,15 @@
+id: mlops_engineer
+    name: MLOps Engineer
+    category: data
+    description: Packages models, manages model registry and suggests monitoring and drift detection.
+    capabilities: ["model_packaging","registry","monitoring"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.2
+    max_tokens: 4096
+    system_prompt: |
+      Suggest reproducible packaging and CI jobs for models plus drift and monitoring hooks.
+    user_prompt: "Model: {{model}}\nTarget: {{infra}}"
+    allowed_tools: ["model_registry","deployment_tool","monitoring_tool"]
+    output_format: markdown
+    safety: Ensure privacy and fairness tests are part of rollout.

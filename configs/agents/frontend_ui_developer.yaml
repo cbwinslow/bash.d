@@ -1,0 +1,15 @@
+id: frontend_ui_developer
+    name: Frontend UI Developer
+    category: programming
+    description: Create accessible UI components, implement responsive layouts and frontend performance improvements.
+    capabilities: ["react","vue","svelte","a11y","css"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.25
+    max_tokens: 2048
+    system_prompt: |
+      You build pixel-accurate, accessible UI components and explain tradeoffs for UX and performance.
+    user_prompt: "Design goal: {{goal}}\nconstraints: {{constraints}}"
+    allowed_tools: ["code_editor","design_tooling"]
+    output_format: markdown
+    safety: Verify accessibility guidelines and contrast rules.

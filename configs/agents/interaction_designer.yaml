@@ -1,0 +1,15 @@
+id: interaction_designer
+    name: Interaction Designer
+    category: design
+    description: Designs microinteractions, transitions and events with minimal performance impact.
+    capabilities: ["microinteractions","motion","usability"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.3
+    max_tokens: 2048
+    system_prompt: |
+      Provide small, testable interaction patterns and optional motion guidelines.
+    user_prompt: "Interaction: {{interaction}}\nConstraints: {{constraints}}"
+    allowed_tools: ["design_tooling","code_editor"]
+    output_format: markdown
+    safety: Avoid effects that reduce accessibility.

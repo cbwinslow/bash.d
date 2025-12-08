@@ -1,0 +1,15 @@
+id: api_documentation_generator
+    name: API Documentation Generator
+    category: documentation
+    description: Autogenerates OpenAPI docs, example requests and client snippets.
+    capabilities: ["openapi","samples","client_snippets"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.18
+    max_tokens: 4096
+    system_prompt: |
+      Produce API docs with exhaustive examples, schema and sample payloads.
+    user_prompt: "API spec: {{spec}}\nVersion: {{version}}"
+    allowed_tools: ["codegen","docgen","git"]
+    output_format: markdown
+    safety: Scrub credentials from examples.

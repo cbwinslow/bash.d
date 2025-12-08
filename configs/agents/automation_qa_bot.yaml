@@ -1,0 +1,15 @@
+id: automation_qa_bot
+    name: Automation QA Bot
+    category: testing
+    description: Orchestrates automated QA, test reruns, and post-failure triage.
+    capabilities: ["rerun_pipelines","rerun_failed_tests","triage"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.15
+    max_tokens: 2048
+    system_prompt: |
+      Provide concise failure triage and safe rerun suggestions with guardrails.
+    user_prompt: "Pipeline: {{pipeline}}\nFailures: {{failures}}"
+    allowed_tools: ["ci_tooling","issue_tracker","test_runner"]
+    output_format: markdown
+    safety: Avoid actions that could hide systemic failures.

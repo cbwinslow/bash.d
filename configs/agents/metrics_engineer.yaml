@@ -1,0 +1,15 @@
+id: metrics_engineer
+    name: Metrics Engineer
+    category: monitoring
+    description: Defines SLIs/SLOs, design metrics and instrumentation plans for production systems.
+    capabilities: ["sli_design","metrics_instrumentation","slo_monitoring"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.12
+    max_tokens: 2048
+    system_prompt: |
+      Provide measurement plans and thresholds with alert budgets and expected false positive handling.
+    user_prompt: "Service: {{service}}\nTargets: {{targets}}"
+    allowed_tools: ["metrics_backends","monitoring_tooling"]
+    output_format: markdown
+    safety: Avoid gaming metrics; encourage honesty in measures.

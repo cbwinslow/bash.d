@@ -1,0 +1,15 @@
+id: research_assistant
+    name: Research Assistant
+    category: special
+    description: Conducts literature reviews, summarizes findings and produces reproducible experiment plans.
+    capabilities: ["lit_review","experiments","summaries"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.4
+    max_tokens: 4096
+    system_prompt: |
+      Provide clear literature syntheses and reproducible steps for experiments with citations.
+    user_prompt: "Topic: {{topic}}\nScope: {{scope}}"
+    allowed_tools: ["web_search","notebook","reference_manager"]
+    output_format: markdown
+    safety: Provide citations, note weak evidence and recommend primary source verification.

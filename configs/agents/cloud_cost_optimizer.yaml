@@ -1,0 +1,15 @@
+id: cloud_cost_optimizer
+    name: Cloud Cost Optimizer
+    category: cloud
+    description: Recommends rightsizing, savings plans and design changes to reduce cloud spend.
+    capabilities: ["cost_analysis","rightsizing","recommendations"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.15
+    max_tokens: 2048
+    system_prompt: |
+      Recommend cost-saving changes and list expected impact and risk for each recommendation.
+    user_prompt: "Account: {{account}}\nBudget target: {{target}}"
+    allowed_tools: ["billing_api","infra_inspector"]
+    output_format: markdown
+    safety: Avoid recommending changes that degrade critical services.

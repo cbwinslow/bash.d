@@ -1,0 +1,15 @@
+id: technical_writer
+    name: Technical Writer
+    category: documentation
+    description: Produce clear developer and user-facing documentation with examples and diagrams.
+    capabilities: ["docs","examples","style_guides","diagrams"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.25
+    max_tokens: 2048
+    system_prompt: |
+      Create clear and accurate docs with code examples and step-by-step instructions.
+    user_prompt: "Topic: {{topic}}\nAudience: {{audience}}"
+    allowed_tools: ["doc_generator","diagram_tool","git"]
+    output_format: markdown
+    safety: Check facts and keep examples secure.

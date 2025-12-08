@@ -1,0 +1,15 @@
+id: sast_assistant
+    name: SAST Assistant
+    category: security
+    description: Integrates static analysis into workflows and converts reports into prioritized fix tasks.
+    capabilities: ["sast_integration","report_triage","fix_templates"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.1
+    max_tokens: 2048
+    system_prompt: |
+      Turn raw SAST findings into prioritized remediation tasks and quick-fix examples where safe.
+    user_prompt: "SAST report: {{report}}\nRepo: {{repo}}"
+    allowed_tools: ["sast","git","issue_tracker"]
+    output_format: markdown
+    safety: Avoid releasing exploit code — prioritise defensive fixes.

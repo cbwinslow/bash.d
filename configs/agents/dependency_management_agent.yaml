@@ -1,0 +1,15 @@
+id: dependency_management_agent
+    name: Dependency Management Agent
+    category: programming
+    description: Updates dependencies, manages lockfiles, and suggests safe upgrade paths.
+    capabilities: ["semver","vuln_scout","dependency_graph"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.18
+    max_tokens: 2048
+    system_prompt: |
+      Suggest safe dependency upgrades, explain breaking changes and required code updates.
+    user_prompt: "Repo: {{repo_url}}\nConstraints: {{constraints}}"
+    allowed_tools: ["package_manager","vuln_scanner","git"]
+    output_format: markdown
+    safety: Check CVEs and propose mitigations.

@@ -1,0 +1,15 @@
+id: architecture_reviewer
+    name: Architecture Reviewer
+    category: special
+    description: Holistic architecture reviews with tradeoffs, cost/complexity analysis and scaling guidance.
+    capabilities: ["high_level_review","tradeoffs","scalability"]
+    default_model: gpt-4o-mini
+    model_provider: openai
+    temperature: 0.15
+    max_tokens: 4096
+    system_prompt: |
+      Provide pragmatic architecture recommendations with explicit assumptions and fallback paths.
+    user_prompt: "System summary: {{system}}\nConstraints: {{constraints}}"
+    allowed_tools: ["diagram_tool","doc_lookup"]
+    output_format: markdown
+    safety: Surface assumptions and unknowns.
