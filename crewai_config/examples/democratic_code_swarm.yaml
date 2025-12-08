@@ -1,0 +1,115 @@
+# Democratic Code Generation Swarm
+# Multi-crew swarm for large-scale democratic code generation projects
+
+id: democratic_code_swarm
+name: "Democratic Code Generation Swarm"
+description: "Large-scale multi-agent swarm combining multiple crews for complex code generation with democratic governance"
+version: "1.0.0"
+
+# Swarm Governance
+governance_model: democratic
+inter_crew_voting: true
+task_distribution_strategy: load_balanced
+
+# Crews in the Swarm
+crews:
+  - code_generation_crew
+  - security_audit_crew
+  - documentation_crew
+  - devops_automation_crew
+
+# Coordinator Crew
+coordinator_crew_id: code_generation_crew
+
+# Swarm Configuration
+metadata:
+  purpose: "Full-stack application development with security, docs, and deployment"
+  use_case: "Complex applications requiring multiple specialized teams"
+  coordination_style: "Democratic with coordinator oversight"
+  
+  workflow:
+    phase_1:
+      name: "Planning and Design"
+      crews:
+        - code_generation_crew
+      democratic_votes:
+        - architecture_design
+        - technology_stack
+        - implementation_approach
+    
+    phase_2:
+      name: "Parallel Development"
+      crews:
+        - code_generation_crew
+        - documentation_crew
+      parallel_execution: true
+      democratic_votes:
+        - api_contracts
+        - code_standards
+    
+    phase_3:
+      name: "Security and Quality Assurance"
+      crews:
+        - security_audit_crew
+        - code_generation_crew
+      democratic_votes:
+        - security_remediation_priorities
+        - quality_thresholds
+    
+    phase_4:
+      name: "Deployment and Operations"
+      crews:
+        - devops_automation_crew
+        - security_audit_crew
+      democratic_votes:
+        - deployment_strategy
+        - infrastructure_configuration
+    
+    phase_5:
+      name: "Final Review and Acceptance"
+      crews:
+        - code_generation_crew
+        - security_audit_crew
+        - documentation_crew
+        - devops_automation_crew
+      democratic_votes:
+        - final_acceptance
+        - production_readiness
+
+  communication:
+    inter_crew_protocol: rabbitmq
+    exchange: swarm_exchange
+    routing_pattern: "swarm.{crew_id}.{message_type}"
+    broadcast_channel: swarm_broadcast
+    
+  voting_rules:
+    cross_crew_votes:
+      strategy: weighted_vote
+      weight_distribution:
+        code_generation_crew: 2.5
+        security_audit_crew: 3.0
+        documentation_crew: 1.5
+        devops_automation_crew: 2.0
+    
+    quorum_requirements:
+      minimum_participating_crews: 3
+      minimum_agent_participation: 0.75
+    
+    conflict_resolution:
+      primary: democratic_revote
+      secondary: coordinator_mediation
+      final: expert_panel_decision
+
+  performance_targets:
+    max_execution_time_hours: 8
+    target_success_rate: 0.95
+    minimum_code_quality_score: 0.85
+    maximum_security_vulnerabilities: 0
+    
+  success_criteria:
+    - all_crews_completed: true
+    - all_votes_passed: true
+    - security_audit_clean: true
+    - documentation_complete: true
+    - deployment_successful: true
+    - consensus_achieved: 0.9

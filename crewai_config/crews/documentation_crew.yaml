@@ -1,0 +1,240 @@
+# Documentation Crew - Collaborative Documentation Generation
+# Hybrid crew with both hierarchical coordination and democratic input
+
+id: documentation_crew
+name: "Documentation Crew"
+description: "Hybrid crew for collaborative documentation creation with democratic input and manager coordination"
+version: "1.0.0"
+
+# Governance and Process
+process_type: hybrid
+governance_model: weighted
+voting_strategy: weighted_vote
+conflict_resolution: compromise
+
+# Manager
+manager_id: technical_writer_manager
+
+# Communication
+communication_protocol: rabbitmq
+message_queue: documentation_queue
+broadcast_channel: docs_broadcast
+
+# Execution Settings
+parallel_execution: true
+max_concurrent_tasks: 3
+timeout_seconds: 2400
+retry_failed_tasks: true
+auto_retry_count: 2
+
+# Memory and State
+shared_memory: true
+memory_isolation: false
+state_persistence: true
+
+# Monitoring
+verbose: true
+log_level: INFO
+metrics_enabled: true
+
+# Crew Members
+members:
+  # Technical Writer - Manager and coordinator
+  - agent_id: technical_writer_manager
+    agent_name: "Technical Writer Manager"
+    role: manager
+    expertise_weight: 2.5
+    can_vote: true
+    can_delegate: true
+    capabilities:
+      - technical_writing
+      - documentation_strategy
+      - content_coordination
+      - style_guide
+
+  # API Documentation Expert
+  - agent_id: api_documentation_expert
+    agent_name: "API Documentation Expert"
+    role: specialist
+    expertise_weight: 2.8
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - api_documentation
+      - openapi_specs
+      - endpoint_documentation
+      - swagger_docs
+
+  # Code Documentation Specialist
+  - agent_id: code_docs_specialist
+    agent_name: "Code Documentation Specialist"
+    role: specialist
+    expertise_weight: 2.0
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - code_comments
+      - docstrings
+      - inline_documentation
+      - code_examples
+
+  # User Guide Author
+  - agent_id: user_guide_author
+    agent_name: "User Guide Author"
+    role: specialist
+    expertise_weight: 2.2
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - user_guides
+      - tutorials
+      - how_to_docs
+      - end_user_focus
+
+  # Documentation Reviewer
+  - agent_id: docs_reviewer
+    agent_name: "Documentation Reviewer"
+    role: reviewer
+    expertise_weight: 2.0
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - content_review
+      - accuracy_check
+      - readability_analysis
+      - consistency_check
+
+# Tasks Workflow
+tasks:
+  # Task 1: Documentation Strategy Vote
+  - id: task_docs_strategy_vote
+    name: "Documentation Strategy Vote"
+    description: "Agree on documentation approach and structure"
+    assigned_agent_ids:
+      - technical_writer_manager
+      - api_documentation_expert
+      - user_guide_author
+    dependencies: []
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: weighted_vote
+    expected_output: "Approved documentation strategy"
+    timeout_seconds: 300
+
+  # Task 2: API Documentation
+  - id: task_api_documentation
+    name: "API Documentation"
+    description: "Create comprehensive API documentation"
+    assigned_agent_ids:
+      - api_documentation_expert
+    dependencies:
+      - task_docs_strategy_vote
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Complete API documentation"
+    tools:
+      - filesystem_tools
+      - text_tools
+    timeout_seconds: 1800
+
+  # Task 3: Code Documentation
+  - id: task_code_documentation
+    name: "Code Documentation"
+    description: "Add inline code documentation and docstrings"
+    assigned_agent_ids:
+      - code_docs_specialist
+    dependencies:
+      - task_docs_strategy_vote
+    dependency_type: parallel
+    requires_vote: false
+    expected_output: "Documented code with comments"
+    tools:
+      - filesystem_tools
+      - text_tools
+    timeout_seconds: 1800
+
+  # Task 4: User Guide Creation
+  - id: task_user_guide
+    name: "User Guide Creation"
+    description: "Create user guides and tutorials"
+    assigned_agent_ids:
+      - user_guide_author
+    dependencies:
+      - task_docs_strategy_vote
+    dependency_type: parallel
+    requires_vote: false
+    expected_output: "User guides and tutorials"
+    tools:
+      - filesystem_tools
+      - text_tools
+    timeout_seconds: 2400
+
+  # Task 5: Documentation Review
+  - id: task_docs_review
+    name: "Documentation Review"
+    description: "Review all documentation for accuracy and consistency"
+    assigned_agent_ids:
+      - docs_reviewer
+    dependencies:
+      - task_api_documentation
+      - task_code_documentation
+      - task_user_guide
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Documentation review report"
+    tools:
+      - filesystem_tools
+      - text_tools
+    timeout_seconds: 1200
+
+  # Task 6: Democratic Quality Vote
+  - id: task_quality_vote
+    name: "Documentation Quality Vote"
+    description: "Vote on documentation quality and completeness"
+    assigned_agent_ids:
+      - technical_writer_manager
+      - api_documentation_expert
+      - code_docs_specialist
+      - user_guide_author
+      - docs_reviewer
+    dependencies:
+      - task_docs_review
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: supermajority
+    expected_output: "Quality approval decision"
+    timeout_seconds: 300
+
+  # Task 7: Final Documentation Assembly
+  - id: task_final_assembly
+    name: "Final Documentation Assembly"
+    description: "Assemble and format final documentation"
+    assigned_agent_ids:
+      - technical_writer_manager
+    dependencies:
+      - task_quality_vote
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Complete documentation package"
+    tools:
+      - filesystem_tools
+      - text_tools
+    timeout_seconds: 600
+
+# Metadata
+tags:
+  - documentation
+  - hybrid
+  - collaborative
+  - technical_writing
+
+metadata:
+  category: documentation
+  complexity: medium
+  required_tools:
+    - filesystem_tools
+    - text_tools
+  estimated_duration_minutes: 120
+  recommended_min_agents: 5
+  democratic_decisions: 2
+  governance_style: hybrid_weighted

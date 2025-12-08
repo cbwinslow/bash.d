@@ -1,0 +1,259 @@
+# DevOps Automation Crew - Infrastructure, Deployment, and Monitoring
+# Hierarchical crew with manager coordination
+
+id: devops_automation_crew
+name: "DevOps Automation Crew"
+description: "Hierarchical crew for infrastructure management, deployment automation, and system monitoring"
+version: "1.0.0"
+
+# Governance and Process
+process_type: hierarchical
+governance_model: hierarchical
+conflict_resolution: manager_decides
+
+# Manager
+manager_id: devops_manager_001
+
+# Communication
+communication_protocol: rabbitmq
+message_queue: devops_automation_queue
+broadcast_channel: devops_broadcast
+
+# Execution Settings
+parallel_execution: true
+max_concurrent_tasks: 6
+timeout_seconds: 3600
+retry_failed_tasks: true
+auto_retry_count: 2
+
+# Memory and State
+shared_memory: true
+memory_isolation: false
+state_persistence: true
+
+# Monitoring
+verbose: true
+log_level: INFO
+metrics_enabled: true
+
+# Crew Members
+members:
+  # Manager - Coordinates all DevOps activities
+  - agent_id: devops_manager_001
+    agent_name: "DevOps Manager"
+    role: manager
+    expertise_weight: 3.0
+    can_vote: true
+    can_delegate: true
+    capabilities:
+      - workflow_orchestration
+      - resource_management
+      - decision_making
+      - coordination
+
+  # Docker Expert - Container management
+  - agent_id: docker_container_expert
+    agent_name: "Docker Container Expert"
+    role: specialist
+    expertise_weight: 2.5
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - docker_management
+      - containerization
+      - image_building
+      - container_orchestration
+
+  # Kubernetes Specialist - K8s orchestration
+  - agent_id: kubernetes_orchestration_specialist
+    agent_name: "Kubernetes Orchestration Specialist"
+    role: specialist
+    expertise_weight: 2.8
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - kubernetes_management
+      - cluster_orchestration
+      - service_deployment
+      - scaling
+
+  # CI/CD Orchestrator - Pipeline management
+  - agent_id: cicd_orchestrator_001
+    agent_name: "CI/CD Orchestrator"
+    role: specialist
+    expertise_weight: 2.3
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - cicd_pipeline
+      - automation
+      - build_management
+      - deployment_strategies
+
+  # Infrastructure Security Auditor
+  - agent_id: infra_security_auditor
+    agent_name: "Infrastructure Security Auditor"
+    role: reviewer
+    expertise_weight: 2.7
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - security_audit
+      - compliance_check
+      - vulnerability_scan
+      - hardening
+
+  # Performance Monitor
+  - agent_id: performance_monitor_001
+    agent_name: "Performance Monitor"
+    role: observer
+    expertise_weight: 2.0
+    can_vote: false
+    can_delegate: false
+    capabilities:
+      - monitoring
+      - metrics_collection
+      - alerting
+      - performance_analysis
+
+# Tasks Workflow
+tasks:
+  # Task 1: Infrastructure Planning
+  - id: task_infrastructure_planning
+    name: "Infrastructure Planning"
+    description: "Plan infrastructure architecture and resources"
+    assigned_agent_ids:
+      - devops_manager_001
+    dependencies: []
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Infrastructure plan with resource requirements"
+    timeout_seconds: 600
+
+  # Task 2: Container Image Building
+  - id: task_container_building
+    name: "Container Image Building"
+    description: "Build and optimize Docker containers"
+    assigned_agent_ids:
+      - docker_container_expert
+    dependencies:
+      - task_infrastructure_planning
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Docker images ready for deployment"
+    tools:
+      - docker_tools
+      - filesystem_tools
+    timeout_seconds: 1200
+
+  # Task 3: Kubernetes Cluster Setup
+  - id: task_k8s_setup
+    name: "Kubernetes Cluster Setup"
+    description: "Configure Kubernetes cluster and namespaces"
+    assigned_agent_ids:
+      - kubernetes_orchestration_specialist
+    dependencies:
+      - task_container_building
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Kubernetes cluster configured"
+    tools:
+      - system_tools
+    timeout_seconds: 1800
+
+  # Task 4: CI/CD Pipeline Setup
+  - id: task_cicd_setup
+    name: "CI/CD Pipeline Setup"
+    description: "Configure automated build and deployment pipelines"
+    assigned_agent_ids:
+      - cicd_orchestrator_001
+    dependencies:
+      - task_infrastructure_planning
+    dependency_type: parallel
+    requires_vote: false
+    expected_output: "CI/CD pipelines configured"
+    tools:
+      - filesystem_tools
+      - git_tools
+    timeout_seconds: 1200
+
+  # Task 5: Security Audit
+  - id: task_security_audit
+    name: "Infrastructure Security Audit"
+    description: "Audit infrastructure for security vulnerabilities"
+    assigned_agent_ids:
+      - infra_security_auditor
+    dependencies:
+      - task_k8s_setup
+      - task_cicd_setup
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Security audit report"
+    tools:
+      - system_tools
+    timeout_seconds: 900
+
+  # Task 6: Deployment Execution
+  - id: task_deployment
+    name: "Application Deployment"
+    description: "Deploy application to Kubernetes cluster"
+    assigned_agent_ids:
+      - kubernetes_orchestration_specialist
+      - cicd_orchestrator_001
+    dependencies:
+      - task_security_audit
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Application deployed successfully"
+    tools:
+      - system_tools
+    timeout_seconds: 1800
+
+  # Task 7: Monitoring Setup
+  - id: task_monitoring_setup
+    name: "Monitoring and Alerting Setup"
+    description: "Configure monitoring, metrics, and alerting"
+    assigned_agent_ids:
+      - performance_monitor_001
+    dependencies:
+      - task_deployment
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Monitoring systems active"
+    tools:
+      - system_tools
+    timeout_seconds: 900
+
+  # Task 8: Health Check
+  - id: task_health_check
+    name: "System Health Check"
+    description: "Verify all systems are healthy and operational"
+    assigned_agent_ids:
+      - devops_manager_001
+      - performance_monitor_001
+    dependencies:
+      - task_monitoring_setup
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "System health report"
+    timeout_seconds: 600
+
+# Metadata
+tags:
+  - devops
+  - infrastructure
+  - automation
+  - deployment
+  - hierarchical
+
+metadata:
+  category: infrastructure
+  complexity: high
+  required_tools:
+    - docker_tools
+    - system_tools
+    - filesystem_tools
+    - git_tools
+  estimated_duration_minutes: 90
+  recommended_min_agents: 6
+  management_style: hierarchical
