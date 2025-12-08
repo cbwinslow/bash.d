@@ -328,8 +328,18 @@ class BaseAgent(BaseModel):
             }
         }
     
-    class Config:
-        use_enum_values = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
+    async def execute_task(self, task: Task) -> Dict[str, Any]:
+        """
+        Execute a task (to be implemented by subclasses)
+        
+        Args:
+            task: Task to execute
+            
+        Returns:
+            Task execution results
+        """
+        # Default implementation - subclasses should override
+        return {
+            "status": "not_implemented",
+            "message": "Task execution not implemented for this agent type"
         }
