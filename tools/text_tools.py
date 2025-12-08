@@ -44,7 +44,7 @@ class CountWords(BaseTool):
         characters = len(text)
         characters_no_spaces = len(text.replace(" ", "").replace("\n", "").replace("\t", ""))
         lines = len(text.splitlines())
-        sentences = len(re.split(r'[.!?]+', text))
+        sentences = len([s for s in re.split(r'[.!?]+', text) if s.strip()])
         
         return {
             "words": words,

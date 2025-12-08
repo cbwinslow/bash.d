@@ -166,7 +166,7 @@ class AppendFileContent(BaseTool):
         newline_before = kwargs.get("newline_before", True)
         
         with open(file_path, 'a', encoding='utf-8') as f:
-            if newline_before and os.path.getsize(file_path) > 0:
+            if newline_before and os.path.exists(file_path) and os.path.getsize(file_path) > 0:
                 f.write('\n')
             f.write(content)
         
