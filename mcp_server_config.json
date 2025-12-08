@@ -1,0 +1,68 @@
+{
+  "mcpServers": {
+    "bash-tools": {
+      "name": "Bash.d Comprehensive Tools Server",
+      "version": "1.0.0",
+      "description": "Comprehensive OpenAI-compatible tool suite with 100+ tools for AI agents",
+      "command": "python",
+      "args": ["-m", "tools.mcp_server"],
+      "env": {
+        "PYTHONPATH": "${workspaceRoot}",
+        "BW_SESSION": "${env:BW_SESSION}"
+      },
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false
+      },
+      "settings": {
+        "bitwarden_integration": true,
+        "auto_discover_tools": true,
+        "tool_categories": [
+          "filesystem",
+          "text",
+          "api_http",
+          "bitwarden",
+          "git",
+          "data",
+          "docker",
+          "monitoring"
+        ],
+        "rate_limit": {
+          "enabled": true,
+          "requests_per_minute": 100
+        }
+      }
+    },
+    "github": {
+      "name": "GitHub MCP Server",
+      "version": "1.0.0",
+      "description": "Official GitHub MCP server for repository operations",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_TOKEN}"
+      },
+      "capabilities": {
+        "tools": true,
+        "resources": true
+      }
+    },
+    "filesystem": {
+      "name": "Filesystem MCP Server",
+      "version": "1.0.0",
+      "description": "Local filesystem operations via MCP",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceRoot}"],
+      "capabilities": {
+        "tools": true,
+        "resources": true
+      }
+    }
+  },
+  "defaults": {
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "logLevel": "info"
+  }
+}
