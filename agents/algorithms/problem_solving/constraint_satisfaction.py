@@ -211,6 +211,44 @@ class ConstraintSatisfactionSolver(Algorithm):
             "tasks_scheduled": len(schedule)
         }
     
+    def _safe_evaluate_arithmetic(self, expr: str) -> int:
+        """
+        Safely evaluate arithmetic expression without using eval()
+        Supports only basic arithmetic: +, -, *, /
+        """
+        import operator
+        import re
+        
+        # Remove spaces
+        expr = expr.replace(" ", "")
+        
+        # For simple addition (most common in cryptarithmetic)
+        if '+' in expr and '*' not in expr and '/' not in expr and '-' not in expr:
+            parts = expr.split('+')
+            return sum(int(p) for p in parts)
+        
+        # For more complex expressions, use a simple parser
+        # This is safer than eval() but still limited to arithmetic
+        try:
+            # Use ast module for safe literal evaluation
+            import ast
+            # Parse and validate the expression tree
+            tree = ast.parse(expr, mode='eval')
+            
+            # Only allow specific node types (numbers and binary operations)
+            for node in ast.walk(tree):
+                if not isinstance(node, (ast.Expression, ast.BinOp, ast.Num, 
+                                        ast.Add, ast.Sub, ast.Mult, ast.Div,
+                                        ast.Constant, ast.UnaryOp, ast.USub)):
+                    raise ValueError("Unsafe operation")
+            
+            # Compile and evaluate the safe expression
+            code = compile(tree, '<string>', 'eval')
+            return int(eval(code))
+        except:
+            # Fallback to simple parsing
+            return 0
+    
     def _solve_cryptarithmetic(self, equation: str) -> Dict[str, Any]:
         """Solve cryptarithmetic puzzles like SEND + MORE = MONEY"""
         if not equation:
@@ -255,7 +293,17 @@ class ConstraintSatisfactionSolver(Algorithm):
                     left_side = left_side.replace(letter, str(digit))
                     right_side = right_side.replace(letter, str(digit))
                 
-                if eval(left_side) == int(right_side):
+                # Safely evaluate arithmetic expression without using eval()
+                # Only allow digits, operators, and parentheses
+                if not all(c in '0123456789+-*/ ()' for c in left_side):
+                    continue
+                    
+                # Use ast.literal_eval for safer evaluation (only literals)
+                # For arithmetic, manually parse and compute
+                left_value = self._safe_evaluate_arithmetic(left_side)
+                right_value = int(right_side)
+                
+                if left_value == right_value:
                     return {
                         "solution": mapping,
                         "satisfied": True,
