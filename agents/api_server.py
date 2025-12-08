@@ -9,6 +9,7 @@ import asyncio
 import logging
 from typing import Dict, List, Optional
 from datetime import datetime
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -25,11 +26,38 @@ from .application_builder import (
 
 logger = logging.getLogger(__name__)
 
+# Global instances
+orchestrator: Optional[AgentOrchestrator] = None
+builder: Optional[ApplicationBuilder] = None
+active_builds: Dict[str, Dict] = {}
+websocket_connections: List[WebSocket] = []
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan context manager for startup and shutdown"""
+    global orchestrator, builder
+    
+    # Startup
+    logger.info("Starting Autonomous Application Builder API")
+    orchestrator = AgentOrchestrator()
+    builder = ApplicationBuilder(orchestrator)
+    logger.info("System initialized successfully")
+    
+    yield
+    
+    # Shutdown
+    logger.info("Shutting down Autonomous Application Builder API")
+    for ws in websocket_connections:
+        await ws.close()
+
+
 # FastAPI app
 app = FastAPI(
     title="Autonomous Application Builder API",
     description="Multi-agentic system for building complete applications",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # CORS middleware
@@ -40,12 +68,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Global instances
-orchestrator: Optional[AgentOrchestrator] = None
-builder: Optional[ApplicationBuilder] = None
-active_builds: Dict[str, Dict] = {}
-websocket_connections: List[WebSocket] = []
 
 
 class BuildRequest(BaseModel):
@@ -76,32 +98,6 @@ class BuildStatus(BaseModel):
     phases_completed: List[str]
     started_at: str
     estimated_completion: Optional[str]
-
-
-@app.on_event("startup")
-async def startup_event():
-    """Initialize the system on startup"""
-    global orchestrator, builder
-    
-    logger.info("Starting Autonomous Application Builder API")
-    
-    # Initialize orchestrator
-    orchestrator = AgentOrchestrator()
-    
-    # Initialize builder
-    builder = ApplicationBuilder(orchestrator)
-    
-    logger.info("System initialized successfully")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Cleanup on shutdown"""
-    logger.info("Shutting down Autonomous Application Builder API")
-    
-    # Close all websocket connections
-    for ws in websocket_connections:
-        await ws.close()
 
 
 @app.get("/")

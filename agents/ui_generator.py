@@ -286,12 +286,13 @@ export const Card: React.FC<CardProps> = ({ title, children, footer }) => {
     
     def _create_page_component(self, page_name: str) -> str:
         """Create a page component"""
+        page_class = page_name.lower()
         return f"""
 import React from 'react';
 
 export const {page_name}Page: React.FC = () => {{
   return (
-    <div className="page-{page_name.lower()}">
+    <div className="page-{page_class}">
       <h1>{page_name}</h1>
       <p>Welcome to the {page_name} page</p>
     </div>
