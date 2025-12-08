@@ -1,0 +1,263 @@
+# Security Audit Crew - Comprehensive Security Analysis
+# Peer-to-peer democratic crew with consensus-based decisions
+
+id: security_audit_crew
+name: "Security Audit Crew"
+description: "Democratic peer-to-peer crew for comprehensive security scanning, analysis, and remediation"
+version: "1.0.0"
+
+# Governance and Process
+process_type: democratic
+governance_model: consensus
+voting_strategy: supermajority
+conflict_resolution: expert_decides
+
+# Communication
+communication_protocol: rabbitmq
+message_queue: security_audit_queue
+broadcast_channel: security_broadcast
+
+# Execution Settings
+parallel_execution: true
+max_concurrent_tasks: 4
+timeout_seconds: 2400
+retry_failed_tasks: true
+auto_retry_count: 2
+
+# Memory and State
+shared_memory: true
+memory_isolation: false
+state_persistence: true
+
+# Monitoring
+verbose: true
+log_level: INFO
+metrics_enabled: true
+
+# Crew Members - All peers with equal voting rights
+members:
+  # Code Security Reviewer
+  - agent_id: code_security_reviewer
+    agent_name: "Code Security Reviewer"
+    role: specialist
+    expertise_weight: 3.0
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - code_review
+      - security_analysis
+      - best_practices
+      - vulnerability_detection
+
+  # Vulnerability Scanner
+  - agent_id: vulnerability_scanner
+    agent_name: "Vulnerability Scanner"
+    role: specialist
+    expertise_weight: 3.0
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - vulnerability_scanning
+      - cve_analysis
+      - threat_detection
+      - security_testing
+
+  # Infrastructure Security Auditor
+  - agent_id: infra_security_auditor
+    agent_name: "Infrastructure Security Auditor"
+    role: specialist
+    expertise_weight: 2.8
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - infrastructure_audit
+      - compliance_check
+      - configuration_review
+      - hardening
+
+  # Dependency Security Analyst
+  - agent_id: dependency_security_analyst
+    agent_name: "Dependency Security Analyst"
+    role: specialist
+    expertise_weight: 2.5
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - dependency_analysis
+      - supply_chain_security
+      - license_compliance
+      - version_management
+
+# Tasks Workflow
+tasks:
+  # Task 1: Democratic Audit Scope Agreement
+  - id: task_audit_scope_vote
+    name: "Audit Scope Agreement"
+    description: "Agree on security audit scope and priorities"
+    assigned_agent_ids:
+      - code_security_reviewer
+      - vulnerability_scanner
+      - infra_security_auditor
+      - dependency_security_analyst
+    dependencies: []
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: unanimous
+    expected_output: "Agreed audit scope and priorities"
+    timeout_seconds: 300
+
+  # Task 2: Code Security Review
+  - id: task_code_security_review
+    name: "Code Security Review"
+    description: "Review code for security vulnerabilities and bad practices"
+    assigned_agent_ids:
+      - code_security_reviewer
+    dependencies:
+      - task_audit_scope_vote
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Code security report"
+    tools:
+      - filesystem_tools
+      - text_tools
+    timeout_seconds: 1800
+
+  # Task 3: Vulnerability Scanning
+  - id: task_vulnerability_scan
+    name: "Vulnerability Scanning"
+    description: "Scan for known vulnerabilities and CVEs"
+    assigned_agent_ids:
+      - vulnerability_scanner
+    dependencies:
+      - task_audit_scope_vote
+    dependency_type: parallel
+    requires_vote: false
+    expected_output: "Vulnerability scan report"
+    tools:
+      - system_tools
+      - filesystem_tools
+    timeout_seconds: 1800
+
+  # Task 4: Infrastructure Audit
+  - id: task_infrastructure_audit
+    name: "Infrastructure Security Audit"
+    description: "Audit infrastructure configuration and security"
+    assigned_agent_ids:
+      - infra_security_auditor
+    dependencies:
+      - task_audit_scope_vote
+    dependency_type: parallel
+    requires_vote: false
+    expected_output: "Infrastructure audit report"
+    tools:
+      - system_tools
+      - docker_tools
+    timeout_seconds: 1200
+
+  # Task 5: Dependency Analysis
+  - id: task_dependency_analysis
+    name: "Dependency Security Analysis"
+    description: "Analyze dependencies for security issues"
+    assigned_agent_ids:
+      - dependency_security_analyst
+    dependencies:
+      - task_audit_scope_vote
+    dependency_type: parallel
+    requires_vote: false
+    expected_output: "Dependency analysis report"
+    tools:
+      - filesystem_tools
+      - system_tools
+    timeout_seconds: 900
+
+  # Task 6: Democratic Risk Assessment Vote
+  - id: task_risk_assessment_vote
+    name: "Risk Assessment Vote"
+    description: "Collectively assess and prioritize security risks"
+    assigned_agent_ids:
+      - code_security_reviewer
+      - vulnerability_scanner
+      - infra_security_auditor
+      - dependency_security_analyst
+    dependencies:
+      - task_code_security_review
+      - task_vulnerability_scan
+      - task_infrastructure_audit
+      - task_dependency_analysis
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: weighted_vote
+    expected_output: "Prioritized risk assessment"
+    timeout_seconds: 600
+
+  # Task 7: Remediation Planning
+  - id: task_remediation_planning
+    name: "Remediation Planning"
+    description: "Create remediation plan for identified issues"
+    assigned_agent_ids:
+      - code_security_reviewer
+      - vulnerability_scanner
+    dependencies:
+      - task_risk_assessment_vote
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Detailed remediation plan"
+    tools:
+      - text_tools
+      - filesystem_tools
+    timeout_seconds: 900
+
+  # Task 8: Democratic Remediation Approval
+  - id: task_remediation_approval_vote
+    name: "Remediation Approval Vote"
+    description: "Vote on remediation plan and priorities"
+    assigned_agent_ids:
+      - code_security_reviewer
+      - vulnerability_scanner
+      - infra_security_auditor
+      - dependency_security_analyst
+    dependencies:
+      - task_remediation_planning
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: supermajority
+    expected_output: "Approved remediation plan"
+    timeout_seconds: 300
+
+  # Task 9: Final Security Report
+  - id: task_final_report
+    name: "Final Security Report"
+    description: "Compile comprehensive security audit report"
+    assigned_agent_ids:
+      - code_security_reviewer
+      - vulnerability_scanner
+    dependencies:
+      - task_remediation_approval_vote
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Comprehensive security report"
+    tools:
+      - text_tools
+      - filesystem_tools
+    timeout_seconds: 600
+
+# Metadata
+tags:
+  - security
+  - audit
+  - democratic
+  - peer_to_peer
+  - consensus
+
+metadata:
+  category: security
+  complexity: high
+  required_tools:
+    - filesystem_tools
+    - system_tools
+    - docker_tools
+    - text_tools
+  estimated_duration_minutes: 90
+  recommended_min_agents: 4
+  democratic_decisions: 3
+  governance_style: peer_consensus
