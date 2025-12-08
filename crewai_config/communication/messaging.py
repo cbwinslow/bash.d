@@ -97,7 +97,9 @@ class Message:
         )
         msg.id = data.get("id", msg.id)
         if "timestamp" in data:
-            msg.timestamp = datetime.fromisoformat(data["timestamp"])
+            # Handle timezone-aware datetime strings (e.g., with 'Z' suffix)
+            timestamp_str = data["timestamp"].replace('Z', '+00:00') if 'Z' in data["timestamp"] else data["timestamp"]
+            msg.timestamp = datetime.fromisoformat(timestamp_str)
         return msg
     
     @classmethod
