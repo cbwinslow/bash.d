@@ -85,7 +85,7 @@ class VoteRecord(BaseModel):
     
     voter_id: str = Field(..., description="Agent ID who voted")
     voter_name: str = Field(..., description="Agent name")
-    vote: Union[bool, int, str] = Field(..., description="The vote value")
+    vote: Union[bool, int, str, List[str]] = Field(..., description="The vote value (can be list for approval voting)")
     weight: float = Field(default=1.0, description="Vote weight based on expertise")
     reasoning: Optional[str] = Field(None, description="Reasoning behind the vote")
     timestamp: datetime = Field(default_factory=datetime.utcnow)

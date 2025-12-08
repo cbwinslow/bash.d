@@ -25,7 +25,9 @@ from .schemas.crew_models import (
     DemocraticProposal,
     VotingSession,
     VoteRecord,
-    SwarmConfig
+    SwarmConfig,
+    CrewCommunication,
+    CrewMetrics
 )
 
 from .governance.democratic_voting import (
@@ -61,6 +63,8 @@ __all__ = [
     "VotingSession",
     "VoteRecord",
     "SwarmConfig",
+    "CrewCommunication",
+    "CrewMetrics",
     
     # Governance
     "DemocraticVotingSystem",

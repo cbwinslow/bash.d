@@ -346,9 +346,23 @@ class CrewOrchestrator:
         if not self.consensus_builder or not task.voting_strategy:
             return True
         
+        # Use manager or first member as proposer
+        proposer_member = None
+        if self.config.manager_id:
+            proposer_member = next(
+                (m for m in self.config.members if m.agent_id == self.config.manager_id),
+                None
+            )
+        if not proposer_member and self.config.members:
+            proposer_member = self.config.members[0]
+        
+        if not proposer_member:
+            logger.warning("No member available to propose, skipping vote")
+            return True
+        
         # Create proposal
         proposal = self.consensus_builder.create_proposal(
-            proposer_id=self.config.id,
+            proposer_id=proposer_member.agent_id,
             title=f"Execute task: {task.name}",
             description=task.description,
             proposal_type="task_execution"
