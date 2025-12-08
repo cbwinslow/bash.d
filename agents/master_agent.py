@@ -521,7 +521,7 @@ class MasterAgent:
                 "by_type": {k.value: len(v) for k, v in self.agent_pool.items()}
             },
             "tools": {
-                "available": len(self.tool_registry.list_tools()),
+                "available": self.tool_registry.get_tool_count() if hasattr(self.tool_registry, 'get_tool_count') else 0,
                 "used": self.tools_used
             }
         }
