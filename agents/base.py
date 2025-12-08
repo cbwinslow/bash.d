@@ -328,8 +328,4 @@ class BaseAgent(BaseModel):
             }
         }
     
-    class Config:
-        use_enum_values = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
-        }
+
