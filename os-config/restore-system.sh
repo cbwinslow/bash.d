@@ -97,7 +97,12 @@ restore_apt_packages() {
     fi
     
     log_info "Installing packages (this may take a while)..."
-    echo "$packages" | xargs sudo apt-get install -y 2>&1 | tee /tmp/apt-restore.log
+    # Install packages individually to avoid command injection
+    while IFS= read -r pkg; do
+        if [ -n "$pkg" ]; then
+            sudo apt-get install -y "$pkg" 2>&1 | tee -a /tmp/apt-restore.log
+        fi
+    done <<< "$packages"
     log_info "✓ APT packages installed"
 }
 
@@ -123,7 +128,12 @@ restore_pip_packages() {
     fi
     
     log_info "Installing Python packages..."
-    echo "$packages" | xargs pip3 install 2>&1 | tee /tmp/pip-restore.log
+    # Install packages individually to avoid command injection
+    while IFS= read -r pkg; do
+        if [ -n "$pkg" ]; then
+            pip3 install "$pkg" 2>&1 | tee -a /tmp/pip-restore.log
+        fi
+    done <<< "$packages"
     log_info "✓ Python packages installed"
 }
 
@@ -154,7 +164,12 @@ restore_npm_packages() {
     fi
     
     log_info "Installing NPM packages..."
-    echo "$packages" | xargs npm install -g 2>&1 | tee /tmp/npm-restore.log
+    # Install packages individually to avoid command injection
+    while IFS= read -r pkg; do
+        if [ -n "$pkg" ]; then
+            npm install -g "$pkg" 2>&1 | tee -a /tmp/npm-restore.log
+        fi
+    done <<< "$packages"
     log_info "✓ NPM packages installed"
 }
 

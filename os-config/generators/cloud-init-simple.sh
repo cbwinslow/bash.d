@@ -26,8 +26,9 @@ packages:
 # Additional setup commands
 runcmd:
   # Create common directories
-  - mkdir -p /home/${USER}/projects
-  - mkdir -p /home/${USER}/.config
+  - mkdir -p /home/ubuntu/projects
+  - mkdir -p /home/ubuntu/.config
+  - chown ubuntu:ubuntu /home/ubuntu/projects /home/ubuntu/.config
 
 # Write configuration files
 write_files:

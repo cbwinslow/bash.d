@@ -142,3 +142,7 @@ vite.config.ts.timestamp-*
 __pycache__/
 *.py[cod]
 *$py.class
+
+# OS Configuration Bundles (don't commit backup data)
+os-config/bundles/*/
+!os-config/bundles/.gitkeep

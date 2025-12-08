@@ -78,8 +78,9 @@ fi
 
 # Create user directories
 echo "  # Create common directories"
-echo "  - mkdir -p /home/\${USER}/projects"
-echo "  - mkdir -p /home/\${USER}/.config"
+echo "  - mkdir -p /home/ubuntu/projects"
+echo "  - mkdir -p /home/ubuntu/.config"
+echo "  - chown ubuntu:ubuntu /home/ubuntu/projects /home/ubuntu/.config"
 
 echo ""
 

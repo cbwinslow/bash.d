@@ -42,7 +42,7 @@ main() {
         "perl": "$(get_version perl)",
         "php": "$(get_version php)",
         "java": "$(get_version java)",
-        "go": "$(get_version go version)",
+        "go": "$(get_version go 'version')",
         "rust": "$(get_version rustc)",
         "gcc": "$(get_version gcc)",
         "clang": "$(get_version clang)"

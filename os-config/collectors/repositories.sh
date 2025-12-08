@@ -63,7 +63,7 @@ find_repositories() {
             local last_commit=$(git log -1 --format="%H" 2>/dev/null || echo "none")
             local last_commit_date=$(git log -1 --format="%ai" 2>/dev/null || echo "unknown")
             local status=$(git status --porcelain 2>/dev/null | wc -l)
-            local unpushed=$(git log @{u}.. --oneline 2>/dev/null | wc -l || echo 0)
+            local unpushed=$(git log @{u}.. --oneline 2>/dev/null | wc -l 2>/dev/null || echo 0)
             
             # Escape JSON special characters
             repo_path=$(echo "$repo_path" | sed 's/"/\\"/g')
