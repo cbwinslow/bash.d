@@ -247,24 +247,24 @@ class AgentCrew:
         Returns:
             True if added successfully
         """
-        if agent.agent_id in self.members:
-            logger.warning(f"Agent {agent.agent_id} already in crew")
+        if agent.id in self.members:
+            logger.warning(f"Agent {agent.id} already in crew")
             return False
         
         member = CrewMember(
-            agent_id=agent.agent_id,
+            agent_id=agent.id,
             agent_name=agent.name,
             agent_type=agent.type,
             role=role,
             capabilities=capabilities or agent.capabilities or []
         )
         
-        self.members[agent.agent_id] = member
-        self.members_by_role[role].append(agent.agent_id)
-        self.agent_instances[agent.agent_id] = agent
+        self.members[agent.id] = member
+        self.members_by_role[role].append(agent.id)
+        self.agent_instances[agent.id] = agent
         
         self._log_event("member_joined", {
-            "agent_id": agent.agent_id,
+            "agent_id": agent.id,
             "agent_name": agent.name,
             "role": role
         })

@@ -185,7 +185,7 @@ class ComplexProblemSolver:
     
     def register_agent(self, agent: BaseAgent):
         """Register an agent with the solver"""
-        self.agents[agent.agent_id] = agent
+        self.agents[agent.id] = agent
         logger.info(f"Registered agent {agent.name} ({agent.type})")
     
     def register_agents(self, agents: List[BaseAgent]):
@@ -349,7 +349,7 @@ class ComplexProblemSolver:
             "confidence": 0.85,
             "quality_score": 0.85,
             "consensus_achieved": True,
-            "agents_used": [agent.agent_id],
+            "agents_used": [agent.id],
             "metadata": {"approach": "single_agent"}
         }
         
@@ -489,7 +489,7 @@ class ComplexProblemSolver:
             
             for agent in agents:
                 swarm.add_agent(agent)
-                all_agents.add(agent.agent_id)
+                all_agents.add(agent.id)
             
             # Execute
             task = SwarmTask(

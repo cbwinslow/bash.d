@@ -233,23 +233,23 @@ class AgentSwarm:
             logger.warning(f"Swarm '{self.name}' is full ({self.config.max_agents} agents)")
             return False
         
-        if agent.agent_id in self.agents:
-            logger.warning(f"Agent {agent.agent_id} already in swarm")
+        if agent.id in self.agents:
+            logger.warning(f"Agent {agent.id} already in swarm")
             return False
         
         swarm_agent = SwarmAgent(
-            agent_id=agent.agent_id,
+            agent_id=agent.id,
             agent_type=agent.type,
             role=role,
             vote_weight=vote_weight,
             specialization=agent.capabilities or []
         )
         
-        self.agents[agent.agent_id] = swarm_agent
-        self.agent_instances[agent.agent_id] = agent
+        self.agents[agent.id] = swarm_agent
+        self.agent_instances[agent.id] = agent
         
         self._log_event("agent_joined", {
-            "agent_id": agent.agent_id,
+            "agent_id": agent.id,
             "agent_type": agent.type,
             "role": role
         })
@@ -420,8 +420,8 @@ class AgentSwarm:
         proposals = []
         for agent in agents:
             proposal = {
-                "agent_id": agent.agent_id,
-                "solution": f"Solution from {agent.agent_id}",
+                "agent_id": agent.id,
+                "solution": f"Solution from {agent.id}",
                 "confidence": 0.8
             }
             proposals.append(proposal)
@@ -504,7 +504,7 @@ class AgentSwarm:
         # Simulate parallel execution
         results = []
         for agent in agents:
-            result = f"Result from {agent.agent_id}"
+            result = f"Result from {agent.id}"
             results.append(result)
         
         return {
