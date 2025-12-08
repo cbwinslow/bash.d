@@ -1,0 +1,37 @@
+{
+  "title": "Real-time Chat Application",
+  "description": "A real-time chat application with rooms, direct messages, file sharing, and presence indicators. Supports both web and mobile interfaces.",
+  "requirements": [
+    "WebSocket real-time communication",
+    "User authentication",
+    "Chat rooms/channels",
+    "Direct messages (1-on-1)",
+    "Group chats",
+    "File and image sharing",
+    "Message history and search",
+    "Online/offline status indicators",
+    "Typing indicators",
+    "Read receipts",
+    "Emoji support",
+    "User profiles with avatars",
+    "Push notifications",
+    "Message reactions",
+    "Desktop notifications"
+  ],
+  "target_users": "Teams and communities needing real-time communication",
+  "success_criteria": [
+    "Real-time message delivery (< 100ms latency)",
+    "Message persistence and history",
+    "Reliable WebSocket connections",
+    "Smooth UI with no lag",
+    "File uploads working correctly",
+    "Notifications delivered promptly",
+    "Works on mobile and desktop",
+    "85%+ test coverage"
+  ],
+  "constraints": {
+    "budget": "medium",
+    "timeline": "medium",
+    "scalability": "high"
+  }
+}

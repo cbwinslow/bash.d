@@ -1,0 +1,39 @@
+{
+  "title": "E-commerce Platform",
+  "description": "Complete online store with product catalog, shopping cart, checkout, payment processing, and order management. Includes both customer-facing store and admin dashboard.",
+  "requirements": [
+    "Product catalog with categories",
+    "Product search with filters",
+    "Shopping cart functionality",
+    "User accounts and profiles",
+    "Guest checkout option",
+    "Stripe payment integration",
+    "Order tracking and history",
+    "Email notifications for orders",
+    "Admin dashboard",
+    "Inventory management",
+    "Product reviews and ratings",
+    "Wishlist functionality",
+    "Coupon/discount codes",
+    "Multiple payment methods",
+    "Shipping calculator",
+    "Product recommendations"
+  ],
+  "target_users": "Online shoppers and store owners",
+  "success_criteria": [
+    "Secure payment processing",
+    "Fast product browsing (< 2s page loads)",
+    "Mobile responsive design",
+    "Successful checkout flow",
+    "Order confirmation emails",
+    "Admin can manage products",
+    "Inventory tracking accurate",
+    "PCI DSS compliant payment handling",
+    "95%+ uptime"
+  ],
+  "constraints": {
+    "budget": "high",
+    "timeline": "long",
+    "scalability": "very high"
+  }
+}
