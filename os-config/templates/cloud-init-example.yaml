@@ -1,0 +1,101 @@
+#cloud-config
+# Example Cloud-Init Configuration
+# This template shows the structure of cloud-init user-data
+
+# Update packages on first boot
+package_update: true
+package_upgrade: true
+
+# Install packages
+packages:
+  - git
+  - vim
+  - curl
+  - wget
+  - build-essential
+  - python3
+  - python3-pip
+  - nodejs
+  - npm
+  - docker.io
+
+# Run commands after package installation
+runcmd:
+  # Install Python packages
+  - pip3 install numpy pandas requests
+
+  # Install Node.js packages
+  - npm install -g typescript eslint
+
+  # Enable Docker
+  - systemctl enable docker
+  - systemctl start docker
+
+  # Create project directories
+  - mkdir -p /home/ubuntu/projects
+  - chown ubuntu:ubuntu /home/ubuntu/projects
+
+# Write configuration files
+write_files:
+  # Custom bashrc additions
+  - path: /etc/profile.d/custom-env.sh
+    permissions: '0644'
+    content: |
+      # Custom environment variables
+      export EDITOR=vim
+      export VISUAL=vim
+      export PATH="$HOME/.local/bin:$PATH"
+
+  # Git configuration
+  - path: /home/ubuntu/.gitconfig
+    permissions: '0644'
+    owner: ubuntu:ubuntu
+    content: |
+      [user]
+        name = Your Name
+        email = your.email@example.com
+      [core]
+        editor = vim
+      [alias]
+        st = status
+        co = checkout
+        br = branch
+        ci = commit
+
+  # Docker daemon configuration
+  - path: /etc/docker/daemon.json
+    permissions: '0644'
+    content: |
+      {
+        "log-driver": "json-file",
+        "log-opts": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+
+# Create users
+users:
+  - name: ubuntu
+    groups: sudo, docker
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2E... # Add your SSH public key here
+
+# Set timezone
+timezone: UTC
+
+# Set hostname
+hostname: my-server
+fqdn: my-server.example.com
+
+# SSH configuration
+ssh_pwauth: false
+disable_root: true
+
+# Final message displayed after cloud-init completes
+final_message: |
+  System setup complete!
+  Time: $UPTIME
+  Timestamp: $TIMESTAMP

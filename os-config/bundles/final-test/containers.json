@@ -1,0 +1,34 @@
+[0;32m[INFO][0m Starting container information collection...
+[0;32m[INFO][0m Collecting Docker information...
+[0;32m[INFO][0m Collecting Podman information...
+[0;32m[INFO][0m Collecting Kubernetes information...
+{
+    "timestamp": "2025-12-08T02:06:55Z",
+    "hostname": "runnervmoqczp",
+    "container_runtimes": [
+        {
+    "engine": "docker",
+    "version": "28.0.4",
+    "containers": [],
+    "images": [],
+    "networks": [{"CreatedAt":"2025-12-08 01:50:31.76896508 +0000 UTC","Driver":"bridge","ID":"113580a71ecc","IPv4":"true","IPv6":"false","Internal":"false","Labels":"","Name":"bridge","Scope":"local"},{"CreatedAt":"2025-11-26 17:28:24.827619154 +0000 UTC","Driver":"host","ID":"0e3729bf1bd1","IPv4":"true","IPv6":"false","Internal":"false","Labels":"","Name":"host","Scope":"local"},{"CreatedAt":"2025-11-26 17:28:24.809862122 +0000 UTC","Driver":"null","ID":"868acd842edd","IPv4":"true","IPv6":"false","Internal":"false","Labels":"","Name":"none","Scope":"local"}],
+    "volumes": [],
+    "compose_files": []
+}
+,
+        {
+    "engine": "podman",
+    "version": "4.9.3",
+    "containers": [[]],
+    "images": [[]]
+}
+,
+        {
+    "tool": "kubectl",
+    "version": "",
+    "current_context": "none",
+    "contexts": []
+}
+    ]
+}
+[0;32m[INFO][0m Container information collection complete!
