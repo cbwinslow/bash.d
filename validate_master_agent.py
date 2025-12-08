@@ -3,6 +3,7 @@
 
 import asyncio
 import sys
+import traceback
 from agents.master_agent import create_autonomous_agent, DevelopmentWorkflow
 from agents.base import AgentType
 
@@ -83,6 +84,5 @@ if __name__ == "__main__":
         sys.exit(exit_code)
     except Exception as e:
         print(f"\n❌ Validation failed: {e}")
-        import traceback
         traceback.print_exc()
         sys.exit(1)

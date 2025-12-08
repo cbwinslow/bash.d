@@ -143,7 +143,14 @@ async def create_project_interactive(agent: MasterAgent):
     # Get requirements
     console.print("\n[yellow]Enter requirements (JSON format or press Enter to skip):[/yellow]")
     req_input = console.input().strip()
-    requirements = json.loads(req_input) if req_input else {}
+    requirements = {}
+    if req_input:
+        try:
+            requirements = json.loads(req_input)
+        except json.JSONDecodeError as e:
+            console.print(f"[red]Invalid JSON: {e}[/red]")
+            console.print("[yellow]Using empty requirements[/yellow]")
+            requirements = {}
     
     # Create project
     with Progress(
@@ -315,8 +322,15 @@ Examples:
         # Load requirements
         requirements = {}
         if args.requirements:
-            with open(args.requirements) as f:
-                requirements = json.load(f)
+            try:
+                with open(args.requirements) as f:
+                    requirements = json.load(f)
+            except FileNotFoundError:
+                console.print(f"[red]Requirements file not found: {args.requirements}[/red]")
+                sys.exit(1)
+            except json.JSONDecodeError as e:
+                console.print(f"[red]Invalid JSON in requirements file: {e}[/red]")
+                sys.exit(1)
         
         # Create project
         workflow = DevelopmentWorkflow(args.workflow)

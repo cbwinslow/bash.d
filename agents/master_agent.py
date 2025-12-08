@@ -521,7 +521,7 @@ class MasterAgent:
                 "by_type": {k.value: len(v) for k, v in self.agent_pool.items()}
             },
             "tools": {
-                "available": self.tool_registry.get_tool_count() if hasattr(self.tool_registry, 'get_tool_count') else 0,
+                "available": self._get_tool_count(),
                 "used": self.tools_used
             }
         }
@@ -566,6 +566,13 @@ class MasterAgent:
         logger.info(f"Learned from project: {project.name}")
 
 
+    def _get_tool_count(self) -> int:
+        """Get count of available tools, handling potential errors"""
+        try:
+            return self.tool_registry.get_tool_count()
+        except (AttributeError, Exception):
+            return 0
+    
     def update_status(self, new_status: AgentStatus):
         """Update agent status"""
         self.status = new_status
