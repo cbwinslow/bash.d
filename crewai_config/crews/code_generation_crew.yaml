@@ -1,0 +1,300 @@
+# Code Generation Crew - Democratic Multi-Agent Code Development
+# Based on CodeSim and MapCoder research principles
+
+id: code_generation_crew
+name: "Code Generation Crew"
+description: "Democratic multi-agent crew for collaborative code generation with planning, implementation, review, and testing"
+version: "1.0.0"
+
+# Governance and Process
+process_type: democratic
+governance_model: consensus
+voting_strategy: weighted_vote
+conflict_resolution: expert_decides
+
+# Communication
+communication_protocol: rabbitmq
+message_queue: code_generation_queue
+broadcast_channel: code_gen_broadcast
+
+# Execution Settings
+parallel_execution: true
+max_concurrent_tasks: 4
+timeout_seconds: 3600
+retry_failed_tasks: true
+auto_retry_count: 3
+
+# Memory and State
+shared_memory: true
+memory_isolation: false
+state_persistence: true
+
+# Monitoring
+verbose: true
+log_level: INFO
+metrics_enabled: true
+
+# Crew Members
+members:
+  # Planning Agent - Designs the solution approach
+  - agent_id: code_planner_001
+    agent_name: "Code Planner"
+    role: specialist
+    expertise_weight: 2.0
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - architecture_design
+      - algorithm_selection
+      - code_planning
+      - requirements_analysis
+
+  # Backend Developer - Implements backend logic
+  - agent_id: python_backend_developer
+    agent_name: "Python Backend Developer"
+    role: specialist
+    expertise_weight: 2.5
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - python_backend
+      - api_development
+      - database_design
+      - backend_logic
+
+  # Frontend Developer - Implements UI components
+  - agent_id: javascript_fullstack_developer
+    agent_name: "JavaScript Full Stack Developer"
+    role: specialist
+    expertise_weight: 2.0
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - javascript_development
+      - react_development
+      - frontend_architecture
+      - api_integration
+
+  # Code Reviewer - Reviews and validates code quality
+  - agent_id: code_security_reviewer
+    agent_name: "Code Security Reviewer"
+    role: reviewer
+    expertise_weight: 3.0
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - code_review
+      - security_analysis
+      - best_practices
+      - quality_assurance
+
+  # Test Engineer - Creates and runs tests
+  - agent_id: unit_test_developer
+    agent_name: "Unit Test Developer"
+    role: specialist
+    expertise_weight: 2.0
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - unit_testing
+      - test_automation
+      - coverage_analysis
+      - test_driven_development
+
+  # Integration Tester - Tests system integration
+  - agent_id: integration_test_engineer
+    agent_name: "Integration Test Engineer"
+    role: specialist
+    expertise_weight: 1.8
+    can_vote: true
+    can_delegate: false
+    capabilities:
+      - integration_testing
+      - e2e_testing
+      - system_validation
+      - performance_testing
+
+# Tasks Workflow
+tasks:
+  # Task 1: Requirements Analysis & Planning
+  - id: task_requirements_analysis
+    name: "Requirements Analysis"
+    description: "Analyze requirements and create implementation plan"
+    assigned_agent_roles:
+      - specialist
+    dependencies: []
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: simple_majority
+    expected_output: "Implementation plan with architecture design"
+    tools:
+      - filesystem_tools
+      - text_tools
+    timeout_seconds: 600
+    retry_on_failure: true
+    max_retries: 2
+
+  # Task 2: Democratic Solution Design Vote
+  - id: task_solution_design_vote
+    name: "Solution Design Vote"
+    description: "Vote on proposed solution approach and architecture"
+    assigned_agent_ids:
+      - code_planner_001
+      - python_backend_developer
+      - javascript_fullstack_developer
+    dependencies:
+      - task_requirements_analysis
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: weighted_vote
+    expected_output: "Approved solution design"
+    timeout_seconds: 300
+
+  # Task 3: Backend Implementation
+  - id: task_backend_implementation
+    name: "Backend Implementation"
+    description: "Implement backend services and APIs"
+    assigned_agent_ids:
+      - python_backend_developer
+    dependencies:
+      - task_solution_design_vote
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Backend code with API endpoints"
+    tools:
+      - filesystem_tools
+      - git_tools
+      - system_tools
+    timeout_seconds: 1800
+    retry_on_failure: true
+    max_retries: 3
+
+  # Task 4: Frontend Implementation
+  - id: task_frontend_implementation
+    name: "Frontend Implementation"
+    description: "Implement frontend components and UI"
+    assigned_agent_ids:
+      - javascript_fullstack_developer
+    dependencies:
+      - task_solution_design_vote
+    dependency_type: parallel
+    requires_vote: false
+    expected_output: "Frontend code with UI components"
+    tools:
+      - filesystem_tools
+      - git_tools
+    timeout_seconds: 1800
+    retry_on_failure: true
+    max_retries: 3
+
+  # Task 5: Code Review & Security Analysis
+  - id: task_code_review
+    name: "Code Review"
+    description: "Review code for quality, security, and best practices"
+    assigned_agent_ids:
+      - code_security_reviewer
+    dependencies:
+      - task_backend_implementation
+      - task_frontend_implementation
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Code review report with recommendations"
+    tools:
+      - filesystem_tools
+      - text_tools
+    timeout_seconds: 900
+    retry_on_failure: true
+    max_retries: 2
+
+  # Task 6: Democratic Review Approval Vote
+  - id: task_review_approval_vote
+    name: "Review Approval Vote"
+    description: "Vote on whether code review findings are acceptable"
+    assigned_agent_ids:
+      - code_security_reviewer
+      - python_backend_developer
+      - javascript_fullstack_developer
+    dependencies:
+      - task_code_review
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: supermajority
+    expected_output: "Approval or rejection with remediation plan"
+    timeout_seconds: 300
+
+  # Task 7: Unit Testing
+  - id: task_unit_testing
+    name: "Unit Testing"
+    description: "Create and execute unit tests"
+    assigned_agent_ids:
+      - unit_test_developer
+    dependencies:
+      - task_review_approval_vote
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Unit test suite with coverage report"
+    tools:
+      - filesystem_tools
+      - system_tools
+    timeout_seconds: 1200
+    retry_on_failure: true
+    max_retries: 2
+
+  # Task 8: Integration Testing
+  - id: task_integration_testing
+    name: "Integration Testing"
+    description: "Execute integration and E2E tests"
+    assigned_agent_ids:
+      - integration_test_engineer
+    dependencies:
+      - task_unit_testing
+    dependency_type: sequential
+    requires_vote: false
+    expected_output: "Integration test results and system validation"
+    tools:
+      - filesystem_tools
+      - system_tools
+      - docker_tools
+    timeout_seconds: 1800
+    retry_on_failure: true
+    max_retries: 2
+
+  # Task 9: Final Democratic Acceptance Vote
+  - id: task_final_acceptance_vote
+    name: "Final Acceptance Vote"
+    description: "Democratic vote on final code acceptance"
+    assigned_agent_ids:
+      - code_planner_001
+      - python_backend_developer
+      - javascript_fullstack_developer
+      - code_security_reviewer
+      - unit_test_developer
+      - integration_test_engineer
+    dependencies:
+      - task_integration_testing
+    dependency_type: sequential
+    requires_vote: true
+    voting_strategy: supermajority
+    expected_output: "Final acceptance decision"
+    timeout_seconds: 300
+
+# Metadata
+tags:
+  - code_generation
+  - democratic
+  - multi_agent
+  - collaborative
+  - testing
+
+metadata:
+  category: development
+  complexity: high
+  required_tools:
+    - filesystem_tools
+    - git_tools
+    - system_tools
+    - docker_tools
+    - text_tools
+  estimated_duration_minutes: 120
+  recommended_min_agents: 6
+  democratic_decisions: 4

@@ -167,7 +167,11 @@ class BaseAgent(BaseModel):
     - Health monitoring
     - OpenAI API compatibility
     """
-    model_config = ConfigDict(arbitrary_types_allowed=True)
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True,
+        use_enum_values=True,
+        protected_namespaces=()
+    )
     
     # Core Identity
     id: str = Field(default_factory=lambda: str(uuid.uuid4()), description="Unique agent identifier")
@@ -185,8 +189,8 @@ class BaseAgent(BaseModel):
     # Configuration
     config: AgentConfig = Field(default_factory=AgentConfig)
     
-    # Capabilities
-    capabilities: List[AgentCapability] = Field(default_factory=list)
+    # Capabilities (list of capability names/descriptions)
+    capabilities: List[str] = Field(default_factory=list)
     supported_protocols: List[CommunicationProtocol] = Field(
         default_factory=lambda: [
             CommunicationProtocol.A2A,
@@ -327,5 +331,4 @@ class BaseAgent(BaseModel):
                 "required": ["task"]
             }
         }
-    
 
