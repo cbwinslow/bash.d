@@ -10,7 +10,8 @@ This module implements a hierarchical agent architecture with:
 
 import asyncio
 import logging
-from typing import List, Dict, Any, Optional, Set
+import random
+from typing import List, Dict, Any, Optional, Set, Tuple
 from datetime import datetime
 from enum import Enum
 from dataclasses import dataclass, field
@@ -541,5 +542,4 @@ class WorkerAgent(HierarchicalAgent):
             logger.warning(f"Worker {self.name} has no manager to request help from")
 
 
-# Import random for simulation
-import random
+

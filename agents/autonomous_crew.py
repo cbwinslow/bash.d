@@ -11,7 +11,7 @@ This module implements fully autonomous agent crews that can:
 
 import asyncio
 import logging
-from typing import List, Dict, Any, Optional, Callable
+from typing import List, Dict, Any, Optional, Callable, Tuple
 from datetime import datetime, timedelta
 from enum import Enum
 from collections import defaultdict, Counter
