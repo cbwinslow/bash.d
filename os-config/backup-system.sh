@@ -150,7 +150,8 @@ run_collector() {
     log_step "Running $collector_name collector..."
     
     if [ "$DRY_RUN" = false ]; then
-        if bash "$collector_script" > "$output_file" 2>&1; then
+        # Run collector, keeping stderr separate from stdout (JSON)
+        if bash "$collector_script" > "$output_file" 2>/dev/null; then
             log_info "✓ $collector_name data collected"
         else
             log_warn "✗ $collector_name collector failed (non-fatal)"
