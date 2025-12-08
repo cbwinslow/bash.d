@@ -167,7 +167,11 @@ class BaseAgent(BaseModel):
     - Health monitoring
     - OpenAI API compatibility
     """
-    model_config = ConfigDict(arbitrary_types_allowed=True)
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True,
+        use_enum_values=True,
+        protected_namespaces=()
+    )
     
     # Core Identity
     id: str = Field(default_factory=lambda: str(uuid.uuid4()), description="Unique agent identifier")
@@ -327,9 +331,4 @@ class BaseAgent(BaseModel):
                 "required": ["task"]
             }
         }
-    
-    class Config:
-        use_enum_values = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
-        }
+
