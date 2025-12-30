@@ -10,6 +10,9 @@ Building a comprehensive multi-agentic AI system with democratic problem-solving
 - [ ] Create agents directory structure
 - [ ] Create tools directory structure
 - [ ] Create configs directory structure
+- [x] Standardize secrets sourcing (single source of truth)
+- [x] Add repo template loader for bash secrets
+- [x] Document Bitwarden wrapper in agent catalog + index
 - [ ] Set up Python virtual environment
 - [ ] Install core dependencies (pydantic-ai, openai, anthropic, etc.)
 
