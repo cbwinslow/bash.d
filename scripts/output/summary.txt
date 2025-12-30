@@ -1,0 +1,10 @@
+Bash.d Function Documentation Report
+==================================
+
+Total Functions Available: 2136
+Functions Processed: 10
+Model: meta-llama/llama-3.2-3b-instruct:free
+Generated: OpenRouter Free Models
+
+Note: Processing limited to 10 functions for demo.
+To process all functions, modify the demo limit in the script.

@@ -246,8 +246,8 @@ def main():
     # Generate documentation
     generator = FreeDocumentationGenerator(api_key)
 
-    # Process first 10 functions as a demo (can remove this limit)
-    demo_functions = functions[:10] if len(functions) > 10 else functions
+    # Process all functions (remove demo limit)
+    demo_functions = functions
 
     results = generator.process_functions_batch(
         demo_functions, batch_size=args.batch_size

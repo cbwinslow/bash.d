@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "total_functions": 2136,
+    "processed_functions": 10,
+    "model_used": "meta-llama/llama-3.2-3b-instruct:free",
+    "generated_with": "OpenRouter Free Models"
+  },
+  "functions": [
+    {
+      "name": "bashd_ai_healthcheck",
+      "file": "ai.sh",
+      "line": 4,
+      "signature": "bashd_ai_healthcheck() {",
+      "docstring": "# @function bashd_ai_healthcheck\n# @description Shell function bashd_ai_healthcheck from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_chat",
+      "file": "ai.sh",
+      "line": 15,
+      "signature": "bashd_ai_chat() {",
+      "docstring": "# @function bashd_ai_chat\n# @description Shell function bashd_ai_chat from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_debug",
+      "file": "ai.sh",
+      "line": 20,
+      "signature": "bashd_ai_debug() {",
+      "docstring": "# @function bashd_ai_debug\n# @description Shell function bashd_ai_debug from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_tldr",
+      "file": "ai.sh",
+      "line": 25,
+      "signature": "bashd_ai_tldr() {",
+      "docstring": "# @function bashd_ai_tldr\n# @description Shell function bashd_ai_tldr from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_code",
+      "file": "ai.sh",
+      "line": 30,
+      "signature": "bashd_ai_code() {",
+      "docstring": "# @function bashd_ai_code\n# @description Shell function bashd_ai_code from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_publish_function",
+      "file": "ai.sh",
+      "line": 35,
+      "signature": "bashd_ai_publish_function() {",
+      "docstring": "# @function bashd_ai_publish_function\n# @description Shell function bashd_ai_publish_function from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_reward",
+      "file": "ai.sh",
+      "line": 51,
+      "signature": "bashd_ai_reward() {",
+      "docstring": "# @function bashd_ai_reward\n# @description Shell function bashd_ai_reward from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_explain_last",
+      "file": "ai.sh",
+      "line": 58,
+      "signature": "bashd_ai_explain_last() {",
+      "docstring": "# @function bashd_ai_explain_last\n# @description Shell function bashd_ai_explain_last from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_fix",
+      "file": "ai.sh",
+      "line": 70,
+      "signature": "bashd_ai_fix() {",
+      "docstring": "# @function bashd_ai_fix\n# @description Shell function bashd_ai_fix from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_generate_function",
+      "file": "ai.sh",
+      "line": 83,
+      "signature": "bashd_ai_generate_function() {",
+      "docstring": "# @function bashd_ai_generate_function\n# @description Shell function bashd_ai_generate_function from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    }
+  ]
+}
