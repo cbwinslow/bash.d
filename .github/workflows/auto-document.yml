@@ -1,0 +1,60 @@
+name: Auto-Document Functions
+
+on:
+  push:
+    paths: ['bash_functions.d/**/*.sh']
+  pull_request:
+    paths: ['bash_functions.d/**/*.sh']
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  document-functions:
+    name: Generate Function Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+          
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install openai anthropic google-generativeai crewai langchain-openai jq
+          
+      - name: Create output directory
+        run: mkdir -p scripts/output
+            
+      - name: Extract Functions
+        run: |
+          python scripts/function_extractor.py \
+            --input-dir bash_functions.d \
+            --output-dir scripts/output \
+            --format json
+            
+      - name: Generate Documentation Report
+        run: |
+          echo "# Function Documentation Report" > DOCUMENTATION_REPORT.md
+          echo "Generated on: $(date)" >> DOCUMENTATION_REPORT.md
+          echo "Total functions analyzed: $(jq '.summary.total_functions' scripts/output/functions.json 2>/dev/null || echo '0')" >> DOCUMENTATION_REPORT.md
+            
+      - name: Commit Documentation Updates
+        if: github.event_name == 'push'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add DOCUMENTATION_REPORT.md || true
+          git diff --staged --quiet || git commit -m "🤖 Auto-update: Function documentation report"
+          
+      - name: Push Changes
+        if: github.event_name == 'push'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
