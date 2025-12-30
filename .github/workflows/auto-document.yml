@@ -26,7 +26,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install openai anthropic google-generativeai crewai langchain-openai jq
+          pip install openai anthropic crewai langchain-openai jq
           
       - name: Create output directory
         run: mkdir -p scripts/output
@@ -38,11 +38,27 @@ jobs:
             --output-dir scripts/output \
             --format json
             
+      - name: Generate Documentation (Free Models)
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          python scripts/documentation_crew.py \
+            --input scripts/output/functions.json \
+            --output-dir scripts/output \
+            --batch-size 3
+            
+      - name: Generate OpenAI Schemas
+        run: |
+          python scripts/schema_generator.py \
+            --input scripts/output/documented_functions.json \
+            --output bash_functions_openai_schema.json
+            
       - name: Generate Documentation Report
         run: |
           echo "# Function Documentation Report" > DOCUMENTATION_REPORT.md
           echo "Generated on: $(date)" >> DOCUMENTATION_REPORT.md
           echo "Total functions analyzed: $(jq '.summary.total_functions' scripts/output/functions.json 2>/dev/null || echo '0')" >> DOCUMENTATION_REPORT.md
+          echo "Documentation generated with: $(jq '.summary.generated_with' scripts/output/documented_functions.json 2>/dev/null || echo 'Basic extraction')" >> DOCUMENTATION_REPORT.md
             
       - name: Commit Documentation Updates
         if: github.event_name == 'push'
