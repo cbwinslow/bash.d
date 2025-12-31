@@ -37,3 +37,4 @@ source bash_functions.d/core/agents/load_agents.sh
 
 - 2025-12-30: Standardized secrets sourcing and single-source symlink for `root.env`
 - 2025-12-30: Documented Bitwarden wrapper + repo loader template
+- 2025-12-30: Added template install README for secrets loader

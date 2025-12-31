@@ -13,6 +13,7 @@ Building a comprehensive multi-agentic AI system with democratic problem-solving
 - [x] Standardize secrets sourcing (single source of truth)
 - [x] Add repo template loader for bash secrets
 - [x] Document Bitwarden wrapper in agent catalog + index
+- [x] Add install README for secrets loader template
 - [ ] Set up Python virtual environment
 - [ ] Install core dependencies (pydantic-ai, openai, anthropic, etc.)
 

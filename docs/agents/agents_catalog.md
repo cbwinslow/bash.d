@@ -16,6 +16,7 @@ Goal: produce a useful, actionable list of 50–100 agent roles to cover common 
 ## Local Integrations
 
 - Bitwarden Secrets Access — use `bash_functions.d/tools/bw_agent.sh` for agent-safe Bitwarden queries; secrets live in `~/.bash_secrets.d/env/root.env` and are never committed.
+- Index & policy — see `agents.md` for layout and secrets conventions.
 
 ---
 
