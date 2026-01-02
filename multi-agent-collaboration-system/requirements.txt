@@ -1,0 +1,13 @@
+# Required packages for the Multi-Agent Collaboration System
+
+# Used for orchestration and agent frameworks
+#- crewai
+#- langchain
+
+# Used for interacting with APIs
+requests
+
+# Used for linting and formatting (development dependency)
+ruff
+black
+pytest

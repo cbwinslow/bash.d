@@ -1,0 +1,17 @@
+- rule_id: GEN-001
+  description: "Confirm all file system write or delete operations with the user before execution."
+  trigger: "tool.filesystem.write"
+  action: "request_user_confirmation"
+  priority: 1
+
+- rule_id: GEN-002
+  description: "Do not ask for API keys or secrets directly. Instruct the user to set environment variables."
+  trigger: "conversation.request_secret"
+  action: "instruct_env_var"
+  priority: 1
+
+- rule_id: GIT-001
+  description: "Always perform a dry-run before executing a command that modifies a remote Git repository."
+  trigger: "tool.git.push"
+  action: "perform_dry_run"
+  priority: 2
