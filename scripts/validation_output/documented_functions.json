@@ -1,0 +1,460 @@
+{
+  "summary": {
+    "total_functions": 2136,
+    "processed_functions": 50,
+    "model_used": "meta-llama/llama-3.2-3b-instruct:free",
+    "generated_with": "OpenRouter Free Models"
+  },
+  "functions": [
+    {
+      "name": "bashd_ai_healthcheck",
+      "file": "ai.sh",
+      "line": 4,
+      "signature": "bashd_ai_healthcheck() {",
+      "docstring": "# @function bashd_ai_healthcheck\n# @description Shell function bashd_ai_healthcheck from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_chat",
+      "file": "ai.sh",
+      "line": 15,
+      "signature": "bashd_ai_chat() {",
+      "docstring": "# @function bashd_ai_chat\n# @description Shell function bashd_ai_chat from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_debug",
+      "file": "ai.sh",
+      "line": 20,
+      "signature": "bashd_ai_debug() {",
+      "docstring": "# @function bashd_ai_debug\n# @description Shell function bashd_ai_debug from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_tldr",
+      "file": "ai.sh",
+      "line": 25,
+      "signature": "bashd_ai_tldr() {",
+      "docstring": "# @function bashd_ai_tldr\n# @description Shell function bashd_ai_tldr from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_code",
+      "file": "ai.sh",
+      "line": 30,
+      "signature": "bashd_ai_code() {",
+      "docstring": "# @function bashd_ai_code\n# @description Shell function bashd_ai_code from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_publish_function",
+      "file": "ai.sh",
+      "line": 35,
+      "signature": "bashd_ai_publish_function() {",
+      "docstring": "# @function bashd_ai_publish_function\n# @description Shell function bashd_ai_publish_function from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_reward",
+      "file": "ai.sh",
+      "line": 51,
+      "signature": "bashd_ai_reward() {",
+      "docstring": "# @function bashd_ai_reward\n# @description Shell function bashd_ai_reward from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_explain_last",
+      "file": "ai.sh",
+      "line": 58,
+      "signature": "bashd_ai_explain_last() {",
+      "docstring": "# @function bashd_ai_explain_last\n# @description Shell function bashd_ai_explain_last from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_fix",
+      "file": "ai.sh",
+      "line": 70,
+      "signature": "bashd_ai_fix() {",
+      "docstring": "# @function bashd_ai_fix\n# @description Shell function bashd_ai_fix from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_generate_function",
+      "file": "ai.sh",
+      "line": 83,
+      "signature": "bashd_ai_generate_function() {",
+      "docstring": "# @function bashd_ai_generate_function\n# @description Shell function bashd_ai_generate_function from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_help",
+      "file": "ai.sh",
+      "line": 95,
+      "signature": "bashd_ai_help() {",
+      "docstring": "# @function bashd_ai_help\n# @description Shell function bashd_ai_help from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_ai_history",
+      "file": "ai.sh",
+      "line": 118,
+      "signature": "bashd_ai_history() {",
+      "docstring": "# @function bashd_ai_history\n# @description Shell function bashd_ai_history from ai.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "ai"
+    },
+    {
+      "name": "bashd_install_oh_my_bash",
+      "file": "core.sh",
+      "line": 4,
+      "signature": "bashd_install_oh_my_bash() {",
+      "docstring": "# @function bashd_install_oh_my_bash\n# @description Shell function bashd_install_oh_my_bash from core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bashd_edit_local",
+      "file": "core.sh",
+      "line": 23,
+      "signature": "bashd_edit_local() {",
+      "docstring": "# @function bashd_edit_local\n# @description Shell function bashd_edit_local from core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bashd_reload",
+      "file": "core.sh",
+      "line": 27,
+      "signature": "bashd_reload() {",
+      "docstring": "# @function bashd_reload\n# @description Shell function bashd_reload from core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bashd_snapshot_state",
+      "file": "core.sh",
+      "line": 32,
+      "signature": "bashd_snapshot_state() {",
+      "docstring": "# @function bashd_snapshot_state\n# @description Shell function bashd_snapshot_state from core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "system"
+    },
+    {
+      "name": "extract_ips",
+      "file": "ip_analyzer.sh",
+      "line": 22,
+      "signature": "extract_ips() {",
+      "docstring": "# @function extract_ips\n# @description Shell function extract_ips from ip_analyzer.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "system"
+    },
+    {
+      "name": "is_private_ip",
+      "file": "ip_analyzer.sh",
+      "line": 35,
+      "signature": "is_private_ip() {",
+      "docstring": "# @function is_private_ip\n# @description Shell function is_private_ip from ip_analyzer.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "get_ip_info",
+      "file": "ip_analyzer.sh",
+      "line": 49,
+      "signature": "get_ip_info() {",
+      "docstring": "# @function get_ip_info\n# @description Shell function get_ip_info from ip_analyzer.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "utility"
+    },
+    {
+      "name": "check_blocklists",
+      "file": "ip_analyzer.sh",
+      "line": 107,
+      "signature": "check_blocklists() {",
+      "docstring": "# @function check_blocklists\n# @description Shell function check_blocklists from ip_analyzer.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "debug"
+    },
+    {
+      "name": "ip_analyzer",
+      "file": "ip_analyzer.sh",
+      "line": 148,
+      "signature": "ip_analyzer() {",
+      "docstring": "# @function ip_analyzer\n# @description Shell function ip_analyzer from ip_analyzer.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "_bw_ensure_session",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 67,
+      "signature": "_bw_ensure_session() {",
+      "docstring": "# @function _bw_ensure_session\n# @description Shell function _bw_ensure_session from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_login",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 92,
+      "signature": "bw_login() {",
+      "docstring": "# @function bw_login\n# @description Shell function bw_login from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "_bw_login_password",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 170,
+      "signature": "_bw_login_password() {",
+      "docstring": "# @function _bw_login_password\n# @description Shell function _bw_login_password from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "_bw_login_sso",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 201,
+      "signature": "_bw_login_sso() {",
+      "docstring": "# @function _bw_login_sso\n# @description Shell function _bw_login_sso from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "_bw_login_apikey",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 229,
+      "signature": "_bw_login_apikey() {",
+      "docstring": "# @function _bw_login_apikey\n# @description Shell function _bw_login_apikey from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_get_item",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 261,
+      "signature": "bw_get_item() {",
+      "docstring": "# @function bw_get_item\n# @description Shell function bw_get_item from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_secure_get",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 363,
+      "signature": "bw_secure_get() {",
+      "docstring": "# @function bw_secure_get\n# @description Shell function bw_secure_get from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_logout",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 416,
+      "signature": "bw_logout() {",
+      "docstring": "# @function bw_logout\n# @description Shell function bw_logout from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_sync",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 433,
+      "signature": "bw_sync() {",
+      "docstring": "# @function bw_sync\n# @description Shell function bw_sync from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_status",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 469,
+      "signature": "bw_status() {",
+      "docstring": "# @function bw_status\n# @description Shell function bw_status from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "utility"
+    },
+    {
+      "name": "bw_generate_password",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 524,
+      "signature": "bw_generate_password() {",
+      "docstring": "# @function bw_generate_password\n# @description Shell function bw_generate_password from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_create_item",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 599,
+      "signature": "bw_create_item() {",
+      "docstring": "# @function bw_create_item\n# @description Shell function bw_create_item from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_edit_item",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 784,
+      "signature": "bw_edit_item() {",
+      "docstring": "# @function bw_edit_item\n# @description Shell function bw_edit_item from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_delete_item",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 990,
+      "signature": "bw_delete_item() {",
+      "docstring": "# @function bw_delete_item\n# @description Shell function bw_delete_item from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "unsafe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_search",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 1079,
+      "signature": "bw_search() {",
+      "docstring": "# @function bw_search\n# @description Shell function bw_search from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_get_totp",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 1187,
+      "signature": "bw_get_totp() {",
+      "docstring": "# @function bw_get_totp\n# @description Shell function bw_get_totp from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_export",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 1260,
+      "signature": "bw_export() {",
+      "docstring": "# @function bw_export\n# @description Shell function bw_export from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_import",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 1377,
+      "signature": "bw_import() {",
+      "docstring": "# @function bw_import\n# @description Shell function bw_import from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_check_updates",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 1496,
+      "signature": "bw_check_updates() {",
+      "docstring": "# @function bw_check_updates\n# @description Shell function bw_check_updates from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "debug"
+    },
+    {
+      "name": "bw_update",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 1546,
+      "signature": "bw_update() {",
+      "docstring": "# @function bw_update\n# @description Shell function bw_update from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_cleanup",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 1583,
+      "signature": "bw_cleanup() {",
+      "docstring": "# @function bw_cleanup\n# @description Shell function bw_cleanup from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "misc"
+    },
+    {
+      "name": "bw_help",
+      "file": "bitwarden/bitwarden_core.sh",
+      "line": 1611,
+      "signature": "bw_help() {",
+      "docstring": "# @function bw_help\n# @description Shell function bw_help from bitwarden/bitwarden_core.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "utility"
+    },
+    {
+      "name": "dnslookup",
+      "file": "network/network_utils.sh",
+      "line": 22,
+      "signature": "dnslookup() {",
+      "docstring": "# @function dnslookup\n# @description Shell function dnslookup from network/network_utils.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "network"
+    },
+    {
+      "name": "rdns",
+      "file": "network/network_utils.sh",
+      "line": 65,
+      "signature": "rdns() {",
+      "docstring": "# @function rdns\n# @description Shell function rdns from network/network_utils.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "network"
+    },
+    {
+      "name": "whoisinfo",
+      "file": "network/network_utils.sh",
+      "line": 83,
+      "signature": "whoisinfo() {",
+      "docstring": "# @function whoisinfo\n# @description Shell function whoisinfo from network/network_utils.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "network"
+    },
+    {
+      "name": "httptest",
+      "file": "network/network_utils.sh",
+      "line": 103,
+      "signature": "httptest() {",
+      "docstring": "# @function httptest\n# @description Shell function httptest from network/network_utils.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "network"
+    },
+    {
+      "name": "testport",
+      "file": "network/network_utils.sh",
+      "line": 128,
+      "signature": "testport() {",
+      "docstring": "# @function testport\n# @description Shell function testport from network/network_utils.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "network"
+    },
+    {
+      "name": "portscan",
+      "file": "network/network_utils.sh",
+      "line": 149,
+      "signature": "portscan() {",
+      "docstring": "# @function portscan\n# @description Shell function portscan from network/network_utils.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "network"
+    },
+    {
+      "name": "tracepath",
+      "file": "network/network_utils.sh",
+      "line": 173,
+      "signature": "tracepath() {",
+      "docstring": "# @function tracepath\n# @description Shell function tracepath from network/network_utils.sh\n# @category utility\n# @safety supervision",
+      "safety": "safe",
+      "category": "network"
+    }
+  ]
+}
