@@ -8,7 +8,7 @@ This document breaks down the work required to build the initial version of the 
 - **Micro-goal**: Create the initial project directory structure and documentation.
 - **Test**: All files and directories listed in the initial plan exist. The project can be linted with `ruff` without errors.
 
-### Task 1.2: Implement Agent Kernel
+### Task 1.2: Implement Agent Kernel (Completed)
 - **Micro-goal**: Create the base `Agent` class and a registry for managing agent instances.
 - **Test**: A unit test can successfully create two different agent instances (e.g., `Code-Monkey Agent`, `GitHub Agent`) and register them in a central agent registry.
 
