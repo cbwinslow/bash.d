@@ -10,7 +10,7 @@ Building a comprehensive multi-agentic AI system with democratic problem-solving
 - [x] 2026-01-02T07:15:00Z Remove unused Workers older than 6 months.
 - [x] 2026-01-02T07:32:44Z Set `OPENROUTER_API_KEY` in Worker from `/home/cbwinslow/Documents/opendiscourse_mcp/.env` to fix 401.
 - [x] 2026-01-02T07:32:44Z Smoke test `/v1/chat/completions` for 200 response.
-- [ ] 2026-01-02T07:32:44Z Commit and push changes to GitHub.
+- [x] 2026-01-02T07:32:44Z Commit and push changes to GitHub.
 - [x] 2026-01-02T07:32:44Z Update legacy templates in `bash_functions.d/roo-commander/` to free models (optional).
 
 ## Recent Progress
