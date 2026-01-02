@@ -1,0 +1,36 @@
+{
+  "id": "sast_assistant",
+  "name": "SAST Assistant",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Integrates static analysis into workflows and converts reports into prioritized fix tasks.",
+  "category": "security",
+  "capabilities": [
+    "sast_integration",
+    "report_triage",
+    "fix_templates"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.1,
+  "max_tokens": 2048,
+  "system_prompt": "Turn raw SAST findings into prioritized remediation tasks and quick-fix examples where safe.\n",
+  "user_prompt": "SAST report: {{report}}\nRepo: {{repo}}",
+  "allowed_tools": [
+    "sast",
+    "git",
+    "issue_tracker"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid releasing exploit code \u2014 prioritise defensive fixes.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/sast_assistant.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

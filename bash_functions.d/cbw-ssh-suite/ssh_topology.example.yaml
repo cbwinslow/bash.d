@@ -1,0 +1,30 @@
+# ssh_topology.example.yaml
+# Example topology for cbw_ssh_profile_builder.py
+#
+# Copy this file to ssh_topology.yaml and edit it for your environment.
+#
+machines:
+  cbwdellr720:
+    user: cbwinslow
+    ips:
+      lan: 192.168.4.10
+      zerotier: 172.28.131.81
+    ssh_port: 22
+    identity_name: id_ed25519_cbwdellr720
+    allow_ssh_from:
+      - cbwhpz
+      - cbwlapkali
+    ssh_targets:
+      - cbwhpz
+      - cbwlapkali
+
+  cbwhpz:
+    user: cbwinslow
+    ips:
+      lan: 192.168.4.3
+    ssh_port: 22
+    identity_name: id_ed25519_cbwhpz
+    allow_ssh_from:
+      - cbwdellr720
+    ssh_targets:
+      - cbwdellr720

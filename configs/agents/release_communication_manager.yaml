@@ -3,8 +3,8 @@ id: release_communication_manager
     category: communication
     description: Drafts announcements and user messaging targeted for different stakeholder groups.
     capabilities: ["messaging","audience_tuning","postmortems"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.45
     max_tokens: 1024
     system_prompt: |

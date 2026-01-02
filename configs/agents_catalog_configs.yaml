@@ -4,8 +4,8 @@ agents:
     category: programming
     description: Build, review, and improve Python backend services (FastAPI, Django). Prioritize tests and secure defaults.
     capabilities: ["fastapi","django","unit_tests","integration_tests","code_review"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 4096
     system_prompt: |
@@ -20,8 +20,8 @@ agents:
     category: programming
     description: Develop and review full-stack JavaScript applications (React + Node.js). Provide bundling, CI, and deployment guidance.
     capabilities: ["react","node","api_design","frontend_performance"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -36,8 +36,8 @@ agents:
     category: programming
     description: Design typesafe APIs and libraries, propose type schemas and migration plans.
     capabilities: ["api_design","types","tsconfig","library_design"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -52,8 +52,8 @@ agents:
     category: programming
     description: Help write safe, efficient Rust code, suggest idiomatic patterns for memory-safety and concurrency.
     capabilities: ["rust","performance","concurrency","ffi"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 4096
     system_prompt: |
@@ -68,8 +68,8 @@ agents:
     category: programming
     description: Design and implement Go microservices, idiomatic error handling and pattern recommendations for Kubernetes deployments.
     capabilities: ["go","microservices","grpc","rest"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -84,8 +84,8 @@ agents:
     category: programming
     description: Help design and maintain large scale Java applications (Spring, JVM tuning). Produce architecture and migration plans.
     capabilities: ["java","spring","jvm_tuning","enterprise_architecture"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -100,8 +100,8 @@ agents:
     category: programming
     description: Create accessible UI components, implement responsive layouts and frontend performance improvements.
     capabilities: ["react","vue","svelte","a11y","css"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |
@@ -116,8 +116,8 @@ agents:
     category: programming
     description: Mobile app scaffolding, architecture choices, platform-specific packaging and CI guidance.
     capabilities: ["ios","android","flutter","react_native"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -132,8 +132,8 @@ agents:
     category: programming
     description: Improve developer ergonomics with CLI tooling, scripts, and environment setups.
     capabilities: ["bash","dotfiles","cli","devcontainers"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.3
     max_tokens: 1024
     system_prompt: |
@@ -148,8 +148,8 @@ agents:
     category: programming
     description: Performs code reviews with checklist, risk assessment, and suggested changes.
     capabilities: ["review","security","style","tests"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |
@@ -164,8 +164,8 @@ agents:
     category: programming
     description: Proposes safe, incremental refactors with tests and migration steps.
     capabilities: ["refactor","tests","backwards_compatibility"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |
@@ -180,8 +180,8 @@ agents:
     category: programming
     description: Builds IDE extensions and plugins, best practices for distribution and testing.
     capabilities: ["vscode","intellij","extension_api","packaging"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |
@@ -196,8 +196,8 @@ agents:
     category: programming
     description: Finds hotspots and suggests profiling strategies and micro-optimizations.
     capabilities: ["profiling","benchmarks","memory"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.1
     max_tokens: 1024
     system_prompt: |
@@ -212,8 +212,8 @@ agents:
     category: programming
     description: Plans migrations from legacy monoliths to modular or cloud-native services.
     capabilities: ["migration","modularization","risk_management"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -228,8 +228,8 @@ agents:
     category: programming
     description: Spots insecure code patterns and provides fixes and mitigations.
     capabilities: ["secure_code","threat_model","hardening"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |
@@ -244,8 +244,8 @@ agents:
     category: programming
     description: Updates dependencies, manages lockfiles, and suggests safe upgrade paths.
     capabilities: ["semver","vuln_scout","dependency_graph"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.18
     max_tokens: 2048
     system_prompt: |
@@ -260,8 +260,8 @@ agents:
     category: programming
     description: Builds robust CI/CD pipelines with parallelism, caching and rollback strategies.
     capabilities: ["github_actions","gitlab_ci","caching","rollback"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -276,8 +276,8 @@ agents:
     category: devops
     description: Creates optimized Dockerfiles and multi-stage builds, advises on scanning and CI image pipelines.
     capabilities: ["dockerfile","image_size","multi_stage","scanning"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |
@@ -292,8 +292,8 @@ agents:
     category: devops
     description: Writes k8s manifests, Helm charts, and provides troubleshooting and performance tuning.
     capabilities: ["kubernetes","helm","manifests","debugging"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.18
     max_tokens: 4096
     system_prompt: |
@@ -308,8 +308,8 @@ agents:
     category: devops
     description: Designs Terraform modules, state management and recommended practice for multi-environment stacks.
     capabilities: ["terraform","modules","state_management","policy"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.18
     max_tokens: 4096
     system_prompt: |
@@ -324,8 +324,8 @@ agents:
     category: devops
     description: High-level orchestration of CI/CD across repositories, with gating and dependency management.
     capabilities: ["multi_repo_pipelines","gating","promotion"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -340,8 +340,8 @@ agents:
     category: devops
     description: Performs automated and manual audits of infrastructure for insecure configs and exposures.
     capabilities: ["audit","iam","network","k8s_security"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 4096
     system_prompt: |
@@ -356,8 +356,8 @@ agents:
     category: devops
     description: Coordinates versioning, release notes, migration notes and release checklists.
     capabilities: ["versioning","release_notes","changelogs","release_checklist"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 1024
     system_prompt: |
@@ -372,8 +372,8 @@ agents:
     category: devops
     description: Recommends OS and container hardening steps, and automated remediation scripts.
     capabilities: ["hardening","audit","remediation_scripts"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |
@@ -388,8 +388,8 @@ agents:
     category: devops
     description: Designs backup and lifecycle policies for databases and object stores and test restore procedures.
     capabilities: ["backups","restore_testing","lifecycle"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -404,8 +404,8 @@ agents:
     category: devops
     description: Designs and troubleshoots network topology, DNS, and firewall rules.
     capabilities: ["dns","firewall","vpc","vpn"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -420,8 +420,8 @@ agents:
     category: devops
     description: Advises on vaults, secret rotation policies, automated secret scanning and lifecycle.
     capabilities: ["vaults","rotation","scanning","access_controls"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |
@@ -436,8 +436,8 @@ agents:
     category: security
     description: Scans for known vulnerabilities, assists with triage and remediation prioritization.
     capabilities: ["cve_lookup","dependency_scan","triage"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.05
     max_tokens: 2048
     system_prompt: |
@@ -452,8 +452,8 @@ agents:
     category: security
     description: Reviews code with emphasis on security issues and safe-by-default patterns.
     capabilities: ["review","remediation","threat_model"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |
@@ -468,8 +468,8 @@ agents:
     category: security
     description: Scans git history and artifacts for potential secret leaks and suggests revocation steps.
     capabilities: ["git_history_scan","regex_scanner","revocation_workflow"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.05
     max_tokens: 2048
     system_prompt: |
@@ -484,8 +484,8 @@ agents:
     category: security
     description: Produces ethical scope and detailed pentest plans, including mitigation verification steps.
     capabilities: ["threat_model","test_cases","scoping"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 4096
     system_prompt: |
@@ -500,8 +500,8 @@ agents:
     category: security
     description: Maps systems to compliance frameworks and identifies gaps plus remediation steps.
     capabilities: ["gap_analysis","controls_mapping","remediation"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 4096
     system_prompt: |
@@ -516,8 +516,8 @@ agents:
     category: security
     description: Integrates static analysis into workflows and converts reports into prioritized fix tasks.
     capabilities: ["sast_integration","report_triage","fix_templates"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.1
     max_tokens: 2048
     system_prompt: |
@@ -532,8 +532,8 @@ agents:
     category: testing
     description: Generates unit tests, mocks and edge-case coverage for functions and modules.
     capabilities: ["pytest","mocking","assertions"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |
@@ -548,8 +548,8 @@ agents:
     category: testing
     description: Designs integration tests across services and ensures environment isolation.
     capabilities: ["integration_tests","mocking","environment_isolation"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |
@@ -564,8 +564,8 @@ agents:
     category: testing
     description: Creates realistic load tests, benchmarks and performance reports.
     capabilities: ["load_tests","benchmarking","profiling"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.1
     max_tokens: 2048
     system_prompt: |
@@ -580,8 +580,8 @@ agents:
     category: testing
     description: Finds root causes for flaky tests and suggests resilient testing strategies.
     capabilities: ["flaky_detection","root_cause_analysis","fixes"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |
@@ -596,8 +596,8 @@ agents:
     category: testing
     description: Audits UI components for accessibility and provides fixes and verification instructions.
     capabilities: ["wcag","keyboard_nav","contrast","aria"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |
@@ -612,8 +612,8 @@ agents:
     category: testing
     description: Orchestrates automated QA, test reruns, and post-failure triage.
     capabilities: ["rerun_pipelines","rerun_failed_tests","triage"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |
@@ -628,8 +628,8 @@ agents:
     category: documentation
     description: Produce clear developer and user-facing documentation with examples and diagrams.
     capabilities: ["docs","examples","style_guides","diagrams"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |
@@ -644,8 +644,8 @@ agents:
     category: documentation
     description: Autogenerates OpenAPI docs, example requests and client snippets.
     capabilities: ["openapi","samples","client_snippets"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.18
     max_tokens: 4096
     system_prompt: |
@@ -660,8 +660,8 @@ agents:
     category: documentation
     description: Creates step-by-step tutorials and validation checks for learning outcomes.
     capabilities: ["step_by_step","validation","examples"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.3
     max_tokens: 2048
     system_prompt: |
@@ -676,8 +676,8 @@ agents:
     category: documentation
     description: Summarizes commits/PRs into user-friendly release notes and highlights.
     capabilities: ["commit_summaries","audience_tuning","formatting"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.35
     max_tokens: 1024
     system_prompt: |
@@ -692,8 +692,8 @@ agents:
     category: documentation
     description: Produces onboarding guides, checklists and a list of first tasks for contributors.
     capabilities: ["checklists","first_tasks","environment_setup"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.3
     max_tokens: 2048
     system_prompt: |
@@ -708,8 +708,8 @@ agents:
     category: documentation
     description: Creates semantic changelogs and highlight summaries using repository metadata.
     capabilities: ["commit_parse","semantic_mapping","formatting"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 1024
     system_prompt: |
@@ -724,8 +724,8 @@ agents:
     category: data
     description: Designs ETL, data pipelines and schema migration plans with idempotency.
     capabilities: ["etl","schema_design","transformations"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -740,8 +740,8 @@ agents:
     category: data
     description: Designs experiments, features and validates models for production-quality ML.
     capabilities: ["modeling","feature_engineering","evaluation"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 4096
     system_prompt: |
@@ -756,8 +756,8 @@ agents:
     category: data
     description: Designs dashboards and queries for critical KPIs and operational metrics.
     capabilities: ["sql","visualization","dashboard_design"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -772,8 +772,8 @@ agents:
     category: data
     description: Analyzes queries and explains optimization strategies including indexing and rewrite patterns.
     capabilities: ["explain_plan","indexes","query_rewrite"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |
@@ -788,8 +788,8 @@ agents:
     category: data
     description: Recommends anonymization, retention, and compliance practices for PII and sensitive data.
     capabilities: ["pii_detection","retention","anonymization"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |
@@ -804,8 +804,8 @@ agents:
     category: data
     description: Packages models, manages model registry and suggests monitoring and drift detection.
     capabilities: ["model_packaging","registry","monitoring"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -820,8 +820,8 @@ agents:
     category: design
     description: Synthesizes user research and proposes testable hypotheses and study plans.
     capabilities: ["surveys","interviews","analysis"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.35
     max_tokens: 2048
     system_prompt: |
@@ -836,8 +836,8 @@ agents:
     category: design
     description: Produces design tokens, visual systems, and quick mockups for product features.
     capabilities: ["style_guides","tokens","mockups"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.35
     max_tokens: 2048
     system_prompt: |
@@ -852,8 +852,8 @@ agents:
     category: design
     description: Designs inclusive patterns, accessibility tests and remediation strategies.
     capabilities: ["a11y_patterns","tests","recommendations"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |
@@ -868,8 +868,8 @@ agents:
     category: design
     description: Designs microinteractions, transitions and events with minimal performance impact.
     capabilities: ["microinteractions","motion","usability"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.3
     max_tokens: 2048
     system_prompt: |
@@ -884,8 +884,8 @@ agents:
     category: automation
     description: Compose and run multi-step automation flows with retry, idempotency and observability.
     capabilities: ["workflows","retry","idempotency","observability"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -900,8 +900,8 @@ agents:
     category: automation
     description: Manages scheduled tasks, drift detection and job health monitoring.
     capabilities: ["cron_management","retry_backoff","obs_metrics"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -916,8 +916,8 @@ agents:
     category: automation
     description: Automates local developer tasks, file generation and quick fixes while respecting local config.
     capabilities: ["shortcuts","script_generation","env_setup"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.4
     max_tokens: 1024
     system_prompt: |
@@ -932,8 +932,8 @@ agents:
     category: automation
     description: Produces scaffolding templates and code snippets for new projects and components.
     capabilities: ["templates","scaffolding","metadata"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.3
     max_tokens: 2048
     system_prompt: |
@@ -948,8 +948,8 @@ agents:
     category: automation
     description: Sets up reproducible dev environments with containers, devcontainers and startup scripts.
     capabilities: ["devcontainer","setup_scripts","startup_checks"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |
@@ -964,8 +964,8 @@ agents:
     category: automation
     description: Ranks backlog items with user-context and suggests scope for next sprint.
     capabilities: ["prioritization","estimation","roadmapping"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.4
     max_tokens: 1024
     system_prompt: |
@@ -980,8 +980,8 @@ agents:
     category: monitoring
     description: Defines SLIs/SLOs, design metrics and instrumentation plans for production systems.
     capabilities: ["sli_design","metrics_instrumentation","slo_monitoring"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |
@@ -996,8 +996,8 @@ agents:
     category: monitoring
     description: Parses logs, highlights anomalies and suggests probable root causes.
     capabilities: ["parsing","anomaly_detection","rca"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 4096
     system_prompt: |
@@ -1012,8 +1012,8 @@ agents:
     category: monitoring
     description: Creates runbooks for common alert conditions and on-call procedures.
     capabilities: ["runbooks","playbooks","oncall_support"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -1028,8 +1028,8 @@ agents:
     category: cloud
     description: Recommends rightsizing, savings plans and design changes to reduce cloud spend.
     capabilities: ["cost_analysis","rightsizing","recommendations"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |
@@ -1044,8 +1044,8 @@ agents:
     category: cloud
     description: Configures third-party SaaS connectors and platform-level integrations securely.
     capabilities: ["connectors","oauth","monitoring_integration"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |
@@ -1060,8 +1060,8 @@ agents:
     category: cloud
     description: Designs multi-cloud architecture, migration paths and replication strategies.
     capabilities: ["multi_cloud","migration","replication"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |
@@ -1076,8 +1076,8 @@ agents:
     category: communication
     description: Handles support triage, drafting replies and context-aware escalations.
     capabilities: ["triage","response_suggestions","escalation_rules"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.45
     max_tokens: 2048
     system_prompt: |
@@ -1092,8 +1092,8 @@ agents:
     category: communication
     description: Drafts announcements and user messaging targeted for different stakeholder groups.
     capabilities: ["messaging","audience_tuning","postmortems"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.45
     max_tokens: 1024
     system_prompt: |
@@ -1108,8 +1108,8 @@ agents:
     category: special
     description: Holistic architecture reviews with tradeoffs, cost/complexity analysis and scaling guidance.
     capabilities: ["high_level_review","tradeoffs","scalability"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 4096
     system_prompt: |
@@ -1124,8 +1124,8 @@ agents:
     category: special
     description: Audits AI systems for fairness, bias and unintended consequences, and suggests mitigations.
     capabilities: ["bias_detection","fairness_tests","mitigation_plans"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 4096
     system_prompt: |
@@ -1140,8 +1140,8 @@ agents:
     category: special
     description: Conducts literature reviews, summarizes findings and produces reproducible experiment plans.
     capabilities: ["lit_review","experiments","summaries"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.4
     max_tokens: 4096
     system_prompt: |

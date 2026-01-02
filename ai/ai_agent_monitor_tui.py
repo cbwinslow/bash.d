@@ -79,7 +79,7 @@ class AIAgentMonitorTUI:
                         self.agents[agent_name] = {
                             'enabled': agent_data.get('enabled', False),
                             'specialization': agent_data.get('specialization', 'general'),
-                            'model': agent_data.get('model', 'openrouter/auto'),
+                            'model': agent_data.get('model', 'meta-llama/llama-3.2-3b-instruct:free'),
                             'vitals': {
                                 'status': 'unknown',
                                 'last_check': None,

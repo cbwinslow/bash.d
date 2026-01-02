@@ -3,8 +3,8 @@ id: python_backend_developer
     category: programming
     description: Build, review, and improve Python backend services (FastAPI, Django). Prioritize tests and secure defaults.
     capabilities: ["fastapi","django","unit_tests","integration_tests","code_review"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 4096
     system_prompt: |

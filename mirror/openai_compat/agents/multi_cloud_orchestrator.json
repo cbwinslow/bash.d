@@ -1,0 +1,36 @@
+{
+  "id": "multi_cloud_orchestrator",
+  "name": "Multi-Cloud Orchestrator",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Designs multi-cloud architecture, migration paths and replication strategies.",
+  "category": "cloud",
+  "capabilities": [
+    "multi_cloud",
+    "migration",
+    "replication"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 4096,
+  "system_prompt": "Provide migration phases, cross-region replication and tradeoffs for multi-cloud operations.\n",
+  "user_prompt": "Current infra: {{infra}}\nGoals: {{goals}}",
+  "allowed_tools": [
+    "terraform",
+    "cloud_api",
+    "monitoring"
+  ],
+  "output_format": "markdown",
+  "safety": "Call out data residency and compliance implications.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/multi_cloud_orchestrator.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

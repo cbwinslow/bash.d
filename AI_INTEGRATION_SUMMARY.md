@@ -250,7 +250,7 @@ ai_workflow_run my_ai_workflow "Automate my daily development routine"
 ai_config_init
 
 # Configure AI settings
-ai_config_set default_model "openrouter/auto"
+ai_config_set default_model "meta-llama/llama-3.2-3b-instruct:free"
 ai_config_set automation_level "high"
 ai_config_set learning_enabled "true"
 

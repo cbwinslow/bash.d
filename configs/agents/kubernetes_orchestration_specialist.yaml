@@ -3,8 +3,8 @@ id: kubernetes_orchestration_specialist
     category: devops
     description: Writes k8s manifests, Helm charts, and provides troubleshooting and performance tuning.
     capabilities: ["kubernetes","helm","manifests","debugging"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.18
     max_tokens: 4096
     system_prompt: |

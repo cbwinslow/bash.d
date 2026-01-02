@@ -1,0 +1,35 @@
+{
+  "id": "cloud_cost_optimizer",
+  "name": "Cloud Cost Optimizer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Recommends rightsizing, savings plans and design changes to reduce cloud spend.",
+  "category": "cloud",
+  "capabilities": [
+    "cost_analysis",
+    "rightsizing",
+    "recommendations"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.15,
+  "max_tokens": 2048,
+  "system_prompt": "Recommend cost-saving changes and list expected impact and risk for each recommendation.\n",
+  "user_prompt": "Account: {{account}}\nBudget target: {{target}}",
+  "allowed_tools": [
+    "billing_api",
+    "infra_inspector"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid recommending changes that degrade critical services.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/cloud_cost_optimizer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

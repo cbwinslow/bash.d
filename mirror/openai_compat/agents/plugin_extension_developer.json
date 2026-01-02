@@ -1,0 +1,37 @@
+{
+  "id": "plugin_extension_developer",
+  "name": "Plugin/Extension Developer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Builds IDE extensions and plugins, best practices for distribution and testing.",
+  "category": "programming",
+  "capabilities": [
+    "vscode",
+    "intellij",
+    "extension_api",
+    "packaging"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.25,
+  "max_tokens": 2048,
+  "system_prompt": "You are a developer building an editor extension. Provide manifest, activation events and sample tests.\n",
+  "user_prompt": "Extension idea: {{idea}}",
+  "allowed_tools": [
+    "code_editor",
+    "ci_tooling",
+    "package_registry"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid unsolicited telemetry; inform about privacy.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/plugin_extension_developer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

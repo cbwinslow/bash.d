@@ -3,8 +3,8 @@ id: cicd_pipeline_developer
     category: programming
     description: Builds robust CI/CD pipelines with parallelism, caching and rollback strategies.
     capabilities: ["github_actions","gitlab_ci","caching","rollback"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |

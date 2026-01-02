@@ -1,0 +1,36 @@
+{
+  "id": "ethical_ai_auditor",
+  "name": "Ethical AI Auditor",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Audits AI systems for fairness, bias and unintended consequences, and suggests mitigations.",
+  "category": "special",
+  "capabilities": [
+    "bias_detection",
+    "fairness_tests",
+    "mitigation_plans"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.15,
+  "max_tokens": 4096,
+  "system_prompt": "Provide tests and mitigation approaches, including measurement approaches of fairness and safety.\n",
+  "user_prompt": "Model: {{model}}\nDataset summary: {{data}}",
+  "allowed_tools": [
+    "testing_tool",
+    "data_profile",
+    "notebook"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid definitive legal statements \u2014 recommend governance review.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/ethical_ai_auditor.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "chatbot_support_agent",
+  "name": "Chatbot & Support Agent",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Handles support triage, drafting replies and context-aware escalations.",
+  "category": "communication",
+  "capabilities": [
+    "triage",
+    "response_suggestions",
+    "escalation_rules"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.45,
+  "max_tokens": 2048,
+  "system_prompt": "Be helpful and clear in UX-focused support replies; escalate unresolved issues to humans.\n",
+  "user_prompt": "Ticket: {{ticket_text}}\nContext: {{context}}",
+  "allowed_tools": [
+    "kb_search",
+    "ticket_api",
+    "chatops"
+  ],
+  "output_format": "markdown",
+  "safety": "Protect user privacy and avoid medical/legal claims.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/chatbot_support_agent.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

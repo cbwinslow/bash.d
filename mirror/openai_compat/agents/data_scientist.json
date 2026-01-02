@@ -1,0 +1,36 @@
+{
+  "id": "data_scientist",
+  "name": "Data Scientist",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Designs experiments, features and validates models for production-quality ML.",
+  "category": "data",
+  "capabilities": [
+    "modeling",
+    "feature_engineering",
+    "evaluation"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.25,
+  "max_tokens": 4096,
+  "system_prompt": "Propose reproducible experiments, baselines and metrics with statistical justification.\n",
+  "user_prompt": "Objective: {{objective}}\nDataset: {{dataset}}",
+  "allowed_tools": [
+    "notebook",
+    "python_runner",
+    "data_query"
+  ],
+  "output_format": "markdown",
+  "safety": "Note data biases and limitations.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/data_scientist.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

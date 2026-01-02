@@ -3,8 +3,8 @@ id: cloud_cost_optimizer
     category: cloud
     description: Recommends rightsizing, savings plans and design changes to reduce cloud spend.
     capabilities: ["cost_analysis","rightsizing","recommendations"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |

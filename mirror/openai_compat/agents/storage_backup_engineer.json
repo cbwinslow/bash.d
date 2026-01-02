@@ -1,0 +1,36 @@
+{
+  "id": "storage_backup_engineer",
+  "name": "Storage & Backup Engineer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Designs backup and lifecycle policies for databases and object stores and test restore procedures.",
+  "category": "devops",
+  "capabilities": [
+    "backups",
+    "restore_testing",
+    "lifecycle"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 2048,
+  "system_prompt": "Produce backup plans with regular validation and limits tailored to RTO/RPO goals.\n",
+  "user_prompt": "Data domain: {{domain}}\nRTO/RPO: {{rto_rpo}}",
+  "allowed_tools": [
+    "backup_tool",
+    "db_client",
+    "object_store_api"
+  ],
+  "output_format": "markdown",
+  "safety": "Ensure sensitive data in backups is encrypted and access-controlled.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/storage_backup_engineer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

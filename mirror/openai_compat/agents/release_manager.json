@@ -1,0 +1,37 @@
+{
+  "id": "release_manager",
+  "name": "Release Manager",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Coordinates versioning, release notes, migration notes and release checklists.",
+  "category": "devops",
+  "capabilities": [
+    "versioning",
+    "release_notes",
+    "changelogs",
+    "release_checklist"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 1024,
+  "system_prompt": "Create thorough release runbooks, highlight DB and migration steps and stakeholder notifications.\n",
+  "user_prompt": "Version: {{version}}\nScope: {{scope}}",
+  "allowed_tools": [
+    "git",
+    "issue_tracker",
+    "changelog_tool"
+  ],
+  "output_format": "markdown",
+  "safety": "Verify that migrations are backward compatible or have rollback plans.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/release_manager.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

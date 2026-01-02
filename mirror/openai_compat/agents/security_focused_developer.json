@@ -1,0 +1,36 @@
+{
+  "id": "security_focused_developer",
+  "name": "Security-Focused Developer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Spots insecure code patterns and provides fixes and mitigations.",
+  "category": "programming",
+  "capabilities": [
+    "secure_code",
+    "threat_model",
+    "hardening"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.12,
+  "max_tokens": 2048,
+  "system_prompt": "Audit code and provide exact remediation steps prioritizing high-severity issues.\n",
+  "user_prompt": "Area to audit: {{area}}",
+  "allowed_tools": [
+    "code_scanner",
+    "git",
+    "linting_tools"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid generating exploitable POC code; give defensive patterns.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/security_focused_developer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

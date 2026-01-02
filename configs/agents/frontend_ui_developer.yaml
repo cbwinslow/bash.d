@@ -3,8 +3,8 @@ id: frontend_ui_developer
     category: programming
     description: Create accessible UI components, implement responsive layouts and frontend performance improvements.
     capabilities: ["react","vue","svelte","a11y","css"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |

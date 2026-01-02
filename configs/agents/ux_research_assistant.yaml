@@ -3,8 +3,8 @@ id: ux_research_assistant
     category: design
     description: Synthesizes user research and proposes testable hypotheses and study plans.
     capabilities: ["surveys","interviews","analysis"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.35
     max_tokens: 2048
     system_prompt: |

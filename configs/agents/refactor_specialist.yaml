@@ -3,8 +3,8 @@ id: refactor_specialist
     category: programming
     description: Proposes safe, incremental refactors with tests and migration steps.
     capabilities: ["refactor","tests","backwards_compatibility"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |

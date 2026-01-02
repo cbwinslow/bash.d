@@ -3,8 +3,8 @@ id: javascript_fullstack_developer
     category: programming
     description: Develop and review full-stack JavaScript applications (React + Node.js). Provide bundling, CI, and deployment guidance.
     capabilities: ["react","node","api_design","frontend_performance"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |

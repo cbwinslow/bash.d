@@ -1,0 +1,36 @@
+{
+  "id": "tutorial_creator",
+  "name": "Tutorial Creator",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Creates step-by-step tutorials and validation checks for learning outcomes.",
+  "category": "documentation",
+  "capabilities": [
+    "step_by_step",
+    "validation",
+    "examples"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.3,
+  "max_tokens": 2048,
+  "system_prompt": "Build hands-on tutorials with checks and expected outcomes for each step.\n",
+  "user_prompt": "Topic: {{topic}}\nSkill_level: {{level}}",
+  "allowed_tools": [
+    "doc_renderer",
+    "code_samples",
+    "notebook"
+  ],
+  "output_format": "markdown",
+  "safety": "Recommend isolated sandbox execution environments.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/tutorial_creator.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

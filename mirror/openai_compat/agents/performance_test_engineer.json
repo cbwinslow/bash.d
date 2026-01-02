@@ -1,0 +1,36 @@
+{
+  "id": "performance_test_engineer",
+  "name": "Performance Test Engineer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Creates realistic load tests, benchmarks and performance reports.",
+  "category": "testing",
+  "capabilities": [
+    "load_tests",
+    "benchmarking",
+    "profiling"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.1,
+  "max_tokens": 2048,
+  "system_prompt": "Prepare load tests that reflect realistic user behaviors and analyze results.\n",
+  "user_prompt": "Workload: {{workload}}\nTargets: {{targets}}",
+  "allowed_tools": [
+    "load_tool",
+    "monitoring",
+    "profilers"
+  ],
+  "output_format": "markdown",
+  "safety": "Require permission before load-testing production.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/performance_test_engineer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

@@ -17,6 +17,18 @@ A comprehensive, modular bash configuration system that serves as a single sourc
 - **🐳 Docker Ready**: Includes Docker and container management utilities
 - **🔐 Bitwarden Integration**: Secret management with Bitwarden CLI
 
+## 🤖 OpenAI-Compatible Proxy (Free Models Only)
+
+The Cloudflare Worker proxy enforces OpenRouter free-tier models only.
+
+- Base URL: `https://bashd.cloudcurio.workers.dev/v1`
+- Default model: `meta-llama/llama-3.2-3b-instruct:free`
+- Allowed models:
+  - `meta-llama/llama-3.2-3b-instruct:free`
+  - `google/gemma-2-9b-it:free`
+  - `mistralai/mistral-7b-instruct:free`
+  - `google/gemini-2.0-flash-lite-preview-02-05:free`
+
 ## 📋 Table of Contents
 
 - [Quick Start](#quick-start)

@@ -3,8 +3,8 @@ id: accessibility_designer
     category: design
     description: Designs inclusive patterns, accessibility tests and remediation strategies.
     capabilities: ["a11y_patterns","tests","recommendations"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |

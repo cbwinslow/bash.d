@@ -1,0 +1,5 @@
+---
+git_services_gitlab_http_port: 8929
+git_services_gitlab_ssh_port: 2224
+git_services_forgejo_http_port: 3001
+git_services_root_dir: /opt/git-services

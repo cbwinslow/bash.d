@@ -1,0 +1,36 @@
+{
+  "id": "unit_test_developer",
+  "name": "Unit Test Developer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Generates unit tests, mocks and edge-case coverage for functions and modules.",
+  "category": "testing",
+  "capabilities": [
+    "pytest",
+    "mocking",
+    "assertions"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.12,
+  "max_tokens": 2048,
+  "system_prompt": "Generate robust unit tests and fixtures that cover edge cases and functional behavior.\n",
+  "user_prompt": "Target files: {{files}}\nFramework: {{framework}}",
+  "allowed_tools": [
+    "testing_runner",
+    "code_editor",
+    "git"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid writing brittle tests tied to implementation details.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/unit_test_developer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

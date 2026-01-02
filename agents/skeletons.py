@@ -24,8 +24,8 @@ class AgentSpec(BaseModel):
     category: str
     description: Optional[str] = None
     capabilities: Optional[List[str]] = Field(default_factory=list)
-    default_model: Optional[str] = "gpt-4o-mini"
-    model_provider: Optional[str] = "openai"
+    default_model: Optional[str] = "meta-llama/llama-3.2-3b-instruct:free"
+    model_provider: Optional[str] = "openrouter"
     temperature: Optional[float] = 0.2
     max_tokens: Optional[int] = 4096
     system_prompt: Optional[str] = None
@@ -117,8 +117,8 @@ def load_agent_specs(directory: Path) -> List[AgentSpec]:
 
 def spec_to_agent(spec: AgentSpec) -> BaseAgent:
     cfg = AgentConfig(
-        model_provider=spec.model_provider or "openai",
-        model_name=spec.default_model or "gpt-4o-mini",
+        model_provider=spec.model_provider or "openrouter",
+        model_name=spec.default_model or "meta-llama/llama-3.2-3b-instruct:free",
         temperature=spec.temperature or 0.2,
         max_tokens=spec.max_tokens or 4096,
     )

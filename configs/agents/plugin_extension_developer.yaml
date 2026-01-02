@@ -3,8 +3,8 @@ id: plugin_extension_developer
     category: programming
     description: Builds IDE extensions and plugins, best practices for distribution and testing.
     capabilities: ["vscode","intellij","extension_api","packaging"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 2048
     system_prompt: |

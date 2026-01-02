@@ -1,0 +1,45 @@
+---
+- name: Ensure Docker packages are installed
+  ansible.builtin.package:
+    name:
+      - docker.io
+      - docker-compose-plugin
+    state: present
+  become: true
+
+- name: Ensure Docker service is enabled and running
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true
+  become: true
+
+- name: Create git-services directory structure
+  ansible.builtin.file:
+    path: "{{ git_services_root_dir }}/{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  with_items:
+    - gitlab/config
+    - gitlab/logs
+    - gitlab/data
+    - forgejo/data
+  become: true
+
+- name: Deploy docker-compose.yml for GitLab + Forgejo
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "{{ git_services_root_dir }}/docker-compose.yml"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart git services
+  become: true
+
+- name: Bring up git services stack
+  community.docker.docker_compose:
+    project_src: "{{ git_services_root_dir }}"
+    state: present
+  become: true

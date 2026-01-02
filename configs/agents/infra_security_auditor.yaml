@@ -3,8 +3,8 @@ id: infra_security_auditor
     category: devops
     description: Performs automated and manual audits of infrastructure for insecure configs and exposures.
     capabilities: ["audit","iam","network","k8s_security"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 4096
     system_prompt: |

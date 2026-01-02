@@ -43,10 +43,10 @@ ai_agent_init() {
     # Create main configuration
     cat > "$AI_CONFIG_FILE" << 'EOF'
 {
-    "default_model": "openrouter/auto",
+    "default_model": "meta-llama/llama-3.2-3b-instruct:free",
     "profiles": {
         "default": {
-            "model": "openrouter/auto",
+            "model": "meta-llama/llama-3.2-3b-instruct:free",
             "temperature": 0.7,
             "max_tokens": 2048,
             "system_prompt": "You are a highly intelligent bash automation assistant with deep knowledge of all bash.d systems."
@@ -720,7 +720,7 @@ ai_agent_register() {
        '.ai_agents[$name] = {
            "enabled": true,
            "specialization": $specialization,
-           "model": "openrouter/auto",
+           "model": "meta-llama/llama-3.2-3b-instruct:free",
            "vitals": {
                "status": "unknown",
                "last_check": null,

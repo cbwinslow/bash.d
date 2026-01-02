@@ -3,8 +3,8 @@ id: storage_backup_engineer
     category: devops
     description: Designs backup and lifecycle policies for databases and object stores and test restore procedures.
     capabilities: ["backups","restore_testing","lifecycle"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |

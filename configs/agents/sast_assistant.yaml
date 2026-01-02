@@ -3,8 +3,8 @@ id: sast_assistant
     category: security
     description: Integrates static analysis into workflows and converts reports into prioritized fix tasks.
     capabilities: ["sast_integration","report_triage","fix_templates"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.1
     max_tokens: 2048
     system_prompt: |

@@ -1,0 +1,6 @@
+---
+- name: Restart git services
+  community.docker.docker_compose:
+    project_src: "{{ git_services_root_dir }}"
+    state: restarted
+  become: true

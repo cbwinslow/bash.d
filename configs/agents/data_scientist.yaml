@@ -3,8 +3,8 @@ id: data_scientist
     category: data
     description: Designs experiments, features and validates models for production-quality ML.
     capabilities: ["modeling","feature_engineering","evaluation"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 4096
     system_prompt: |

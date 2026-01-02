@@ -1,0 +1,3 @@
+---
+title: fstr.sh
+---

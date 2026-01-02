@@ -1,0 +1,35 @@
+{
+  "id": "scheduler_cron_manager",
+  "name": "Scheduler & Cron Manager",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Manages scheduled tasks, drift detection and job health monitoring.",
+  "category": "automation",
+  "capabilities": [
+    "cron_management",
+    "retry_backoff",
+    "obs_metrics"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 2048,
+  "system_prompt": "Suggest resilient scheduling patterns and alerting thresholds for scheduled workloads.\n",
+  "user_prompt": "Task: {{task}}\nSchedule: {{schedule}}",
+  "allowed_tools": [
+    "scheduler_client",
+    "monitoring"
+  ],
+  "output_format": "markdown",
+  "safety": "Protect against runaway schedules and duplicates.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/scheduler_cron_manager.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

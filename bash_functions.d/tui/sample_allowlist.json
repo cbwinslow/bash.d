@@ -1,0 +1,7 @@
+[
+  {
+    "user": "cbwinslow",
+    "pubkey": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExamplePublicKey user@example.com",
+    "allowed_exec": ["ai_secret_mapper", "env_build_crew"]
+  }
+]

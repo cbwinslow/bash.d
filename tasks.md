@@ -3,6 +3,21 @@
 ## Project Overview
 Building a comprehensive multi-agentic AI system with democratic problem-solving, agent teams, MCP integration, Docker orchestration, and Cloudflare deployment.
 
+## Initiative: OpenAI-Compatible Proxy (Free Models) — 2026-01-02
+- [x] 2026-01-02T06:52:33Z Deploy `bashd` OpenAI-compatible Worker.
+- [x] 2026-01-02T06:55:00Z Add MCP entry targeting `https://bashd.cloudcurio.workers.dev/v1`.
+- [x] 2026-01-02T07:12:00Z Enforce free-model allowlist and defaults across agent configs.
+- [x] 2026-01-02T07:15:00Z Remove unused Workers older than 6 months.
+- [x] 2026-01-02T07:32:44Z Set `OPENROUTER_API_KEY` in Worker from `/home/cbwinslow/Documents/opendiscourse_mcp/.env` to fix 401.
+- [x] 2026-01-02T07:32:44Z Smoke test `/v1/chat/completions` for 200 response.
+- [ ] 2026-01-02T07:32:44Z Commit and push changes to GitHub.
+- [x] 2026-01-02T07:32:44Z Update legacy templates in `bash_functions.d/roo-commander/` to free models (optional).
+
+## Recent Progress
+- 2026-01-02: Deployed OpenAI-compatible proxy at `https://bashd.cloudcurio.workers.dev` with free-model allowlist.
+- 2026-01-02: Updated agent configs to OpenRouter free defaults and synced mirror agents.
+- 2026-01-02: Added MCP entry for the proxy and cleaned up unused Workers.
+
 ## High-Priority Tasks
 
 ### Phase 1: Core Infrastructure ⏳
@@ -291,8 +306,8 @@ Building a comprehensive multi-agentic AI system with democratic problem-solving
 
 ## Current Status
 - **Phase**: 1 - Core Infrastructure
-- **Progress**: 5% (tasks.md created)
-- **Next Steps**: Create directory structure and set up Python environment
+- **Progress**: 50% (directory structure, Python venv, core deps installed)
+- **Next Steps**: Begin Phase 2 - Agent Definitions
 
 ## Notes
 - All agents must be OpenAI compatible

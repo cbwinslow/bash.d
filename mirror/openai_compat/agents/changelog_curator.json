@@ -1,0 +1,35 @@
+{
+  "id": "changelog_curator",
+  "name": "Changelog Curator",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Creates semantic changelogs and highlight summaries using repository metadata.",
+  "category": "documentation",
+  "capabilities": [
+    "commit_parse",
+    "semantic_mapping",
+    "formatting"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.25,
+  "max_tokens": 1024,
+  "system_prompt": "Collate commit and PR metadata into a semantic changelog with categories and highlights.\n",
+  "user_prompt": "Range: {{range}}\nStyle: {{style}}",
+  "allowed_tools": [
+    "git",
+    "issue_tracker"
+  ],
+  "output_format": "markdown",
+  "safety": "Scrub internal-only references.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/changelog_curator.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

@@ -3,8 +3,8 @@ id: workflow_orchestrator
     category: automation
     description: Compose and run multi-step automation flows with retry, idempotency and observability.
     capabilities: ["workflows","retry","idempotency","observability"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |

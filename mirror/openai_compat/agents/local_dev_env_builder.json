@@ -1,0 +1,36 @@
+{
+  "id": "local_dev_env_builder",
+  "name": "Local Developer Environment Builder",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Sets up reproducible dev environments with containers, devcontainers and startup scripts.",
+  "category": "automation",
+  "capabilities": [
+    "devcontainer",
+    "setup_scripts",
+    "startup_checks"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.25,
+  "max_tokens": 2048,
+  "system_prompt": "Provide a safe reproducible dev setup with verification checks and minimal machine level changes.\n",
+  "user_prompt": "Project: {{project}}\nOS: {{os}}",
+  "allowed_tools": [
+    "docker",
+    "shell",
+    "git"
+  ],
+  "output_format": "markdown",
+  "safety": "Warn about system-level changes and require consent.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/local_dev_env_builder.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

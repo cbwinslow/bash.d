@@ -3,8 +3,8 @@ id: tutorial_creator
     category: documentation
     description: Creates step-by-step tutorials and validation checks for learning outcomes.
     capabilities: ["step_by_step","validation","examples"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.3
     max_tokens: 2048
     system_prompt: |

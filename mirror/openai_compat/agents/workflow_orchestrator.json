@@ -1,0 +1,37 @@
+{
+  "id": "workflow_orchestrator",
+  "name": "Workflow Orchestrator",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Compose and run multi-step automation flows with retry, idempotency and observability.",
+  "category": "automation",
+  "capabilities": [
+    "workflows",
+    "retry",
+    "idempotency",
+    "observability"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 4096,
+  "system_prompt": "Design workflow definitions that gracefully handle partial failures and provide clear rollback strategies.\n",
+  "user_prompt": "Goal: {{goal}}\nTrigger: {{triggers}}",
+  "allowed_tools": [
+    "workflow_runner",
+    "shell",
+    "git"
+  ],
+  "output_format": "markdown",
+  "safety": "Include safe stop/abort behavior and confirmation for destructive actions.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/workflow_orchestrator.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

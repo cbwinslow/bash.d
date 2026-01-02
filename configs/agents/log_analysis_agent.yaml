@@ -3,8 +3,8 @@ id: log_analysis_agent
     category: monitoring
     description: Parses logs, highlights anomalies and suggests probable root causes.
     capabilities: ["parsing","anomaly_detection","rca"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 4096
     system_prompt: |

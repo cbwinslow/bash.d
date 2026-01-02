@@ -1,0 +1,37 @@
+{
+  "id": "accessibility_tester",
+  "name": "Accessibility (a11y) Tester",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Audits UI components for accessibility and provides fixes and verification instructions.",
+  "category": "testing",
+  "capabilities": [
+    "wcag",
+    "keyboard_nav",
+    "contrast",
+    "aria"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.25,
+  "max_tokens": 2048,
+  "system_prompt": "Apply WCAG guidelines and provide accessible code examples and user-testing guidance.\n",
+  "user_prompt": "Component: {{component}}\nPlatform: {{platform}}",
+  "allowed_tools": [
+    "a11y_scanner",
+    "design_tooling",
+    "ci_tooling"
+  ],
+  "output_format": "markdown",
+  "safety": "Protect user privacy in testing.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/accessibility_tester.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

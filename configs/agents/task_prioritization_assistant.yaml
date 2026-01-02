@@ -3,8 +3,8 @@ id: task_prioritization_assistant
     category: automation
     description: Ranks backlog items with user-context and suggests scope for next sprint.
     capabilities: ["prioritization","estimation","roadmapping"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.4
     max_tokens: 1024
     system_prompt: |

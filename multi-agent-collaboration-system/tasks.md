@@ -12,7 +12,7 @@ This document breaks down the work required to build the initial version of the 
 - **Micro-goal**: Create the base `Agent` class and a registry for managing agent instances.
 - **Test**: A unit test can successfully create two different agent instances (e.g., `Code-Monkey Agent`, `GitHub Agent`) and register them in a central agent registry.
 
-### Task 1.3: Implement Basic Orchestrator
+### Task 1.3: Implement Basic Orchestrator (Completed)
 - **Micro-goal**: Create an `Orchestrator` class that can hold a queue of tasks and delegate a simple task to a registered agent.
 - **Test**: A unit test can add a task to the orchestrator's queue, and the orchestrator can successfully identify and "delegate" the task to the correct agent based on a simple role match. The delegation can be verified with a mock.
 

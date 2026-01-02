@@ -3,8 +3,8 @@ id: data_engineer
     category: data
     description: Designs ETL, data pipelines and schema migration plans with idempotency.
     capabilities: ["etl","schema_design","transformations"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |

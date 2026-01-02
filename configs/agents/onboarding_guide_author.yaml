@@ -3,8 +3,8 @@ id: onboarding_guide_author
     category: documentation
     description: Produces onboarding guides, checklists and a list of first tasks for contributors.
     capabilities: ["checklists","first_tasks","environment_setup"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.3
     max_tokens: 2048
     system_prompt: |

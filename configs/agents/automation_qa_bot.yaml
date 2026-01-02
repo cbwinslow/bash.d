@@ -3,8 +3,8 @@ id: automation_qa_bot
     category: testing
     description: Orchestrates automated QA, test reruns, and post-failure triage.
     capabilities: ["rerun_pipelines","rerun_failed_tests","triage"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 2048
     system_prompt: |

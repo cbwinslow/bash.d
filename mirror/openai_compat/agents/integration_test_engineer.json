@@ -1,0 +1,36 @@
+{
+  "id": "integration_test_engineer",
+  "name": "Integration Test Engineer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Designs integration tests across services and ensures environment isolation.",
+  "category": "testing",
+  "capabilities": [
+    "integration_tests",
+    "mocking",
+    "environment_isolation"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.15,
+  "max_tokens": 2048,
+  "system_prompt": "Design integration tests that validate real-world flows while isolating side effects and state.\n",
+  "user_prompt": "Services: {{services}}\nData: {{sample_data}}",
+  "allowed_tools": [
+    "test_runner",
+    "service_stubs",
+    "ci_tooling"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid running destructive tests on production.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/integration_test_engineer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

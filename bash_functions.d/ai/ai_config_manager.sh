@@ -39,7 +39,7 @@ ai_config_init() {
     cat > "$AI_CONFIG_FILE" << 'EOF'
 {
     "version": "1.0.0",
-    "default_model": "openrouter/auto",
+    "default_model": "meta-llama/llama-3.2-3b-instruct:free",
     "automation_level": "moderate",
     "learning_enabled": true,
     "memory_limit": 100,
@@ -94,7 +94,7 @@ ai_config_init() {
     },
     "profiles": {
         "default": {
-            "model": "openrouter/auto",
+            "model": "meta-llama/llama-3.2-3b-instruct:free",
             "temperature": 0.7,
             "max_tokens": 2048,
             "system_prompt": "You are a highly intelligent bash automation assistant with deep knowledge of all bash.d systems."
@@ -104,17 +104,17 @@ ai_config_init() {
     "ai_agents": {
         "documentation_agent": {
             "enabled": true,
-            "model": "openrouter/auto",
+            "model": "meta-llama/llama-3.2-3b-instruct:free",
             "specialization": "documentation"
         },
         "automation_agent": {
             "enabled": true,
-            "model": "openrouter/auto",
+            "model": "meta-llama/llama-3.2-3b-instruct:free",
             "specialization": "automation"
         },
         "decision_agent": {
             "enabled": true,
-            "model": "openrouter/auto",
+            "model": "meta-llama/llama-3.2-3b-instruct:free",
             "specialization": "decision_making"
         }
     }
@@ -356,7 +356,7 @@ Examples:
   ai_config_init
   ai_config_add_monitoring
   ai_config_setup_logging
-  ai_config_set default_model "openrouter/auto"
+  ai_config_set default_model "meta-llama/llama-3.2-3b-instruct:free"
   ai_config_get automation_level
   ai_config_integrate documentation
   ai_config_profile create development

@@ -110,7 +110,7 @@ bashd AI agent commands:
 
 Environment variables:
   OPENROUTER_API_KEY  - Required for AI interactions
-  BASHD_AI_MODEL      - Model to use (default: openrouter/auto)
+  BASHD_AI_MODEL      - Model to use (default: meta-llama/llama-3.2-3b-instruct:free)
 EOF
 }
 

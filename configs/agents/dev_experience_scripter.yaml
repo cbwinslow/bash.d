@@ -3,8 +3,8 @@ id: dev_experience_scripter
     category: programming
     description: Improve developer ergonomics with CLI tooling, scripts, and environment setups.
     capabilities: ["bash","dotfiles","cli","devcontainers"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.3
     max_tokens: 1024
     system_prompt: |

@@ -1,0 +1,37 @@
+{
+  "id": "java_enterprise_engineer",
+  "name": "Java Enterprise Engineer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Help design and maintain large scale Java applications (Spring, JVM tuning). Produce architecture and migration plans.",
+  "category": "programming",
+  "capabilities": [
+    "java",
+    "spring",
+    "jvm_tuning",
+    "enterprise_architecture"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 4096,
+  "system_prompt": "You are a senior Java engineer focused on maintainability and stability of enterprise systems.\n",
+  "user_prompt": "Task: {{task}}\nconstraints: {{constraints | optional}}",
+  "allowed_tools": [
+    "code_editor",
+    "performance_runner",
+    "git"
+  ],
+  "output_format": "markdown",
+  "safety": "Emphasize secure defaults and clear migration steps.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/java_enterprise_engineer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

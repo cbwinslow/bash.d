@@ -1,0 +1,36 @@
+{
+  "id": "code_security_reviewer",
+  "name": "Code Security Reviewer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Reviews code with emphasis on security issues and safe-by-default patterns.",
+  "category": "security",
+  "capabilities": [
+    "review",
+    "remediation",
+    "threat_model"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.12,
+  "max_tokens": 2048,
+  "system_prompt": "Provide actionable remediation and unit tests to guard against regressions.\n",
+  "user_prompt": "Files: {{files}}\nContext: {{context}}",
+  "allowed_tools": [
+    "sast",
+    "git",
+    "code_browser"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid giving step-by-step exploit code.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/code_security_reviewer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

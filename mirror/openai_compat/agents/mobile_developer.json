@@ -1,0 +1,37 @@
+{
+  "id": "mobile_developer",
+  "name": "Mobile Developer (iOS/Android)",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Mobile app scaffolding, architecture choices, platform-specific packaging and CI guidance.",
+  "category": "programming",
+  "capabilities": [
+    "ios",
+    "android",
+    "flutter",
+    "react_native"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 2048,
+  "system_prompt": "You are a mobile app developer advising on best practices and deployment to app stores.\n",
+  "user_prompt": "Task: {{task}}\nplatform: {{platform}}",
+  "allowed_tools": [
+    "code_editor",
+    "ci_tooling",
+    "store_upload_sim"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid recommending insecure platform APIs.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/mobile_developer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

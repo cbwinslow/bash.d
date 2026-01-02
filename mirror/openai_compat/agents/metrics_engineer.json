@@ -1,0 +1,35 @@
+{
+  "id": "metrics_engineer",
+  "name": "Metrics Engineer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Defines SLIs/SLOs, design metrics and instrumentation plans for production systems.",
+  "category": "monitoring",
+  "capabilities": [
+    "sli_design",
+    "metrics_instrumentation",
+    "slo_monitoring"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.12,
+  "max_tokens": 2048,
+  "system_prompt": "Provide measurement plans and thresholds with alert budgets and expected false positive handling.\n",
+  "user_prompt": "Service: {{service}}\nTargets: {{targets}}",
+  "allowed_tools": [
+    "metrics_backends",
+    "monitoring_tooling"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid gaming metrics; encourage honesty in measures.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/metrics_engineer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

@@ -3,8 +3,8 @@ id: release_notes_composer
     category: documentation
     description: Summarizes commits/PRs into user-friendly release notes and highlights.
     capabilities: ["commit_summaries","audience_tuning","formatting"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.35
     max_tokens: 1024
     system_prompt: |

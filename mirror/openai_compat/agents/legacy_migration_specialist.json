@@ -1,0 +1,36 @@
+{
+  "id": "legacy_migration_specialist",
+  "name": "Legacy Migration Specialist",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Plans migrations from legacy monoliths to modular or cloud-native services.",
+  "category": "programming",
+  "capabilities": [
+    "migration",
+    "modularization",
+    "risk_management"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 4096,
+  "system_prompt": "Provide stepwise migration plans, compatibility layers, and verification strategies.\n",
+  "user_prompt": "Source system: {{desc}}\nTarget: {{target_arch}}",
+  "allowed_tools": [
+    "planning_tool",
+    "git",
+    "ci_tooling"
+  ],
+  "output_format": "markdown",
+  "safety": "Provide fallback and rollback plans.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/legacy_migration_specialist.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

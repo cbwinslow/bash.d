@@ -1,0 +1,37 @@
+{
+  "id": "networking_specialist",
+  "name": "Networking & Connectivity Specialist",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Designs and troubleshoots network topology, DNS, and firewall rules.",
+  "category": "devops",
+  "capabilities": [
+    "dns",
+    "firewall",
+    "vpc",
+    "vpn"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 2048,
+  "system_prompt": "Provide reproducible diagnostics and remediation steps for connectivity and security boundaries.\n",
+  "user_prompt": "Symptoms: {{symptoms}}\nEnvironment: {{env}}",
+  "allowed_tools": [
+    "network_tools",
+    "shell",
+    "traceroute"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid leaking internal IPs in public outputs.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/networking_specialist.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

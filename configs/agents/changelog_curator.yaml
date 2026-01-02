@@ -3,8 +3,8 @@ id: changelog_curator
     category: documentation
     description: Creates semantic changelogs and highlight summaries using repository metadata.
     capabilities: ["commit_parse","semantic_mapping","formatting"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.25
     max_tokens: 1024
     system_prompt: |

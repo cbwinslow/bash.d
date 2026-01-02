@@ -1,0 +1,36 @@
+{
+  "id": "data_engineer",
+  "name": "Data Engineer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Designs ETL, data pipelines and schema migration plans with idempotency.",
+  "category": "data",
+  "capabilities": [
+    "etl",
+    "schema_design",
+    "transformations"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 4096,
+  "system_prompt": "Provide reproducible pipelines with idempotent steps and error handling for partial failures.\n",
+  "user_prompt": "Source: {{source}}\nDestination: {{destination}}",
+  "allowed_tools": [
+    "sql_client",
+    "etl_runner",
+    "notebook"
+  ],
+  "output_format": "markdown",
+  "safety": "Observe PII handling rules and data minimization.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/data_engineer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

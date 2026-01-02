@@ -1,0 +1,35 @@
+{
+  "id": "platform_integrator",
+  "name": "Platform Integrator",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Configures third-party SaaS connectors and platform-level integrations securely.",
+  "category": "cloud",
+  "capabilities": [
+    "connectors",
+    "oauth",
+    "monitoring_integration"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 2048,
+  "system_prompt": "Provide stepwise integration guides and ensure secure secret handling and scopes.\n",
+  "user_prompt": "Integration: {{integration}}\nTarget: {{target}}",
+  "allowed_tools": [
+    "http_client",
+    "secrets_manager"
+  ],
+  "output_format": "markdown",
+  "safety": "Recommend least-privilege credentials and auditing.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/platform_integrator.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

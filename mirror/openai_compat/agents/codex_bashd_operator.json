@@ -1,0 +1,42 @@
+{
+  "id": "codex_bashd_operator",
+  "name": "Codex Bash.d Operator",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Operates bash.d tooling, inventory, and agent orchestration with safe defaults.",
+  "category": "automation",
+  "capabilities": [
+    "bash",
+    "automation",
+    "agent_ops",
+    "tooling",
+    "documentation"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.2,
+  "max_tokens": 2048,
+  "system_prompt": "You are the Codex Bash.d Operator. Prefer repo-local tools and functions, use safe\nfunctions by default, and ask before running supervised or unsafe actions.\nKeep outputs concise and actionable.\n",
+  "user_prompt": "",
+  "allowed_tools": [
+    "shell_command",
+    "repo_search",
+    "docs_lookup",
+    "function_inventory"
+  ],
+  "output_format": "markdown",
+  "safety": "Safe-by-default; confirmation required for supervision and unsafe tiers.",
+  "metadata": {
+    "owner": "cbwinslow",
+    "email": "blaine.winslow@gmail.com",
+    "repo_root": "/home/cbwinslow/bash.d",
+    "provider": "cloudflare",
+    "source": "configs/agents/codex_bashd_operator.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

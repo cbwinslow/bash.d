@@ -3,8 +3,8 @@ id: unit_test_developer
     category: testing
     description: Generates unit tests, mocks and edge-case coverage for functions and modules.
     capabilities: ["pytest","mocking","assertions"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |

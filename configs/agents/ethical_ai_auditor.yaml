@@ -3,8 +3,8 @@ id: ethical_ai_auditor
     category: special
     description: Audits AI systems for fairness, bias and unintended consequences, and suggests mitigations.
     capabilities: ["bias_detection","fairness_tests","mitigation_plans"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 4096
     system_prompt: |

@@ -3,8 +3,8 @@ id: rust_systems_programmer
     category: programming
     description: Help write safe, efficient Rust code, suggest idiomatic patterns for memory-safety and concurrency.
     capabilities: ["rust","performance","concurrency","ffi"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.15
     max_tokens: 4096
     system_prompt: |

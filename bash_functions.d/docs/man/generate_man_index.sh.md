@@ -1,0 +1,4 @@
+---
+title: generate_man_index.sh
+---
+generate_man_index.sh - scan bash_functions.d and generate docs/man/*.md files from top-of-file comments

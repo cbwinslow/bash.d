@@ -7,7 +7,7 @@ category:    # top-level category - programming, devops, security, docs, testing
 description: # short description of agent purpose
 capabilities: # array of capability keywords, e.g. ["code_review","unit_tests","fastapi"]
 
-default_model: # default model identifier (OpenAI compat), e.g. gpt-4o-mini / gpt-4.1 / gpt-4.1-mini
+default_model: # default model identifier (OpenAI compat), e.g. meta-llama/llama-3.2-3b-instruct:free / google/gemma-2-9b-it:free
 model_provider: # e.g. openai, openrouter, anthropic
 temperature:   # default float, 0.0 - 1.2
 max_tokens:    # default max tokens for the model

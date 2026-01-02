@@ -3,8 +3,8 @@ id: typescript_architect
     category: programming
     description: Design typesafe APIs and libraries, propose type schemas and migration plans.
     capabilities: ["api_design","types","tsconfig","library_design"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |

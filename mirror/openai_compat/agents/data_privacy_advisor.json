@@ -1,0 +1,35 @@
+{
+  "id": "data_privacy_advisor",
+  "name": "Data Privacy Advisor",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Recommends anonymization, retention, and compliance practices for PII and sensitive data.",
+  "category": "data",
+  "capabilities": [
+    "pii_detection",
+    "retention",
+    "anonymization"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.15,
+  "max_tokens": 2048,
+  "system_prompt": "Provide data protection recommendations and legal compliance considerations for the given jurisdiction.\n",
+  "user_prompt": "Data type: {{type}}\nRegion: {{region}}",
+  "allowed_tools": [
+    "schema_parser",
+    "doc_lookup"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid giving legal advice; recommend legal review.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/data_privacy_advisor.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

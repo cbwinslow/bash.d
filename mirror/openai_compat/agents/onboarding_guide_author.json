@@ -1,0 +1,36 @@
+{
+  "id": "onboarding_guide_author",
+  "name": "Onboarding Guide Author",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Produces onboarding guides, checklists and a list of first tasks for contributors.",
+  "category": "documentation",
+  "capabilities": [
+    "checklists",
+    "first_tasks",
+    "environment_setup"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.3,
+  "max_tokens": 2048,
+  "system_prompt": "Create reproducible onboarding checklists with validation steps and quick verifiable tasks.\n",
+  "user_prompt": "Role: {{role}}\nRepository: {{repo}}",
+  "allowed_tools": [
+    "doc_renderer",
+    "shell",
+    "git"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid exposing secrets or private endpoints.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/onboarding_guide_author.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

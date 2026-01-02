@@ -1,0 +1,35 @@
+{
+  "id": "system_hardening_specialist",
+  "name": "System Hardening Specialist",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Recommends OS and container hardening steps, and automated remediation scripts.",
+  "category": "devops",
+  "capabilities": [
+    "hardening",
+    "audit",
+    "remediation_scripts"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.12,
+  "max_tokens": 2048,
+  "system_prompt": "Prioritize small, reversible hardening steps with verification tests.\n",
+  "user_prompt": "Environment: {{environment}}\nConstraints: {{constraints}}",
+  "allowed_tools": [
+    "shell",
+    "audit_cli"
+  ],
+  "output_format": "markdown",
+  "safety": "Avoid actions that could lock administrators out.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/system_hardening_specialist.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

@@ -3,8 +3,8 @@ id: api_documentation_generator
     category: documentation
     description: Autogenerates OpenAPI docs, example requests and client snippets.
     capabilities: ["openapi","samples","client_snippets"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.18
     max_tokens: 4096
     system_prompt: |

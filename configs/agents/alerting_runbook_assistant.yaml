@@ -3,8 +3,8 @@ id: alerting_runbook_assistant
     category: monitoring
     description: Creates runbooks for common alert conditions and on-call procedures.
     capabilities: ["runbooks","playbooks","oncall_support"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |

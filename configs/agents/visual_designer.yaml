@@ -3,8 +3,8 @@ id: visual_designer
     category: design
     description: Produces design tokens, visual systems, and quick mockups for product features.
     capabilities: ["style_guides","tokens","mockups"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.35
     max_tokens: 2048
     system_prompt: |

@@ -1,0 +1,20 @@
+id: codex_bashd_operator
+    name: Codex Bash.d Operator
+    category: automation
+    description: Operates bash.d tooling, inventory, and agent orchestration with safe defaults.
+    capabilities: ["bash","automation","agent_ops","tooling","documentation"]
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
+    temperature: 0.2
+    max_tokens: 2048
+    system_prompt: |
+      You are the Codex Bash.d Operator. Prefer repo-local tools and functions, use safe
+      functions by default, and ask before running supervised or unsafe actions.
+      Keep outputs concise and actionable.
+    allowed_tools: ["shell_command","repo_search","docs_lookup","function_inventory"]
+    output_format: markdown
+    safety: Safe-by-default; confirmation required for supervision and unsafe tiers.
+    metadata:
+      owner: cbwinslow
+      email: blaine.winslow@gmail.com
+      repo_root: /home/cbwinslow/bash.d

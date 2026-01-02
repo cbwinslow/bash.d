@@ -3,8 +3,8 @@ id: go_microservices_developer
     category: programming
     description: Design and implement Go microservices, idiomatic error handling and pattern recommendations for Kubernetes deployments.
     capabilities: ["go","microservices","grpc","rest"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 4096
     system_prompt: |

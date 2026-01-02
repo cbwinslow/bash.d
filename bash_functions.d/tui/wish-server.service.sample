@@ -1,0 +1,14 @@
+[Unit]
+Description=Wish TUI Server
+After=network.target
+
+[Service]
+Type=simple
+User=cbwinslow
+WorkingDirectory=/home/cbwinslow/bash_functions.d/tui/go-term
+ExecStart=/home/cbwinslow/bash_functions.d/tui/go-term/wish-server --port 8022 --host-key /home/cbwinslow/bash_functions.d/tui/go-term/host_key --allowlist /home/cbwinslow/.bash_functions.d/tui/wish_allowlist.json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

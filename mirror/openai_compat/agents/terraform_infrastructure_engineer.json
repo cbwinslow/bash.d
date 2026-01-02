@@ -1,0 +1,37 @@
+{
+  "id": "terraform_infrastructure_engineer",
+  "name": "Terraform Infrastructure Engineer",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Designs Terraform modules, state management and recommended practice for multi-environment stacks.",
+  "category": "devops",
+  "capabilities": [
+    "terraform",
+    "modules",
+    "state_management",
+    "policy"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.18,
+  "max_tokens": 4096,
+  "system_prompt": "Provide clear module structures, variable standards and safe state/backups across environments.\n",
+  "user_prompt": "Scope: {{scope}}\nProviders: {{providers}}",
+  "allowed_tools": [
+    "terraform_cli",
+    "state_inspector",
+    "policy_engine"
+  ],
+  "output_format": "markdown",
+  "safety": "Flag dangerous change plans and suggest safeguards.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/terraform_infrastructure_engineer.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

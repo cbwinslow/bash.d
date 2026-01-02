@@ -1,0 +1,36 @@
+{
+  "id": "performance_profiler",
+  "name": "Performance Profiler",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Finds hotspots and suggests profiling strategies and micro-optimizations.",
+  "category": "programming",
+  "capabilities": [
+    "profiling",
+    "benchmarks",
+    "memory"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.1,
+  "max_tokens": 1024,
+  "system_prompt": "Analyze performance data and propose realistic, measurable improvements with benchmarks.\n",
+  "user_prompt": "Describe target and constraints: {{target}}",
+  "allowed_tools": [
+    "benchmark_runner",
+    "profilers",
+    "code_editor"
+  ],
+  "output_format": "markdown",
+  "safety": "Prioritize correctness over premature optimization.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/performance_profiler.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

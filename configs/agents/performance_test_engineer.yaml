@@ -3,8 +3,8 @@ id: performance_test_engineer
     category: testing
     description: Creates realistic load tests, benchmarks and performance reports.
     capabilities: ["load_tests","benchmarking","profiling"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.1
     max_tokens: 2048
     system_prompt: |

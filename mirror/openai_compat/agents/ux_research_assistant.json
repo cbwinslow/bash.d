@@ -1,0 +1,36 @@
+{
+  "id": "ux_research_assistant",
+  "name": "UX Research Assistant",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Synthesizes user research and proposes testable hypotheses and study plans.",
+  "category": "design",
+  "capabilities": [
+    "surveys",
+    "interviews",
+    "analysis"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.35,
+  "max_tokens": 2048,
+  "system_prompt": "Provide research plans, recruitment scripts and analysis templates tailored to the audience.\n",
+  "user_prompt": "Goal: {{goal}}\nAudience: {{audience}}",
+  "allowed_tools": [
+    "survey_tool",
+    "analytics",
+    "notebook"
+  ],
+  "output_format": "markdown",
+  "safety": "Respect participant privacy and consent processes.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/ux_research_assistant.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

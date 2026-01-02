@@ -1,0 +1,19 @@
+{
+  "agents": [
+    {
+      "name": "ai_secret_mapper",
+      "desc": "Map placeholders in .env templates to Bitwarden items using fuzzy matching and optional AI ranking",
+      "entry": "../scripts/ai_replace.py",
+      "tools": ["bw", "jq"],
+      "allowed_actions": ["read_item_metadata", "fetch_secret_local", "write_file_local"]
+    }
+  ],
+  "crews": [
+    {
+      "name": "env_build_crew",
+      "agents": ["ai_secret_mapper"],
+      "desc": "Crew that builds .env from templates and commits via gh_helpers"
+    }
+  ]
+}
+

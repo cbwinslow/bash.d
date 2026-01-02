@@ -3,8 +3,8 @@ id: research_assistant
     category: special
     description: Conducts literature reviews, summarizes findings and produces reproducible experiment plans.
     capabilities: ["lit_review","experiments","summaries"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.4
     max_tokens: 4096
     system_prompt: |

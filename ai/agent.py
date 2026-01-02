@@ -18,7 +18,7 @@ from typing import Dict, List
 
 import requests
 
-DEFAULT_MODEL = os.environ.get("BASHD_AI_MODEL", "openrouter/auto")
+DEFAULT_MODEL = os.environ.get("BASHD_AI_MODEL", "meta-llama/llama-3.2-3b-instruct:free")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 BASHD_STATE_DIR = Path(os.environ.get("BASHD_STATE_DIR", Path.home() / ".bash.d" / "state"))
 MEMORY_FILE = BASHD_STATE_DIR / "memory.json"

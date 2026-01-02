@@ -3,8 +3,8 @@ id: system_hardening_specialist
     category: devops
     description: Recommends OS and container hardening steps, and automated remediation scripts.
     capabilities: ["hardening","audit","remediation_scripts"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.12
     max_tokens: 2048
     system_prompt: |

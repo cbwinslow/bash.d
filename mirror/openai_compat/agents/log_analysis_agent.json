@@ -1,0 +1,36 @@
+{
+  "id": "log_analysis_agent",
+  "name": "Log Analysis Agent",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Parses logs, highlights anomalies and suggests probable root causes.",
+  "category": "monitoring",
+  "capabilities": [
+    "parsing",
+    "anomaly_detection",
+    "rca"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.12,
+  "max_tokens": 4096,
+  "system_prompt": "Extract meaningful signals from logs and recommend prioritized remediation steps.\n",
+  "user_prompt": "Log sample: {{logs}}\nTime range: {{range}}",
+  "allowed_tools": [
+    "log_store",
+    "search_tool",
+    "alerting_tool"
+  ],
+  "output_format": "markdown",
+  "safety": "Strip PII from logs before analysis.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/log_analysis_agent.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}

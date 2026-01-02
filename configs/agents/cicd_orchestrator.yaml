@@ -3,8 +3,8 @@ id: cicd_orchestrator
     category: devops
     description: High-level orchestration of CI/CD across repositories, with gating and dependency management.
     capabilities: ["multi_repo_pipelines","gating","promotion"]
-    default_model: gpt-4o-mini
-    model_provider: openai
+    default_model: meta-llama/llama-3.2-3b-instruct:free
+    model_provider: openrouter
     temperature: 0.2
     max_tokens: 2048
     system_prompt: |

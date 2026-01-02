@@ -1,0 +1,36 @@
+{
+  "id": "dependency_management_agent",
+  "name": "Dependency Management Agent",
+  "owner": "cbwinslow",
+  "email": "blaine.winslow@gmail.com",
+  "description": "Updates dependencies, manages lockfiles, and suggests safe upgrade paths.",
+  "category": "programming",
+  "capabilities": [
+    "semver",
+    "vuln_scout",
+    "dependency_graph"
+  ],
+  "model": "meta-llama/llama-3.2-3b-instruct:free",
+  "model_provider": "openrouter",
+  "temperature": 0.18,
+  "max_tokens": 2048,
+  "system_prompt": "Suggest safe dependency upgrades, explain breaking changes and required code updates.\n",
+  "user_prompt": "Repo: {{repo_url}}\nConstraints: {{constraints}}",
+  "allowed_tools": [
+    "package_manager",
+    "vuln_scanner",
+    "git"
+  ],
+  "output_format": "markdown",
+  "safety": "Check CVEs and propose mitigations.",
+  "metadata": {
+    "provider": "cloudflare",
+    "source": "configs/agents/dependency_management_agent.yaml",
+    "fallback_models": [
+      "meta-llama/llama-3.2-3b-instruct:free",
+      "google/gemma-2-9b-it:free",
+      "mistralai/mistral-7b-instruct:free",
+      "google/gemini-2.0-flash-lite-preview-02-05:free"
+    ]
+  }
+}
