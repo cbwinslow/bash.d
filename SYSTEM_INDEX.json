@@ -1,0 +1,238 @@
+{
+  "name": "Enhanced GitHub API & Cloudflare Storage System",
+  "version": "1.0.0",
+  "description": "Comprehensive bash function suite for GitHub repository management, Cloudflare R2 storage, and organized file management with robust error handling and seamless integration.",
+  "created": "2025-01-08",
+  "author": "bash.d project",
+  "license": "MIT",
+  "repository": "https://github.com/cbwinslow/bash.d",
+  "components": {
+    "github_api": {
+      "file": "bash_functions.d/tools/github_api_enhanced.sh",
+      "description": "Enhanced GitHub API wrapper with repository management, file commits, and robust error handling",
+      "functions": [
+        "gh_create_repo",
+        "gh_commit_file", 
+        "gh_quick_commit",
+        "gh_list_repos",
+        "gh_repo_info",
+        "gh_commit_files",
+        "gh_config",
+        "gh_help"
+      ],
+      "features": [
+        "Repository creation (public/private)",
+        "File commits with automatic folder creation",
+        "Repository listing with sorting/filtering",
+        "Rate limiting and retry logic",
+        "Bitwarden credential management",
+        "Backup repository creation",
+        "SHA-based file updates"
+      ],
+      "dependencies": ["curl", "jq", "Bitwarden CLI"],
+      "bitwarden_entry": "github_pat"
+    },
+    "cloudflare_storage": {
+      "file": "bash_functions.d/tools/cloudflare_storage.sh", 
+      "description": "Cloudflare R2 S3-compatible storage wrapper with compression and synchronization",
+      "functions": [
+        "cf_upload_file",
+        "cf_download_file",
+        "cf_list_files", 
+        "cf_delete_file",
+        "cf_sync_directory",
+        "cf_config",
+        "cf_help"
+      ],
+      "features": [
+        "S3-compatible API integration",
+        "Automatic retry and error recovery",
+        "File compression and backup",
+        "Directory synchronization",
+        "Bitwarden credential management",
+        "R2 token generation from API key"
+      ],
+      "dependencies": ["curl", "jq", "openssl", "gzip"],
+      "bitwarden_entry": "cloudflare_r2"
+    },
+    "file_manager": {
+      "file": "bash_functions.d/tools/file_manager.sh",
+      "description": "Categorized file management system with versioning and remote sync",
+      "functions": [
+        "fm_store_file",
+        "fm_retrieve_file",
+        "fm_list_files",
+        "fm_sync_category",
+        "fm_config", 
+        "fm_help"
+      ],
+      "features": [
+        "Categorized storage (agents, rules, tools, logs, todos, configs, memorys)",
+        "Automatic backup and versioning",
+        "JSON-based metadata indexing",
+        "Remote sync to GitHub/Cloudflare",
+        "Search and retrieval capabilities",
+        "Template-based file creation"
+      ],
+      "categories": ["agents", "rules", "tools", "logs", "todos", "configs", "memorys"],
+      "dependencies": ["jq", "gzip"],
+      "bitwarden_entry": null
+    },
+    "quick_functions": {
+      "file": "bash_functions.d/tools/quick_functions.sh",
+      "description": "One-liner shell functions for common operations with smart defaults",
+      "functions": [
+        "quick_repo",
+        "quick_commit", 
+        "quick_upload",
+        "quick_agent",
+        "quick_rule",
+        "quick_config",
+        "quick_todo",
+        "quick_status",
+        "quick_help"
+      ],
+      "features": [
+        "Smart defaults and templates",
+        "Auto-content generation",
+        "Integrated todo management",
+        "Dependency auto-loading",
+        "Error handling and validation",
+        "Tab completion"
+      ],
+      "dependencies": ["github_api_enhanced.sh", "cloudflare_storage.sh", "file_manager.sh"],
+      "bitwarden_entry": null
+    },
+    "test_system": {
+      "file": "bash_functions.d/tools/test_system.sh",
+      "description": "Comprehensive integration test framework for system validation",
+      "functions": [
+        "test_function_exists",
+        "test_script_loading", 
+        "test_github_api",
+        "test_cloudflare_storage",
+        "test_file_manager",
+        "test_quick_functions",
+        "test_directory_structure",
+        "test_dependencies",
+        "test_error_handling",
+        "test_autocompletion",
+        "test_integration",
+        "main"
+      ],
+      "features": [
+        "Dependency verification",
+        "Function availability testing",
+        "Error handling validation", 
+        "Integration testing",
+        "Auto-completion testing",
+        "Directory structure validation"
+      ],
+      "dependencies": ["curl", "jq", "openssl", "gzip"],
+      "bitwarden_entry": null
+    }
+  },
+  "configuration": {
+    "environment_variables": {
+      "FM_DEFAULT_GITHUB_REPO": "Default GitHub repository for file sync",
+      "FM_DEFAULT_CLOUDFLARE_BUCKET": "Default Cloudflare bucket for storage", 
+      "FM_AUTO_SYNC": "Enable automatic remote synchronization",
+      "FM_ENABLE_VERSIONING": "Enable file versioning system",
+      "FM_MAX_VERSIONS": "Maximum versions to keep per file",
+      "FM_BACKUP_ENABLED": "Enable local backup creation",
+      "FM_ROOT_DIR": "Root directory for file management",
+      "BASH_FUNCTIONS_DIR": "Base directory for function scripts",
+      "GITHUB_MAX_RETRIES": "Maximum API retry attempts",
+      "GITHUB_RETRY_DELAY": "Delay between retry attempts",
+      "CLOUDFLARE_MAX_RETRIES": "Cloudflare API retry limit",
+      "CLOUDFLARE_TIMEOUT": "Cloudflare request timeout"
+    },
+    "bitwarden_entries": {
+      "github_pat": "GitHub Personal Access Token for API access",
+      "cloudflare_r2": "Cloudflare R2 credentials (API key, account ID, access keys)"
+    }
+  },
+  "directories": {
+    "bash_functions_d": {
+      "path": "bash_functions.d",
+      "description": "Main directory for all function scripts"
+    },
+    "file_manager_root": {
+      "path": "~/.file_manager", 
+      "description": "Root directory for categorized file storage"
+    },
+    "file_categories": {
+      "agents": "~/.file_manager/agents",
+      "rules": "~/.file_manager/rules", 
+      "tools": "~/.file_manager/tools",
+      "logs": "~/.file_manager/logs",
+      "todos": "~/.file_manager/todos",
+      "configs": "~/.file_manager/configs",
+      "memorys": "~/.file_manager/memorys"
+    },
+    "cache_directories": {
+      "github_api": "~/.cache/github_api",
+      "cloudflare_r2": "~/.cache/cloudflare_r2"
+    },
+    "log_directories": {
+      "github_api": "~/.logs/github_api",
+      "cloudflare_r2": "~/.logs/cloudflare_r2",
+      "file_manager": "~/.file_manager/logs"
+    },
+    "backup_directories": {
+      "github_commits": "~/.backups/github_commits",
+      "file_manager": "~/.file_manager/.backups"
+    }
+  },
+  "quick_start": {
+    "setup_credentials": [
+      "bw create item github_pat --username='your-github-username' --password='your-pat-token'",
+      "bw create item cloudflare_r2 --username='your-email@example.com' --password='your-api-key' --field='account_id=your-account-id' --field='access_key=your-access-key' --field='secret_key=your-secret-key'"
+    ],
+    "load_system": [
+      "source ~/bash_functions.d/tools/quick_functions.sh"
+    ],
+    "check_status": [
+      "quick_status"
+    ]
+  },
+  "usage_examples": {
+    "repository_management": [
+      "quick_repo my-project --private --backup",
+      "gh_create_repo enterprise-app --private --description='Enterprise application'",
+      "gh_list_repos --sort=updated --order=desc --filter=project"
+    ],
+    "file_operations": [
+      "quick_commit user/repo config/settings.json '{\"debug\": true}'",
+      "quick_upload ./data.json backup/data.json --compress", 
+      "fm_store_file agents web-scraper '# Web Scraper Config'",
+      "fm_retrieve_file rules code-style"
+    ],
+    "workflow_integration": [
+      "quick_repo $PROJECT_NAME --private --backup",
+      "quick_config $PROJECT_NAME --github=$PROJECT_NAME --sync",
+      "quick_agent scraper-agent --github=$PROJECT_NAME --sync",
+      "quick_todo 'Initial setup' --list=$PROJECT_NAME"
+    ]
+  },
+  "security": {
+    "credential_management": "Bitwarden integration with encrypted storage",
+    "input_validation": "Path validation, directory traversal prevention",
+    "rate_limiting": "Automatic rate limit handling with exponential backoff",
+    "audit_logging": "Comprehensive operation logging",
+    "backup_protection": "Local backups before modifications",
+    "no_hardcoded_secrets": "All credentials loaded from secure vault"
+  },
+  "troubleshooting": {
+    "common_issues": [
+      "Authentication failures - Check Bitwarden status and credentials",
+      "Rate limiting - Built-in retries with configurable delays",
+      "File path issues - Use relative paths only",
+      "Dependency issues - Install curl, jq, gzip, openssl"
+    ],
+    "debug_commands": [
+      "export DEBUG_BASH=1",
+      "tail -f ~/.logs/github_api/github_$(date +%Y%m%d).log"
+    ]
+  }
+}

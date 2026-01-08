@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount BitLocker Encrypted Drive
+After=multi-user.target
+Conflicts=shutdown.target
+
+[Service]
+Type=forking
+RemainAfterExit=yes
+ExecStart=/home/cbwinslow/mount_bitlocker_drive.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target

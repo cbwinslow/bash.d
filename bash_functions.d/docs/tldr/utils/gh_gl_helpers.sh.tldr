@@ -1,0 +1,1 @@
+GitHub and GitLab helpers: auth env helpers, API wrappers, listing, mass ops, and mirror functions to sync repos across GitHub <-> GitLab.

@@ -1,0 +1,112 @@
+#!/bin/bash
+# Interactive iptables rules demonstration
+
+echo "=== IPTABLES RULES PROCESSING DEMO ==="
+echo ""
+
+echo "🎯 RULE PROCESSING ORDER:"
+echo ""
+echo "Imagine this scenario: SSH connection from 192.168.1.100"
+echo ""
+
+echo "CHAIN: INPUT (incoming traffic)"
+echo "┌─────────────────────────────────────────────────────────┐"
+echo "│ 1. Rule: DROP all from 192.168.1.0/24                  │"
+echo "│    └── Packet from 192.168.1.100 matches this rule!    │"
+echo "│    └── ACTION: DROP (reject)                           │"
+echo "│    └── PROCESSING STOPS HERE!                          │"
+echo "│                                                         │"
+echo "│ 2. Rule: ACCEPT SSH from 192.168.1.100                 │"
+echo "│    └── NEVER REACHED (blocked by rule #1)              │"
+echo "│                                                         │"
+echo "│ Default Policy: ACCEPT                                  │"
+echo "│    └── Only used if no rules match                      │"
+echo "└─────────────────────────────────────────────────────────┘"
+echo ""
+
+echo "❌ RESULT: SSH blocked (even though rule #2 would allow it)"
+echo ""
+
+echo "🔄 FIXED VERSION (rules in correct order):"
+echo ""
+echo "CHAIN: INPUT"
+echo "┌─────────────────────────────────────────────────────────┐"
+echo "│ 1. Rule: ACCEPT SSH from 192.168.1.100                 │"
+echo "│    └── Packet from 192.168.1.100 matches this rule!    │"
+echo "│    └── ACTION: ACCEPT (allow)                           │"
+echo "│    └── PROCESSING STOPS HERE!                          │"
+echo "│                                                         │"
+echo "│ 2. Rule: DROP all from 192.168.1.0/24                  │"
+echo "│    └── Never reached (already accepted)                 │"
+echo "│                                                         │"
+echo "│ Default Policy: DROP                                    │"
+echo "│    └── Only used if no rules match                      │"
+echo "└─────────────────────────────────────────────────────────┘"
+echo ""
+
+echo "✅ RESULT: SSH allowed (correct rule order)"
+echo ""
+
+echo "=== KEY CONCEPTS ==="
+echo ""
+
+echo "🎯 FIRST MATCH WINS:"
+echo "   Rules are checked in order (first to last)"
+echo "   Once a rule matches, processing stops"
+echo ""
+
+echo "📋 CHAINS:"
+echo "   INPUT: Traffic coming TO your machine"
+echo "   OUTPUT: Traffic going FROM your machine" 
+echo "   FORWARD: Traffic passing THROUGH your machine"
+echo ""
+
+echo "🔧 ACTIONS (-j):"
+echo "   ACCEPT: Allow the packet"
+echo "   DROP: Silently discard (no response)"
+echo "   REJECT: Discard and send error response"
+echo "   RETURN: Exit current chain, continue in parent"
+echo ""
+
+echo "📊 TABLES:"
+echo "   filter: Packet filtering (default)"
+echo "   nat: Network Address Translation"
+echo "   mangle: Packet modification"
+echo ""
+
+echo "=== PRACTICAL EXAMPLES ==="
+echo ""
+
+echo "1. BLOCK SPECIFIC IP:"
+echo "   sudo iptables -A INPUT -s 1.2.3.4 -j DROP"
+echo "   └── Block all incoming traffic from 1.2.3.4"
+echo ""
+
+echo "2. ALLOW SSH ONLY FROM HOME:"
+echo "   sudo iptables -A INPUT -p tcp --dport 22 -s 192.168.1.100 -j ACCEPT"
+echo "   sudo iptables -A INPUT -p tcp --dport 22 -j DROP"
+echo "   └── Allow SSH from your home IP, block from everywhere else"
+echo ""
+
+echo "3. PORT FORWARDING:"
+echo "   sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080"
+echo "   └── Redirect incoming port 80 to port 8080"
+echo ""
+
+echo "4. LOGGING (for debugging):"
+echo "   sudo iptables -A INPUT -j LOG --log-prefix 'iptables-dropped: '"
+echo "   sudo iptables -A INPUT -j DROP"
+echo "   └── Log dropped packets before blocking them"
+echo ""
+
+echo "=== FOR ANONYMITY ==="
+echo ""
+
+echo "🔒 TOR FORCING LOGIC:"
+echo "   1. Check if packet is from Tor user → ALLOW"
+echo "   2. Check if packet is local network → BYPASS"
+echo "   3. Everything else → REDIRECT through Tor"
+echo ""
+
+echo "⚠️  WARNING: Wrong order can break your anonymity!"
+echo "   Always test rules in a safe environment first"

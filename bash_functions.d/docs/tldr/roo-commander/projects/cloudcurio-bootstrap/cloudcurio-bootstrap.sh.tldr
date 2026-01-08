@@ -1,0 +1,1 @@
+cloudcurio-bootstrap.sh Purpose: Prepare Ubuntu for self-hosting: base hardening, Docker, optional NVIDIA, cloudflared.

@@ -1,0 +1,1 @@
+plugin_manager.sh - oh-my-bash-like minimal plugin manager for bash_functions.d Plugins are directories under ~/.bash_functions.d/plugins/<name> Each plugin can have: init.sh (sourced), bin/ (executables), docs/

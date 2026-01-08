@@ -1,0 +1,1 @@
+!/usr/bin/env bash pre-commit hook: verify docs and scan staged files for secrets

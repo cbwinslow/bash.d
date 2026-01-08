@@ -1,0 +1,1 @@
+Ensure requested dev CLIs are installed and on PATH with idempotent behavior. Targets (best-effort due to naming ambiguity):  - opencode  - codex  - qwen-coder  - forgecode  - kilocode (aka "kilo code")  - cline  - roocode (aka "roo code")  - gemini-cli

@@ -1,0 +1,1 @@
+=============================================================================== Script Name : cbw-airflow-diagnose-fix.sh Author      : CBW + GPT-5 Thinking Date        : 2025-09-15 Summary     : Diagnoses and fixes common Apache Airflow service failures on               Ubuntu 24.04 (bare metal install with venv + systemd units).

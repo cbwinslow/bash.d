@@ -1,6 +1,6 @@
 {
   "summary": {
-    "total_functions": 2136
+    "total_functions": 2161
   },
   "functions": [
     {
@@ -1646,6 +1646,156 @@
       "file": "git/git_utils.sh",
       "line": 341,
       "signature": "galiases() {"
+    },
+    {
+      "name": "security_init",
+      "file": "90-security/security.sh",
+      "line": 12,
+      "signature": "security_init() {"
+    },
+    {
+      "name": "security_scan",
+      "file": "90-security/security.sh",
+      "line": 18,
+      "signature": "security_scan() {"
+    },
+    {
+      "name": "security_monitor",
+      "file": "90-security/security.sh",
+      "line": 28,
+      "signature": "security_monitor() {"
+    },
+    {
+      "name": "security_ports",
+      "file": "90-security/security.sh",
+      "line": 38,
+      "signature": "security_ports() {"
+    },
+    {
+      "name": "security_detect_scans",
+      "file": "90-security/security.sh",
+      "line": 48,
+      "signature": "security_detect_scans() {"
+    },
+    {
+      "name": "security_anonymity",
+      "file": "90-security/security.sh",
+      "line": 58,
+      "signature": "security_anonymity() {"
+    },
+    {
+      "name": "security_status",
+      "file": "90-security/security.sh",
+      "line": 68,
+      "signature": "security_status() {"
+    },
+    {
+      "name": "security_dashboard",
+      "file": "90-security/security.sh",
+      "line": 94,
+      "signature": "security_dashboard() {"
+    },
+    {
+      "name": "security_logs",
+      "file": "90-security/security.sh",
+      "line": 202,
+      "signature": "security_logs() {"
+    },
+    {
+      "name": "security_toolkit",
+      "file": "90-security/security.sh",
+      "line": 223,
+      "signature": "security_toolkit() {"
+    },
+    {
+      "name": "security_install",
+      "file": "90-security/security.sh",
+      "line": 256,
+      "signature": "security_install() {"
+    },
+    {
+      "name": "security_quick_check",
+      "file": "90-security/security.sh",
+      "line": 273,
+      "signature": "security_quick_check() {"
+    },
+    {
+      "name": "security_report",
+      "file": "90-security/security.sh",
+      "line": 295,
+      "signature": "security_report() {"
+    },
+    {
+      "name": "security_lockdown",
+      "file": "90-security/security.sh",
+      "line": 324,
+      "signature": "security_lockdown() {"
+    },
+    {
+      "name": "security_help",
+      "file": "90-security/security.sh",
+      "line": 349,
+      "signature": "security_help() {"
+    },
+    {
+      "name": "security_dashboard",
+      "file": "90-security/security.sh",
+      "line": 399,
+      "signature": "security_dashboard() {"
+    },
+    {
+      "name": "display_menu",
+      "file": "90-security/security_dashboard_final.sh",
+      "line": 15,
+      "signature": "display_menu() {"
+    },
+    {
+      "name": "get_input",
+      "file": "90-security/security_dashboard_final.sh",
+      "line": 70,
+      "signature": "get_input() {"
+    },
+    {
+      "name": "execute_security_function",
+      "file": "90-security/security_dashboard_final.sh",
+      "line": 93,
+      "signature": "execute_security_function() {"
+    },
+    {
+      "name": "security_dashboard",
+      "file": "90-security/security_dashboard_final.sh",
+      "line": 109,
+      "signature": "security_dashboard() {"
+    },
+    {
+      "name": "security_help",
+      "file": "90-security/security_dashboard_final.sh",
+      "line": 177,
+      "signature": "security_help() {"
+    },
+    {
+      "name": "robust_security_dashboard",
+      "file": "90-security/security_dashboard_fixed.sh",
+      "line": 6,
+      "signature": "robust_security_dashboard() {"
+    },
+    {
+      "name": "display_menu",
+      "file": "90-security/security_dashboard_fixed.sh",
+      "line": 20,
+      "signature": "display_menu() {"
+    },
+    {
+      "name": "get_user_input",
+      "file": "90-security/security_dashboard_fixed.sh",
+      "line": 57,
+      "signature": "get_user_input() {"
+    },
+    {
+      "name": "process_choice",
+      "file": "90-security/security_dashboard_fixed.sh",
+      "line": 85,
+      "signature": "process_choice() {"
     },
     {
       "name": "log",

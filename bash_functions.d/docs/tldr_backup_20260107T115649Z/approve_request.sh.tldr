@@ -1,0 +1,1 @@
+approve_request.sh - CLI helper to list/approve/deny requests in the TUI request queue Usage examples:  approve_request.sh --list  approve_request.sh --approve req-1  approve_request.sh --deny req-1  approve_request.sh --approve --run req-1

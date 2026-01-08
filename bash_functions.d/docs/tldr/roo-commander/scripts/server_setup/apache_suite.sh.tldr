@@ -1,0 +1,1 @@
+=============================================================================== Script Name: install_apache_suite.sh Author: CBW + ChatGPT Date: 2025-09-15 Description: Bare-metal installer for core Apache software (Guacamole, Airflow,              Superset, Tika, PDFBox, Kafka, Solr) on Ubuntu 24.04 ===============================================================================

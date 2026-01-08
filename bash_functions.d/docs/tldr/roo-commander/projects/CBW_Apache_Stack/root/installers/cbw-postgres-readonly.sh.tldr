@@ -1,0 +1,1 @@
+=============================================================================== Script Name : cbw-postgres-readonly.sh Author      : CBW + GPT-5 Thinking Date        : 2025-09-18 Summary     : Create per-DB read-only users for exporters/Superset.\n#===============================================================================

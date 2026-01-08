@@ -1,0 +1,1 @@
+=============================================================================== Script Name : cbw-harden-ubuntu.sh Author      : CBW + GPT-5 Thinking Date        : 2025-09-18 Summary     : Baseline hardening: SSH, UFW, fail2ban, unattended, sysctl, auditd. ===============================================================================

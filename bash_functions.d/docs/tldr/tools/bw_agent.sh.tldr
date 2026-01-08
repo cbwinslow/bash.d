@@ -1,0 +1,1 @@
+bw_agent.sh - Bitwarden agent-friendly wrapper for non-interactive access Usage: bw_agent.sh <command> [args]

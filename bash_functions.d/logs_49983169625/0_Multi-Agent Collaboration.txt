@@ -1,0 +1,898 @@
+﻿2025-11-15T09:04:28.1082546Z Current runner version: '2.329.0'
+2025-11-15T09:04:28.1107076Z ##[group]Runner Image Provisioner
+2025-11-15T09:04:28.1107906Z Hosted Compute Agent
+2025-11-15T09:04:28.1108412Z Version: 20251016.436
+2025-11-15T09:04:28.1109061Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+2025-11-15T09:04:28.1109929Z Build Date: 2025-10-15T20:44:12Z
+2025-11-15T09:04:28.1110514Z ##[endgroup]
+2025-11-15T09:04:28.1111021Z ##[group]Operating System
+2025-11-15T09:04:28.1111668Z Ubuntu
+2025-11-15T09:04:28.1112105Z 24.04.3
+2025-11-15T09:04:28.1112550Z LTS
+2025-11-15T09:04:28.1113064Z ##[endgroup]
+2025-11-15T09:04:28.1113514Z ##[group]Runner Image
+2025-11-15T09:04:28.1114058Z Image: ubuntu-24.04
+2025-11-15T09:04:28.1114586Z Version: 20251112.124.1
+2025-11-15T09:04:28.1115598Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+2025-11-15T09:04:28.1117177Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+2025-11-15T09:04:28.1118128Z ##[endgroup]
+2025-11-15T09:04:28.1119147Z ##[group]GITHUB_TOKEN Permissions
+2025-11-15T09:04:28.1121176Z Contents: read
+2025-11-15T09:04:28.1121716Z Metadata: read
+2025-11-15T09:04:28.1122236Z ##[endgroup]
+2025-11-15T09:04:28.1124680Z Secret source: Actions
+2025-11-15T09:04:28.1125529Z Prepare workflow directory
+2025-11-15T09:04:28.1469345Z Prepare all required actions
+2025-11-15T09:04:28.1509014Z Getting action download info
+2025-11-15T09:04:28.5440845Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-11-15T09:04:28.6539042Z Download action repository 'actions/setup-python@v4' (SHA:7f4fc3e22c37d6ff65e88745f38bd3157c663f7c)
+2025-11-15T09:04:28.7380122Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-11-15T09:04:28.8961090Z Download action repository 'actions/github-script@v7' (SHA:f28e40c7f34bde8b3046d885e986cb6290c5673b)
+2025-11-15T09:04:29.5680200Z Complete job name: Multi-Agent Collaboration
+2025-11-15T09:04:29.6367642Z ##[group]Run actions/checkout@v4
+2025-11-15T09:04:29.6368465Z with:
+2025-11-15T09:04:29.6368857Z   repository: cbwinslow/opengovt
+2025-11-15T09:04:29.6369721Z   token: ***
+2025-11-15T09:04:29.6370109Z   ssh-strict: true
+2025-11-15T09:04:29.6370488Z   ssh-user: git
+2025-11-15T09:04:29.6370889Z   persist-credentials: true
+2025-11-15T09:04:29.6371322Z   clean: true
+2025-11-15T09:04:29.6371710Z   sparse-checkout-cone-mode: true
+2025-11-15T09:04:29.6372169Z   fetch-depth: 1
+2025-11-15T09:04:29.6372546Z   fetch-tags: false
+2025-11-15T09:04:29.6372923Z   show-progress: true
+2025-11-15T09:04:29.6373320Z   lfs: false
+2025-11-15T09:04:29.6373674Z   submodules: false
+2025-11-15T09:04:29.6374075Z   set-safe-directory: true
+2025-11-15T09:04:29.6374768Z ##[endgroup]
+2025-11-15T09:04:29.7465484Z Syncing repository: cbwinslow/opengovt
+2025-11-15T09:04:29.7467819Z ##[group]Getting Git version info
+2025-11-15T09:04:29.7468556Z Working directory is '/home/runner/work/opengovt/opengovt'
+2025-11-15T09:04:29.7469871Z [command]/usr/bin/git version
+2025-11-15T09:04:29.7559945Z git version 2.51.2
+2025-11-15T09:04:29.7588387Z ##[endgroup]
+2025-11-15T09:04:29.7604186Z Temporarily overriding HOME='/home/runner/work/_temp/39d4763e-dc58-4de2-b36e-320bf8850a20' before making global git config changes
+2025-11-15T09:04:29.7606311Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-15T09:04:29.7619370Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/opengovt/opengovt
+2025-11-15T09:04:29.7659466Z Deleting the contents of '/home/runner/work/opengovt/opengovt'
+2025-11-15T09:04:29.7663673Z ##[group]Initializing the repository
+2025-11-15T09:04:29.7667745Z [command]/usr/bin/git init /home/runner/work/opengovt/opengovt
+2025-11-15T09:04:29.7789827Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-11-15T09:04:29.7791778Z hint: is subject to change. To configure the initial branch name to use in all
+2025-11-15T09:04:29.7793973Z hint: of your new repositories, which will suppress this warning, call:
+2025-11-15T09:04:29.7795398Z hint:
+2025-11-15T09:04:29.7796286Z hint: 	git config --global init.defaultBranch <name>
+2025-11-15T09:04:29.7797078Z hint:
+2025-11-15T09:04:29.7797703Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-11-15T09:04:29.7798755Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-11-15T09:04:29.7800085Z hint:
+2025-11-15T09:04:29.7800538Z hint: 	git branch -m <name>
+2025-11-15T09:04:29.7801221Z hint:
+2025-11-15T09:04:29.7802238Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-11-15T09:04:29.7803416Z Initialized empty Git repository in /home/runner/work/opengovt/opengovt/.git/
+2025-11-15T09:04:29.7807517Z [command]/usr/bin/git remote add origin https://github.com/cbwinslow/opengovt
+2025-11-15T09:04:29.7843689Z ##[endgroup]
+2025-11-15T09:04:29.7844380Z ##[group]Disabling automatic garbage collection
+2025-11-15T09:04:29.7848085Z [command]/usr/bin/git config --local gc.auto 0
+2025-11-15T09:04:29.7877515Z ##[endgroup]
+2025-11-15T09:04:29.7878159Z ##[group]Setting up auth
+2025-11-15T09:04:29.7885027Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-15T09:04:29.7916247Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-15T09:04:29.8265304Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-15T09:04:29.8295555Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-15T09:04:29.8519868Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-11-15T09:04:29.8557730Z ##[endgroup]
+2025-11-15T09:04:29.8558538Z ##[group]Fetching the repository
+2025-11-15T09:04:29.8575173Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1be052f8e42cb122d4f50583697f2f9660b5e26b:refs/remotes/origin/main
+2025-11-15T09:04:30.4053493Z From https://github.com/cbwinslow/opengovt
+2025-11-15T09:04:30.4057283Z  * [new ref]         1be052f8e42cb122d4f50583697f2f9660b5e26b -> origin/main
+2025-11-15T09:04:30.4091496Z ##[endgroup]
+2025-11-15T09:04:30.4093683Z ##[group]Determining the checkout info
+2025-11-15T09:04:30.4095747Z ##[endgroup]
+2025-11-15T09:04:30.4099740Z [command]/usr/bin/git sparse-checkout disable
+2025-11-15T09:04:30.4143274Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-11-15T09:04:30.4172427Z ##[group]Checking out the ref
+2025-11-15T09:04:30.4176349Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-11-15T09:04:30.4364804Z Switched to a new branch 'main'
+2025-11-15T09:04:30.4366730Z branch 'main' set up to track 'origin/main'.
+2025-11-15T09:04:30.4373720Z ##[endgroup]
+2025-11-15T09:04:30.4412243Z [command]/usr/bin/git log -1 --format=%H
+2025-11-15T09:04:30.4435951Z 1be052f8e42cb122d4f50583697f2f9660b5e26b
+2025-11-15T09:04:30.4746707Z ##[group]Run actions/setup-python@v4
+2025-11-15T09:04:30.4747850Z with:
+2025-11-15T09:04:30.4748569Z   python-version: 3.11
+2025-11-15T09:04:30.4749418Z   check-latest: false
+2025-11-15T09:04:30.4750852Z   token: ***
+2025-11-15T09:04:30.4751658Z   update-environment: true
+2025-11-15T09:04:30.4752591Z   allow-prereleases: false
+2025-11-15T09:04:30.4753477Z ##[endgroup]
+2025-11-15T09:04:30.6499951Z ##[group]Installed versions
+2025-11-15T09:04:30.6622425Z Successfully set up CPython (3.11.14)
+2025-11-15T09:04:30.6624398Z ##[endgroup]
+2025-11-15T09:04:30.6745059Z ##[group]Run pip install crewai crewai-tools langchain openai requests
+2025-11-15T09:04:30.6745918Z [36;1mpip install crewai crewai-tools langchain openai requests[0m
+2025-11-15T09:04:30.6802007Z shell: /usr/bin/bash -e {0}
+2025-11-15T09:04:30.6802505Z env:
+2025-11-15T09:04:30.6803007Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:04:30.6803725Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2025-11-15T09:04:30.6804396Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:04:30.6805009Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:04:30.6805632Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:04:30.6806234Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2025-11-15T09:04:30.6806725Z ##[endgroup]
+2025-11-15T09:04:31.5869761Z Collecting crewai
+2025-11-15T09:04:31.6918747Z   Downloading crewai-1.4.1-py3-none-any.whl.metadata (36 kB)
+2025-11-15T09:04:31.8081531Z Collecting crewai-tools
+2025-11-15T09:04:31.8289757Z   Downloading crewai_tools-1.4.1-py3-none-any.whl.metadata (11 kB)
+2025-11-15T09:04:31.9903025Z Collecting langchain
+2025-11-15T09:04:32.0112734Z   Downloading langchain-1.0.7-py3-none-any.whl.metadata (4.9 kB)
+2025-11-15T09:04:32.1073064Z Collecting openai
+2025-11-15T09:04:32.1269184Z   Downloading openai-2.8.0-py3-none-any.whl.metadata (29 kB)
+2025-11-15T09:04:32.1828735Z Collecting requests
+2025-11-15T09:04:32.2020928Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+2025-11-15T09:04:32.2323122Z Collecting appdirs>=1.4.4 (from crewai)
+2025-11-15T09:04:32.2515852Z   Downloading appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
+2025-11-15T09:04:32.3092989Z Collecting chromadb~=1.1.0 (from crewai)
+2025-11-15T09:04:32.3291996Z   Downloading chromadb-1.1.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.2 kB)
+2025-11-15T09:04:32.3673363Z Collecting click>=8.1.7 (from crewai)
+2025-11-15T09:04:32.3866835Z   Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+2025-11-15T09:04:32.4307478Z Collecting instructor>=1.3.3 (from crewai)
+2025-11-15T09:04:32.4517949Z   Downloading instructor-1.13.0-py3-none-any.whl.metadata (11 kB)
+2025-11-15T09:04:32.5158643Z Collecting json-repair==0.25.2 (from crewai)
+2025-11-15T09:04:32.5352471Z   Downloading json_repair-0.25.2-py3-none-any.whl.metadata (7.9 kB)
+2025-11-15T09:04:32.5698760Z Collecting json5>=0.10.0 (from crewai)
+2025-11-15T09:04:32.5890752Z   Downloading json5-0.12.1-py3-none-any.whl.metadata (36 kB)
+2025-11-15T09:04:32.6271242Z Collecting jsonref>=1.1.0 (from crewai)
+2025-11-15T09:04:32.6476499Z   Downloading jsonref-1.1.0-py3-none-any.whl.metadata (2.7 kB)
+2025-11-15T09:04:32.6818527Z Collecting mcp>=1.16.0 (from crewai)
+2025-11-15T09:04:32.7012174Z   Downloading mcp-1.21.1-py3-none-any.whl.metadata (85 kB)
+2025-11-15T09:04:32.7856706Z Collecting openpyxl>=3.1.5 (from crewai)
+2025-11-15T09:04:32.8050889Z   Downloading openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+2025-11-15T09:04:32.8435031Z Collecting opentelemetry-api>=1.30.0 (from crewai)
+2025-11-15T09:04:32.8628422Z   Downloading opentelemetry_api-1.38.0-py3-none-any.whl.metadata (1.5 kB)
+2025-11-15T09:04:32.8992505Z Collecting opentelemetry-exporter-otlp-proto-http>=1.30.0 (from crewai)
+2025-11-15T09:04:32.9185644Z   Downloading opentelemetry_exporter_otlp_proto_http-1.38.0-py3-none-any.whl.metadata (2.3 kB)
+2025-11-15T09:04:32.9586436Z Collecting opentelemetry-sdk>=1.30.0 (from crewai)
+2025-11-15T09:04:32.9780398Z   Downloading opentelemetry_sdk-1.38.0-py3-none-any.whl.metadata (1.5 kB)
+2025-11-15T09:04:33.0118995Z Collecting pdfplumber>=0.11.4 (from crewai)
+2025-11-15T09:04:33.0320212Z   Downloading pdfplumber-0.11.8-py3-none-any.whl.metadata (43 kB)
+2025-11-15T09:04:33.0684305Z Collecting portalocker==2.7.0 (from crewai)
+2025-11-15T09:04:33.0886679Z   Downloading portalocker-2.7.0-py2.py3-none-any.whl.metadata (6.8 kB)
+2025-11-15T09:04:33.1262072Z Collecting pydantic-settings>=2.10.1 (from crewai)
+2025-11-15T09:04:33.1455654Z   Downloading pydantic_settings-2.12.0-py3-none-any.whl.metadata (3.4 kB)
+2025-11-15T09:04:33.3101475Z Collecting pydantic>=2.11.9 (from crewai)
+2025-11-15T09:04:33.3296379Z   Downloading pydantic-2.12.4-py3-none-any.whl.metadata (89 kB)
+2025-11-15T09:04:33.3715873Z Collecting pyjwt>=2.9.0 (from crewai)
+2025-11-15T09:04:33.3910876Z   Downloading PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
+2025-11-15T09:04:33.4261279Z Collecting python-dotenv>=1.1.1 (from crewai)
+2025-11-15T09:04:33.4453407Z   Downloading python_dotenv-1.2.1-py3-none-any.whl.metadata (25 kB)
+2025-11-15T09:04:33.9170394Z Collecting regex>=2024.9.11 (from crewai)
+2025-11-15T09:04:33.9373447Z   Downloading regex-2025.11.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+2025-11-15T09:04:34.1688037Z Collecting tokenizers>=0.20.3 (from crewai)
+2025-11-15T09:04:34.1880939Z   Downloading tokenizers-0.22.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+2025-11-15T09:04:34.2168733Z Collecting tomli-w>=1.1.0 (from crewai)
+2025-11-15T09:04:34.2364594Z   Downloading tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+2025-11-15T09:04:34.2716975Z Collecting tomli>=2.0.2 (from crewai)
+2025-11-15T09:04:34.2913423Z   Downloading tomli-2.3.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (10 kB)
+2025-11-15T09:04:34.5649763Z Collecting uv>=0.4.25 (from crewai)
+2025-11-15T09:04:34.5843390Z   Downloading uv-0.9.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+2025-11-15T09:04:34.6174159Z Collecting build>=1.0.3 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:34.6365208Z   Downloading build-1.3.0-py3-none-any.whl.metadata (5.6 kB)
+2025-11-15T09:04:34.7607995Z Collecting pybase64>=1.4.1 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:34.7809890Z   Downloading pybase64-1.4.2-cp311-cp311-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl.metadata (8.7 kB)
+2025-11-15T09:04:34.8263029Z Collecting uvicorn>=0.18.3 (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:34.8457158Z   Downloading uvicorn-0.38.0-py3-none-any.whl.metadata (6.8 kB)
+2025-11-15T09:04:35.1130523Z Collecting numpy>=1.22.5 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:35.1335845Z   Downloading numpy-2.3.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2025-11-15T09:04:35.2016459Z Collecting posthog<6.0.0,>=2.4.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:35.2225290Z   Downloading posthog-5.4.0-py3-none-any.whl.metadata (5.7 kB)
+2025-11-15T09:04:35.2606122Z Collecting typing-extensions>=4.5.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:35.2797458Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2025-11-15T09:04:35.3598424Z Collecting onnxruntime>=1.14.1 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:35.3797254Z   Downloading onnxruntime-1.23.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+2025-11-15T09:04:35.4227596Z Collecting opentelemetry-exporter-otlp-proto-grpc>=1.2.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:35.4432393Z   Downloading opentelemetry_exporter_otlp_proto_grpc-1.38.0-py3-none-any.whl.metadata (2.4 kB)
+2025-11-15T09:04:35.4915235Z Collecting pypika>=0.48.9 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:35.5107759Z   Downloading PyPika-0.48.9.tar.gz (67 kB)
+2025-11-15T09:04:35.5265195Z   Installing build dependencies: started
+2025-11-15T09:04:36.6451591Z   Installing build dependencies: finished with status 'done'
+2025-11-15T09:04:36.6456611Z   Getting requirements to build wheel: started
+2025-11-15T09:04:36.9797822Z   Getting requirements to build wheel: finished with status 'done'
+2025-11-15T09:04:36.9806431Z   Preparing metadata (pyproject.toml): started
+2025-11-15T09:04:37.1561159Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2025-11-15T09:04:37.2061520Z Collecting tqdm>=4.65.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:37.2256496Z   Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+2025-11-15T09:04:37.2619928Z Collecting overrides>=7.3.1 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:37.2814670Z   Downloading overrides-7.7.0-py3-none-any.whl.metadata (5.8 kB)
+2025-11-15T09:04:37.3230569Z Collecting importlib-resources (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:37.3422643Z   Downloading importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)
+2025-11-15T09:04:37.9398084Z Collecting grpcio>=1.58.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:37.9592037Z   Downloading grpcio-1.76.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
+2025-11-15T09:04:38.0204489Z Collecting bcrypt>=4.0.1 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.0399421Z   Downloading bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl.metadata (10 kB)
+2025-11-15T09:04:38.0773155Z Collecting typer>=0.9.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.0966114Z   Downloading typer-0.20.0-py3-none-any.whl.metadata (16 kB)
+2025-11-15T09:04:38.1410152Z Collecting kubernetes>=28.1.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.1605658Z   Downloading kubernetes-34.1.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-11-15T09:04:38.1975421Z Collecting tenacity>=8.2.3 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.2169245Z   Downloading tenacity-9.1.2-py3-none-any.whl.metadata (1.2 kB)
+2025-11-15T09:04:38.2748187Z Collecting pyyaml>=6.0.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.2941133Z   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2025-11-15T09:04:38.3557362Z Collecting mmh3>=4.0.1 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.3760780Z   Downloading mmh3-5.2.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (14 kB)
+2025-11-15T09:04:38.7213328Z Collecting orjson>=3.9.12 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.7416104Z   Downloading orjson-3.11.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+2025-11-15T09:04:38.7810203Z Collecting httpx>=0.27.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.8003280Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+2025-11-15T09:04:38.8599230Z Collecting rich>=10.11.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.8791854Z   Downloading rich-14.2.0-py3-none-any.whl.metadata (18 kB)
+2025-11-15T09:04:38.9244214Z Collecting jsonschema>=4.19.0 (from chromadb~=1.1.0->crewai)
+2025-11-15T09:04:38.9440208Z   Downloading jsonschema-4.25.1-py3-none-any.whl.metadata (7.6 kB)
+2025-11-15T09:04:38.9939003Z Collecting six>=1.5 (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:39.0130896Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-11-15T09:04:39.0444036Z Collecting python-dateutil>=2.2 (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:39.0636220Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2025-11-15T09:04:39.0958015Z Collecting backoff>=1.10.0 (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:39.1162826Z   Downloading backoff-2.2.1-py3-none-any.whl.metadata (14 kB)
+2025-11-15T09:04:39.1453432Z Collecting distro>=1.5.0 (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:39.1646205Z   Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+2025-11-15T09:04:39.2692382Z Collecting charset_normalizer<4,>=2 (from requests)
+2025-11-15T09:04:39.2886620Z   Downloading charset_normalizer-3.4.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+2025-11-15T09:04:39.3225299Z Collecting idna<4,>=2.5 (from requests)
+2025-11-15T09:04:39.3427616Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2025-11-15T09:04:39.3880983Z Collecting urllib3<3,>=1.21.1 (from requests)
+2025-11-15T09:04:39.4076871Z   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+2025-11-15T09:04:39.4457970Z Collecting certifi>=2017.4.17 (from requests)
+2025-11-15T09:04:39.4651116Z   Downloading certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+2025-11-15T09:04:39.5022335Z Collecting beautifulsoup4>=4.13.4 (from crewai-tools)
+2025-11-15T09:04:39.5215809Z   Downloading beautifulsoup4-4.14.2-py3-none-any.whl.metadata (3.8 kB)
+2025-11-15T09:04:39.5657593Z Collecting docker>=7.1.0 (from crewai-tools)
+2025-11-15T09:04:39.5849259Z   Downloading docker-7.1.0-py3-none-any.whl.metadata (3.8 kB)
+2025-11-15T09:04:39.6474229Z Collecting lancedb>=0.5.4 (from crewai-tools)
+2025-11-15T09:04:39.6671068Z   Downloading lancedb-0.25.3-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (4.8 kB)
+2025-11-15T09:04:39.7107679Z Collecting pypdf>=5.9.0 (from crewai-tools)
+2025-11-15T09:04:39.7300970Z   Downloading pypdf-6.2.0-py3-none-any.whl.metadata (7.1 kB)
+2025-11-15T09:04:39.7630007Z Collecting python-docx>=1.2.0 (from crewai-tools)
+2025-11-15T09:04:39.7832449Z   Downloading python_docx-1.2.0-py3-none-any.whl.metadata (2.0 kB)
+2025-11-15T09:04:39.8204015Z Collecting pytube>=15.0.0 (from crewai-tools)
+2025-11-15T09:04:39.8402977Z   Downloading pytube-15.0.0-py3-none-any.whl.metadata (5.0 kB)
+2025-11-15T09:04:39.9007338Z Collecting tiktoken>=0.8.0 (from crewai-tools)
+2025-11-15T09:04:39.9216492Z   Downloading tiktoken-0.12.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+2025-11-15T09:04:39.9602151Z Collecting youtube-transcript-api>=1.2.2 (from crewai-tools)
+2025-11-15T09:04:39.9804183Z   Downloading youtube_transcript_api-1.2.3-py3-none-any.whl.metadata (24 kB)
+2025-11-15T09:04:40.0432754Z Collecting langchain-core<2.0.0,>=1.0.4 (from langchain)
+2025-11-15T09:04:40.0625203Z   Downloading langchain_core-1.0.5-py3-none-any.whl.metadata (3.6 kB)
+2025-11-15T09:04:40.1230187Z Collecting langgraph<1.1.0,>=1.0.2 (from langchain)
+2025-11-15T09:04:40.1429502Z   Downloading langgraph-1.0.3-py3-none-any.whl.metadata (7.8 kB)
+2025-11-15T09:04:40.1857520Z Collecting jsonpatch<2.0.0,>=1.33.0 (from langchain-core<2.0.0,>=1.0.4->langchain)
+2025-11-15T09:04:40.2054423Z   Downloading jsonpatch-1.33-py2.py3-none-any.whl.metadata (3.0 kB)
+2025-11-15T09:04:40.3795163Z Collecting langsmith<1.0.0,>=0.3.45 (from langchain-core<2.0.0,>=1.0.4->langchain)
+2025-11-15T09:04:40.3989138Z   Downloading langsmith-0.4.43-py3-none-any.whl.metadata (14 kB)
+2025-11-15T09:04:40.4356719Z Collecting packaging<26.0.0,>=23.2.0 (from langchain-core<2.0.0,>=1.0.4->langchain)
+2025-11-15T09:04:40.4548373Z   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-11-15T09:04:40.4948066Z Collecting jsonpointer>=1.9 (from jsonpatch<2.0.0,>=1.33.0->langchain-core<2.0.0,>=1.0.4->langchain)
+2025-11-15T09:04:40.5136577Z   Downloading jsonpointer-3.0.0-py2.py3-none-any.whl.metadata (2.3 kB)
+2025-11-15T09:04:40.5643257Z Collecting langgraph-checkpoint<4.0.0,>=2.1.0 (from langgraph<1.1.0,>=1.0.2->langchain)
+2025-11-15T09:04:40.5843720Z   Downloading langgraph_checkpoint-3.0.1-py3-none-any.whl.metadata (4.7 kB)
+2025-11-15T09:04:40.6163154Z Collecting langgraph-prebuilt<1.1.0,>=1.0.2 (from langgraph<1.1.0,>=1.0.2->langchain)
+2025-11-15T09:04:40.6362745Z   Downloading langgraph_prebuilt-1.0.4-py3-none-any.whl.metadata (5.2 kB)
+2025-11-15T09:04:40.6762609Z Collecting langgraph-sdk<0.3.0,>=0.2.2 (from langgraph<1.1.0,>=1.0.2->langchain)
+2025-11-15T09:04:40.6957543Z   Downloading langgraph_sdk-0.2.9-py3-none-any.whl.metadata (1.5 kB)
+2025-11-15T09:04:40.7956500Z Collecting xxhash>=3.5.0 (from langgraph<1.1.0,>=1.0.2->langchain)
+2025-11-15T09:04:40.8152056Z   Downloading xxhash-3.6.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+2025-11-15T09:04:40.9048785Z Collecting ormsgpack>=1.12.0 (from langgraph-checkpoint<4.0.0,>=2.1.0->langgraph<1.1.0,>=1.0.2->langchain)
+2025-11-15T09:04:40.9248883Z   Downloading ormsgpack-1.12.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.2 kB)
+2025-11-15T09:04:41.0083732Z Collecting requests-toolbelt>=1.0.0 (from langsmith<1.0.0,>=0.3.45->langchain-core<2.0.0,>=1.0.4->langchain)
+2025-11-15T09:04:41.0277644Z   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+2025-11-15T09:04:41.1256118Z Collecting zstandard>=0.23.0 (from langsmith<1.0.0,>=0.3.45->langchain-core<2.0.0,>=1.0.4->langchain)
+2025-11-15T09:04:41.1450783Z   Downloading zstandard-0.25.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.3 kB)
+2025-11-15T09:04:41.1839829Z Collecting anyio (from httpx>=0.27.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:41.2037401Z   Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+2025-11-15T09:04:41.2423970Z Collecting httpcore==1.* (from httpx>=0.27.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:41.2617297Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2025-11-15T09:04:41.2945496Z Collecting h11>=0.16 (from httpcore==1.*->httpx>=0.27.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:41.3137313Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2025-11-15T09:04:41.3457350Z Collecting annotated-types>=0.6.0 (from pydantic>=2.11.9->crewai)
+2025-11-15T09:04:41.3650431Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2025-11-15T09:04:42.1681355Z Collecting pydantic-core==2.41.5 (from pydantic>=2.11.9->crewai)
+2025-11-15T09:04:42.1876115Z   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2025-11-15T09:04:42.2182417Z Collecting typing-inspection>=0.4.2 (from pydantic>=2.11.9->crewai)
+2025-11-15T09:04:42.2374860Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2025-11-15T09:04:42.3428593Z Collecting jiter<1,>=0.10.0 (from openai)
+2025-11-15T09:04:42.3624818Z   Downloading jiter-0.12.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+2025-11-15T09:04:42.3901196Z Collecting sniffio (from openai)
+2025-11-15T09:04:42.4093258Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2025-11-15T09:04:42.4744746Z Collecting soupsieve>1.2 (from beautifulsoup4>=4.13.4->crewai-tools)
+2025-11-15T09:04:42.4938218Z   Downloading soupsieve-2.8-py3-none-any.whl.metadata (4.6 kB)
+2025-11-15T09:04:42.5314968Z Collecting pyproject_hooks (from build>=1.0.3->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:42.5509426Z   Downloading pyproject_hooks-1.2.0-py3-none-any.whl.metadata (1.3 kB)
+2025-11-15T09:04:43.1114565Z Collecting aiohttp<4.0.0,>=3.9.1 (from instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.1309297Z   Downloading aiohttp-3.13.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+2025-11-15T09:04:43.1687086Z Collecting diskcache>=5.6.3 (from instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.1886599Z   Downloading diskcache-5.6.3-py3-none-any.whl.metadata (20 kB)
+2025-11-15T09:04:43.2186728Z Collecting docstring-parser<1.0,>=0.16 (from instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.2379946Z   Downloading docstring_parser-0.17.0-py3-none-any.whl.metadata (3.5 kB)
+2025-11-15T09:04:43.2700954Z Collecting jinja2<4.0.0,>=3.1.4 (from instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.2890349Z   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+2025-11-15T09:04:43.2949312Z Collecting jiter<1,>=0.10.0 (from openai)
+2025-11-15T09:04:43.3142451Z   Downloading jiter-0.11.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+2025-11-15T09:04:43.3822754Z Collecting pre-commit>=4.3.0 (from instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.4014454Z   Downloading pre_commit-4.4.0-py2.py3-none-any.whl.metadata (1.2 kB)
+2025-11-15T09:04:43.5000207Z Collecting ty>=0.0.1a23 (from instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.5212762Z   Downloading ty-0.0.1a26-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.7 kB)
+2025-11-15T09:04:43.6820866Z Collecting aiohappyeyeballs>=2.5.0 (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.7025007Z   Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+2025-11-15T09:04:43.7303372Z Collecting aiosignal>=1.4.0 (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.7498687Z   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+2025-11-15T09:04:43.7820463Z Collecting attrs>=17.3.0 (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.8015696Z   Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+2025-11-15T09:04:43.8899464Z Collecting frozenlist>=1.1.1 (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai)
+2025-11-15T09:04:43.9093916Z   Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+2025-11-15T09:04:44.1663174Z Collecting multidict<7.0,>=4.5 (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai)
+2025-11-15T09:04:44.1858139Z   Downloading multidict-6.7.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+2025-11-15T09:04:44.2598379Z Collecting propcache>=0.2.0 (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai)
+2025-11-15T09:04:44.2795020Z   Downloading propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+2025-11-15T09:04:44.5587912Z Collecting yarl<2.0,>=1.17.0 (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai)
+2025-11-15T09:04:44.5784842Z   Downloading yarl-1.22.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (75 kB)
+2025-11-15T09:04:44.6589845Z Collecting MarkupSafe>=2.0 (from jinja2<4.0.0,>=3.1.4->instructor>=1.3.3->crewai)
+2025-11-15T09:04:44.6785442Z   Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+2025-11-15T09:04:44.7205792Z Collecting markdown-it-py>=2.2.0 (from rich>=10.11.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:44.7396849Z   Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+2025-11-15T09:04:44.7788149Z Collecting pygments<3.0.0,>=2.13.0 (from rich>=10.11.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:44.7980714Z   Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+2025-11-15T09:04:44.8415641Z Collecting shellingham>=1.3.0 (from typer>=0.9.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:44.8611455Z   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+2025-11-15T09:04:44.9369814Z Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.19.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:44.9566923Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2025-11-15T09:04:44.9989915Z Collecting referencing>=0.28.4 (from jsonschema>=4.19.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.0183301Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2025-11-15T09:04:45.3014636Z Collecting rpds-py>=0.7.1 (from jsonschema>=4.19.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.3216220Z   Downloading rpds_py-0.28.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+2025-11-15T09:04:45.4079307Z Collecting google-auth>=1.0.1 (from kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.4274797Z   Downloading google_auth-2.43.0-py2.py3-none-any.whl.metadata (6.6 kB)
+2025-11-15T09:04:45.4820732Z Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.5015855Z   Downloading websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
+2025-11-15T09:04:45.5333982Z Collecting requests-oauthlib (from kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.5527189Z   Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+2025-11-15T09:04:45.5686936Z Collecting urllib3<3,>=1.21.1 (from requests)
+2025-11-15T09:04:45.5880443Z   Downloading urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
+2025-11-15T09:04:45.6160106Z Collecting durationpy>=0.7 (from kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.6351257Z   Downloading durationpy-0.10-py3-none-any.whl.metadata (340 bytes)
+2025-11-15T09:04:45.6802910Z Collecting cachetools<7.0,>=2.0.0 (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.6995590Z   Downloading cachetools-6.2.2-py3-none-any.whl.metadata (5.6 kB)
+2025-11-15T09:04:45.7358764Z Collecting pyasn1-modules>=0.2.1 (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.7554082Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+2025-11-15T09:04:45.7904552Z Collecting rsa<5,>=3.1.4 (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.8099280Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+2025-11-15T09:04:45.8537800Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:45.8732262Z   Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
+2025-11-15T09:04:45.9050290Z Collecting deprecation (from lancedb>=0.5.4->crewai-tools)
+2025-11-15T09:04:45.9266584Z   Downloading deprecation-2.1.0-py2.py3-none-any.whl.metadata (4.6 kB)
+2025-11-15T09:04:46.1738943Z Collecting pyarrow>=16 (from lancedb>=0.5.4->crewai-tools)
+2025-11-15T09:04:46.1937818Z   Downloading pyarrow-22.0.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (3.2 kB)
+2025-11-15T09:04:46.2463302Z Collecting lance-namespace>=0.0.16 (from lancedb>=0.5.4->crewai-tools)
+2025-11-15T09:04:46.2660039Z   Downloading lance_namespace-0.0.21-py3-none-any.whl.metadata (1.4 kB)
+2025-11-15T09:04:46.2995187Z Collecting lance-namespace-urllib3-client (from lance-namespace>=0.0.16->lancedb>=0.5.4->crewai-tools)
+2025-11-15T09:04:46.3204416Z   Downloading lance_namespace_urllib3_client-0.0.21-py3-none-any.whl.metadata (22 kB)
+2025-11-15T09:04:46.4050193Z Collecting pylance>=0.18.0 (from lance-namespace>=0.0.16->lancedb>=0.5.4->crewai-tools)
+2025-11-15T09:04:46.4248828Z   Downloading pylance-0.39.0-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+2025-11-15T09:04:46.4563728Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=10.11.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:46.4758497Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+2025-11-15T09:04:46.5167922Z Collecting httpx-sse>=0.4 (from mcp>=1.16.0->crewai)
+2025-11-15T09:04:46.5359450Z   Downloading httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+2025-11-15T09:04:46.5923796Z Collecting python-multipart>=0.0.9 (from mcp>=1.16.0->crewai)
+2025-11-15T09:04:46.6115697Z   Downloading python_multipart-0.0.20-py3-none-any.whl.metadata (1.8 kB)
+2025-11-15T09:04:46.6464805Z Collecting sse-starlette>=1.6.1 (from mcp>=1.16.0->crewai)
+2025-11-15T09:04:46.6657751Z   Downloading sse_starlette-3.0.3-py3-none-any.whl.metadata (12 kB)
+2025-11-15T09:04:46.7125438Z Collecting starlette>=0.27 (from mcp>=1.16.0->crewai)
+2025-11-15T09:04:46.7317753Z   Downloading starlette-0.50.0-py3-none-any.whl.metadata (6.3 kB)
+2025-11-15T09:04:46.7912442Z Collecting coloredlogs (from onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:46.8104856Z   Downloading coloredlogs-15.0.1-py2.py3-none-any.whl.metadata (12 kB)
+2025-11-15T09:04:46.8424238Z Collecting flatbuffers (from onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:46.8618439Z   Downloading flatbuffers-25.9.23-py2.py3-none-any.whl.metadata (875 bytes)
+2025-11-15T09:04:47.0444950Z Collecting protobuf (from onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:47.0640171Z   Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+2025-11-15T09:04:47.0982893Z Collecting sympy (from onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:47.1175142Z   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+2025-11-15T09:04:47.1470775Z Collecting et-xmlfile (from openpyxl>=3.1.5->crewai)
+2025-11-15T09:04:47.1662116Z   Downloading et_xmlfile-2.0.0-py3-none-any.whl.metadata (2.7 kB)
+2025-11-15T09:04:47.2187405Z Collecting importlib-metadata<8.8.0,>=6.0 (from opentelemetry-api>=1.30.0->crewai)
+2025-11-15T09:04:47.2378548Z   Downloading importlib_metadata-8.7.0-py3-none-any.whl.metadata (4.8 kB)
+2025-11-15T09:04:47.2771551Z Collecting zipp>=3.20 (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api>=1.30.0->crewai)
+2025-11-15T09:04:47.2966950Z   Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+2025-11-15T09:04:47.3377965Z Collecting googleapis-common-protos~=1.57 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:47.3570697Z   Downloading googleapis_common_protos-1.72.0-py3-none-any.whl.metadata (9.4 kB)
+2025-11-15T09:04:47.4068495Z Collecting opentelemetry-exporter-otlp-proto-common==1.38.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:47.4262059Z   Downloading opentelemetry_exporter_otlp_proto_common-1.38.0-py3-none-any.whl.metadata (1.8 kB)
+2025-11-15T09:04:47.4604268Z Collecting opentelemetry-proto==1.38.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:47.4797477Z   Downloading opentelemetry_proto-1.38.0-py3-none-any.whl.metadata (2.3 kB)
+2025-11-15T09:04:47.6015428Z Collecting opentelemetry-semantic-conventions==0.59b0 (from opentelemetry-sdk>=1.30.0->crewai)
+2025-11-15T09:04:47.6210147Z   Downloading opentelemetry_semantic_conventions-0.59b0-py3-none-any.whl.metadata (2.4 kB)
+2025-11-15T09:04:47.6874723Z Collecting pdfminer.six==20251107 (from pdfplumber>=0.11.4->crewai)
+2025-11-15T09:04:47.7068938Z   Downloading pdfminer_six-20251107-py3-none-any.whl.metadata (4.2 kB)
+2025-11-15T09:04:47.8879759Z Collecting Pillow>=9.1 (from pdfplumber>=0.11.4->crewai)
+2025-11-15T09:04:47.9073109Z   Downloading pillow-12.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+2025-11-15T09:04:48.0066429Z Collecting pypdfium2>=4.18.0 (from pdfplumber>=0.11.4->crewai)
+2025-11-15T09:04:48.0265093Z   Downloading pypdfium2-5.0.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (67 kB)
+2025-11-15T09:04:48.2355112Z Collecting cryptography>=36.0.0 (from pdfminer.six==20251107->pdfplumber>=0.11.4->crewai)
+2025-11-15T09:04:48.2549040Z   Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+2025-11-15T09:04:48.3850853Z Collecting cffi>=2.0.0 (from cryptography>=36.0.0->pdfminer.six==20251107->pdfplumber>=0.11.4->crewai)
+2025-11-15T09:04:48.4044836Z   Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+2025-11-15T09:04:48.4359979Z Collecting pycparser (from cffi>=2.0.0->cryptography>=36.0.0->pdfminer.six==20251107->pdfplumber>=0.11.4->crewai)
+2025-11-15T09:04:48.4552637Z   Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+2025-11-15T09:04:48.4919399Z Collecting cfgv>=2.0.0 (from pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+2025-11-15T09:04:48.5116075Z   Downloading cfgv-3.4.0-py2.py3-none-any.whl.metadata (8.5 kB)
+2025-11-15T09:04:48.5717988Z Collecting identify>=1.0.0 (from pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+2025-11-15T09:04:48.5913014Z   Downloading identify-2.6.15-py2.py3-none-any.whl.metadata (4.4 kB)
+2025-11-15T09:04:48.6238187Z Collecting nodeenv>=0.11.1 (from pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+2025-11-15T09:04:48.6434776Z   Downloading nodeenv-1.9.1-py2.py3-none-any.whl.metadata (21 kB)
+2025-11-15T09:04:48.7067151Z Collecting virtualenv>=20.10.0 (from pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+2025-11-15T09:04:48.7269941Z   Downloading virtualenv-20.35.4-py3-none-any.whl.metadata (4.6 kB)
+2025-11-15T09:04:49.0378984Z Collecting lxml>=3.1.0 (from python-docx>=1.2.0->crewai-tools)
+2025-11-15T09:04:49.0574090Z   Downloading lxml-6.0.2-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.6 kB)
+2025-11-15T09:04:49.2308088Z Collecting huggingface-hub<2.0,>=0.16.4 (from tokenizers>=0.20.3->crewai)
+2025-11-15T09:04:49.2504995Z   Downloading huggingface_hub-1.1.4-py3-none-any.whl.metadata (13 kB)
+2025-11-15T09:04:49.3049255Z Collecting filelock (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai)
+2025-11-15T09:04:49.3241412Z   Downloading filelock-3.20.0-py3-none-any.whl.metadata (2.1 kB)
+2025-11-15T09:04:49.3620573Z Collecting fsspec>=2023.5.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai)
+2025-11-15T09:04:49.3812792Z   Downloading fsspec-2025.10.0-py3-none-any.whl.metadata (10 kB)
+2025-11-15T09:04:49.4561793Z Collecting hf-xet<2.0.0,>=1.2.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai)
+2025-11-15T09:04:49.4761524Z   Downloading hf_xet-1.2.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+2025-11-15T09:04:49.5249310Z Collecting typer-slim (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai)
+2025-11-15T09:04:49.5442696Z   Downloading typer_slim-0.20.0-py3-none-any.whl.metadata (16 kB)
+2025-11-15T09:04:49.8331987Z Collecting httptools>=0.6.3 (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:49.8527387Z   Downloading httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+2025-11-15T09:04:49.9137077Z Collecting uvloop>=0.15.1 (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:49.9332693Z   Downloading uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+2025-11-15T09:04:50.0324071Z Collecting watchfiles>=0.13 (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:50.0517914Z   Downloading watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+2025-11-15T09:04:50.1567618Z Collecting websockets>=10.4 (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:50.1764369Z   Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+2025-11-15T09:04:50.2195764Z Collecting distlib<1,>=0.3.7 (from virtualenv>=20.10.0->pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+2025-11-15T09:04:50.2389144Z   Downloading distlib-0.4.0-py2.py3-none-any.whl.metadata (5.2 kB)
+2025-11-15T09:04:50.2786580Z Collecting platformdirs<5,>=3.9.1 (from virtualenv>=20.10.0->pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+2025-11-15T09:04:50.2983299Z   Downloading platformdirs-4.5.0-py3-none-any.whl.metadata (12 kB)
+2025-11-15T09:04:50.3628766Z Collecting defusedxml<0.8.0,>=0.7.1 (from youtube-transcript-api>=1.2.2->crewai-tools)
+2025-11-15T09:04:50.3821139Z   Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+2025-11-15T09:04:50.4409027Z Collecting humanfriendly>=9.1 (from coloredlogs->onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:50.4602608Z   Downloading humanfriendly-10.0-py2.py3-none-any.whl.metadata (9.2 kB)
+2025-11-15T09:04:50.5635124Z Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:50.5825883Z   Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+2025-11-15T09:04:50.6241818Z Collecting mpmath<1.4,>=1.1.0 (from sympy->onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+2025-11-15T09:04:50.6431384Z   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+2025-11-15T09:04:50.7386882Z Downloading crewai-1.4.1-py3-none-any.whl (614 kB)
+2025-11-15T09:04:50.7786676Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 614.1/614.1 kB 19.0 MB/s  0:00:00
+2025-11-15T09:04:50.7985380Z Downloading json_repair-0.25.2-py3-none-any.whl (12 kB)
+2025-11-15T09:04:50.8201786Z Downloading portalocker-2.7.0-py2.py3-none-any.whl (15 kB)
+2025-11-15T09:04:50.8437109Z Downloading chromadb-1.1.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.9 MB)
+2025-11-15T09:04:51.1031442Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.9/19.9 MB 76.8 MB/s  0:00:00
+2025-11-15T09:04:51.1225536Z Downloading posthog-5.4.0-py3-none-any.whl (105 kB)
+2025-11-15T09:04:51.1442543Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+2025-11-15T09:04:51.1683397Z Downloading charset_normalizer-3.4.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (151 kB)
+2025-11-15T09:04:51.1901417Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+2025-11-15T09:04:51.2122778Z Downloading crewai_tools-1.4.1-py3-none-any.whl (755 kB)
+2025-11-15T09:04:51.2205993Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 755.0/755.0 kB 115.1 MB/s  0:00:00
+2025-11-15T09:04:51.2407019Z Downloading langchain-1.0.7-py3-none-any.whl (93 kB)
+2025-11-15T09:04:51.2626524Z Downloading langchain_core-1.0.5-py3-none-any.whl (471 kB)
+2025-11-15T09:04:51.2860583Z Downloading jsonpatch-1.33-py2.py3-none-any.whl (12 kB)
+2025-11-15T09:04:51.3074262Z Downloading langgraph-1.0.3-py3-none-any.whl (156 kB)
+2025-11-15T09:04:51.3321796Z Downloading langgraph_checkpoint-3.0.1-py3-none-any.whl (46 kB)
+2025-11-15T09:04:51.3540971Z Downloading langgraph_prebuilt-1.0.4-py3-none-any.whl (34 kB)
+2025-11-15T09:04:51.3758962Z Downloading langgraph_sdk-0.2.9-py3-none-any.whl (56 kB)
+2025-11-15T09:04:51.3987382Z Downloading langsmith-0.4.43-py3-none-any.whl (410 kB)
+2025-11-15T09:04:51.4212269Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+2025-11-15T09:04:51.4424014Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2025-11-15T09:04:51.4639395Z Downloading packaging-25.0-py3-none-any.whl (66 kB)
+2025-11-15T09:04:51.4860489Z Downloading pydantic-2.12.4-py3-none-any.whl (463 kB)
+2025-11-15T09:04:51.5097753Z Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2025-11-15T09:04:51.5233617Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 185.7 MB/s  0:00:00
+2025-11-15T09:04:51.5434279Z Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+2025-11-15T09:04:51.5505057Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 123.9 MB/s  0:00:00
+2025-11-15T09:04:51.5695196Z Downloading tenacity-9.1.2-py3-none-any.whl (28 kB)
+2025-11-15T09:04:51.5907200Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2025-11-15T09:04:51.6154355Z Downloading openai-2.8.0-py3-none-any.whl (1.0 MB)
+2025-11-15T09:04:51.6228081Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 154.9 MB/s  0:00:00
+2025-11-15T09:04:51.6420600Z Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+2025-11-15T09:04:51.6635986Z Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+2025-11-15T09:04:51.6848441Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2025-11-15T09:04:51.7062319Z Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+2025-11-15T09:04:51.7271675Z Downloading backoff-2.2.1-py3-none-any.whl (15 kB)
+2025-11-15T09:04:51.7482007Z Downloading bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl (278 kB)
+2025-11-15T09:04:51.7703823Z Downloading beautifulsoup4-4.14.2-py3-none-any.whl (106 kB)
+2025-11-15T09:04:51.7918416Z Downloading build-1.3.0-py3-none-any.whl (23 kB)
+2025-11-15T09:04:51.8132933Z Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+2025-11-15T09:04:51.8352398Z Downloading click-8.3.0-py3-none-any.whl (107 kB)
+2025-11-15T09:04:51.8576624Z Downloading docker-7.1.0-py3-none-any.whl (147 kB)
+2025-11-15T09:04:51.8803819Z Downloading grpcio-1.76.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.6 MB)
+2025-11-15T09:04:51.9200537Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 176.1 MB/s  0:00:00
+2025-11-15T09:04:51.9395370Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2025-11-15T09:04:51.9613423Z Downloading instructor-1.13.0-py3-none-any.whl (160 kB)
+2025-11-15T09:04:51.9836412Z Downloading aiohttp-3.13.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+2025-11-15T09:04:51.9945700Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 176.4 MB/s  0:00:00
+2025-11-15T09:04:52.0140293Z Downloading docstring_parser-0.17.0-py3-none-any.whl (36 kB)
+2025-11-15T09:04:52.0354752Z Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+2025-11-15T09:04:52.0586672Z Downloading jiter-0.11.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (359 kB)
+2025-11-15T09:04:52.0820198Z Downloading multidict-6.7.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+2025-11-15T09:04:52.1045445Z Downloading rich-14.2.0-py3-none-any.whl (243 kB)
+2025-11-15T09:04:52.1271365Z Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+2025-11-15T09:04:52.1368764Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 149.1 MB/s  0:00:00
+2025-11-15T09:04:52.1561257Z Downloading typer-0.20.0-py3-none-any.whl (47 kB)
+2025-11-15T09:04:52.1783532Z Downloading yarl-1.22.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (365 kB)
+2025-11-15T09:04:52.2010744Z Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+2025-11-15T09:04:52.2225329Z Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+2025-11-15T09:04:52.2446991Z Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+2025-11-15T09:04:52.2664318Z Downloading diskcache-5.6.3-py3-none-any.whl (45 kB)
+2025-11-15T09:04:52.2882788Z Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+2025-11-15T09:04:52.3110276Z Downloading json5-0.12.1-py3-none-any.whl (36 kB)
+2025-11-15T09:04:52.3322375Z Downloading jsonpointer-3.0.0-py2.py3-none-any.whl (7.6 kB)
+2025-11-15T09:04:52.3537179Z Downloading jsonref-1.1.0-py3-none-any.whl (9.4 kB)
+2025-11-15T09:04:52.3748599Z Downloading jsonschema-4.25.1-py3-none-any.whl (90 kB)
+2025-11-15T09:04:52.3967297Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2025-11-15T09:04:52.4183433Z Downloading kubernetes-34.1.0-py2.py3-none-any.whl (2.0 MB)
+2025-11-15T09:04:52.4319188Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 176.3 MB/s  0:00:00
+2025-11-15T09:04:52.4526947Z Downloading urllib3-2.3.0-py3-none-any.whl (128 kB)
+2025-11-15T09:04:52.4748250Z Downloading durationpy-0.10-py3-none-any.whl (3.9 kB)
+2025-11-15T09:04:52.4961875Z Downloading google_auth-2.43.0-py2.py3-none-any.whl (223 kB)
+2025-11-15T09:04:52.5185517Z Downloading cachetools-6.2.2-py3-none-any.whl (11 kB)
+2025-11-15T09:04:52.5399110Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+2025-11-15T09:04:52.5635198Z Downloading lancedb-0.25.3-cp39-abi3-manylinux_2_28_x86_64.whl (39.2 MB)
+2025-11-15T09:04:52.7665560Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 39.2/39.2 MB 194.8 MB/s  0:00:00
+2025-11-15T09:04:52.7865231Z Downloading lance_namespace-0.0.21-py3-none-any.whl (25 kB)
+2025-11-15T09:04:52.8081772Z Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+2025-11-15T09:04:52.8300383Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+2025-11-15T09:04:52.8515307Z Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+2025-11-15T09:04:52.8725942Z Downloading mcp-1.21.1-py3-none-any.whl (174 kB)
+2025-11-15T09:04:52.8950007Z Downloading httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+2025-11-15T09:04:52.9163037Z Downloading mmh3-5.2.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (103 kB)
+2025-11-15T09:04:52.9456204Z Downloading numpy-2.3.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+2025-11-15T09:04:53.0331715Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 196.6 MB/s  0:00:00
+2025-11-15T09:04:53.0568376Z Downloading onnxruntime-1.23.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (17.4 MB)
+2025-11-15T09:04:53.1462092Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.4/17.4 MB 198.0 MB/s  0:00:00
+2025-11-15T09:04:53.1656030Z Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+2025-11-15T09:04:53.1880008Z Downloading opentelemetry_api-1.38.0-py3-none-any.whl (65 kB)
+2025-11-15T09:04:53.2097570Z Downloading importlib_metadata-8.7.0-py3-none-any.whl (27 kB)
+2025-11-15T09:04:53.2315717Z Downloading opentelemetry_exporter_otlp_proto_grpc-1.38.0-py3-none-any.whl (19 kB)
+2025-11-15T09:04:53.2532035Z Downloading opentelemetry_exporter_otlp_proto_common-1.38.0-py3-none-any.whl (18 kB)
+2025-11-15T09:04:53.2746722Z Downloading opentelemetry_proto-1.38.0-py3-none-any.whl (72 kB)
+2025-11-15T09:04:53.2963482Z Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+2025-11-15T09:04:53.3201604Z Downloading opentelemetry_sdk-1.38.0-py3-none-any.whl (132 kB)
+2025-11-15T09:04:53.3436399Z Downloading opentelemetry_semantic_conventions-0.59b0-py3-none-any.whl (207 kB)
+2025-11-15T09:04:53.3663837Z Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+2025-11-15T09:04:53.3889842Z Downloading opentelemetry_exporter_otlp_proto_http-1.38.0-py3-none-any.whl (19 kB)
+2025-11-15T09:04:53.4104824Z Downloading orjson-3.11.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (136 kB)
+2025-11-15T09:04:53.4341865Z Downloading ormsgpack-1.12.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (207 kB)
+2025-11-15T09:04:53.4593284Z Downloading overrides-7.7.0-py3-none-any.whl (17 kB)
+2025-11-15T09:04:53.5040250Z Downloading pdfplumber-0.11.8-py3-none-any.whl (60 kB)
+2025-11-15T09:04:53.5287105Z Downloading pdfminer_six-20251107-py3-none-any.whl (5.6 MB)
+2025-11-15T09:04:53.5613295Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 178.6 MB/s  0:00:00
+2025-11-15T09:04:53.5810228Z Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+2025-11-15T09:04:53.6024768Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 223.4 MB/s  0:00:00
+2025-11-15T09:04:53.6219435Z Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+2025-11-15T09:04:53.6472899Z Downloading pillow-12.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+2025-11-15T09:04:53.6854262Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 190.6 MB/s  0:00:00
+2025-11-15T09:04:53.7046754Z Downloading pre_commit-4.4.0-py2.py3-none-any.whl (226 kB)
+2025-11-15T09:04:53.7270917Z Downloading cfgv-3.4.0-py2.py3-none-any.whl (7.2 kB)
+2025-11-15T09:04:53.7483958Z Downloading identify-2.6.15-py2.py3-none-any.whl (99 kB)
+2025-11-15T09:04:53.7702960Z Downloading nodeenv-1.9.1-py2.py3-none-any.whl (22 kB)
+2025-11-15T09:04:53.7916648Z Downloading propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (210 kB)
+2025-11-15T09:04:53.8148442Z Downloading pyarrow-22.0.0-cp311-cp311-manylinux_2_28_x86_64.whl (47.7 MB)
+2025-11-15T09:04:54.0560806Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.7/47.7 MB 199.6 MB/s  0:00:00
+2025-11-15T09:04:54.0756084Z Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
+2025-11-15T09:04:54.0970572Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+2025-11-15T09:04:54.1192298Z Downloading pybase64-1.4.2-cp311-cp311-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl (71 kB)
+2025-11-15T09:04:54.1405941Z Downloading pydantic_settings-2.12.0-py3-none-any.whl (51 kB)
+2025-11-15T09:04:54.1637394Z Downloading PyJWT-2.10.1-py3-none-any.whl (22 kB)
+2025-11-15T09:04:54.1900810Z Downloading pylance-0.39.0-cp39-abi3-manylinux_2_28_x86_64.whl (48.6 MB)
+2025-11-15T09:04:54.4362793Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.6/48.6 MB 199.5 MB/s  0:00:00
+2025-11-15T09:04:54.4571224Z Downloading pypdf-6.2.0-py3-none-any.whl (326 kB)
+2025-11-15T09:04:54.4820337Z Downloading pypdfium2-5.0.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+2025-11-15T09:04:54.4999053Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 188.6 MB/s  0:00:00
+2025-11-15T09:04:54.5195012Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2025-11-15T09:04:54.5424099Z Downloading python_docx-1.2.0-py3-none-any.whl (252 kB)
+2025-11-15T09:04:54.5647698Z Downloading lxml-6.0.2-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+2025-11-15T09:04:54.5965752Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 174.9 MB/s  0:00:00
+2025-11-15T09:04:54.6158868Z Downloading python_dotenv-1.2.1-py3-none-any.whl (21 kB)
+2025-11-15T09:04:54.6372396Z Downloading python_multipart-0.0.20-py3-none-any.whl (24 kB)
+2025-11-15T09:04:54.6600148Z Downloading pytube-15.0.0-py3-none-any.whl (57 kB)
+2025-11-15T09:04:54.6818466Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2025-11-15T09:04:54.7041235Z Downloading regex-2025.11.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (800 kB)
+2025-11-15T09:04:54.7119797Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 800.4/800.4 kB 118.6 MB/s  0:00:00
+2025-11-15T09:04:54.7310877Z Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+2025-11-15T09:04:54.7530060Z Downloading rpds_py-0.28.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (382 kB)
+2025-11-15T09:04:54.7758890Z Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+2025-11-15T09:04:54.7970670Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-11-15T09:04:54.8186783Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+2025-11-15T09:04:54.8400490Z Downloading soupsieve-2.8-py3-none-any.whl (36 kB)
+2025-11-15T09:04:54.8614363Z Downloading sse_starlette-3.0.3-py3-none-any.whl (11 kB)
+2025-11-15T09:04:54.8829008Z Downloading starlette-0.50.0-py3-none-any.whl (74 kB)
+2025-11-15T09:04:54.9078841Z Downloading tiktoken-0.12.0-cp311-cp311-manylinux_2_28_x86_64.whl (1.2 MB)
+2025-11-15T09:04:54.9168833Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 146.4 MB/s  0:00:00
+2025-11-15T09:04:54.9406780Z Downloading tokenizers-0.22.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+2025-11-15T09:04:54.9639766Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 150.0 MB/s  0:00:00
+2025-11-15T09:04:54.9834754Z Downloading huggingface_hub-1.1.4-py3-none-any.whl (515 kB)
+2025-11-15T09:04:55.0074718Z Downloading hf_xet-1.2.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+2025-11-15T09:04:55.0263109Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 196.1 MB/s  0:00:00
+2025-11-15T09:04:55.0458777Z Downloading fsspec-2025.10.0-py3-none-any.whl (200 kB)
+2025-11-15T09:04:55.0689452Z Downloading tomli-2.3.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (242 kB)
+2025-11-15T09:04:55.0910201Z Downloading tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+2025-11-15T09:04:55.1121700Z Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+2025-11-15T09:04:55.1365863Z Downloading ty-0.0.1a26-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (9.3 MB)
+2025-11-15T09:04:55.1896400Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.3/9.3 MB 181.5 MB/s  0:00:00
+2025-11-15T09:04:55.2089826Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2025-11-15T09:04:55.2312826Z Downloading uv-0.9.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (21.3 MB)
+2025-11-15T09:04:55.3491955Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.3/21.3 MB 184.1 MB/s  0:00:00
+2025-11-15T09:04:55.3684930Z Downloading uvicorn-0.38.0-py3-none-any.whl (68 kB)
+2025-11-15T09:04:55.3918740Z Downloading httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (456 kB)
+2025-11-15T09:04:55.4186509Z Downloading uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.8 MB)
+2025-11-15T09:04:55.4395953Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 198.1 MB/s  0:00:00
+2025-11-15T09:04:55.4594568Z Downloading virtualenv-20.35.4-py3-none-any.whl (6.0 MB)
+2025-11-15T09:04:55.4942479Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.0/6.0 MB 179.8 MB/s  0:00:00
+2025-11-15T09:04:55.5140746Z Downloading distlib-0.4.0-py2.py3-none-any.whl (469 kB)
+2025-11-15T09:04:55.5372568Z Downloading filelock-3.20.0-py3-none-any.whl (16 kB)
+2025-11-15T09:04:55.5587767Z Downloading platformdirs-4.5.0-py3-none-any.whl (18 kB)
+2025-11-15T09:04:55.5804062Z Downloading watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+2025-11-15T09:04:55.6031703Z Downloading websocket_client-1.9.0-py3-none-any.whl (82 kB)
+2025-11-15T09:04:55.6260451Z Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
+2025-11-15T09:04:55.6485266Z Downloading xxhash-3.6.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (193 kB)
+2025-11-15T09:04:55.6720279Z Downloading youtube_transcript_api-1.2.3-py3-none-any.whl (485 kB)
+2025-11-15T09:04:55.6963591Z Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+2025-11-15T09:04:55.7180638Z Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+2025-11-15T09:04:55.7398245Z Downloading zstandard-0.25.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.6 MB)
+2025-11-15T09:04:55.7741122Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 168.8 MB/s  0:00:00
+2025-11-15T09:04:55.7935115Z Downloading coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
+2025-11-15T09:04:55.8150801Z Downloading humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+2025-11-15T09:04:55.8384911Z Downloading deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
+2025-11-15T09:04:55.8598407Z Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+2025-11-15T09:04:55.8815080Z Downloading flatbuffers-25.9.23-py2.py3-none-any.whl (30 kB)
+2025-11-15T09:04:55.9031755Z Downloading importlib_resources-6.5.2-py3-none-any.whl (37 kB)
+2025-11-15T09:04:55.9249026Z Downloading lance_namespace_urllib3_client-0.0.21-py3-none-any.whl (229 kB)
+2025-11-15T09:04:55.9469211Z Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+2025-11-15T09:04:55.9688882Z Downloading pyproject_hooks-1.2.0-py3-none-any.whl (10 kB)
+2025-11-15T09:04:55.9904546Z Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+2025-11-15T09:04:56.0125269Z Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+2025-11-15T09:04:56.0346117Z Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+2025-11-15T09:04:56.0696658Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 187.4 MB/s  0:00:00
+2025-11-15T09:04:56.0904375Z Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+2025-11-15T09:04:56.0965536Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 83.2 MB/s  0:00:00
+2025-11-15T09:04:56.1158493Z Downloading typer_slim-0.20.0-py3-none-any.whl (47 kB)
+2025-11-15T09:04:56.4724229Z Building wheels for collected packages: pypika
+2025-11-15T09:04:56.4733911Z   Building wheel for pypika (pyproject.toml): started
+2025-11-15T09:04:56.6881357Z   Building wheel for pypika (pyproject.toml): finished with status 'done'
+2025-11-15T09:04:56.6890367Z   Created wheel for pypika: filename=pypika-0.48.9-py2.py3-none-any.whl size=53803 sha256=66fe7ade3c94859ef9b6303d5a7cc10af5e02a61c1e723b47ce961b1d438dcc3
+2025-11-15T09:04:56.6892619Z   Stored in directory: /home/runner/.cache/pip/wheels/a3/01/bd/4c40ceb9d5354160cb186dcc153360f4ab7eb23e2b24daf96d
+2025-11-15T09:04:56.6929775Z Successfully built pypika
+2025-11-15T09:04:56.9611230Z Installing collected packages: pypika, mpmath, flatbuffers, durationpy, distlib, appdirs, zstandard, zipp, xxhash, websockets, websocket-client, uvloop, uv, urllib3, typing-extensions, ty, tqdm, tomli-w, tomli, tenacity, sympy, soupsieve, sniffio, six, shellingham, rpds-py, regex, pyyaml, pytube, python-multipart, python-dotenv, pyproject_hooks, pypdfium2, pypdf, pyjwt, pygments, pycparser, pybase64, pyasn1, pyarrow, protobuf, propcache, portalocker, platformdirs, Pillow, packaging, overrides, ormsgpack, orjson, oauthlib, numpy, nodeenv, multidict, mmh3, mdurl, MarkupSafe, lxml, jsonref, jsonpointer, json5, json-repair, jiter, importlib-resources, idna, identify, humanfriendly, httpx-sse, httptools, hf-xet, h11, fsspec, frozenlist, filelock, et-xmlfile, docstring-parser, distro, diskcache, defusedxml, click, charset_normalizer, cfgv, certifi, cachetools, bcrypt, backoff, attrs, annotated-types, aiohappyeyeballs, yarl, virtualenv, uvicorn, typing-inspection, typer-slim, rsa, requests, referencing, python-docx, python-dateutil, pydantic-core, pyasn1-modules, opentelemetry-proto, openpyxl, markdown-it-py, jsonpatch, jinja2, importlib-metadata, httpcore, grpcio, googleapis-common-protos, deprecation, coloredlogs, cffi, build, beautifulsoup4, anyio, aiosignal, youtube-transcript-api, watchfiles, tiktoken, starlette, sse-starlette, rich, requests-toolbelt, requests-oauthlib, pydantic, pre-commit, posthog, opentelemetry-exporter-otlp-proto-common, opentelemetry-api, onnxruntime, jsonschema-specifications, httpx, google-auth, docker, cryptography, aiohttp, typer, pydantic-settings, pdfminer.six, opentelemetry-semantic-conventions, openai, langsmith, langgraph-sdk, lance-namespace-urllib3-client, kubernetes, jsonschema, huggingface-hub, tokenizers, pdfplumber, opentelemetry-sdk, mcp, langchain-core, instructor, opentelemetry-exporter-otlp-proto-http, opentelemetry-exporter-otlp-proto-grpc, langgraph-checkpoint, langgraph-prebuilt, chromadb, langgraph, crewai, langchain, pylance, lance-namespace, lancedb, crewai-tools
+2025-11-15T09:05:19.5416869Z 
+2025-11-15T09:05:19.5499831Z Successfully installed MarkupSafe-3.0.3 Pillow-12.0.0 aiohappyeyeballs-2.6.1 aiohttp-3.13.2 aiosignal-1.4.0 annotated-types-0.7.0 anyio-4.11.0 appdirs-1.4.4 attrs-25.4.0 backoff-2.2.1 bcrypt-5.0.0 beautifulsoup4-4.14.2 build-1.3.0 cachetools-6.2.2 certifi-2025.11.12 cffi-2.0.0 cfgv-3.4.0 charset_normalizer-3.4.4 chromadb-1.1.1 click-8.3.0 coloredlogs-15.0.1 crewai-1.4.1 crewai-tools-1.4.1 cryptography-46.0.3 defusedxml-0.7.1 deprecation-2.1.0 diskcache-5.6.3 distlib-0.4.0 distro-1.9.0 docker-7.1.0 docstring-parser-0.17.0 durationpy-0.10 et-xmlfile-2.0.0 filelock-3.20.0 flatbuffers-25.9.23 frozenlist-1.8.0 fsspec-2025.10.0 google-auth-2.43.0 googleapis-common-protos-1.72.0 grpcio-1.76.0 h11-0.16.0 hf-xet-1.2.0 httpcore-1.0.9 httptools-0.7.1 httpx-0.28.1 httpx-sse-0.4.3 huggingface-hub-1.1.4 humanfriendly-10.0 identify-2.6.15 idna-3.11 importlib-metadata-8.7.0 importlib-resources-6.5.2 instructor-1.13.0 jinja2-3.1.6 jiter-0.11.1 json-repair-0.25.2 json5-0.12.1 jsonpatch-1.33 jsonpointer-3.0.0 jsonref-1.1.0 jsonschema-4.25.1 jsonschema-specifications-2025.9.1 kubernetes-34.1.0 lance-namespace-0.0.21 lance-namespace-urllib3-client-0.0.21 lancedb-0.25.3 langchain-1.0.7 langchain-core-1.0.5 langgraph-1.0.3 langgraph-checkpoint-3.0.1 langgraph-prebuilt-1.0.4 langgraph-sdk-0.2.9 langsmith-0.4.43 lxml-6.0.2 markdown-it-py-4.0.0 mcp-1.21.1 mdurl-0.1.2 mmh3-5.2.0 mpmath-1.3.0 multidict-6.7.0 nodeenv-1.9.1 numpy-2.3.4 oauthlib-3.3.1 onnxruntime-1.23.2 openai-2.8.0 openpyxl-3.1.5 opentelemetry-api-1.38.0 opentelemetry-exporter-otlp-proto-common-1.38.0 opentelemetry-exporter-otlp-proto-grpc-1.38.0 opentelemetry-exporter-otlp-proto-http-1.38.0 opentelemetry-proto-1.38.0 opentelemetry-sdk-1.38.0 opentelemetry-semantic-conventions-0.59b0 orjson-3.11.4 ormsgpack-1.12.0 overrides-7.7.0 packaging-25.0 pdfminer.six-20251107 pdfplumber-0.11.8 platformdirs-4.5.0 portalocker-2.7.0 posthog-5.4.0 pre-commit-4.4.0 propcache-0.4.1 protobuf-6.33.1 pyarrow-22.0.0 pyasn1-0.6.1 pyasn1-modules-0.4.2 pybase64-1.4.2 pycparser-2.23 pydantic-2.12.4 pydantic-core-2.41.5 pydantic-settings-2.12.0 pygments-2.19.2 pyjwt-2.10.1 pylance-0.39.0 pypdf-6.2.0 pypdfium2-5.0.0 pypika-0.48.9 pyproject_hooks-1.2.0 python-dateutil-2.9.0.post0 python-docx-1.2.0 python-dotenv-1.2.1 python-multipart-0.0.20 pytube-15.0.0 pyyaml-6.0.3 referencing-0.37.0 regex-2025.11.3 requests-2.32.5 requests-oauthlib-2.0.0 requests-toolbelt-1.0.0 rich-14.2.0 rpds-py-0.28.0 rsa-4.9.1 shellingham-1.5.4 six-1.17.0 sniffio-1.3.1 soupsieve-2.8 sse-starlette-3.0.3 starlette-0.50.0 sympy-1.14.0 tenacity-9.1.2 tiktoken-0.12.0 tokenizers-0.22.1 tomli-2.3.0 tomli-w-1.2.0 tqdm-4.67.1 ty-0.0.1a26 typer-0.20.0 typer-slim-0.20.0 typing-extensions-4.15.0 typing-inspection-0.4.2 urllib3-2.3.0 uv-0.9.9 uvicorn-0.38.0 uvloop-0.22.1 virtualenv-20.35.4 watchfiles-1.1.1 websocket-client-1.9.0 websockets-15.0.1 xxhash-3.6.0 yarl-1.22.0 youtube-transcript-api-1.2.3 zipp-3.23.0 zstandard-0.25.0
+2025-11-15T09:05:21.3924288Z ##[group]Run python << 'EOF'
+2025-11-15T09:05:21.3924771Z [36;1mpython << 'EOF'[0m
+2025-11-15T09:05:21.3925155Z [36;1mfrom crewai import Agent, Task, Crew[0m
+2025-11-15T09:05:21.3925560Z [36;1m[0m
+2025-11-15T09:05:21.3925888Z [36;1m# Define multiple specialized agents[0m
+2025-11-15T09:05:21.3926317Z [36;1marchitect = Agent([0m
+2025-11-15T09:05:21.3926705Z [36;1m    role='Software Architect',[0m
+2025-11-15T09:05:21.3927218Z [36;1m    goal='Analyze architecture and suggest improvements',[0m
+2025-11-15T09:05:21.3927881Z [36;1m    backstory='Expert in system design and architecture patterns',[0m
+2025-11-15T09:05:21.3928447Z [36;1m    verbose=True[0m
+2025-11-15T09:05:21.3928766Z [36;1m)[0m
+2025-11-15T09:05:21.3929040Z [36;1m[0m
+2025-11-15T09:05:21.3929311Z [36;1mreviewer = Agent([0m
+2025-11-15T09:05:21.3929846Z [36;1m    role='Code Reviewer',[0m
+2025-11-15T09:05:21.3930319Z [36;1m    goal='Review code quality and best practices',[0m
+2025-11-15T09:05:21.3930964Z [36;1m    backstory='Senior engineer focused on code quality',[0m
+2025-11-15T09:05:21.3931544Z [36;1m    verbose=True[0m
+2025-11-15T09:05:21.3931870Z [36;1m)[0m
+2025-11-15T09:05:21.3932126Z [36;1m[0m
+2025-11-15T09:05:21.3932421Z [36;1msecurity = Agent([0m
+2025-11-15T09:05:21.3932778Z [36;1m    role='Security Expert',[0m
+2025-11-15T09:05:21.3933235Z [36;1m    goal='Identify security vulnerabilities',[0m
+2025-11-15T09:05:21.3933747Z [36;1m    backstory='Cybersecurity specialist',[0m
+2025-11-15T09:05:21.3934180Z [36;1m    verbose=True[0m
+2025-11-15T09:05:21.3934497Z [36;1m)[0m
+2025-11-15T09:05:21.3934753Z [36;1m[0m
+2025-11-15T09:05:21.3935032Z [36;1m# Define tasks[0m
+2025-11-15T09:05:21.3935357Z [36;1march_task = Task([0m
+2025-11-15T09:05:21.3935874Z [36;1m    description='Analyze overall system architecture and data flow',[0m
+2025-11-15T09:05:21.3936475Z [36;1m    agent=architect,[0m
+2025-11-15T09:05:21.3936932Z [36;1m    expected_output='Architecture analysis report'[0m
+2025-11-15T09:05:21.3937426Z [36;1m)[0m
+2025-11-15T09:05:21.3937690Z [36;1m[0m
+2025-11-15T09:05:21.3937974Z [36;1mreview_task = Task([0m
+2025-11-15T09:05:21.3938453Z [36;1m    description='Review code quality and maintainability',[0m
+2025-11-15T09:05:21.3938980Z [36;1m    agent=reviewer,[0m
+2025-11-15T09:05:21.3939365Z [36;1m    expected_output='Code review report'[0m
+2025-11-15T09:05:21.3939950Z [36;1m)[0m
+2025-11-15T09:05:21.3940223Z [36;1m[0m
+2025-11-15T09:05:21.3940503Z [36;1msecurity_task = Task([0m
+2025-11-15T09:05:21.3940953Z [36;1m    description='Audit security vulnerabilities',[0m
+2025-11-15T09:05:21.3941424Z [36;1m    agent=security,[0m
+2025-11-15T09:05:21.3941828Z [36;1m    expected_output='Security audit report'[0m
+2025-11-15T09:05:21.3942254Z [36;1m)[0m
+2025-11-15T09:05:21.3942514Z [36;1m[0m
+2025-11-15T09:05:21.3942804Z [36;1m# Create collaborative crew[0m
+2025-11-15T09:05:21.3943193Z [36;1mcrew = Crew([0m
+2025-11-15T09:05:21.3943575Z [36;1m    agents=[architect, reviewer, security],[0m
+2025-11-15T09:05:21.3944339Z [36;1m    tasks=[arch_task, review_task, security_task],[0m
+2025-11-15T09:05:21.3944800Z [36;1m    verbose=True[0m
+2025-11-15T09:05:21.3945114Z [36;1m)[0m
+2025-11-15T09:05:21.3945430Z [36;1m[0m
+2025-11-15T09:05:21.3945688Z [36;1mtry:[0m
+2025-11-15T09:05:21.3945999Z [36;1m    result = crew.kickoff()[0m
+2025-11-15T09:05:21.3946573Z [36;1m    with open('multi-agent-collaboration-report.md', 'w') as f:[0m
+2025-11-15T09:05:21.3947217Z [36;1m        f.write("# Multi-Agent Collaboration Report\n\n")[0m
+2025-11-15T09:05:21.3947707Z [36;1m        f.write(str(result))[0m
+2025-11-15T09:05:21.3948100Z [36;1mexcept Exception as e:[0m
+2025-11-15T09:05:21.3948675Z [36;1m    print(f"Note: Multi-agent collaboration requires API keys. Error: {e}")[0m
+2025-11-15T09:05:21.3949247Z [36;1mEOF[0m
+2025-11-15T09:05:21.3998408Z shell: /usr/bin/bash -e {0}
+2025-11-15T09:05:21.3998762Z env:
+2025-11-15T09:05:21.3999387Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:21.4000643Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2025-11-15T09:05:21.4001290Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:21.4001882Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:21.4002515Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:21.4003097Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2025-11-15T09:05:21.4003584Z   OPENROUTER_API_KEY: 
+2025-11-15T09:05:21.4003899Z   LOCALAI_BASE_URL: 
+2025-11-15T09:05:21.4004199Z ##[endgroup]
+2025-11-15T09:05:23.5359783Z Error instantiating LLM from environment/fallback: ImportError: Error importing native provider: OPENAI_API_KEY is required
+2025-11-15T09:05:23.5361241Z Traceback (most recent call last):
+2025-11-15T09:05:23.5371888Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/llm.py", line 390, in __new__
+2025-11-15T09:05:23.5373487Z     Self, native_class(model=model_string, provider=provider, **kwargs_copy)
+2025-11-15T09:05:23.5374428Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-15T09:05:23.5376131Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/llms/providers/openai/completion.py", line 95, in __init__
+2025-11-15T09:05:23.5377651Z     client_config = self._get_client_params()
+2025-11-15T09:05:23.5378081Z                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-15T09:05:23.5379193Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/llms/providers/openai/completion.py", line 124, in _get_client_params
+2025-11-15T09:05:23.5380195Z     raise ValueError("OPENAI_API_KEY is required")
+2025-11-15T09:05:23.5380510Z ValueError: OPENAI_API_KEY is required
+2025-11-15T09:05:23.5380691Z 
+2025-11-15T09:05:23.5380877Z The above exception was the direct cause of the following exception:
+2025-11-15T09:05:23.5381154Z 
+2025-11-15T09:05:23.5381254Z Traceback (most recent call last):
+2025-11-15T09:05:23.5381553Z   File "<stdin>", line 4, in <module>
+2025-11-15T09:05:23.5382118Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pydantic/main.py", line 250, in __init__
+2025-11-15T09:05:23.5382811Z     validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+2025-11-15T09:05:23.5383245Z                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-15T09:05:23.5383968Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/agent/internal/meta.py", line 58, in post_init_setup_with_extensions
+2025-11-15T09:05:23.5384653Z     result = original_func(self)
+2025-11-15T09:05:23.5384890Z              ^^^^^^^^^^^^^^^^^^^
+2025-11-15T09:05:23.5385449Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/agent/core.py", line 224, in post_init_setup
+2025-11-15T09:05:23.5386032Z     self.llm = create_llm(self.llm)
+2025-11-15T09:05:23.5386275Z                ^^^^^^^^^^^^^^^^^^^^
+2025-11-15T09:05:23.5387151Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/utilities/llm_utils.py", line 36, in create_llm
+2025-11-15T09:05:23.5387738Z     return _llm_via_environment_or_fallback()
+2025-11-15T09:05:23.5387987Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-15T09:05:23.5388644Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/utilities/llm_utils.py", line 182, in _llm_via_environment_or_fallback
+2025-11-15T09:05:23.5389241Z     raise e
+2025-11-15T09:05:23.5390016Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/utilities/llm_utils.py", line 177, in _llm_via_environment_or_fallback
+2025-11-15T09:05:23.5390624Z     return LLM(**llm_params)
+2025-11-15T09:05:23.5390826Z            ^^^^^^^^^^^^^^^^^
+2025-11-15T09:05:23.5391281Z   File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/crewai/llm.py", line 395, in __new__
+2025-11-15T09:05:23.5392054Z     raise ImportError(f"Error importing native provider: {e}") from e
+2025-11-15T09:05:23.5392497Z ImportError: Error importing native provider: OPENAI_API_KEY is required
+2025-11-15T09:05:23.7755201Z ##[error]Process completed with exit code 1.
+2025-11-15T09:05:23.7827926Z ##[group]Run actions/upload-artifact@v4
+2025-11-15T09:05:23.7828203Z with:
+2025-11-15T09:05:23.7828397Z   name: multi-agent-collaboration-report
+2025-11-15T09:05:23.7828688Z   path: multi-agent-collaboration-report.md
+2025-11-15T09:05:23.7828957Z   if-no-files-found: warn
+2025-11-15T09:05:23.7829168Z   compression-level: 6
+2025-11-15T09:05:23.7829353Z   overwrite: false
+2025-11-15T09:05:23.7829785Z   include-hidden-files: false
+2025-11-15T09:05:23.7830097Z env:
+2025-11-15T09:05:23.7830329Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:23.7830724Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2025-11-15T09:05:23.7831097Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:23.7831448Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:23.7831776Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:23.7832143Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2025-11-15T09:05:23.7832421Z ##[endgroup]
+2025-11-15T09:05:24.0015804Z ##[warning]No files were found with the provided path: multi-agent-collaboration-report.md. No artifacts will be uploaded.
+2025-11-15T09:05:24.0147646Z ##[group]Run actions/github-script@v7
+2025-11-15T09:05:24.0147925Z with:
+2025-11-15T09:05:24.0150212Z   script: const fs = require('fs');
+let body = '## 🤖 Multi-Agent AI Analysis Complete\n\n';
+
+try {
+  const report = fs.readFileSync('multi-agent-collaboration-report.md', 'utf8');
+  body += report.substring(0, 50000);
+} catch (e) {
+  body += 'Report generation in progress or requires API configuration.\n';
+}
+
+body += '\n\n---\n*Generated by AI Agent Collaboration System*';
+
+await github.rest.issues.create({
+  owner: context.repo.owner,
+  repo: context.repo.repo,
+  title: '🤖 Weekly AI Analysis Report',
+  body: body,
+  labels: ['ai-analysis', 'automated']
+});
+
+2025-11-15T09:05:24.0152059Z   github-token: ***
+2025-11-15T09:05:24.0152257Z   debug: false
+2025-11-15T09:05:24.0152449Z   user-agent: actions/github-script
+2025-11-15T09:05:24.0152691Z   result-encoding: json
+2025-11-15T09:05:24.0152873Z   retries: 0
+2025-11-15T09:05:24.0153111Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-11-15T09:05:24.0153367Z env:
+2025-11-15T09:05:24.0153603Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:24.0153989Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2025-11-15T09:05:24.0154367Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:24.0154699Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:24.0155040Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-15T09:05:24.0155377Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2025-11-15T09:05:24.0155864Z ##[endgroup]
+2025-11-15T09:05:24.4039760Z RequestError [HttpError]: Resource not accessible by integration
+2025-11-15T09:05:24.4048892Z     at /home/runner/work/_actions/actions/github-script/v7/dist/index.js:9537:21
+2025-11-15T09:05:24.4049424Z     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-15T09:05:24.4050466Z     at async eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:36187:16), <anonymous>:15:1)
+2025-11-15T09:05:24.4051194Z     at async main (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:36285:20) {
+2025-11-15T09:05:24.4051574Z   status: 403,
+2025-11-15T09:05:24.4051753Z   response: {
+2025-11-15T09:05:24.4052028Z     url: 'https://api.github.com/repos/cbwinslow/opengovt/issues',
+2025-11-15T09:05:24.4052331Z     status: 403,
+2025-11-15T09:05:24.4052502Z     headers: {
+2025-11-15T09:05:24.4054363Z ##[error]Unhandled error: HttpError: Resource not accessible by integration
+2025-11-15T09:05:24.4055408Z       'access-control-allow-origin': '*',
+2025-11-15T09:05:24.4056592Z       'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset',
+2025-11-15T09:05:24.4057753Z       'content-encoding': 'gzip',
+2025-11-15T09:05:24.4058025Z       'content-security-policy': "default-src 'none'",
+2025-11-15T09:05:24.4058353Z       'content-type': 'application/json; charset=utf-8',
+2025-11-15T09:05:24.4058637Z       date: 'Sat, 15 Nov 2025 09:05:24 GMT',
+2025-11-15T09:05:24.4059016Z       'referrer-policy': 'origin-when-cross-origin, strict-origin-when-cross-origin',
+2025-11-15T09:05:24.4059399Z       server: 'github.com',
+2025-11-15T09:05:24.4059999Z       'strict-transport-security': 'max-age=31536000; includeSubdomains; preload',
+2025-11-15T09:05:24.4060386Z       'transfer-encoding': 'chunked',
+2025-11-15T09:05:24.4060664Z       vary: 'Accept-Encoding, Accept, X-Requested-With',
+2025-11-15T09:05:24.4060989Z       'x-accepted-github-permissions': 'issues=write',
+2025-11-15T09:05:24.4061284Z       'x-content-type-options': 'nosniff',
+2025-11-15T09:05:24.4061543Z       'x-frame-options': 'deny',
+2025-11-15T09:05:24.4062202Z       'x-github-api-version-selected': '2022-11-28',
+2025-11-15T09:05:24.4062528Z       'x-github-media-type': 'github.v3; format=json',
+2025-11-15T09:05:24.4062871Z       'x-github-request-id': 'B840:1B021F:33FD73D:363C9BA:69184254',
+2025-11-15T09:05:24.4063189Z       'x-ratelimit-limit': '5000',
+2025-11-15T09:05:24.4063436Z       'x-ratelimit-remaining': '4999',
+2025-11-15T09:05:24.4063679Z       'x-ratelimit-reset': '1763201124',
+2025-11-15T09:05:24.4063929Z       'x-ratelimit-resource': 'core',
+2025-11-15T09:05:24.4064165Z       'x-ratelimit-used': '1',
+2025-11-15T09:05:24.4064394Z       'x-xss-protection': '0'
+2025-11-15T09:05:24.4064602Z     },
+2025-11-15T09:05:24.4064760Z     data: {
+2025-11-15T09:05:24.4064970Z       message: 'Resource not accessible by integration',
+2025-11-15T09:05:24.4065392Z       documentation_url: 'https://docs.github.com/rest/issues/issues#create-an-issue',
+2025-11-15T09:05:24.4065765Z       status: '403'
+2025-11-15T09:05:24.4065934Z     }
+2025-11-15T09:05:24.4066087Z   },
+2025-11-15T09:05:24.4066232Z   request: {
+2025-11-15T09:05:24.4066408Z     method: 'POST',
+2025-11-15T09:05:24.4066663Z     url: 'https://api.github.com/repos/cbwinslow/opengovt/issues',
+2025-11-15T09:05:24.4066966Z     headers: {
+2025-11-15T09:05:24.4067163Z       accept: 'application/vnd.github.v3+json',
+2025-11-15T09:05:24.4067574Z       'user-agent': 'actions/github-script octokit-core.js/5.0.1 Node.js/20.19.5 (linux; x64)',
+2025-11-15T09:05:24.4067979Z       authorization: 'token [REDACTED]',
+2025-11-15T09:05:24.4068260Z       'content-type': 'application/json; charset=utf-8'
+2025-11-15T09:05:24.4068704Z     },
+2025-11-15T09:05:24.4070069Z     body: '{"title":"🤖 Weekly AI Analysis Report","body":"## 🤖 Multi-Agent AI Analysis Complete\\n\\nReport generation in progress or requires API configuration.\\n\\n\\n---\\n*Generated by AI Agent Collaboration System*","labels":["ai-analysis","automated"]}',
+2025-11-15T09:05:24.4070906Z     request: {
+2025-11-15T09:05:24.4071079Z       agent: [Agent],
+2025-11-15T09:05:24.4071299Z       fetch: [Function: proxyFetch],
+2025-11-15T09:05:24.4071557Z       hook: [Function: bound bound register]
+2025-11-15T09:05:24.4071784Z     }
+2025-11-15T09:05:24.4071934Z   }
+2025-11-15T09:05:24.4072079Z }
+2025-11-15T09:05:24.4739043Z Post job cleanup.
+2025-11-15T09:05:24.5718736Z [command]/usr/bin/git version
+2025-11-15T09:05:24.5757019Z git version 2.51.2
+2025-11-15T09:05:24.5802565Z Temporarily overriding HOME='/home/runner/work/_temp/18c6a933-b293-48c8-b8d1-f9f5697118dd' before making global git config changes
+2025-11-15T09:05:24.5803830Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-15T09:05:24.5809106Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/opengovt/opengovt
+2025-11-15T09:05:24.5848757Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-15T09:05:24.5883544Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-15T09:05:24.6120128Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-15T09:05:24.6143193Z http.https://github.com/.extraheader
+2025-11-15T09:05:24.6156226Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-11-15T09:05:24.6188060Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-15T09:05:24.6524634Z Cleaning up orphan processes

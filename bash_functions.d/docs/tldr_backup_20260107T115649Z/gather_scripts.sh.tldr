@@ -1,0 +1,1 @@
+Gather scripts from the filesystem, optionally rename (AI/heuristic), organize, and add them to a target repo folder. Supports copy or move.

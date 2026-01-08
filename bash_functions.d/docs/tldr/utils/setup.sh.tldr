@@ -1,0 +1,1 @@
+Setup script to integrate bash_functions into your shell and ensure dev CLIs. Usage:   bash setup.sh            # Apply shell integration and ensure tools   bash setup.sh --apply    # Only apply shell integration   bash setup.sh --ensure-tools  # Only ensure tools installation   bash setup.sh --uninstall     # Remove managed block from shell rc files

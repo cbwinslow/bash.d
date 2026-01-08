@@ -1,0 +1,15 @@
+[Unit]
+Description=Mount BitLocker Encrypted Drive
+After=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/ssh-agent /home/cbwinslow/mount_bitlocker_drive.sh
+StandardInput=tty
+TTYPath=/dev/tty1
+IgnoreOnIsolate=yes
+
+[Install]
+WantedBy=multi-user.target
+Also=suspend.target

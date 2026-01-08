@@ -1,0 +1,1 @@
+gitlab_api.sh - GitLab API wrapper functions Usage: gitlab_api_call <endpoint> [method] [data]

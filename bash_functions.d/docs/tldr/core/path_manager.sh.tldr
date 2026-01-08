@@ -1,0 +1,1 @@
+path_manager.sh - manage PATH entries for bash_functions.d Usage:   path_manager.sh add <dir>   path_manager.sh remove <dir>   path_manager.sh list

@@ -1,0 +1,1 @@
+cloudflare/setup_cloudflared.sh Sets up a locally-managed Cloudflare Tunnel and systemd service.
