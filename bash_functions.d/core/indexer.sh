@@ -85,9 +85,10 @@ _bashd_extract_metadata() {
         # Get author
         author=$(grep -m1 "^#.*AUTHOR:" "$file" | sed 's/^#.*AUTHOR:[ ]*//')
         
-        # Extract function names defined in file
+        # Extract function names defined in file (support both syntaxes)
         local functions_defined
-        functions_defined=$(grep -oP '^[a-zA-Z_][a-zA-Z0-9_]*\(\)' "$file" | sed 's/()$//' | tr '\n' ',' | sed 's/,$//')
+        functions_defined=$(grep -oP '(^[a-zA-Z_][a-zA-Z0-9_]*\(\)|^function\s+[a-zA-Z_][a-zA-Z0-9_]*)' "$file" | \
+            sed 's/function //' | sed 's/()$//' | tr '\n' ',' | sed 's/,$//')
         
         # Get file stats
         local line_count=$(wc -l < "$file")

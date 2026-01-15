@@ -90,13 +90,14 @@ _bashd_search_indexed() {
     echo ""
     
     local result_count=0
+    local temp_results="${BASHD_INDEX_DIR}/temp_results.$$"
     
     # Search functions
     if [[ "$type" == "all" || "$type" == "functions" ]]; then
         echo "Functions:"
         echo "──────────"
         
-        local func_results=$(jq -r --arg term "$term" '
+        jq -r --arg term "$term" '
             .functions | to_entries | 
             map(select(
                 (.key | ascii_downcase | contains($term | ascii_downcase)) or
@@ -109,17 +110,17 @@ _bashd_search_indexed() {
             else
                 .[] | "  ✓ \(.key) [\(.value.category)]|SPLIT|\(.value.description)|SPLIT|\(.value.file)"
             end
-        ' "$index_file" 2>/dev/null)
+        ' "$index_file" 2>/dev/null > "$temp_results"
         
-        if [[ -n "$func_results" ]]; then
-            echo "$func_results" | while IFS='|SPLIT|' read -r header desc file; do
+        if [[ -s "$temp_results" ]]; then
+            while IFS='|SPLIT|' read -r header desc file; do
                 echo "$header"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
                     echo "    File: $file"
                 fi
                 ((result_count++))
-            done
+            done < "$temp_results"
         else
             echo "  (no matches)"
         fi
@@ -131,7 +132,7 @@ _bashd_search_indexed() {
         echo "Aliases:"
         echo "────────"
         
-        local alias_results=$(jq -r --arg term "$term" '
+        jq -r --arg term "$term" '
             .aliases | to_entries | 
             map(select(
                 (.key | ascii_downcase | contains($term | ascii_downcase)) or
@@ -142,17 +143,17 @@ _bashd_search_indexed() {
             else
                 .[] | "  ✓ \(.key)|SPLIT|\(.value.description)|SPLIT|\(.value.file)"
             end
-        ' "$index_file" 2>/dev/null)
+        ' "$index_file" 2>/dev/null > "$temp_results"
         
-        if [[ -n "$alias_results" ]]; then
-            echo "$alias_results" | while IFS='|SPLIT|' read -r name desc file; do
+        if [[ -s "$temp_results" ]]; then
+            while IFS='|SPLIT|' read -r name desc file; do
                 echo "$name"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
                     echo "    File: $file"
                 fi
                 ((result_count++))
-            done
+            done < "$temp_results"
         else
             echo "  (no matches)"
         fi
@@ -164,7 +165,7 @@ _bashd_search_indexed() {
         echo "Scripts:"
         echo "────────"
         
-        local script_results=$(jq -r --arg term "$term" '
+        jq -r --arg term "$term" '
             .scripts | to_entries | 
             map(select(
                 (.key | ascii_downcase | contains($term | ascii_downcase)) or
@@ -175,21 +176,24 @@ _bashd_search_indexed() {
             else
                 .[] | "  ✓ \(.key)|SPLIT|\(.value.description)"
             end
-        ' "$index_file" 2>/dev/null)
+        ' "$index_file" 2>/dev/null > "$temp_results"
         
-        if [[ -n "$script_results" ]]; then
-            echo "$script_results" | while IFS='|SPLIT|' read -r name desc; do
+        if [[ -s "$temp_results" ]]; then
+            while IFS='|SPLIT|' read -r name desc; do
                 echo "$name"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
                 fi
                 ((result_count++))
-            done
+            done < "$temp_results"
         else
             echo "  (no matches)"
         fi
         echo ""
     fi
+    
+    # Clean up
+    rm -f "$temp_results"
     
     echo "Found $result_count matches"
 }
@@ -514,12 +518,14 @@ EOF
     
     # Search in functions
     echo "In Functions:"
+    # shellcheck disable=SC2086
     grep -r $grep_opts -C "$context" "$pattern" "${repo_root}/bash_functions.d" \
         --include="*.sh" --include="*.bash" \
         --color=always 2>/dev/null | head -50
     
     echo ""
     echo "In Aliases:"
+    # shellcheck disable=SC2086
     grep -r $grep_opts -C "$context" "$pattern" "${repo_root}/aliases" \
         --include="*.sh" --include="*.bash" \
         --color=always 2>/dev/null | head -20

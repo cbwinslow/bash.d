@@ -113,9 +113,9 @@ _bashd_main_loader() {
     # Print welcome message on first load (only if interactive shell)
     if [[ $- == *i* ]] && [[ ! -f "${BASHD_INDEX_FILE}" ]]; then
         cat << 'EOF'
-╔══════════════════════════════════════════════════════════════════════════╗
-║              bash.d Search & Index System Loaded                         ║
-╚══════════════════════════════════════════════════════════════════════════╝
++========================================================================+
+|              bash.d Search & Index System Loaded                      |
++========================================================================+
 
 Welcome! The search and index system is now available.
 

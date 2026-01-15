@@ -319,12 +319,26 @@ EOF
     echo ""
     
     if [[ "$type" == "modified" ]]; then
-        # Show recently modified files
-        find "${repo_root}/bash_functions.d" -name "*.sh" -type f -printf '%T@ %p\n' 2>/dev/null | \
-            sort -rn | head -n "$count" | while read -r timestamp file; do
+        # Show recently modified files (portable version)
+        find "${repo_root}/bash_functions.d" -name "*.sh" -type f 2>/dev/null | \
+            while read -r file; do
+                # Use stat command that works on both Linux and macOS
+                if [[ "$OSTYPE" == "darwin"* ]]; then
+                    # macOS
+                    local timestamp=$(stat -f "%m" "$file" 2>/dev/null || echo "0")
+                else
+                    # Linux
+                    local timestamp=$(stat -c "%Y" "$file" 2>/dev/null || echo "0")
+                fi
+                echo "$timestamp $file"
+            done | sort -rn | head -n "$count" | while read -r timestamp file; do
             local name=$(basename "$file" .sh)
             local category=$(basename "$(dirname "$file")")
-            local date=$(date -d "@${timestamp%.*}" '+%Y-%m-%d %H:%M' 2>/dev/null || date -r "${timestamp%.*}" '+%Y-%m-%d %H:%M')
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+                local date=$(date -r "$timestamp" '+%Y-%m-%d %H:%M' 2>/dev/null || echo "unknown")
+            else
+                local date=$(date -d "@$timestamp" '+%Y-%m-%d %H:%M' 2>/dev/null || echo "unknown")
+            fi
             echo "  $date  $name [$category]"
         done
     else
@@ -377,15 +391,23 @@ bashd_save() {
     
     local session_file="${session_dir}/${session_name}.json"
     
-    # Save search results and current index
-    cat > "$session_file" << EOF
-{
-  "name": "$session_name",
-  "saved_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
-  "results": [$(printf '"%s",' "${BASHD_SEARCH_RESULTS[@]}" | sed 's/,$//')],
-  "current_index": $BASHD_CURRENT_INDEX
-}
-EOF
+    # Save search results and current index using jq for proper escaping
+    local results_array="[]"
+    if [[ ${#BASHD_SEARCH_RESULTS[@]} -gt 0 ]]; then
+        results_array=$(printf '%s\n' "${BASHD_SEARCH_RESULTS[@]}" | jq -R . | jq -s .)
+    fi
+    
+    jq -n \
+        --arg name "$session_name" \
+        --arg saved_at "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+        --argjson results "$results_array" \
+        --argjson current_index "$BASHD_CURRENT_INDEX" \
+        '{
+            name: $name,
+            saved_at: $saved_at,
+            results: $results,
+            current_index: $current_index
+        }' > "$session_file"
     
     echo "✓ Session saved: $session_name"
     echo "  Results: ${#BASHD_SEARCH_RESULTS[@]} items"
