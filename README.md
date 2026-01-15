@@ -9,7 +9,8 @@ A comprehensive, modular bash configuration system that serves as a single sourc
 - **🔌 Modular Architecture**: Organized into plugins, aliases, completions, functions, and themes
 - **🤝 Framework Integration**: Native support for bash-it and oh-my-bash
 - **📦 Module Management**: Enable/disable modules like bash-it (list, enable, disable)
-- **🔍 Advanced Search**: Find functions and modules quickly with built-in search
+- **🔍 Advanced Search & Index System**: Fast indexing and multiple search methods (unified, fuzzy, pattern, content)
+- **📊 Smart Organization**: Sort, categorize, and navigate functions with ease
 - **🎨 Customizable**: Easy to extend with your own functions and configurations
 - **📚 Well-Documented**: Comprehensive documentation and inline help
 - **🔒 Secure**: Separate directories for secrets with automatic .gitignore
@@ -267,9 +268,50 @@ bashd_module_info aliases git
 
 ### Functions
 
-bash.d includes a comprehensive function library organized by category:
+bash.d includes a comprehensive function library organized by category with a powerful search and index system.
 
-#### Function Discovery
+#### Search & Index System
+
+The bash.d search system provides fast indexing and multiple search methods:
+
+```bash
+# Build the search index (first time)
+bashd_index_build
+
+# Search for functions, aliases, or scripts
+bashd_search docker        # Search for docker-related items
+bashd_search ai functions  # Search only in functions
+
+# Quick locate by exact name
+bashd_locate ai_agent_system
+
+# Interactive fuzzy search (requires fzf)
+bashd_fuzzy network
+
+# Pattern-based file search
+bashd_find "docker*"
+
+# Content search with context
+bashd_grep "TODO" 3
+
+# View index statistics
+bashd_index_stats
+
+# Get help
+bashd_help               # General help
+bashd_help search        # Help for specific command
+```
+
+**Short aliases available:**
+- `bds` → bashd_search
+- `bdf` → bashd_find
+- `bdl` → bashd_locate
+- `bdz` → bashd_fuzzy
+- `bdi` → bashd_index_build
+
+See [SEARCH_SYSTEM.md](docs/SEARCH_SYSTEM.md) for complete documentation.
+
+#### Function Discovery (Legacy)
 
 ```bash
 # List all available functions
