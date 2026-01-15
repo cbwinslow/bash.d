@@ -66,17 +66,15 @@ _bashd_extract_metadata() {
     local requirements=""
     local version=""
     local author=""
-    local examples=""
     
     # Parse header block
     if [[ -f "$file" ]]; then
-        # Get description (multiple methods)
+        # Get description (limited to avoid special chars)
         description=$(sed -n '/^#.*DESCRIPTION:/,/^#.*[A-Z]*:/p' "$file" | \
-            grep -v "^#.*[A-Z]*:" | sed 's/^#[ ]*//' | tr '\n' ' ' | sed 's/  */ /g' | head -c 200)
+            grep -v "^#.*[A-Z]*:" | sed 's/^#[ ]*//' | tr '\n' ' ' | sed 's/  */ /g' | head -c 150)
         
-        # Get usage
-        usage=$(sed -n '/^#.*USAGE:/,/^#$/p' "$file" | \
-            grep -v "^#.*USAGE:" | grep -v "^#$" | sed 's/^#[ ]*//' | tr '\n' ' ')
+        # Get usage (first line only to avoid issues)
+        usage=$(grep -m1 "^#.*USAGE:" "$file" | sed 's/^#.*USAGE:[ ]*//' | head -c 150)
         
         # Get requirements
         requirements=$(grep -m1 "^#.*REQUIREMENTS:" "$file" | sed 's/^#.*REQUIREMENTS:[ ]*//')
@@ -97,24 +95,36 @@ _bashd_extract_metadata() {
         local file_size=$(stat -c %s "$file" 2>/dev/null || stat -f %z "$file" 2>/dev/null)
     fi
     
-    # Generate JSON entry
-    cat << EOF
-{
-  "name": "$name",
-  "file": "$relative_path",
-  "full_path": "$file",
-  "category": "$category",
-  "description": "$description",
-  "usage": "$usage",
-  "requirements": "$requirements",
-  "version": "$version",
-  "author": "$author",
-  "functions": "$functions_defined",
-  "line_count": $line_count,
-  "file_size": $file_size,
-  "last_modified": $last_modified
-}
-EOF
+    # Generate JSON entry using jq to properly escape strings
+    jq -n \
+        --arg name "$name" \
+        --arg file "$relative_path" \
+        --arg full_path "$file" \
+        --arg category "$category" \
+        --arg description "$description" \
+        --arg usage "$usage" \
+        --arg requirements "$requirements" \
+        --arg version "$version" \
+        --arg author "$author" \
+        --arg functions "$functions_defined" \
+        --argjson line_count "${line_count:-0}" \
+        --argjson file_size "${file_size:-0}" \
+        --argjson last_modified "${last_modified:-0}" \
+        '{
+            name: $name,
+            file: $file,
+            full_path: $full_path,
+            category: $category,
+            description: $description,
+            usage: $usage,
+            requirements: $requirements,
+            version: $version,
+            author: $author,
+            functions: $functions,
+            line_count: $line_count,
+            file_size: $file_size,
+            last_modified: $last_modified
+        }'
 }
 
 # Build complete index from scratch
@@ -125,36 +135,31 @@ bashd_index_build() {
     bashd_index_init
     
     local repo_root="${BASHD_HOME:-$HOME/.bash.d}"
-    local temp_file="${BASHD_INDEX_FILE}.tmp"
+    local temp_dir="${BASHD_INDEX_DIR}/tmp"
+    mkdir -p "$temp_dir"
     local start_time=$(date +%s)
-    
-    # Initialize JSON structure
-    cat > "$temp_file" << 'EOF'
-{
-  "version": "2.0.0",
-  "last_updated": "",
-  "repository": "",
-  "functions": {
-EOF
     
     # Index all bash functions
     echo "  Indexing functions..."
     local func_count=0
-    local first_func=true
+    local func_json_file="${temp_dir}/functions.json"
+    
+    # Create empty functions object
+    echo "{}" > "$func_json_file"
     
     if [[ -d "${repo_root}/bash_functions.d" ]]; then
         while IFS= read -r func_file; do
             if [[ -f "$func_file" ]]; then
-                local metadata=$(_bashd_extract_metadata "$func_file")
                 local func_name=$(basename "$func_file" .sh)
+                local metadata=$(_bashd_extract_metadata "$func_file")
                 
-                if [[ "$first_func" == true ]]; then
-                    first_func=false
-                else
-                    echo "," >> "$temp_file"
-                fi
+                # Add to JSON using jq
+                jq --argjson meta "$metadata" \
+                   --arg name "$func_name" \
+                   '.[$name] = $meta' \
+                   "$func_json_file" > "${func_json_file}.new" && \
+                   mv "${func_json_file}.new" "$func_json_file"
                 
-                echo -n "    \"$func_name\": $metadata" >> "$temp_file"
                 ((func_count++))
                 
                 # Progress indicator
@@ -168,17 +173,11 @@ EOF
     echo "" # newline after progress dots
     echo "  Found $func_count functions"
     
-    # Close functions section, add aliases section
-    cat >> "$temp_file" << 'EOF'
-
-  },
-  "aliases": {
-EOF
-    
     # Index aliases
     echo "  Indexing aliases..."
     local alias_count=0
-    local first_alias=true
+    local alias_json_file="${temp_dir}/aliases.json"
+    echo "{}" > "$alias_json_file"
     
     if [[ -d "${repo_root}/aliases" ]]; then
         for alias_file in "${repo_root}/aliases"/*.bash "${repo_root}/aliases"/*.sh; do
@@ -187,20 +186,17 @@ EOF
                 local alias_desc=$(grep -m1 "about-alias" "$alias_file" | sed "s/.*about-alias *'//" | sed "s/'.*//")
                 local alias_count_in_file=$(grep -c "^alias " "$alias_file" 2>/dev/null || echo 0)
                 
-                if [[ "$first_alias" == true ]]; then
-                    first_alias=false
-                else
-                    echo "," >> "$temp_file"
-                fi
+                jq -n \
+                    --arg file "$(basename "$alias_file")" \
+                    --arg full_path "$alias_file" \
+                    --arg description "$alias_desc" \
+                    --argjson alias_count "$alias_count_in_file" \
+                    '{file: $file, full_path: $full_path, description: $description, alias_count: $alias_count}' | \
+                jq --arg name "$alias_name" \
+                   '. as $data | input | .[$name] = $data' \
+                   "$alias_json_file" - > "${alias_json_file}.new" && \
+                   mv "${alias_json_file}.new" "$alias_json_file"
                 
-                cat >> "$temp_file" << ALIASEOF
-    "$alias_name": {
-      "file": "$(basename "$alias_file")",
-      "full_path": "$alias_file",
-      "description": "$alias_desc",
-      "alias_count": $alias_count_in_file
-    }
-ALIASEOF
                 ((alias_count++))
             fi
         done
@@ -208,39 +204,29 @@ ALIASEOF
     
     echo "  Found $alias_count alias files"
     
-    # Close aliases, add scripts section
-    cat >> "$temp_file" << 'EOF'
-
-  },
-  "scripts": {
-EOF
-    
     # Index standalone scripts
     echo "  Indexing standalone scripts..."
     local script_count=0
-    local first_script=true
+    local script_json_file="${temp_dir}/scripts.json"
+    echo "{}" > "$script_json_file"
     
     for script_dir in "${repo_root}/scripts" "${repo_root}/bin"; do
         if [[ -d "$script_dir" ]]; then
             for script in "$script_dir"/*.sh "$script_dir"/*.bash; do
                 if [[ -f "$script" && -x "$script" ]]; then
                     local script_name=$(basename "$script")
-                    local script_desc=$(head -20 "$script" | grep -m1 "^#.*DESCRIPTION:" | sed 's/^#.*DESCRIPTION:[ ]*//')
+                    local script_desc=$(head -20 "$script" | grep -m1 "^#.*DESCRIPTION:" | sed 's/^#.*DESCRIPTION:[ ]*//' | head -c 150)
                     
-                    if [[ "$first_script" == true ]]; then
-                        first_script=false
-                    else
-                        echo "," >> "$temp_file"
-                    fi
+                    jq -n \
+                        --arg file "$script_name" \
+                        --arg full_path "$script" \
+                        --arg description "$script_desc" \
+                        '{file: $file, full_path: $full_path, description: $description, executable: true}' | \
+                    jq --arg name "$script_name" \
+                       '. as $data | input | .[$name] = $data' \
+                       "$script_json_file" - > "${script_json_file}.new" && \
+                       mv "${script_json_file}.new" "$script_json_file"
                     
-                    cat >> "$temp_file" << SCRIPTEOF
-    "$script_name": {
-      "file": "$script_name",
-      "full_path": "$script",
-      "description": "$script_desc",
-      "executable": true
-    }
-SCRIPTEOF
                     ((script_count++))
                 fi
             done
@@ -250,14 +236,9 @@ SCRIPTEOF
     echo "  Found $script_count scripts"
     
     # Build category index
-    cat >> "$temp_file" << 'EOF'
-
-  },
-  "categories": {
-EOF
-    
     echo "  Organizing categories..."
-    local first_cat=true
+    local category_json_file="${temp_dir}/categories.json"
+    echo "{}" > "$category_json_file"
     
     # Get unique categories
     if [[ -d "${repo_root}/bash_functions.d" ]]; then
@@ -266,53 +247,67 @@ EOF
                 local cat_name=$(basename "$cat_dir")
                 local cat_count=$(find "$cat_dir" -name "*.sh" -type f 2>/dev/null | wc -l)
                 
-                if [[ "$first_cat" == true ]]; then
-                    first_cat=false
-                else
-                    echo "," >> "$temp_file"
-                fi
-                
-                cat >> "$temp_file" << CATEOF
-    "$cat_name": {
-      "path": "$cat_dir",
-      "function_count": $cat_count
-    }
-CATEOF
+                jq -n \
+                    --arg path "$cat_dir" \
+                    --argjson function_count "$cat_count" \
+                    '{path: $path, function_count: $function_count}' | \
+                jq --arg name "$cat_name" \
+                   '. as $data | input | .[$name] = $data' \
+                   "$category_json_file" - > "${category_json_file}.new" && \
+                   mv "${category_json_file}.new" "$category_json_file"
             fi
         done
     fi
     
-    # Close categories and add statistics
+    # Assemble final JSON
     local end_time=$(date +%s)
     local build_time=$((end_time - start_time))
+    local total_categories=$(find "${repo_root}/bash_functions.d" -maxdepth 1 -type d 2>/dev/null | wc -l)
     
-    cat >> "$temp_file" << EOF
-
-  },
-  "tags": {},
-  "statistics": {
-    "total_functions": $func_count,
-    "total_aliases": $alias_count,
-    "total_scripts": $script_count,
-    "total_categories": $(find "${repo_root}/bash_functions.d" -maxdepth 1 -type d 2>/dev/null | wc -l),
-    "build_time_seconds": $build_time
-  },
-  "last_updated": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
-  "repository": "$repo_root"
-}
-EOF
-    
-    # Move temp file to actual index
-    mv "$temp_file" "${BASHD_INDEX_FILE}"
+    jq -n \
+        --arg version "2.0.0" \
+        --arg last_updated "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+        --arg repository "$repo_root" \
+        --argjson functions "$(cat "$func_json_file")" \
+        --argjson aliases "$(cat "$alias_json_file")" \
+        --argjson scripts "$(cat "$script_json_file")" \
+        --argjson categories "$(cat "$category_json_file")" \
+        --argjson total_functions "$func_count" \
+        --argjson total_aliases "$alias_count" \
+        --argjson total_scripts "$script_count" \
+        --argjson total_categories "$total_categories" \
+        --argjson build_time_seconds "$build_time" \
+        '{
+            version: $version,
+            last_updated: $last_updated,
+            repository: $repository,
+            functions: $functions,
+            aliases: $aliases,
+            scripts: $scripts,
+            categories: $categories,
+            tags: {},
+            statistics: {
+                total_functions: $total_functions,
+                total_aliases: $total_aliases,
+                total_scripts: $total_scripts,
+                total_categories: $total_categories,
+                build_time_seconds: $build_time_seconds
+            }
+        }' > "${BASHD_INDEX_FILE}"
     
     # Create stats file
-    cat > "${BASHD_INDEX_STATS}" << EOF
-{
-  "last_build": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
-  "total_items": $((func_count + alias_count + script_count)),
-  "build_time_seconds": $build_time
-}
-EOF
+    jq -n \
+        --arg last_build "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+        --argjson total_items "$((func_count + alias_count + script_count))" \
+        --argjson build_time_seconds "$build_time" \
+        '{
+            last_build: $last_build,
+            total_items: $total_items,
+            build_time_seconds: $build_time_seconds
+        }' > "${BASHD_INDEX_STATS}"
+    
+    # Clean up temp files
+    rm -rf "$temp_dir"
     
     echo ""
     echo "✓ Index built successfully!"
