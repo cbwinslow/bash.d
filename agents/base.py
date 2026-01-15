@@ -7,9 +7,14 @@ and type safety. All specialized agents inherit from these base classes.
 
 from enum import Enum
 from typing import Optional, List, Dict, Any, Callable
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import BaseModel, Field, ConfigDict
 import uuid
+
+
+def utc_now() -> datetime:
+    """Get current UTC time (timezone-aware)"""
+    return datetime.now(timezone.utc)
 
 
 class AgentStatus(str, Enum):
@@ -90,7 +95,7 @@ class AgentMessage(BaseModel):
     receiver_id: Optional[str] = Field(None, description="ID of the receiving agent (None for broadcast)")
     protocol: CommunicationProtocol = Field(default=CommunicationProtocol.A2A)
     content: Dict[str, Any] = Field(..., description="Message payload")
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=utc_now)
     priority: TaskPriority = Field(default=TaskPriority.MEDIUM)
     correlation_id: Optional[str] = Field(None, description="For request-response correlation")
 
@@ -106,7 +111,7 @@ class Task(BaseModel):
     assigned_agent_id: Optional[str] = Field(None, description="ID of assigned agent")
     priority: TaskPriority = Field(default=TaskPriority.MEDIUM)
     status: TaskStatus = Field(default=TaskStatus.PENDING)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
     started_at: Optional[datetime] = None
     completed_at: Optional[datetime] = None
     deadline: Optional[datetime] = None
@@ -182,7 +187,7 @@ class BaseAgent(BaseModel):
     
     # Status and State
     status: AgentStatus = Field(default=AgentStatus.IDLE)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
     started_at: Optional[datetime] = None
     last_active: Optional[datetime] = None
     
@@ -215,10 +220,14 @@ class BaseAgent(BaseModel):
     metadata: Dict[str, Any] = Field(default_factory=dict)
     
     def __str__(self) -> str:
-        return f"{self.type.value}Agent({self.name})[{self.status.value}]"
+        # Handle both enum and string values (use_enum_values=True converts to string)
+        type_val = self.type.value if hasattr(self.type, 'value') else self.type
+        status_val = self.status.value if hasattr(self.status, 'value') else self.status
+        return f"{type_val}Agent({self.name})[{status_val}]"
     
     def __repr__(self) -> str:
-        return f"<{self.__class__.__name__} id={self.id} name={self.name} status={self.status.value}>"
+        status_val = self.status.value if hasattr(self.status, 'value') else self.status
+        return f"<{self.__class__.__name__} id={self.id} name={self.name} status={status_val}>"
     
     def is_available(self) -> bool:
         """Check if agent is available to accept new tasks"""
@@ -265,10 +274,10 @@ class BaseAgent(BaseModel):
     def update_status(self, new_status: AgentStatus) -> None:
         """Update agent status and last_active timestamp"""
         self.status = new_status
-        self.last_active = datetime.utcnow()
+        self.last_active = utc_now()
         
         if new_status == AgentStatus.WORKING and not self.started_at:
-            self.started_at = datetime.utcnow()
+            self.started_at = utc_now()
     
     def record_task_completion(self, success: bool, response_time: float) -> None:
         """Record metrics for completed task"""
@@ -290,7 +299,7 @@ class BaseAgent(BaseModel):
     
     def health_check(self) -> Dict[str, Any]:
         """Perform a health check and return status"""
-        self.metrics.last_health_check = datetime.utcnow()
+        self.metrics.last_health_check = utc_now()
         
         return {
             "agent_id": self.id,
