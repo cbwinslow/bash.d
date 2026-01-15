@@ -11,7 +11,7 @@ This module implements a master AI agent capable of:
 import asyncio
 import logging
 from typing import List, Dict, Any, Optional, Set
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 
 from .base import (
@@ -65,7 +65,7 @@ class SoftwareProject:
         workflow: DevelopmentWorkflow,
         requirements: Dict[str, Any]
     ):
-        self.id = f"project_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}"
+        self.id = f"project_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"
         self.name = name
         self.description = description
         self.workflow = workflow
@@ -75,14 +75,14 @@ class SoftwareProject:
         self.completed_tasks: List[Task] = []
         self.agents_assigned: Set[str] = set()
         self.artifacts: Dict[str, Any] = {}
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
+        self.created_at = datetime.now(timezone.utc)
+        self.updated_at = datetime.now(timezone.utc)
         self.error_log: List[str] = []
         
     def update_phase(self, phase: ProjectPhase):
         """Update project phase"""
         self.phase = phase
-        self.updated_at = datetime.utcnow()
+        self.updated_at = datetime.now(timezone.utc)
         logger.info(f"Project {self.name} moved to phase: {phase.value}")
     
     def add_task(self, task: Task):
@@ -98,7 +98,7 @@ class SoftwareProject:
     
     def log_error(self, error: str):
         """Log an error in the project"""
-        self.error_log.append(f"[{datetime.utcnow().isoformat()}] {error}")
+        self.error_log.append(f"[{datetime.now(timezone.utc).isoformat()}] {error}")
         logger.error(f"Project {self.name} error: {error}")
     
     def get_progress(self) -> Dict[str, Any]:
@@ -152,7 +152,7 @@ class MasterAgent:
             "Can summon sub-agents, coordinate development teams, and use tools "
             "to create complete software applications."
         )
-        self.created_at = datetime.utcnow()
+        self.created_at = datetime.now(timezone.utc)
         self.status = AgentStatus.IDLE
         
         # Master agent components
@@ -507,7 +507,7 @@ class MasterAgent:
             "master_agent": {
                 "name": self.name,
                 "status": self.status.value,
-                "uptime": (datetime.utcnow() - self.created_at).total_seconds()
+                "uptime": (datetime.now(timezone.utc) - self.created_at).total_seconds()
             },
             "orchestrator": self.orchestrator.get_status(),
             "projects": {

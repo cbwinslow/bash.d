@@ -17,7 +17,7 @@ import asyncio
 import logging
 from enum import Enum
 from typing import List, Dict, Any, Optional, Union
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import BaseModel, Field
 import uuid
 
@@ -87,7 +87,7 @@ class Problem(BaseModel):
     context: Dict[str, Any] = Field(default_factory=dict)
     examples: List[str] = Field(default_factory=list)
     
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
@@ -127,7 +127,7 @@ class Solution(BaseModel):
     execution_time: float = Field(default=0.0)
     iterations: int = Field(default=1)
     
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
@@ -214,7 +214,7 @@ class ComplexProblemSolver:
         Returns:
             Solution with results and voting information
         """
-        start_time = datetime.utcnow()
+        start_time = datetime.now(timezone.utc)
         self.problems[problem.problem_id] = problem
         
         logger.info(f"Solving problem: {problem.title}")
@@ -249,7 +249,7 @@ class ComplexProblemSolver:
                 result = await self._build_consensus(problem, result, voting_strategy)
             
             # 5. Create solution
-            execution_time = (datetime.utcnow() - start_time).total_seconds()
+            execution_time = (datetime.now(timezone.utc) - start_time).total_seconds()
             
             solution = Solution(
                 problem_id=problem.problem_id,

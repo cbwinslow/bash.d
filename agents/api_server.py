@@ -8,7 +8,7 @@ autonomous application builder system.
 import asyncio
 import logging
 from typing import Dict, List, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -125,7 +125,7 @@ async def health_check():
         "orchestrator": orchestrator is not None,
         "builder": builder is not None,
         "active_builds": len(active_builds),
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
 
 
@@ -149,7 +149,7 @@ async def create_build(request: BuildRequest):
     )
     
     # Generate build ID
-    build_id = f"build_{datetime.utcnow().timestamp()}"
+    build_id = f"build_{datetime.now(timezone.utc).timestamp()}"
     
     # Store build info
     active_builds[build_id] = {
@@ -159,7 +159,7 @@ async def create_build(request: BuildRequest):
         "current_phase": "planning",
         "progress": 0.0,
         "phases_completed": [],
-        "started_at": datetime.utcnow().isoformat(),
+        "started_at": datetime.now(timezone.utc).isoformat(),
         "idea": idea.dict()
     }
     
@@ -305,7 +305,7 @@ async def websocket_endpoint(websocket: WebSocket):
         await websocket.send_json({
             "type": "connected",
             "message": "Connected to Application Builder",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         })
         
         # Keep connection alive and handle incoming messages
@@ -372,7 +372,7 @@ async def execute_build(build_id: str, idea: ApplicationIdea, autonomous: bool):
         # Mark build as completed
         active_builds[build_id]["status"] = "completed"
         active_builds[build_id]["progress"] = 100.0
-        active_builds[build_id]["completed_at"] = datetime.utcnow().isoformat()
+        active_builds[build_id]["completed_at"] = datetime.now(timezone.utc).isoformat()
         
         # Broadcast completion
         await broadcast_message({

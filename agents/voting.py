@@ -13,7 +13,7 @@ Based on research from:
 from enum import Enum
 from typing import List, Dict, Any, Optional, Tuple
 from collections import Counter, defaultdict
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import BaseModel, Field
 import uuid
 
@@ -37,7 +37,7 @@ class Vote(BaseModel):
     weight: float = Field(default=1.0, description="Weight of this vote")
     confidence: float = Field(default=1.0, ge=0.0, le=1.0, description="Confidence level (0-1)")
     reasoning: Optional[str] = Field(None, description="Reasoning behind the vote")
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class RankedVote(BaseModel):
@@ -46,7 +46,7 @@ class RankedVote(BaseModel):
     rankings: List[Any] = Field(..., description="Ordered list of preferences")
     weight: float = Field(default=1.0, description="Weight of this vote")
     reasoning: Optional[str] = Field(None, description="Reasoning behind rankings")
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class ApprovalVote(BaseModel):
@@ -55,7 +55,7 @@ class ApprovalVote(BaseModel):
     approved_choices: List[Any] = Field(..., description="All approved choices")
     weight: float = Field(default=1.0, description="Weight of this vote")
     reasoning: Optional[str] = Field(None, description="Reasoning behind approvals")
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class VoteResult(BaseModel):
@@ -70,7 +70,7 @@ class VoteResult(BaseModel):
     is_unanimous: bool = Field(default=False, description="Whether vote was unanimous")
     is_consensus: bool = Field(default=False, description="Whether consensus was reached")
     metadata: Dict[str, Any] = Field(default_factory=dict)
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class DemocraticVoter:
