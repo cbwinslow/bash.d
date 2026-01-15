@@ -90,7 +90,7 @@ _bashd_search_indexed() {
     echo ""
     
     local result_count=0
-    local temp_results="${BASHD_INDEX_DIR}/temp_results.$$"
+    local temp_results="/tmp/bashd_search_results_$$"
     
     # Reset search results array
     BASHD_SEARCH_RESULTS=()
@@ -112,12 +112,12 @@ _bashd_search_indexed() {
             if length == 0 then
                 empty
             else
-                .[] | "\(.key)|SPLIT|  ✓ \(.key) [\(.value.category)]|SPLIT|\(.value.description)|SPLIT|\(.value.file)"
+                .[] | "\(.key)\t  ✓ \(.key) [\(.value.category)]\t\(.value.description)\t\(.value.file)"
             end
         ' "$index_file" 2>/dev/null > "$temp_results"
         
         if [[ -s "$temp_results" ]]; then
-            while IFS='|SPLIT|' read -r func_name header desc file; do
+            while IFS=$'\t' read -r func_name header desc file; do
                 echo "$header"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
@@ -147,12 +147,12 @@ _bashd_search_indexed() {
             if length == 0 then
                 empty
             else
-                .[] | "\(.key)|SPLIT|  ✓ \(.key)|SPLIT|\(.value.description)|SPLIT|\(.value.file)"
+                .[] | "\(.key)\t  ✓ \(.key)\t\(.value.description)\t\(.value.file)"
             end
         ' "$index_file" 2>/dev/null > "$temp_results"
         
         if [[ -s "$temp_results" ]]; then
-            while IFS='|SPLIT|' read -r alias_name name desc file; do
+            while IFS=$'\t' read -r alias_name name desc file; do
                 echo "$name"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
@@ -181,12 +181,12 @@ _bashd_search_indexed() {
             if length == 0 then
                 empty
             else
-                .[] | "\(.key)|SPLIT|  ✓ \(.key)|SPLIT|\(.value.description)"
+                .[] | "\(.key)\t  ✓ \(.key)\t\(.value.description)"
             end
         ' "$index_file" 2>/dev/null > "$temp_results"
         
         if [[ -s "$temp_results" ]]; then
-            while IFS='|SPLIT|' read -r script_name name desc; do
+            while IFS=$'\t' read -r script_name name desc; do
                 echo "$name"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
