@@ -15,7 +15,7 @@ import asyncio
 import logging
 from enum import Enum
 from typing import List, Dict, Any, Optional, Callable
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import BaseModel, Field, ConfigDict
 import uuid
 
@@ -95,7 +95,7 @@ class CrewConfiguration(BaseModel):
     quality_threshold: float = Field(default=0.8, ge=0.0, le=1.0)
     max_retries: int = Field(default=3, ge=0)
     
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
@@ -109,7 +109,7 @@ class CrewMember(BaseModel):
     tasks_assigned: int = Field(default=0)
     tasks_completed: int = Field(default=0)
     quality_score: float = Field(default=1.0, ge=0.0, le=1.0)
-    joined_at: datetime = Field(default_factory=datetime.utcnow)
+    joined_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
@@ -142,7 +142,7 @@ class CrewTask(BaseModel):
     review_feedback: Optional[str] = None
     
     # Timing
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     started_at: Optional[datetime] = None
     completed_at: Optional[datetime] = None
     
@@ -219,7 +219,7 @@ class AgentCrew:
         
         # State
         self.state = CrewState.ASSEMBLING
-        self.created_at = datetime.utcnow()
+        self.created_at = datetime.now(timezone.utc)
         self.started_at: Optional[datetime] = None
         self.completed_at: Optional[datetime] = None
         
@@ -398,7 +398,7 @@ class AgentCrew:
             }
         
         self.state = CrewState.WORKING
-        self.started_at = datetime.utcnow()
+        self.started_at = datetime.now(timezone.utc)
         
         # Add all tasks
         for task in tasks:
@@ -418,7 +418,7 @@ class AgentCrew:
                 result = await self._execute_sequential(tasks)
             
             self.state = CrewState.COMPLETED
-            self.completed_at = datetime.utcnow()
+            self.completed_at = datetime.now(timezone.utc)
             
             return result
             
@@ -568,7 +568,7 @@ class AgentCrew:
             }
         
         task.status = TaskStatus.IN_PROGRESS
-        task.started_at = datetime.utcnow()
+        task.started_at = datetime.now(timezone.utc)
         self.active_tasks[task.task_id] = task.assigned_to
         
         self._log_event("task_started", {
@@ -591,7 +591,7 @@ class AgentCrew:
             task.result = result
             task.quality_score = 0.9
             task.status = TaskStatus.COMPLETED
-            task.completed_at = datetime.utcnow()
+            task.completed_at = datetime.now(timezone.utc)
             
             # Review if required
             if task.requires_review and self.config.require_review:
@@ -668,7 +668,7 @@ class AgentCrew:
     def _log_event(self, event_type: str, data: Dict[str, Any]):
         """Log a crew event"""
         event = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "crew_id": self.crew_id,
             "event_type": event_type,
             "data": data

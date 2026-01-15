@@ -15,7 +15,7 @@ import logging
 import random
 import math
 from typing import List, Dict, Any, Optional, Callable, Tuple
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from dataclasses import dataclass, field
 from collections import defaultdict
@@ -52,7 +52,7 @@ class Solution:
     content: Dict[str, Any]
     score: float = 0.0
     agent_id: Optional[str] = None
-    created_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     votes: int = 0
     confidence: float = 0.0
     metadata: Dict[str, Any] = field(default_factory=dict)
@@ -623,7 +623,7 @@ class IntelligentProblemSolver:
         
         logger.info(f"Solving with method: {method.value}")
         
-        start_time = datetime.utcnow()
+        start_time = datetime.now(timezone.utc)
         
         # Apply selected method
         if method == ProblemSolvingMethod.DIVIDE_CONQUER:
@@ -640,7 +640,7 @@ class IntelligentProblemSolver:
             solution = await self._solve_hybrid(problem, agents)
         
         # Record performance
-        duration = (datetime.utcnow() - start_time).total_seconds()
+        duration = (datetime.now(timezone.utc) - start_time).total_seconds()
         self.method_performance[method.value].append(solution.score / max(duration, 0.1))
         
         return solution

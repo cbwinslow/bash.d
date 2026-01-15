@@ -12,7 +12,7 @@ This module implements fully autonomous agent crews that can:
 import asyncio
 import logging
 from typing import List, Dict, Any, Optional, Callable, Tuple
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 from enum import Enum
 from collections import defaultdict, Counter
 import json
@@ -63,19 +63,19 @@ class Vote:
         self.choice = choice
         self.confidence = confidence
         self.reasoning = reasoning
-        self.timestamp = datetime.utcnow()
+        self.timestamp = datetime.now(timezone.utc)
 
 
 class Decision:
     """Represents a collective decision"""
     def __init__(self, decision_type: DecisionType, context: Dict[str, Any]):
-        self.id = f"decision_{datetime.utcnow().timestamp()}"
+        self.id = f"decision_{datetime.now(timezone.utc).timestamp()}"
         self.decision_type = decision_type
         self.context = context
         self.votes: List[Vote] = []
         self.result: Optional[Any] = None
         self.consensus_reached = False
-        self.created_at = datetime.utcnow()
+        self.created_at = datetime.now(timezone.utc)
 
 
 class AutonomousCrew:
@@ -186,7 +186,7 @@ class AutonomousCrew:
         
         self.active_task = task
         self.running = True
-        self.started_at = datetime.utcnow()
+        self.started_at = datetime.now(timezone.utc)
         
         try:
             # Phase 1: Planning and decomposition
@@ -201,7 +201,7 @@ class AutonomousCrew:
                     break
                 
                 # Check max runtime
-                if max_runtime and (datetime.utcnow() - self.started_at) > max_runtime:
+                if max_runtime and (datetime.now(timezone.utc) - self.started_at) > max_runtime:
                     logger.warning(f"Crew {self.name} reached max runtime")
                     break
                 
@@ -233,7 +233,7 @@ class AutonomousCrew:
         
         finally:
             self.running = False
-            self.completed_at = datetime.utcnow()
+            self.completed_at = datetime.now(timezone.utc)
     
     async def _plan_execution(self, task: Task) -> TaskDecomposition:
         """Plan execution strategy through collective decision"""
@@ -553,7 +553,7 @@ class AutonomousCrew:
         
         # Record performance
         self.performance_history.append({
-            "timestamp": datetime.utcnow(),
+            "timestamp": datetime.now(timezone.utc),
             "strategy": self.strategy.value,
             "success_rate": success_rate,
             "avg_time": avg_time,
@@ -590,7 +590,7 @@ class AutonomousCrew:
             task for task in self.subtasks
             if task.status == TaskStatus.IN_PROGRESS and
             task.started_at and
-            (datetime.utcnow() - task.started_at).total_seconds() > 300
+            (datetime.now(timezone.utc) - task.started_at).total_seconds() > 300
         ]
         
         for task in stuck_tasks:

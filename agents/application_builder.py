@@ -8,7 +8,7 @@ It includes democratic problem-solving, task decomposition, and full lifecycle m
 import asyncio
 import logging
 from typing import List, Dict, Any, Optional, Set
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from pydantic import BaseModel, Field
 
@@ -60,7 +60,7 @@ class Vote(BaseModel):
     option: str
     reasoning: str
     confidence: float = Field(ge=0.0, le=1.0)
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class ApplicationIdea(BaseModel):
@@ -71,7 +71,7 @@ class ApplicationIdea(BaseModel):
     constraints: Dict[str, Any] = Field(default_factory=dict)
     target_users: str = ""
     success_criteria: List[str] = Field(default_factory=list)
-    submitted_at: datetime = Field(default_factory=datetime.utcnow)
+    submitted_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class ApplicationPlan(BaseModel):
@@ -155,7 +155,7 @@ class ApplicationBuilder:
             Dict containing the built application details and status
         """
         logger.info(f"Starting application build: {idea.title}")
-        build_id = f"build_{datetime.utcnow().timestamp()}"
+        build_id = f"build_{datetime.now(timezone.utc).timestamp()}"
         
         try:
             # Phase 1: Planning and Task Decomposition
@@ -269,7 +269,7 @@ class ApplicationBuilder:
         winning_architecture = self._calculate_winner(decision, proposals)
         decision.winning_option = winning_architecture["id"]
         decision.consensus_reached = True
-        decision.decided_at = datetime.utcnow()
+        decision.decided_at = datetime.now(timezone.utc)
         
         # Store decision
         build_id = list(self.active_builds.keys())[0]
@@ -324,7 +324,7 @@ class ApplicationBuilder:
             winner = self._calculate_tech_winner(decision, options)
             decision.winning_option = winner
             decision.consensus_reached = True
-            decision.decided_at = datetime.utcnow()
+            decision.decided_at = datetime.now(timezone.utc)
             
             tech_stack[category] = options[winner]
             
@@ -403,7 +403,7 @@ class ApplicationBuilder:
                 await self._handle_phase_failure(phase, plan, e)
         
         results["status"] = "completed"
-        results["completed_at"] = datetime.utcnow().isoformat()
+        results["completed_at"] = datetime.now(timezone.utc).isoformat()
         
         return results
     

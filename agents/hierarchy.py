@@ -12,7 +12,7 @@ import asyncio
 import logging
 import random
 from typing import List, Dict, Any, Optional, Set, Tuple
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from dataclasses import dataclass, field
 
@@ -327,7 +327,7 @@ class CoordinatorAgent(HierarchicalAgent):
         logger.info(f"Coordinator {self.name} managing {len(tasks)} tasks across {len(agents)} agents")
         
         results = {
-            "started_at": datetime.utcnow(),
+            "started_at": datetime.now(timezone.utc),
             "tasks_completed": 0,
             "tasks_failed": 0,
             "sync_points": 0
@@ -360,7 +360,7 @@ class CoordinatorAgent(HierarchicalAgent):
                 else:
                     results["tasks_completed"] += 1
         
-        results["completed_at"] = datetime.utcnow()
+        results["completed_at"] = datetime.now(timezone.utc)
         results["duration"] = (results["completed_at"] - results["started_at"]).total_seconds()
         
         return results
@@ -436,14 +436,14 @@ class CoordinatorAgent(HierarchicalAgent):
     ) -> Dict[str, Any]:
         """Execute a task with coordination"""
         task.status = TaskStatus.IN_PROGRESS
-        task.started_at = datetime.utcnow()
+        task.started_at = datetime.now(timezone.utc)
         
         try:
             # Simulate task execution
             await asyncio.sleep(random.uniform(0.1, 0.5))
             
             task.status = TaskStatus.COMPLETED
-            task.completed_at = datetime.utcnow()
+            task.completed_at = datetime.now(timezone.utc)
             
             return {
                 "task_id": task.id,
@@ -506,7 +506,7 @@ class WorkerAgent(HierarchicalAgent):
         logger.info(f"Worker {self.name} executing task: {task.title}")
         
         task.status = TaskStatus.IN_PROGRESS
-        task.started_at = datetime.utcnow()
+        task.started_at = datetime.now(timezone.utc)
         
         try:
             # Simulate work based on task complexity
@@ -522,7 +522,7 @@ class WorkerAgent(HierarchicalAgent):
             }
             
             task.status = TaskStatus.COMPLETED
-            task.completed_at = datetime.utcnow()
+            task.completed_at = datetime.now(timezone.utc)
             task.output_data = result
             
             return result

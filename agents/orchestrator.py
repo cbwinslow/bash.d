@@ -8,7 +8,7 @@ distributing tasks, handling communication, and ensuring continuous operation.
 import asyncio
 import logging
 from typing import List, Dict, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 from collections import defaultdict
 from enum import Enum
 
@@ -257,7 +257,7 @@ class AgentOrchestrator:
                     # Execute task
                     agent.current_task = task
                     task.status = TaskStatus.IN_PROGRESS
-                    task.started_at = datetime.utcnow()
+                    task.started_at = datetime.now(timezone.utc)
                     
                     start_time = asyncio.get_event_loop().time()
                     
@@ -268,7 +268,7 @@ class AgentOrchestrator:
                         
                         # Record success
                         task.status = TaskStatus.COMPLETED
-                        task.completed_at = datetime.utcnow()
+                        task.completed_at = datetime.now(timezone.utc)
                         task.output_data = result
                         
                         elapsed = asyncio.get_event_loop().time() - start_time
@@ -285,7 +285,7 @@ class AgentOrchestrator:
                     except Exception as e:
                         # Record failure
                         task.status = TaskStatus.FAILED
-                        task.completed_at = datetime.utcnow()
+                        task.completed_at = datetime.now(timezone.utc)
                         task.error = str(e)
                         
                         elapsed = asyncio.get_event_loop().time() - start_time
@@ -375,7 +375,7 @@ class AgentOrchestrator:
         This starts all background tasks and keeps agents working continuously.
         """
         self.running = True
-        self.started_at = datetime.utcnow()
+        self.started_at = datetime.now(timezone.utc)
         
         logger.info("Starting Agent Orchestrator...")
         logger.info(f"Registered agents: {len(self.agents)}")
