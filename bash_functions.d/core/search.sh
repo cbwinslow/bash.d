@@ -20,6 +20,20 @@
 
 # Unified search across all content types
 bashd_search() {
+    # Parse options first
+    local interactive=false
+    local verbose=false
+    local count_only=false
+    
+    while [[ "$1" =~ ^- ]]; do
+        case "$1" in
+            -i|--interactive) interactive=true; shift ;;
+            -v|--verbose) verbose=true; shift ;;
+            -c|--count) count_only=true; shift ;;
+            *) shift ;;
+        esac
+    done
+    
     local search_term="$1"
     local search_type="${2:-all}"  # all, functions, aliases, scripts, content
     
@@ -48,20 +62,6 @@ Options:
 EOF
         return 1
     fi
-    
-    # Parse options
-    local interactive=false
-    local verbose=false
-    local count_only=false
-    
-    while [[ "$1" =~ ^- ]]; do
-        case "$1" in
-            -i|--interactive) interactive=true; shift ;;
-            -v|--verbose) verbose=true; shift ;;
-            -c|--count) count_only=true; shift ;;
-            *) shift ;;
-        esac
-    done
     
     local index_file="${BASHD_INDEX_FILE:-${BASHD_HOME:-$HOME/.bash.d}/.index/master_index.json}"
     
@@ -92,6 +92,10 @@ _bashd_search_indexed() {
     local result_count=0
     local temp_results="${BASHD_INDEX_DIR}/temp_results.$$"
     
+    # Reset search results array
+    BASHD_SEARCH_RESULTS=()
+    BASHD_CURRENT_INDEX=0
+    
     # Search functions
     if [[ "$type" == "all" || "$type" == "functions" ]]; then
         echo "Functions:"
@@ -108,17 +112,19 @@ _bashd_search_indexed() {
             if length == 0 then
                 empty
             else
-                .[] | "  ✓ \(.key) [\(.value.category)]|SPLIT|\(.value.description)|SPLIT|\(.value.file)"
+                .[] | "\(.key)|SPLIT|  ✓ \(.key) [\(.value.category)]|SPLIT|\(.value.description)|SPLIT|\(.value.file)"
             end
         ' "$index_file" 2>/dev/null > "$temp_results"
         
         if [[ -s "$temp_results" ]]; then
-            while IFS='|SPLIT|' read -r header desc file; do
+            while IFS='|SPLIT|' read -r func_name header desc file; do
                 echo "$header"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
                     echo "    File: $file"
                 fi
+                # Add to results array for navigation
+                BASHD_SEARCH_RESULTS+=("$func_name")
                 ((result_count++))
             done < "$temp_results"
         else
@@ -141,17 +147,18 @@ _bashd_search_indexed() {
             if length == 0 then
                 empty
             else
-                .[] | "  ✓ \(.key)|SPLIT|\(.value.description)|SPLIT|\(.value.file)"
+                .[] | "\(.key)|SPLIT|  ✓ \(.key)|SPLIT|\(.value.description)|SPLIT|\(.value.file)"
             end
         ' "$index_file" 2>/dev/null > "$temp_results"
         
         if [[ -s "$temp_results" ]]; then
-            while IFS='|SPLIT|' read -r name desc file; do
+            while IFS='|SPLIT|' read -r alias_name name desc file; do
                 echo "$name"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
                     echo "    File: $file"
                 fi
+                BASHD_SEARCH_RESULTS+=("$alias_name")
                 ((result_count++))
             done < "$temp_results"
         else
@@ -174,16 +181,17 @@ _bashd_search_indexed() {
             if length == 0 then
                 empty
             else
-                .[] | "  ✓ \(.key)|SPLIT|\(.value.description)"
+                .[] | "\(.key)|SPLIT|  ✓ \(.key)|SPLIT|\(.value.description)"
             end
         ' "$index_file" 2>/dev/null > "$temp_results"
         
         if [[ -s "$temp_results" ]]; then
-            while IFS='|SPLIT|' read -r name desc; do
+            while IFS='|SPLIT|' read -r script_name name desc; do
                 echo "$name"
                 if [[ "$verbose" == true ]]; then
                     echo "    Description: $desc"
                 fi
+                BASHD_SEARCH_RESULTS+=("$script_name")
                 ((result_count++))
             done < "$temp_results"
         else
