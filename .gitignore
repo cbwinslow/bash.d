@@ -146,3 +146,8 @@ __pycache__/
 # OS Configuration Bundles (don't commit backup data)
 os-config/bundles/*/
 !os-config/bundles/.gitkeep
+
+# bash.d index files (generated locally)
+.index/
+*.index.json
+
