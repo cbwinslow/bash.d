@@ -1,0 +1,103 @@
+# Default Configuration for bash.d Ecosystem
+
+# System settings
+system:
+  name: "bash.d"
+  version: "1.0.0"
+  environment: "development"
+  
+# User settings
+user:
+  email: "blaine.winslow@gmail.com"
+  domain: "cloudcurio.cc"
+  
+# Bitwarden settings
+bitwarden:
+  server: "https://bitwarden.com"
+  email: "blaine.winslow@gmail.com"
+  master_password: "CBW89pass"
+  mcp_server: true
+  
+# Cloudflare settings
+cloudflare:
+  account_id: ""
+  api_token: ""
+  zone_id: ""
+  
+# Oracle Cloud settings
+oracle:
+  region: "us-ashburn-1"
+  compartment_id: ""
+  free_tier: true
+  
+# GitHub settings
+github:
+  username: "cbwinslow"
+  token: ""
+  default_branch: "main"
+  
+# GitLab settings
+gitlab:
+  username: "cbwinslow"
+  server: "gitlab.com"
+  token: ""
+  
+# Blog settings
+blog:
+  title: "cbwinslow's Blog"
+  description: "Thoughts on technology, data, and development"
+  posts_per_page: 10
+  auto_deploy: true
+  
+# Data portal settings
+data_portal:
+  title: "bash.d Data Portal"
+  description: "Public access to integrated government, census, and research data"
+  items_per_page: 20
+  cache_duration: 3600
+  
+# AI tools settings
+ai_tools:
+  default_model: "gemini"
+  max_tokens_per_request: 4000
+  enable_code_generation: true
+  enable_analysis: true
+  
+# Security settings
+security:
+  encryption:
+    default_method: "gpg"
+    backup_method: "age"
+  authentication:
+    require_mfa: true
+    session_timeout: 3600
+  audit:
+    log_level: "info"
+    retention_days: 90
+  
+# Development settings
+development:
+  hot_reload: true
+  debug: false
+  test_coverage_threshold: 80
+  
+# Infrastructure settings
+infrastructure:
+  terraform:
+    version: ">=1.0"
+    state_backend: "local"
+  pulumi:
+    version: ">=3.0"
+    state_backend: "local"
+  
+# Monitoring settings
+monitoring:
+  metrics:
+    enabled: true
+    provider: "prometheus"
+  logging:
+    level: "info"
+    format: "json"
+  alerts:
+    email: "blaine.winslow@gmail.com"
+    slack_webhook: ""

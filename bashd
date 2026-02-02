@@ -1,0 +1,499 @@
+#!/usr/bin/env bash
+
+# Main bash.d CLI - Enhanced with all integrations
+# Author: cbwinslow
+# Email: blaine.winslow@gmail.com
+
+set -euo pipefail
+
+# Source core functions
+readonly BASHD_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$BASHD_HOME/src/core.sh"
+
+# Enhanced main function
+main() {
+    # Create log directory
+    mkdir -p "$(dirname "$BASHD_LOG_FILE")"
+    
+    # Load configuration
+    load_config
+    
+    # Parse command line arguments
+    case "${1:-}" in
+        "init")
+            shift
+            init_bashd "$@"
+            ;;
+        "setup")
+            setup_bashd_system
+            ;;
+        "blog")
+            shift
+            handle_blog_commands "$@"
+            ;;
+        "data")
+            shift
+            handle_data_commands "$@"
+            ;;
+        "platform")
+            shift
+            handle_platform_commands "$@"
+            ;;
+        "plugins")
+            shift
+            handle_plugin_commands "$@"
+            ;;
+        "ai")
+            shift
+            handle_ai_commands "$@"
+            ;;
+        "infra")
+            shift
+            handle_infra_commands "$@"
+            ;;
+        "status")
+            show_system_status
+            ;;
+        "help"|"--help"|"-h")
+            show_help
+            ;;
+        "")
+            show_help
+            ;;
+        *)
+            log "ERROR" "Unknown command: $1"
+            show_help
+            exit 1
+            ;;
+    esac
+}
+
+# Initialize bash.d ecosystem
+init_bashd() {
+    local email="${1:-}"
+    local domain="${2:-}"
+    
+    log "INFO" "Initializing bash.d ecosystem..."
+    
+    # Create config directory
+    mkdir -p "$BASHD_CONFIG_DIR"
+    
+    # Set basic config
+    if [[ -n "$email" ]]; then
+        echo "default_email: $email" > "$BASHD_CONFIG_DIR/config.yaml"
+        log "INFO" "Set default email: $email"
+    fi
+    
+    if [[ -n "$domain" ]]; then
+        echo "default_domain: $domain" >> "$BASHD_CONFIG_DIR/config.yaml"
+        log "INFO" "Set default domain: $domain"
+    fi
+    
+    # Initialize security
+    if [[ -f "$BASHD_HOME/src/security.sh" ]]; then
+        source "$BASHD_HOME/src/security.sh"
+        init_security
+    fi
+    
+    # Load all plugins
+    if [[ -f "$BASHD_HOME/src/core.sh" ]]; then
+        source "$BASHD_HOME/src/core.sh"
+        load_all_plugins
+    fi
+    
+    # Initialize blog engine
+    if [[ -f "$BASHD_HOME/platform/blog_engine.sh" ]]; then
+        source "$BASHD_HOME/platform/blog_engine.sh"
+        init_blog
+    fi
+    
+    # Initialize data portal
+    if [[ -f "$BASHD_HOME/platform/data_portal.sh" ]]; then
+        source "$BASHD_HOME/platform/data_portal.sh"
+        init_data_portal
+    fi
+    
+    success "bash.d ecosystem initialized successfully!"
+    log "INFO" "Config directory: $BASHD_CONFIG_DIR"
+    log "INFO" "Log file: $BASHD_LOG_FILE"
+}
+
+# Setup complete bash.d system
+setup_bashd_system() {
+    log "INFO" "Setting up complete bash.d system..."
+    
+    # Install dependencies
+    validate_dependencies
+    
+    # Setup Bitwarden
+    if [[ -f "$BASHD_HOME/plugins/bitwarden.sh" ]]; then
+        source "$BASHD_HOME/plugins/bitwarden.sh"
+        plugin_init
+    fi
+    
+    # Setup Cloudflare
+    if [[ -f "$BASHD_HOME/plugins/cloudflare.sh" ]]; then
+        source "$BASHD_HOME/plugins/cloudflare.sh"
+        plugin_init
+    fi
+    
+    # Setup government data sources
+    if [[ -f "$BASHD_HOME/plugins/government.sh" ]]; then
+        source "$BASHD_HOME/plugins/government.sh"
+        plugin_init
+    fi
+    
+    # Setup AI tools
+    if [[ -f "$BASHD_HOME/plugins/ai_tools.sh" ]]; then
+        source "$BASHD_HOME/plugins/ai_tools.sh"
+        plugin_init
+    fi
+    
+    success "bash.d system setup completed"
+}
+
+# Handle blog commands
+handle_blog_commands() {
+    case "${1:-}" in
+        "create")
+            shift
+            if [[ -f "$BASHD_HOME/platform/blog_engine.sh" ]]; then
+                source "$BASHD_HOME/platform/blog_engine.sh"
+                create_post "$@"
+            else
+                error "Blog engine not available"
+                return 1
+            fi
+            ;;
+        "list")
+            shift
+            if [[ -f "$BASHD_HOME/platform/blog_engine.sh" ]]; then
+                source "$BASHD_HOME/platform/blog_engine.sh"
+                list_posts "$@"
+            else
+                error "Blog engine not available"
+                return 1
+            fi
+            ;;
+        "publish")
+            shift
+            if [[ -f "$BASHD_HOME/platform/blog_engine.sh" ]]; then
+                source "$BASHD_HOME/platform/blog_engine.sh"
+                publish_post "$@"
+            else
+                error "Blog engine not available"
+                return 1
+            fi
+            ;;
+        "search")
+            shift
+            if [[ -f "$BASHD_HOME/platform/blog_engine.sh" ]]; then
+                source "$BASHD_HOME/platform/blog_engine.sh"
+                search_posts "$@"
+            else
+                error "Blog engine not available"
+                return 1
+            fi
+            ;;
+        "stats")
+            if [[ -f "$BASHD_HOME/platform/blog_engine.sh" ]]; then
+                source "$BASHD_HOME/platform/blog_engine.sh"
+                blog_stats
+            else
+                error "Blog engine not available"
+                return 1
+            fi
+            ;;
+        *) echo "Usage: bashd blog {create|list|publish|search|stats}" ;;
+    esac
+}
+
+# Handle data commands
+handle_data_commands() {
+    case "${1:-}" in
+        "search")
+            shift
+            if [[ -f "$BASHD_HOME/platform/data_portal.sh" ]]; then
+                source "$BASHD_HOME/platform/data_portal.sh"
+                search_data "$@"
+            else
+                error "Data portal not available"
+                return 1
+            fi
+            ;;
+        "get")
+            shift
+            if [[ -f "$BASHD_HOME/platform/data_portal.sh" ]]; then
+                source "$BASHD_HOME/platform/data_portal.sh"
+                get_data_item "$@"
+            else
+                error "Data portal not available"
+                return 1
+            fi
+            ;;
+        "export")
+            shift
+            if [[ -f "$BASHD_HOME/platform/data_portal.sh" ]]; then
+                source "$BASHD_HOME/platform/data_portal.sh"
+                export_data "$@"
+            else
+                error "Data portal not available"
+                return 1
+            fi
+            ;;
+        "sources")
+            if [[ -f "$BASHD_HOME/platform/data_portal.sh" ]]; then
+                source "$BASHD_HOME/platform/data_portal.sh"
+                list_data_sources
+            else
+                error "Data portal not available"
+                return 1
+            fi
+            ;;
+        "stats")
+            if [[ -f "$BASHD_HOME/platform/data_portal.sh" ]]; then
+                source "$BASHD_HOME/platform/data_portal.sh"
+                data_portal_stats
+            else
+                error "Data portal not available"
+                return 1
+            fi
+            ;;
+        *) echo "Usage: bashd data {search|get|export|sources|stats}" ;;
+    esac
+}
+
+# Handle platform commands
+handle_platform_commands() {
+    case "${1:-}" in
+        "deploy")
+            log "INFO" "Deploying platform to Cloudflare..."
+            # This would trigger deployment
+            echo "Platform deployment initiated"
+            ;;
+        "status")
+            show_platform_status
+            ;;
+        "config")
+            show_platform_config
+            ;;
+        *) echo "Usage: bashd platform {deploy|status|config}" ;;
+    esac
+}
+
+# Handle plugin commands
+handle_plugin_commands() {
+    case "${1:-}" in
+        "list")
+            show_available_plugins
+            ;;
+        "status")
+            show_plugin_status
+            ;;
+        "init")
+            shift
+            initialize_plugin "$1"
+            ;;
+        *) echo "Usage: bashd plugins {list|status|init}" ;;
+    esac
+}
+
+# Handle AI commands
+handle_ai_commands() {
+    case "${1:-}" in
+        "generate")
+            shift
+            if [[ -f "$BASHD_HOME/plugins/ai_tools.sh" ]]; then
+                source "$BASHD_HOME/plugins/ai_tools.sh"
+                generate_code "$@"
+            else
+                error "AI tools not available"
+                return 1
+            fi
+            ;;
+        "status")
+            if [[ -f "$BASHD_HOME/plugins/ai_tools.sh" ]]; then
+                source "$BASHD_HOME/plugins/ai_tools.sh"
+                plugin_status
+            else
+                error "AI tools not available"
+                return 1
+            fi
+            ;;
+        *) echo "Usage: bashd ai {generate|status}" ;;
+    esac
+}
+
+# Handle infrastructure commands
+handle_infra_commands() {
+    case "${1:-}" in
+        "deploy")
+            log "INFO" "Deploying infrastructure..."
+            # This would trigger Terraform/Pulumi deployment
+            echo "Infrastructure deployment initiated"
+            ;;
+        "status")
+            show_infra_status
+            ;;
+        "setup")
+            setup_infrastructure_providers
+            ;;
+        *) echo "Usage: bashd infra {deploy|status|setup}" ;;
+    esac
+}
+
+# Show available plugins
+show_available_plugins() {
+    log "INFO" "Available plugins:"
+    
+    for plugin_file in "$BASHD_PLUGINS_DIR"/*.sh; do
+        if [[ -f "$plugin_file" ]]; then
+            local plugin_name=$(basename "$plugin_file" .sh)
+            echo "  - $plugin_name"
+        fi
+    done
+}
+
+# Show plugin status
+show_plugin_status() {
+    log "INFO" "Plugin status:"
+    
+    for plugin_file in "$BASHD_PLUGINS_DIR"/*.sh; do
+        if [[ -f "$plugin_file" ]]; then
+            source "$plugin_file"
+            if command_exists "plugin_status"; then
+                plugin_status
+            fi
+        fi
+    done
+}
+
+# Initialize specific plugin
+initialize_plugin() {
+    local plugin_name="$1"
+    
+    if [[ -z "$plugin_name" ]]; then
+        error "Plugin name is required"
+        return 1
+    fi
+    
+    if [[ -f "$BASHD_PLUGINS_DIR/${plugin_name}.sh" ]]; then
+        source "$BASHD_PLUGINS_DIR/${plugin_name}.sh"
+        if command_exists "plugin_init"; then
+            plugin_init
+            success "Plugin $plugin_name initialized"
+        else
+            error "Plugin $plugin_name does not have init function"
+            return 1
+        fi
+    else
+        error "Plugin not found: $plugin_name"
+        return 1
+    fi
+}
+
+# Show system status
+show_system_status() {
+    log "INFO" "bash.d System Status:"
+    
+    if [[ -f "$BASHD_HOME/src/core.sh" ]]; then
+        source "$BASHD_HOME/src/core.sh"
+        system_info
+    fi
+    
+    echo ""
+    echo "Plugins Status:"
+    show_plugin_status
+    
+    echo ""
+    echo "Platform Status:"
+    show_platform_status
+    
+    echo ""
+    echo "Infrastructure Status:"
+    show_infra_status
+}
+
+# Show platform status
+show_platform_status() {
+    echo "  Blog Engine: $([[ -f "$BASHD_HOME/platform/blog_engine.sh" ]] && echo "✅ Available" || echo "❌ Not Available")"
+    echo "  Data Portal: $([[ -f "$BASHD_HOME/platform/data_portal.sh" ]] && echo "✅ Available" || echo "❌ Not Available")"
+    echo "  Configuration: $([[ -f "$BASHD_CONFIG_DIR/config.yaml" ]] && echo "✅ Configured" || echo "❌ Not Configured")"
+}
+
+# Show infrastructure status
+show_infra_status() {
+    echo "  Cloudflare: $([[ -f "$BASHD_HOME/plugins/cloudflare.sh" ]] && echo "✅ Available" || echo "❌ Not Available")"
+    echo "  Oracle: $([[ -f "$BASHD_HOME/plugins/oracle.sh" ]] && echo "✅ Available" || echo "❌ Not Available")"
+    echo "  Terraform: $(command_exists terraform && echo "✅ Installed" || echo "❌ Not Installed")"
+    echo "  Pulumi: $(command_exists pulumi && echo "✅ Installed" || echo "❌ Not Installed")"
+}
+
+# Setup infrastructure providers
+setup_infrastructure_providers() {
+    log "INFO" "Setting up infrastructure providers..."
+    
+    # This would setup Terraform, Pulumi, Docker, etc.
+    echo "Infrastructure provider setup initiated"
+}
+
+# Enhanced help function
+show_help() {
+    cat << EOF
+bash.d - Enterprise Development Ecosystem v$BASHD_VERSION
+
+USAGE:
+    bashd [COMMAND] [OPTIONS]
+
+CORE COMMANDS:
+    init              Initialize bash.d ecosystem
+    setup             Setup all components
+    status             Show system status
+    help               Show this help message
+
+BLOG COMMANDS:
+    blog create "Title" [tags] [draft]  Create new blog post
+    blog list [status] [limit]           List blog posts
+    blog publish "slug"                    Publish blog post
+    blog search "query"                    Search blog posts
+    blog stats                              Show blog statistics
+
+DATA COMMANDS:
+    data search "query" [page] [limit] [source]  Search data sources
+    data get "item_id" [source]              Get specific data item
+    data export "item_id" [format] [output]   Export data
+    data sources                              List available data sources
+    data stats                                 Show data portal statistics
+
+PLATFORM COMMANDS:
+    platform deploy                           Deploy platform to production
+    platform status                           Show platform status
+    platform config                           Show platform configuration
+
+AI COMMANDS:
+    ai generate "tool" "prompt" [language] [output]  Generate code with AI
+    ai status                               Show AI tools status
+
+PLUGIN COMMANDS:
+    plugins list                            List available plugins
+    plugins status                          Show plugin status
+    plugins init "name"                     Initialize specific plugin
+
+INFRASTRUCTURE COMMANDS:
+    infra deploy                             Deploy infrastructure
+    infra status                             Show infrastructure status
+    infra setup                              Setup infrastructure providers
+
+EXAMPLES:
+    bashd init --email=blaine.winslow@gmail.com --domain=cloudcurio.cc
+    bashd blog create "My New Post" "technology,bash" false
+    bashd data search "infrastructure bill" 1 20 congress
+    bashd ai generate gemini "Create a REST API" javascript output.js
+    bashd platform deploy
+
+For more information, see: https://cloudcurio.cc/docs
+EOF
+}
+
+# Run main function with all arguments
+main "$@"

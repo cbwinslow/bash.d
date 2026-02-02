@@ -1,0 +1,147 @@
+# bash.d Package Configuration
+
+name: bash.d
+version: 1.0.0
+description: Enterprise development ecosystem with AI integration and data management
+author: cbwinslow
+email: blaine.winslow@gmail.com
+license: MIT
+homepage: https://cloudcurio.cc
+repository: https://gitlab.com/cbwinslow/bash.d
+
+# Dependencies
+dependencies:
+  system:
+    - bash >= 5.0
+    - curl
+    - jq
+    - git
+    - gnupg
+    - age
+  cli:
+    - bitwarden-cli
+    - terraform
+    - pulumi
+    - nodejs >= 18.0
+    - python >= 3.9
+  cloud:
+    - cloudflare-cli
+    - oracle-cli
+    - gh
+    - glab
+
+# Optional dependencies
+optional:
+  ai:
+    - openai-cli
+    - gemini-cli
+    - kilo-cli
+  containers:
+    - docker
+    - podman
+    - kubectl
+  monitoring:
+    - prometheus
+    - grafana
+
+# Configuration
+config:
+  default_profile: development
+  default_domain: cloudcurio.cc
+  default_email: blaine.winslow@gmail.com
+  bitwarden:
+    server: https://bitwarden.com
+    mcp_server: true
+  cloudflare:
+    account_id: ${CLOUDFLARE_ACCOUNT_ID}
+    api_token: ${CLOUDFLARE_API_TOKEN}
+  oracle:
+    region: us-ashburn-1
+    free_tier: true
+  github:
+    username: cbwinslow
+    default_branch: main
+  gitlab:
+    username: cbwinslow
+    server: gitlab.com
+
+# Plugins
+plugins:
+  core:
+    - security
+    - cloudflare
+    - github
+    - gitlab
+    - data_integrations
+  data_sources:
+    - census
+    - acs
+    - congress
+    - govinfo
+    - fbi
+    - openstates
+    - openlegislation
+  ai_tools:
+    - opencode
+    - gemini
+    - vscode
+    - windsurf
+    - kilo_code
+    - qwen_code
+    - codex
+
+# Scripts
+scripts:
+  setup: "./scripts/setup.sh"
+  build: "./scripts/build.sh"
+  deploy: "./scripts/deploy.sh"
+  test: "./scripts/test.sh"
+  clean: "./scripts/clean.sh"
+
+# Environment variables
+env:
+  required:
+    - BW_MASTERPASSWORD
+    - CLOUDFLARE_API_TOKEN
+    - GITHUB_TOKEN
+  optional:
+    - ORACLE_CLI_AUTH
+    - GITLAB_TOKEN
+    - OPENAI_API_KEY
+    - GEMINI_API_KEY
+
+# Security
+security:
+  encryption:
+    - gpg
+    - age
+  authentication:
+    - bitwarden
+    - yubikey
+  audit:
+    - enabled: true
+    - log_level: info
+
+# Monitoring
+monitoring:
+  metrics:
+    - prometheus
+    - grafana
+  logging:
+    - level: info
+    - format: json
+  alerts:
+    - email: blaine.winslow@gmail.com
+    - slack: ${SLACK_WEBHOOK}
+
+# Development
+development:
+  hot_reload: true
+  debug: false
+  testing:
+    - unit
+    - integration
+    - e2e
+  documentation:
+    - auto_generate: true
+    - format: markdown
