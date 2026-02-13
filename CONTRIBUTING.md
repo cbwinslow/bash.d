@@ -302,10 +302,10 @@ echo $?
 
 ```bash
 # Run existing tests
-./test_bashrc.sh
+./scripts/test/test-bashrc.sh
 
 # Test AI integration
-./test_ai_integration.sh
+./scripts/test/test-ai-integration.sh
 
 # Check with shellcheck
 find . -name "*.sh" -o -name "*.bash" | xargs shellcheck -x

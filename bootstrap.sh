@@ -10,8 +10,8 @@ rsync -av --exclude '.git' --exclude '.gitignore' --exclude 'README.md' "$REPO_R
 
   cat <<'RC' >> "$HOME/.bashrc"
 # bashd_home bootstrap
-if [[ -f "$HOME/.bash.d/bashrc" ]]; then
-  source "$HOME/.bash.d/bashrc"
+if [[ -f "$HOME/.bash.d/config/bashrc-variants/bashrc.main" ]]; then
+  source "$HOME/.bash.d/config/bashrc-variants/bashrc.main"
 fi
 RC
 fi

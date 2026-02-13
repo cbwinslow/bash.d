@@ -157,48 +157,39 @@ source ~/.bashrc
 
 ## 📁 Directory Structure
 
+The project follows industry-standard organization with clear separation of concerns:
+
 ```
 bash.d/
-├── lib/                          # Core libraries
-│   ├── bash-it-integration.sh    # bash-it integration layer
-│   ├── bash-it-plugin.bash       # bash-it plugin loader
-│   └── module-manager.sh         # Module management system
-├── plugins/                      # Plugins (like bash-it plugins)
-│   └── bashd-core.plugin.bash    # Core bash.d plugin
-├── aliases/                      # Alias definitions
-│   ├── git.aliases.bash          # Git aliases
-│   ├── docker.aliases.bash       # Docker aliases
-│   └── general.aliases.bash      # General utilities
-├── completions/                  # Bash completions
-│   ├── bashd.completion.bash     # bash.d command completions
-│   └── git.completion.bash       # Git completions
-├── bash_functions.d/             # Function library (organized by category)
-│   ├── ai/                       # AI integration functions
-│   ├── docker/                   # Docker utilities
-│   ├── git/                      # Git utilities
-│   ├── network/                  # Network tools
-│   ├── system/                   # System utilities
-│   ├── utilities/                # General utilities
-│   ├── bitwarden/                # Bitwarden integration
-│   ├── help/                     # Help system
-│   └── documentation/            # Documentation tools
-├── bash_aliases.d/               # User custom aliases
-├── bash_env.d/                   # Environment variables
-├── bash_prompt.d/                # Prompt configurations
-├── bash_history.d/               # History files (gitignored)
-├── bash_secrets.d/               # Secrets (gitignored)
-├── bin/                          # Executables and scripts
-├── themes/                       # Custom themes
 ├── agents/                       # AI agent system
-├── tools/                        # Development tools
+├── bash_functions.d/             # Modular bash functions
+├── scripts/                      # Organized scripts
+│   ├── setup/                    # Installation scripts
+│   ├── security/                 # Security tools
+│   ├── network/                  # Network utilities
+│   ├── monitoring/               # System monitoring
+│   ├── test/                     # Test scripts
+│   └── tools/                    # Development tools
 ├── docs/                         # Documentation
-├── examples/                     # Usage examples
-├── tests/                        # Test suites
-├── bashrc                        # Main bash.d loader
+│   ├── implementation/           # Implementation docs
+│   ├── guides/                   # User guides
+│   ├── reports/                  # Status reports
+│   └── architecture/             # Architecture docs
+├── config/                       # Configuration files
+│   ├── bashrc-variants/          # Bashrc configurations
+│   └── [other configs]
+├── lib/                          # Core libraries
+├── tools/                        # Python tools
+├── aliases/                      # Alias definitions
+├── completions/                  # Bash completions
+├── external/                     # External dependencies
+├── packages/                     # Binary packages
 ├── install.sh                    # Installation script
 ├── bootstrap.sh                  # Quick bootstrap
 └── README.md                     # This file
 ```
+
+📖 **See [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) for complete structure documentation**
 
 ## 🎯 Usage
 
@@ -586,13 +577,13 @@ bashd-enable completions mycommand
 
 ```bash
 # Run tests
-./test_bashrc.sh
+./scripts/test/test-bashrc.sh
 
 # Test AI integration
-./test_ai_integration.sh
+./scripts/test/test-ai-integration.sh
 
 # Manual testing
-bash --norc --noprofile -c "source ./bashrc && bashd_module_list"
+bash --norc --noprofile -c "source ./config/bashrc-variants/bashrc.main && bashd_module_list"
 ```
 
 ### Code Style

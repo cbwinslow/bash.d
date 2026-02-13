@@ -5,7 +5,8 @@
 # Do not exit on first error so we can see all test results
 # set -e
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Get the repository root (two directories up from scripts/test/)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 TEST_DIR="/tmp/bashd-test-$$"
 PASSED=0
 FAILED=0
@@ -92,7 +93,7 @@ test_core_files() {
         "README.md"
         "CONTRIBUTING.md"
         "install.sh"
-        "install-bash-it.sh"
+        "scripts/setup/install-bash-it.sh"
         "lib/module-manager.sh"
         "lib/bash-it-integration.sh"
         "lib/bash-it-plugin.bash"
@@ -337,7 +338,7 @@ test_install_scripts() {
         fail "install.sh not executable"
     fi
     
-    if [[ -x "$SCRIPT_DIR/install-bash-it.sh" ]]; then
+    if [[ -x "$SCRIPT_DIR/scripts/setup/install-bash-it.sh" ]]; then
         success "install-bash-it.sh is executable"
     else
         fail "install-bash-it.sh not executable"
