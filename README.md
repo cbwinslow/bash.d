@@ -4,6 +4,13 @@ A comprehensive, modular bash configuration system that serves as a single sourc
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## 📋 Project Status & Roadmap
+
+**🎯 [View Master Task List](MASTER_TASK_LIST.md)** - Complete roadmap with 500+ measurable microtasks  
+**📅 [Current Sprint](docs/TASK_TRACKING.md)** - Active development and task coordination  
+**🤖 [AI Agent Tasks](docs/tasks.md)** - Multi-agent system development  
+**📖 [Quick Reference](docs/QUICK_REFERENCE.md)** - Navigate the project easily
+
 ## 🌟 Features
 
 - **🔌 Modular Architecture**: Organized into plugins, aliases, completions, functions, and themes
