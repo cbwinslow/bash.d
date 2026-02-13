@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/cbwinslow/bash.d/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: Master Task List
+    url: https://github.com/cbwinslow/bash.d/blob/main/MASTER_TASK_LIST.md
+    about: View all planned tasks and features
+  - name: Task Tracking
+    url: https://github.com/cbwinslow/bash.d/blob/main/docs/TASK_TRACKING.md
+    about: View current sprint and task coordination
