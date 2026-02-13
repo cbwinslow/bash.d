@@ -1,85 +1,28 @@
 # AI Agent Guidelines
 
+This file provides guidance for AI agents interacting with the `bash.d` ecosystem.
+
 ## Purpose
-This directory contains unified documentation for bash.d ecosystem including API documentation, architecture guides, and contribution guidelines.
 
-## File Placement Rules
-- `api.md`: Auto-generated API documentation
-- `architecture.md`: System architecture and design decisions
-- `contributing.md`: Contribution guidelines and standards
-- `deployment.md`: Deployment guides and procedures
-- `security.md`: Security policies and best practices
-- `user_guide.md`: End-user documentation
-- `developer_guide.md`: Developer documentation
+The `bash.d` repository is designed to be understood and navigated by AI agents. Each directory contains an `agents.md` file (like this one) to provide context and instructions.
 
-## File Naming Conventions
-- Documentation files: `topic.md`
-- API docs: `api_version.md`
-- Guides: `guide_topic_name.md`
-- Tutorials: `tutorial_step_by_step.md`
-- Architecture: `arch_component_name.md`
+## Directory Context
 
-## Automation Instructions
-- AI agents should keep documentation synchronized with code
-- Generate API documentation from source code
-- Update documentation with every feature change
-- Validate all code examples in documentation
-- Implement proper versioning of documentation
-- Use consistent formatting and style
+**This directory is part of a larger project.** To understand its purpose, you should examine the `README.md` file in this directory (if it exists) and the files in the parent directory.
 
-## Integration Points
-- Documents all components from `../src/`
-- Explains plugin architecture from `../plugins/`
-- Details infrastructure setup from `../infrastructure/`
-- Guides platform usage from `../platform/`
-- References configuration options from `../config/`
-- Includes testing procedures from `../tests/`
+Key files to look for:
+- `README.md`: Describes the contents and purpose of the directory.
+- `*.sh`: Shell scripts that contain the core logic.
+- `package.yaml`: Project-level dependencies and metadata.
+- `docs/`: Project-level documentation.
 
-## Context
-This directory provides comprehensive documentation for bash.d ecosystem:
-- Single source of truth for all system information
-- Auto-generated and manually maintained documentation
-- User guides for different skill levels
-- Developer documentation for contributors
-- API documentation for integrations
-- Architecture documentation for maintainers
+## Agent Instructions
 
-## Documentation Standards
-- Use Markdown format with proper front matter
-- Include code examples for all features
-- Provide step-by-step tutorials
-- Use diagrams for complex concepts
-- Include troubleshooting sections
-- Maintain table of contents for long documents
+- **Be Cautious:** Do not execute any scripts without first understanding their purpose and potential side effects.
+- **Read First:** Before making any changes, read the relevant documentation and source code.
+- **Follow the Rules:** Adhere to the conventions and standards defined in `docs/rules.md`.
+- **Stay Organized:** When adding new files, ensure they follow the established naming conventions and directory structure.
 
-## Content Types
-- **User Guides**: End-user documentation
-- **Developer Docs**: Technical documentation
-- **API Reference**: Complete API documentation
-- **Tutorials**: Step-by-step learning guides
-- **Architecture**: System design and decisions
-- **Deployment**: Production deployment guides
+## Goal
 
-## Quality Standards
-- All code examples must be tested
-- Documentation must be version-controlled
-- Include accessibility considerations
-- Use consistent terminology and style
-- Provide multiple learning paths
-- Include performance considerations
-
-## Automation Features
-- Auto-generate API docs from source code
-- Update table of contents automatically
-- Validate all internal links
-- Generate PDF versions for offline use
-- Create search index for documentation
-- Maintain changelog automatically
-
-## Localization Support
-- Use translatable strings for UI elements
-- Provide region-specific examples
-- Include timezone considerations
-- Support multiple date formats
-- Use metric and imperial units
-- Consider cultural differences in examples
+Your goal is to assist with the development, maintenance, and operation of the `bash.d` platform. By following these guidelines, you can become a productive and reliable contributor to the ecosystem.

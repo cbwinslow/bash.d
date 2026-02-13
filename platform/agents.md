@@ -1,87 +1,28 @@
 # AI Agent Guidelines
 
+This file provides guidance for AI agents interacting with the `bash.d` ecosystem.
+
 ## Purpose
-This directory contains your public platform code - blog engine, data portal, API gateway, and content management system for cloudcurio.cc.
 
-## File Placement Rules
-- `blog_engine.sh`: Blog post creation, editing, publishing workflow
-- `data_portal.sh`: Public data interface with search and pagination
-- `api_gateway.sh`: Unified API for all data sources and services
-- `content_cms.sh`: Content management, versioning, workflow
-- `search_engine.sh`: Full-text search across all content
-- `user_system.sh`: User registration, profiles, authentication
-- `comment_system.sh`: Comments, moderation, notifications
-- `analytics.sh`: Visitor tracking, content performance, user behavior
+The `bash.d` repository is designed to be understood and navigated by AI agents. Each directory contains an `agents.md` file (like this one) to provide context and instructions.
 
-## File Naming Conventions
-- Functions: `system_action_description()`
-- Templates: `template_type.html.mustache`
-- Configs: `system_config.yaml`
-- Cache: `system_cache_type.tmp`
-- Logs: `system_YYYY-MM-DD.log`
+## Directory Context
 
-## Automation Instructions
-- AI agents should validate content before publishing
-- Implement proper content workflow (draft -> review -> publish)
-- Use responsive design for all web interfaces
-- Implement proper SEO for all content
-- Use caching for performance optimization
-- Implement rate limiting for public APIs
-- Validate all user inputs and comments
+**This directory is part of a larger project.** To understand its purpose, you should examine the `README.md` file in this directory (if it exists) and the files in the parent directory.
 
-## Integration Points
-- Uses data from `../data/processed/`
-- Serves content via Cloudflare Workers
-- Stores user data in secure database
-- Integrates with authentication system
-- Uses Bitwarden for credential management
-- Logs all activities to central system
+Key files to look for:
+- `README.md`: Describes the contents and purpose of the directory.
+- `*.sh`: Shell scripts that contain the core logic.
+- `package.yaml`: Project-level dependencies and metadata.
+- `docs/`: Project-level documentation.
 
-## Context
-This is the public-facing layer of bash.d ecosystem. It provides:
-- Blog platform for your writings and tutorials
-- Data portal for public access to integrated datasets
-- API gateway for programmatic access
-- User management and community features
-- Search and discovery capabilities
-- Analytics and performance monitoring
+## Agent Instructions
 
-## Content Types Supported
-- **Blog Posts**: Markdown with front matter
-- **Tutorials**: Step-by-step guides with code
-- **Data Visualizations**: Interactive charts and graphs
-- **API Documentation**: Auto-generated from code
-- **Project Showcases**: Featured projects and demos
-- **Research Papers**: Academic and industry research
+- **Be Cautious:** Do not execute any scripts without first understanding their purpose and potential side effects.
+- **Read First:** Before making any changes, read the relevant documentation and source code.
+- **Follow the Rules:** Adhere to the conventions and standards defined in `docs/rules.md`.
+- **Stay Organized:** When adding new files, ensure they follow the established naming conventions and directory structure.
 
-## Technical Features
-- **Responsive Design**: Mobile-first approach
-- **Progressive Enhancement**: Works without JavaScript
-- **SEO Optimization**: Meta tags, structured data, sitemaps
-- **Performance**: CDN, caching, compression
-- **Accessibility**: WCAG 2.1 AA compliance
-- **Internationalization**: Multi-language support
+## Goal
 
-## Security Standards
-- HTTPS-only communication
-- CSRF protection for all forms
-- XSS protection and input sanitization
-- Rate limiting on all endpoints
-- Content Security Policy headers
-- Regular security audits
-- User data encryption at rest
-
-## Performance Targets
-- Page load time: <2 seconds
-- Time to Interactive: <3 seconds
-- Core Web Vitals: Good scores
-- Uptime: 99.9% availability
-- CDN cache hit rate: >90%
-
-## Community Features
-- User registration and profiles
-- Comment system with moderation
-- Content sharing and bookmarking
-- Newsletter subscription
-- RSS feeds for all content
-- Social media integration
+Your goal is to assist with the development, maintenance, and operation of the `bash.d` platform. By following these guidelines, you can become a productive and reliable contributor to the ecosystem.

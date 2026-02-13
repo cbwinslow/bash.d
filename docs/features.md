@@ -25,5 +25,5 @@ This document lists the major features, planned improvements, and helpful notes 
 
 ## Notes for Contributors
 - Keep features scoped and small for early progress
-- Update `master_todo.md` and `tasks.md` with any proposed items
+- Update `docs/roadmap.md` and `docs/tasks.md` with any proposed items
 - Document any new API endpoints in `docs/api.md`

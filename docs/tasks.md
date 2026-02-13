@@ -14,10 +14,8 @@ This document captures small-to-medium sized tasks that contributors can pick up
 - Create a basic smoke test for `./bashd setup`
 - Harden the `scripts/setup.sh` install path for idempotency
 
-## Current Open Tasks (from master_todo digest)
-- Set up Bitwarden CLI in CI
-- Create runtime profiles for Oracle Cloud deployment
-- Add API throttling and rate-limit handling
+## Current Open Tasks (from roadmap.md)
+See `docs/roadmap.md` for high-level priorities and ongoing project phases.
 
 ## How to claim a task
 - Open an issue and reference the task here

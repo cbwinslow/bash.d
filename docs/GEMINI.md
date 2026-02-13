@@ -15,25 +15,9 @@ The project is structured into several components:
 
 ## Building and Running
 
+For comprehensive setup instructions, please refer to the [Setup Guide](setup_guide.md).
+
 The project is set up and managed through the `bashd` CLI.
-
-### Setup
-
-To set up the `bash.d` ecosystem, run the following command:
-
-```bash
-./scripts/setup.sh
-```
-
-This will:
-
-*   Check for prerequisites.
-*   Install the `bash.d` system.
-*   Set up configuration.
-*   Install dependencies.
-*   Clone dotfiles.
-*   Initialize the `bash.d` ecosystem.
-*   Set up shell integration.
 
 ### Initialization
 

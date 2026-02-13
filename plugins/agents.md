@@ -1,86 +1,28 @@
 # AI Agent Guidelines
 
+This file provides guidance for AI agents interacting with the `bash.d` ecosystem.
+
 ## Purpose
-This directory contains extensible plugins for bash.d ecosystem. Each plugin provides integration with external services, data sources, or AI tools.
 
-## File Placement Rules
-- `github.sh`: GitHub API integration, repository management
-- `gitlab.sh`: GitLab API integration, CI/CD pipelines
-- `google.sh`: Google APIs, Drive, Sheets, Docs integration
-- `government.sh`: Government data sources (FBI, Congress, etc.)
-- `legislation.sh`: Legislative data (OpenStates, OpenLegislation)
-- `ai_tools.sh`: AI tool integrations (Gemini, Kilo, Cline, etc.)
-- `opencode.sh`: OpenCode.ai integration and development
-- `cloudflare.sh`: Cloudflare services integration
-- `oracle.sh`: Oracle Cloud free tier management
+The `bash.d` repository is designed to be understood and navigated by AI agents. Each directory contains an `agents.md` file (like this one) to provide context and instructions.
 
-## File Naming Conventions
-- Plugin files should be named after the service: `service.sh`
-- Function names: `service_action_description()`
-- Variables: `BASHD_SERVICE_CONFIG_KEY`
-- Constants: `BASHD_SERVICE_API_ENDPOINT`
+## Directory Context
 
-## Automation Instructions
-- AI agents should auto-discover available plugins
-- Load plugins dynamically based on configuration
-- Each plugin must implement standard interface:
-  - `plugin_init()`: Initialize plugin
-  - `plugin_status()`: Show connection status
-  - `plugin_config()`: Configure plugin
-  - `plugin_cleanup()`: Cleanup resources
+**This directory is part of a larger project.** To understand its purpose, you should examine the `README.md` file in this directory (if it exists) and the files in the parent directory.
 
-## Integration Points
-- Plugins read configuration from `../config/`
-- They use security functions from `../src/security.sh`
-- They log through central logging system
-- They can call other plugins for data exchange
-- They register with the main CLI system
+Key files to look for:
+- `README.md`: Describes the contents and purpose of the directory.
+- `*.sh`: Shell scripts that contain the core logic.
+- `package.yaml`: Project-level dependencies and metadata.
+- `docs/`: Project-level documentation.
 
-## Context
-Plugins provide the extensibility layer for bash.d. They allow:
-- Easy addition of new data sources
-- Integration with any API-based service
-- Modular architecture for maintainability
-- Community contributions and extensions
-- A/B testing of different integrations
+## Agent Instructions
 
-## Plugin Template
-Each plugin should follow this structure:
-```bash
-# Plugin metadata
-readonly PLUGIN_NAME="service_name"
-readonly PLUGIN_VERSION="1.0.0"
-readonly PLUGIN_DEPENDENCIES="curl,jq"
+- **Be Cautious:** Do not execute any scripts without first understanding their purpose and potential side effects.
+- **Read First:** Before making any changes, read the relevant documentation and source code.
+- **Follow the Rules:** Adhere to the conventions and standards defined in `docs/rules.md`.
+- **Stay Organized:** When adding new files, ensure they follow the established naming conventions and directory structure.
 
-# Required functions
-plugin_init() {
-    # Initialize plugin
-}
+## Goal
 
-plugin_status() {
-    # Show connection status
-}
-
-plugin_config() {
-    # Configure plugin settings
-}
-
-plugin_cleanup() {
-    # Cleanup plugin resources
-}
-```
-
-## Security Notes
-- Never hardcode credentials in plugins
-- Use Bitwarden for all credential storage
-- Implement proper rate limiting for API calls
-- Validate all external data before processing
-- Use secure HTTPS connections only
-- Implement proper error handling for API failures
-
-## Data Source Specifics
-- Government sources: Implement pagination and caching
-- AI tools: Handle API rate limits carefully
-- Cloud providers: Use official SDKs when available
-- Social platforms: Respect API terms of service
-- Financial data: Implement proper data validation
+Your goal is to assist with the development, maintenance, and operation of the `bash.d` platform. By following these guidelines, you can become a productive and reliable contributor to the ecosystem.

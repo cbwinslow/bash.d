@@ -18,5 +18,5 @@ bash.d is an enterprise-grade development ecosystem and CLI toolchain that integ
 ## Status
 This repo is actively developed; core scaffolding and directory structure are present. Next priorities include implementing additional connectors and documenting the system’s architecture and operational playbooks.
 
-## Where to pick up next
-See `master_todo.md` for current priorities, and check `tasks.md` for smaller deliverables. If you’re new here, review `docs/agents.md` and `README.md` to get oriented.
+## Getting Started
+To get started with `bash.d`, please refer to `docs/setup_guide.md`. For current priorities and a detailed project roadmap, see `docs/roadmap.md`.

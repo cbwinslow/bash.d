@@ -40,7 +40,7 @@ The system ingests public datasets, provides an API and data portal, supports pl
 - Basic blog engine and public data portal deployed to a staging environment
 
 ## 7. References
-- `README.md`, `rules.md`, `master_todo.md`
+- `README.md`, `rules.md`, `roadmap.md`
 
 ---
 *This file is a living document*

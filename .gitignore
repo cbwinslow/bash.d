@@ -1,0 +1,17 @@
+# Git Ignore
+.env
+.venv/
+node_modules/
+conversation-logs/
+*.log
+*.bak
+*.swp
+.DS_Store
+.yadm/
+scripts/logger/
+tests/logger.test.sh
+docs/logger-workflow/
+tests/__pycache__/
+tests/logger_pytest.py
+tests/logger_unit.test.mjs
+/tmp/logger-test-*

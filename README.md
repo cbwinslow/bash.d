@@ -19,6 +19,8 @@ cd ~/bash.d
 bash.d/
 ├── 📄 package.yaml                 # Package metadata & dependencies
 ├── 📄 bashd                       # Main CLI entry point
+├── 📁 bin/                         # Executable scripts
+├── 📁 dotfiles/                    # Dotfiles managed by yadm
 ├── 📁 src/                        # Core functionality
 ├── 📁 plugins/                     # Extensible data source plugins
 ├── 📁 data/                        # Data storage & processing
@@ -27,23 +29,20 @@ bash.d/
 ├── 📁 config/                      # Configuration management
 ├── 📁 tests/                       # Integrated testing
 ├── 📁 docs/                        # Unified documentation
-├── 📁 scripts/                     # Setup & maintenance scripts
-└── 📄 master_todo.md              # Master task tracking
+└── 📁 scripts/                     # Setup & maintenance scripts
 
 ## 📚 Documentation
 
-The project contains several documentation files to help contributors and users get started. Key docs:
+The project's documentation is located in the `docs/` directory. Key documents include:
 
-- `project_summary.md` — high-level project description and goals
-- `features.md` — list of features and planned improvements
-- `tasks.md` — actionable tasks and short-term work
-- `srs.md` — a living software requirements specification
-- `roadmap.md` — project roadmap and milestones
-- `CONTRIBUTING.md` — contribution guidelines and workflow
-- `vscode.md` — VS Code tips and recommended extensions
-- `docs/` — extended docs, including `agents.md`, `architecture.md`, `security.md`, `developer_guide.md`, `user_guide.md` and `api.md`.
+- `docs/project_summary.md` — High-level project description and goals.
+- `docs/features.md` — List of features and planned improvements.
+- `docs/srs.md` — A living software requirements specification.
+- `docs/CONTRIBUTING.md` — Contribution guidelines and workflow.
+- `docs/architecture.md` — An overview of the system architecture.
+- `docs/security.md` — Details on the security model.
 
-If you are new, start with `project_summary.md`, then read `CONTRIBUTING.md` and `tasks.md` to find something to work on.
+If you are new, start by reading the `README.md`, then review the documents in the `docs/` directory to get oriented.
 ```
 
 ## 🏗️ Core Components
