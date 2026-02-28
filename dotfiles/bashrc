@@ -74,6 +74,32 @@ alias oll='ollama'
 alias ollist='ollama list'
 alias ollpull='ollama pull'
 
+# System Analyzer
+alias sys-analyze='$BASHD_DIR/scripts/system_analyzer.sh'
+alias sysmon='$BASHD_DIR/scripts/monitor.sh'
+
+# AI System Agent
+alias ai-sys='$BASHD_DIR/scripts/ai_sys_agent.sh'
+
+# Menu Launcher
+alias menu='bash $BASHD_DIR/scripts/menu.sh'
+
+# Debug & Test Agent
+alias ai-debug='$BASHD_DIR/scripts/debug_agent.sh'
+alias debug='$BASHD_DIR/scripts/debug_agent.sh'
+
+# RAG System
+alias rag-stats='cd $BASHD_DIR/telemetry && python3 rag.py stats'
+alias rag-search='cd $BASHD_DIR/telemetry && python3 rag.py search'
+
+# ETL Pipeline
+alias etl-run='cd $BASHD_DIR/telemetry && python3 etl.py --once'
+alias etl-start='cd $BASHD_DIR/telemetry && python3 etl.py'
+
+# Multi-Agent System
+alias multi-agent='python3 $BASHD_DIR/scripts/multi_agent.py'
+alias agent-multi='python3 $BASHD_DIR/scripts/multi_agent.py'
+
 # Unified library functions (from 90_unified_library.sh)
 # These are auto-loaded from bash_functions.d
 # Quick access:
