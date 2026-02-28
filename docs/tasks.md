@@ -68,7 +68,7 @@ This document captures all tasks, features, and future work for the bash.d ecosy
 - [ ] **Terminal dashboard (Textual)**
 
 ### Phase 4: Advanced Features 📋 (To Do)
-- [ ] OpenTelemetry integration
+- [x] OpenTelemetry integration ✅ COMPLETE
 - [ ] Automated remediation agents
 
 ---
@@ -131,6 +131,8 @@ python3 rag.py add-conv <tool> <prompt> <response>
 | `etl-run` | `etl.py --once` | Run ETL once |
 | `etl-start` | `etl.py` | Start ETL continuous |
 | `multi-agent` | `multi_agent.py` | Multi-agent system |
+| `otel-init` | `otel.py --init` | Initialize OpenTelemetry |
+| `otel-status` | `otel.py --status` | Check OpenTelemetry status |
 
 ---
 

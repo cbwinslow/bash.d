@@ -100,6 +100,10 @@ alias etl-start='cd $BASHD_DIR/telemetry && python3 etl.py'
 alias multi-agent='python3 $BASHD_DIR/scripts/multi_agent.py'
 alias agent-multi='python3 $BASHD_DIR/scripts/multi_agent.py'
 
+# OpenTelemetry
+alias otel-init='cd $BASHD_DIR/telemetry && python3 otel.py --init'
+alias otel-status='cd $BASHD_DIR/telemetry && python3 otel.py --status'
+
 # Unified library functions (from 90_unified_library.sh)
 # These are auto-loaded from bash_functions.d
 # Quick access:
