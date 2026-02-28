@@ -104,6 +104,12 @@ alias agent-multi='python3 $BASHD_DIR/scripts/multi_agent.py'
 alias otel-init='cd $BASHD_DIR/telemetry && python3 otel.py --init'
 alias otel-status='cd $BASHD_DIR/telemetry && python3 otel.py --status'
 
+# Remediation Agent
+alias remediation='python3 $BASHD_DIR/scripts/remediation_agent.py'
+alias remediation-scan='python3 $BASHD_DIR/scripts/remediation_agent.py --scan'
+alias remediation-fix='python3 $BASHD_DIR/scripts/remediation_agent.py --fix'
+alias remediation-daemon='python3 $BASHD_DIR/scripts/remediation_agent.py --daemon'
+
 # Unified library functions (from 90_unified_library.sh)
 # These are auto-loaded from bash_functions.d
 # Quick access:
