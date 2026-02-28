@@ -1,0 +1,12 @@
+github_user: cbwinslow
+github_repo: conversation-logs
+git_branch: master
+sync_remote: origin
+log_root: ~/bash.d/conversation-logs
+daemon_port: 5512
+labeler_endpoint: http://localhost:5513/label
+commit_message_prefix: logger
+sync_interval_min: 15
+labeler_interval_min: 60
+max_file_bytes: 5242880
+allowed_agents: ["codex","gemini","openclaw","claude","qwen","ollama"]

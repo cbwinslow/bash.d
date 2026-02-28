@@ -2,12 +2,14 @@
 .env
 .venv/
 node_modules/
-conversation-logs/
 *.log
 *.bak
 *.swp
 .DS_Store
 .yadm/
+
+# Generated/Local files (uncomment if needed for backup)
+# inventory/
 scripts/logger/
 tests/logger.test.sh
 docs/logger-workflow/
@@ -15,3 +17,27 @@ tests/__pycache__/
 tests/logger_pytest.py
 tests/logger_unit.test.mjs
 /tmp/logger-test-*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Large generated files
+*.tar.gz
+*.zip
+backups/

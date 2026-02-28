@@ -1,0 +1,67 @@
+# Backup workflow - Runs daily at 2 AM or manually
+name: Backup System
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM
+  workflow_dispatch:
+    inputs:
+      backup_type:
+        description: 'Type of backup'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - quick
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout bash.d
+        uses: actions/checkout@v4
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          pip install pyyaml requests
+          
+      - name: Run backup script
+        env:
+          BACKUP_GITHUB_TOKEN: ${{ secrets.BACKUP_GITHUB_TOKEN }}
+          BACKUP_R2_ENABLED: ${{ secrets.BACKUP_R2_ENABLED }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_ACCESS_KEY: ${{ secrets.R2_ACCESS_KEY }}
+          R2_SECRET_KEY: ${{ secrets.R2_SECRET_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          if [ "${{ github.event.inputs.backup_type }}" == "quick" ]; then
+            bash scripts/backup.sh quick
+          else
+            bash scripts/backup.sh full
+          fi
+          
+      - name: Upload backup artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: backup-artifacts
+          path: inventory/backups/
+          retention-days: 7
+          
+      - name: Commit backup metadata
+        if: success()
+        run: |
+          cd inventory
+          git add .
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git commit -m "Update inventory backup - $(date +%Y-%m-%d)" || echo "No changes to commit"
+          git push || echo "Push failed - this is OK for manual runs"
+        continue-on-error: true

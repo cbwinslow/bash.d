@@ -1,0 +1,18 @@
+[project]
+name = "conversation-logger-core"
+version = "0.1.0"
+description = "Universal conversation logger for Codex/Gemini/Kilo/Cline-style agents"
+readme = "docs/logger-workflow/INSTRUCTIONS.md"
+authors = [ { name = "C. B. Winslow", email = "cbwinslow@gmail.com" } ]
+requires-python = ">=3.11"
+dependencies = ["pytest>=9,<10"]
+keywords = ["conversation", "logging", "agents", "ai", "pipeline"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[build-system]
+requires = ["uv"]
+build-backend = "uv:backend"

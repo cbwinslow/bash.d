@@ -1,0 +1,76 @@
+# Backup Configuration for bash.d
+
+# GitHub Backup Repository
+backup_repo: "cbwinslow/backup"
+
+# Backup settings
+backup:
+  # Compression method (gz, bz2, xz)
+  compression: "gz"
+  
+  # Include private data (encrypted)
+  include_private: false
+  
+  # Exclude patterns
+  exclude:
+    - "*.log"
+    - "node_modules/"
+    - ".venv/"
+    - ".git/"
+    - "*.pyc"
+    - "__pycache__/"
+  
+  # Maximum local backups to keep
+  max_local_backups: 10
+
+# Cloudflare R2 Settings
+r2:
+  enabled: false
+  bucket: "bashd-backup"
+  endpoint: ""
+  access_key: ""
+  secret_key: ""
+
+# Schedule
+schedule:
+  # Full backup frequency (in days)
+  full_backup_days: 7
+  
+  # Quick backup frequency (in days)
+  quick_backup_days: 1
+
+# GitHub settings
+github:
+  # Repository for backups
+  repo: "cbwinslow/backup"
+  
+  # Branch for backups
+  branch: "main"
+  
+  # Auto-commit messages
+  commit_message: "Automated backup - {date}"
+
+# Encryption settings
+encryption:
+  # Enable encryption for sensitive data
+  enabled: false
+  
+  # Method (gpg, age)
+  method: "age"
+  
+  # Recipients (for GPG)
+  recipients: []
+
+# Retention policy
+retention:
+  # Days to keep local backups
+  local_days: 30
+  
+  # Days to keep remote backups
+  remote_days: 90
+  
+  # Keep weekly backups for (weeks)
+  keep_weeks: 4
+  
+  # Keep monthly backups for (months)
+  keep_months: 12
