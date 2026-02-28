@@ -1,0 +1,35 @@
+# Telemetry & Monitoring Dependencies
+
+# Database
+sqlalchemy>=2.0.0
+asyncpg>=0.29.0
+psycopg2-binary>=2.9.9
+alembic>=1.13.0
+
+# System Monitoring
+psutil>=5.9.8
+gputil>=1.4.0
+pynvml>=11.5.0
+py3nvml>=0.2.7
+
+# Network
+netifaces>=0.11.0
+scapy>=2.5.0
+
+# OpenTelemetry
+opentelemetry-api>=1.22.0
+opentelemetry-sdk>=1.22.0
+opentelemetry-exporter-otlp>=1.22.0
+
+# Dashboard
+textual>=0.52.0
+rich>=13.7.0
+
+# Async
+aiohttp>=3.9.0
+asyncio>=3.4.3
+
+# Utils
+pyyaml>=6.0.1
+python-dateutil>=2.8.2
+pydantic>=2.5.0
