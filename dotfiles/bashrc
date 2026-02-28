@@ -73,3 +73,17 @@ function ai-help() { $BASHD_DIR/scripts/ai_agent.sh; }
 alias oll='ollama'
 alias ollist='ollama list'
 alias ollpull='ollama pull'
+
+# Unified library functions (from 90_unified_library.sh)
+# These are auto-loaded from bash_functions.d
+# Quick access:
+alias bfd='source $BASHD_DIR/bash_functions.d/90_unified_library.sh'
+alias sysinfo='sys_info'
+alias sysdisk='sys_disk'
+alias sysmem='sys_mem'
+alias netcheck='net_check'
+alias netip='net_myip'
+alias gits='git status'
+alias gitpush='git push'
+alias dockerps='docker ps'
+alias dockerclean='docker_clean'
